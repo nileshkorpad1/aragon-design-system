@@ -1,0 +1,100 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <wtf2-card class="shipping-card">
+    <wtf2-card-header>
+      <wtf2-card-title>Shipping InFormation</wtf2-card-title>
+    </wtf2-card-header>
+    <wtf2-card-content>
+      <div class="row">
+        <div class="col">
+          <wtf2-form-field class="full-width">
+            <input wtf2Input placeholder="Company" formControlName="company">
+          </wtf2-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <wtf2-form-field class="full-width">
+            <input wtf2Input placeholder="First name" formControlName="firstName">
+            <wtf2-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+              First name is <strong>required</strong>
+            </wtf2-error>
+          </wtf2-form-field>
+        </div>
+        <div class="col">
+          <wtf2-form-field class="full-width">
+            <input wtf2Input placeholder="Last name" formControlName="lastName">
+            <wtf2-error *ngIf="addressForm.controls['lastName'].hasError('required')">
+              Last name is <strong>required</strong>
+            </wtf2-error>
+          </wtf2-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <wtf2-form-field class="full-width">
+            <textarea wtf2Input placeholder="Address" formControlName="address"></textarea>
+            <wtf2-error *ngIf="addressForm.controls['address'].hasError('required')">
+              Address is <strong>required</strong>
+            </wtf2-error>
+          </wtf2-form-field>
+        </div>
+      </div>
+      <div class="row" *ngIf="!hasUnitNumber">
+        <div class="col">
+          <button wtf2-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
+            + Add C/O, Apt, Suite, Unit
+          </button>
+        </div>
+      </div>
+      <div class="row" *ngIf="hasUnitNumber">
+        <div class="col">
+          <wtf2-form-field class="full-width">
+            <textarea wtf2Input placeholder="Address 2" formControlName="address2"></textarea>
+          </wtf2-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <wtf2-form-field class="full-width">
+            <input wtf2Input placeholder="City" formControlName="city">
+            <wtf2-error *ngIf="addressForm.controls['city'].hasError('required')">
+              City is <strong>required</strong>
+            </wtf2-error>
+          </wtf2-form-field>
+        </div>
+        <div class="col">
+          <wtf2-form-field class="full-width">
+            <wtf2-select placeholder="State" formControlName="state">
+              <wtf2-option *ngFor="let state of states" [value]="state.abbreviation">
+                {{ state.name }}
+              </wtf2-option>
+            </wtf2-select>
+            <wtf2-error *ngIf="addressForm.controls['state'].hasError('required')">
+              State is <strong>required</strong>
+            </wtf2-error>
+          </wtf2-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <wtf2-form-field class="full-width">
+            <input wtf2Input #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode">
+            <wtf2-hint align="end">{{postalCode.value.length}} / 5</wtf2-hint>
+          </wtf2-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <wtf2-radio-group formControlName="shipping">
+            <wtf2-radio-button value="free">Free Shipping</wtf2-radio-button>
+            <wtf2-radio-button value="priority">Priority Shipping</wtf2-radio-button>
+            <wtf2-radio-button value="nextday">Next Day Shipping</wtf2-radio-button>
+          </wtf2-radio-group>
+        </div>
+      </div>
+    </wtf2-card-content>
+    <wtf2-card-actions>
+      <button wtf2-raised-button color="primary" type="submit">Submit</button>
+    </wtf2-card-actions>
+  </wtf2-card>
+</form>

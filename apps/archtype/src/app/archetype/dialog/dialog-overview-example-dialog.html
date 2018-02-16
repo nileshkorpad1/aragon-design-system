@@ -1,0 +1,11 @@
+<h1 wtf2-dialog-title>Hi {{data.name}}</h1>
+<div wtf2-dialog-content>
+    <p>What's your favorite animal?</p>
+    <wtf2-form-field>
+        <input wtf2Input [(ngModel)]="data.animal">
+    </wtf2-form-field>
+</div>
+<div wtf2-dialog-actions>
+    <button wtf2-button (click)="onNoClick()">No Thanks</button>
+    <button wtf2-button [wtf2-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>

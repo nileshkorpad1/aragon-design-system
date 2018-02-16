@@ -1,0 +1,98 @@
+<wtf2-page-skeleton carded fullwidth>
+    <!-- TOP BACKGROUND -->
+
+    <!--   -->
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+    <!-- / SIDEBAR -->
+    <!-- CENTER -->
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> Input</wtf2-header-title>
+        <wtf2-header-subtitle> Input Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+    <!-- CONTENT CARD -->
+    <!-- CONTENT TOOLBAR -->
+    <!-- <div class="toolbar px-24 py-8">
+                <span>Input</span>
+            </div> -->
+    <!-- / CONTENT TOOLBAR -->
+    <!-- CONTENT -->
+    <wtf2-page-content class="content">
+        <div class="row m-2">
+            <h3>Full width input field</h3>
+            <div class="col col-12 m-2">
+                <form class="example-form">
+                    <wtf2-form-field class="example-full-width">
+                        <input wtf2Input placeholder="Full Name" value="">
+                    </wtf2-form-field>
+                </form>
+            </div>
+            <h3>Disabled </h3>
+            <div class="col col-12 m-2">
+                <form class="example-form">
+                    <wtf2-form-field class="example-full-width">
+                        <input wtf2Input placeholder="Disabled Input" disabled value="This is Disabled Field">
+                    </wtf2-form-field>
+                </form>
+            </div>
+            <h3>Readonly </h3>
+            <div class="col col-12 m-2">
+                <form class="example-form">
+                    <wtf2-form-field class="example-full-width">
+                        <input wtf2Input placeholder="Read Only" readonly value="This is Readonly">
+                    </wtf2-form-field>
+                </form>
+            </div>
+            <h3>Prefilled Input field</h3>
+            <div class="col col-12 m-2">
+                <form class="example-form">
+                    <wtf2-form-field class="example-full-width">
+                        <input wtf2Input placeholder="Full Name" value="Bhupesh Patil">
+                    </wtf2-form-field>
+                </form>
+            </div>
+            <h3>Textarea field</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field class="example-full-width">
+                    <textarea wtf2Input placeholder="Leave a comment"></textarea>
+                </wtf2-form-field>
+            </div>
+            <h3>Double column view</h3>
+            <div class="col col-12 m-2">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <wtf2-form-field class="example-full-width">
+                            <input wtf2Input placeholder="First Name" value="">
+                        </wtf2-form-field>
+                    </div>
+                    <div class="col col-md-6">
+                        <wtf2-form-field class="example-full-width">
+                            <input wtf2Input placeholder="Last Name" value="">
+                        </wtf2-form-field>
+                    </div>
+                </div>
+            </div>
+            <h3>Validation on input field</h3>
+            <div class="col col-12 m-2">
+                <form class="example-form">
+                    <wtf2-form-field>
+                        <input wtf2Input placeholder="Email" required [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+                        <!-- <wtf2-hint>Errors appear instantly!</wtf2-hint> -->
+                        <wtf2-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                            Please enter a valid email address
+                        </wtf2-error>
+                        <wtf2-error *ngIf="emailFormControl.hasError('required')">
+                            Email is <strong>required</strong>
+                        </wtf2-error>
+
+                    </wtf2-form-field>
+                </form>
+            </div>
+        </div>
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+    <!-- / CONTENT CARD -->
+    <!-- / CENTER -->
+</wtf2-page-skeleton>

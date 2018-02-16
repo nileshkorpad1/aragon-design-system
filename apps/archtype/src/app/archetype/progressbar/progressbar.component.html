@@ -1,0 +1,114 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+        <!-- CONTENT HEADER -->
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> Progressbar</wtf2-header-title>
+            <wtf2-header-subtitle> Progressbar Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+
+        <!-- CONTENT TOOLBAR -->
+        <!-- <div class="toolbar px-24 py-8">
+                <span>Progressbar</span>
+            </div> -->
+        <!-- / CONTENT TOOLBAR -->
+
+        <!-- CONTENT -->
+        <wtf2-page-content class="content">
+            <div class="row m-2" page-content-carded>
+                <h3>Progressbar configuration</h3>
+                <div class="col col-12 ml-4">
+                            <h2 class="example-h2">Progress bar configuration</h2>
+
+                            <section class="example-section">
+                                <label class="example-margin">Color:</label>
+                                <wtf2-radio-group [(ngModel)]="color">
+                                    <wtf2-radio-button class="example-margin" value="primary">
+                                        Primary
+                                    </wtf2-radio-button>
+                                    <wtf2-radio-button class="example-margin" value="accent">
+                                        Accent
+                                    </wtf2-radio-button>
+                                    <wtf2-radio-button class="example-margin" value="warn">
+                                        Warn
+                                    </wtf2-radio-button>
+                                </wtf2-radio-group>
+                            </section>
+
+                            <section class="example-section">
+                                <label class="example-margin">Mode:</label>
+                                <wtf2-radio-group [(ngModel)]="mode">
+                                    <wtf2-radio-button class="example-margin" value="determinate">
+                                        Determinate
+                                    </wtf2-radio-button>
+                                    <wtf2-radio-button class="example-margin" value="indeterminate">
+                                        Indeterminate
+                                    </wtf2-radio-button>
+                                    <wtf2-radio-button class="example-margin" value="buffer">
+                                        Buffer
+                                    </wtf2-radio-button>
+                                    <wtf2-radio-button class="example-margin" value="query">
+                                        Query
+                                    </wtf2-radio-button>
+                                </wtf2-radio-group>
+                            </section>
+
+                            <section class="example-section" *ngIf="mode === 'determinate' || mode === 'buffer'">
+                                <label class="example-margin">Progress:</label>
+                                <wtf2-slider class="example-margin" [(ngModel)]="value"></wtf2-slider>
+                            </section>
+                            <section class="example-section" *ngIf="mode === 'buffer'">
+                                <label class="example-margin">Buffer:</label>
+                                <wtf2-slider class="example-margin" [(ngModel)]="bufferValue"></wtf2-slider>
+                            </section>
+
+                            <h2 class="example-h2">Result</h2>
+
+                            <section class="example-section">
+                                <wtf2-progress-bar class="example-margin" [color]="color" [mode]="mode" [value]="value"
+                                    [bufferValue]="bufferValue">
+                                </wtf2-progress-bar>
+                            </section>
+
+                </div>
+                <h3>Progressbar</h3>
+                <div class="col col-12 ml-4">
+                            <h3>Determinate progress-bar</h3>
+                            <div class="col col-12 ml-4">
+                                <wtf2-progress-bar mode="determinate" value="40"></wtf2-progress-bar>
+                            </div>
+                            <h3>Indeterminate progress-bar</h3>
+                            <div class="col col-12 ml-4">
+                                <wtf2-progress-bar mode="indeterminate"></wtf2-progress-bar>
+                            </div>
+                            <h3>Buffer progress-bar</h3>
+                            <div class="col col-12 ml-4">
+                                <wtf2-progress-bar mode="buffer"></wtf2-progress-bar>
+                            </div>
+                            <h3>Query progress-bar</h3>
+                            <div class="col col-12 ml-4">
+                                <wtf2-progress-bar mode="query"></wtf2-progress-bar>
+                            </div>
+                </div>
+
+            </div>
+        </wtf2-page-content>
+
+        <!-- / CONTENT -->
+
+        <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

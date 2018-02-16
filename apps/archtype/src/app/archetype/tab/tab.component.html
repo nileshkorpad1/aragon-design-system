@@ -1,0 +1,288 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+
+        <!-- CONTENT HEADER -->
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> Tab</wtf2-header-title>
+            <wtf2-header-subtitle> Tab Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <!-- <div class="content-card"> -->
+
+        <!-- CONTENT TOOLBAR -->
+        <!-- <div class="toolbar px-24 py-8">
+                <span>Tabs</span>
+            </div> -->
+        <!-- / CONTENT TOOLBAR -->
+
+        <!-- CONTENT -->
+        <wtf2-page-content class="content">
+            <div class="container-fluid" page-content-carded>
+                <div class="row">
+                    <h3>Dynamic Tab</h3>
+                    <div class="col col-12 m-2">
+                            <div>
+                                <span class="example-input-label"> Selected tab index: </span>
+                                <wtf2-form-field>
+                                    <input wtf2Input type="number" [formControl]="selected">
+                                </wtf2-form-field>
+                            </div>
+
+                            <div>
+                                <button wtf2-raised-button class="example-add-tab-button" (click)="addTab(selectAfterAdding.checked)">
+                                    Add new tab
+                                </button>
+                                <wtf2-checkbox #selectAfterAdding> Select tab after adding </wtf2-checkbox>
+                            </div>
+
+                            <wtf2-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+                                <wtf2-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+                                    Contents for {{tab}} tab
+
+                                    <button wtf2-raised-button class="example-delete-tab-button" [disabled]="tabs.length === 1"
+                                        (click)="removeTab(index)">
+                                        Delete Tab
+                                    </button>
+                                </wtf2-tab>
+                            </wtf2-tab-group>
+
+                    </div>
+                    <h3>Basic Tabs</h3>
+                    <div class="col col-12 m-2">
+                            <wtf2-tab-group>
+                                <wtf2-tab label="First Tab"> Content Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit. Molestiae sequi quae aliquam inventore, incidunt quia sint laudantium animi
+                                    sit sed! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut optio ab
+                                    commodi voluptatem hic quisquam rerum doloribus recusandae! Explicabo rem obcaecati
+                                    adipisci aliquam quidem nulla in earum! Deserunt maxime ab voluptatibus tempore
+                                    illum soluta aperiam veniam repellendus delectus. Nobis
+                                    numquam a aliquam mollitia totam odio, nesciunt recusandae illum obcaecati
+                                    deserunt.
+
+                                </wtf2-tab>
+                                <wtf2-tab label="Second Tab"> Content Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Molestiae sequi quae aliquam inventore, incidunt quia sint
+                                    laudantium animi sit sed! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ut optio ab
+                                    commodi voluptatem hic quisquam rerum doloribus recusandae! Explicabo rem obcaecati
+                                    adipisci aliquam quidem nulla in earum! Deserunt maxime ab voluptatibus tempore
+                                    illum soluta aperiam veniam repellendus delectus. Nobis
+                                    numquam a aliquam mollitia totam odio, nesciunt recusandae illum obcaecati
+                                    deserunt.
+                                </wtf2-tab>
+                                <wtf2-tab label="Third Tab"> Content Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit. Molestiae sequi quae aliquam inventore, incidunt quia sint laudantium animi
+                                    sit sed! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut optio ab
+                                    commodi voluptatem hic quisquam rerum doloribus recusandae! Explicabo rem obcaecati
+                                    adipisci aliquam quidem nulla in earum! Deserunt maxime ab voluptatibus tempore
+                                    illum soluta aperiam veniam repellendus delectus. Nobis
+                                    numquam a aliquam mollitia totam odio, nesciunt recusandae illum obcaecati
+                                    deserunt.
+                                </wtf2-tab>
+                            </wtf2-tab-group>
+
+                    </div>
+                    <h3>Basic Tabs Disabled Link</h3>
+                    <div class="col col-12 m-2">
+                            <wtf2-tab-group>
+                                <wtf2-tab label="Enabled Tab"> Content Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Molestiae sequi quae aliquam inventore, incidunt quia sint
+                                    laudantium animi sit sed! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ut optio ab
+                                    commodi voluptatem hic quisquam rerum doloribus recusandae! Explicabo rem obcaecati
+                                    adipisci aliquam quidem nulla in earum! Deserunt maxime ab voluptatibus tempore
+                                    illum soluta aperiam veniam repellendus delectus. Nobis
+                                    numquam a aliquam mollitia totam odio, nesciunt recusandae illum obcaecati
+                                    deserunt.
+
+                                </wtf2-tab>
+                                <wtf2-tab label="Disabled Tab" disabled> Content Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Molestiae sequi quae aliquam inventore, incidunt quia sint
+                                    laudantium animi sit sed! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ut optio ab
+                                    commodi voluptatem hic quisquam rerum doloribus recusandae! Explicabo rem obcaecati
+                                    adipisci aliquam quidem nulla in earum! Deserunt maxime ab voluptatibus tempore
+                                    illum soluta aperiam veniam repellendus delectus. Nobis
+                                    numquam a aliquam mollitia totam odio, nesciunt recusandae illum obcaecati
+                                    deserunt.
+                                </wtf2-tab>
+                            </wtf2-tab-group>
+
+                    </div>
+                    <h3>Tabs : complex labels</h3>
+                    <div class="col col-12 m-2">
+                            <wtf2-tab-group>
+                                <wtf2-tab>
+                                    <ng-template wtf2-tab-label>
+                                        Custom <em> Label </em> Name
+                                    </ng-template>
+                                    <h1>Lorem ipsum dolor sit amet.</h1>
+                                    <p>...</p>
+                                </wtf2-tab>
+                                <wtf2-tab>
+                                    <ng-template wtf2-tab-label>
+                                        <wtf2-icon>arrow_down</wtf2-icon> Icon Tab
+                                    </ng-template>
+                                    <h1>Lorem ipsum dolor sit amet consectetur.</h1>
+                                    <p>...</p>
+                                </wtf2-tab>
+                            </wtf2-tab-group>
+                    </div>
+                    <h3>Tabs : Label Alignment</h3>
+                    <div class="col col-12 m-2">
+                            <!-- <h3>Start</h3>
+                                    <wtf2-tab-group wtf2-align-tabs="start">
+                                        <wtf2-tab label="First">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit. Culpa possimus dolor voluptatem hic doloribus asperiores eveniet
+                                            fugiat unde dolore perferendis ut cum harum saepe officiis similique
+                                            laboriosam deleniti, fugit in tempora molestiae distinctio incidunt
+                                            adipisci! Modi facere, perferendis consequatur aliquid ad optio
+                                            reprehenderit incidunt ratione iure inventore non eaque dolorum.</wtf2-tab>
+                                        <wtf2-tab label="Second">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit. Culpa possimus dolor voluptatem hic doloribus asperiores eveniet
+                                            fugiat unde dolore perferendis ut cum harum saepe officiis similique
+                                            laboriosam deleniti, fugit in tempora molestiae distinctio incidunt
+                                            adipisci! Modi facere, perferendis consequatur aliquid ad optio
+                                            reprehenderit incidunt ratione iure inventore non eaque dolorum.</wtf2-tab>
+                                        <wtf2-tab label="Third">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit. Culpa possimus dolor voluptatem hic doloribus asperiores eveniet
+                                            fugiat unde dolore perferendis ut cum harum saepe officiis similique
+                                            laboriosam deleniti, fugit in tempora molestiae distinctio incidunt
+                                            adipisci! Modi facere, perferendis consequatur aliquid ad optio
+                                            reprehenderit incidunt ratione iure inventore non eaque dolorum.</wtf2-tab>
+                                    </wtf2-tab-group> -->
+                            <h3>Center</h3>
+                            <wtf2-tab-group wtf2-align-tabs="center">
+                                <wtf2-tab label="First">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+                                    possimus dolor voluptatem hic doloribus asperiores eveniet fugiat unde dolore
+                                    perferendis ut cum harum saepe officiis similique laboriosam deleniti, fugit in
+                                    tempora molestiae distinctio incidunt adipisci! Modi facere, perferendis
+                                    consequatur aliquid ad optio reprehenderit incidunt ratione iure inventore non
+                                    eaque dolorum.</wtf2-tab>
+                                <wtf2-tab label="Second">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+                                    possimus dolor voluptatem hic doloribus asperiores eveniet fugiat unde dolore
+                                    perferendis ut cum harum saepe officiis similique laboriosam deleniti, fugit in
+                                    tempora molestiae distinctio incidunt adipisci! Modi facere, perferendis
+                                    consequatur aliquid ad optio reprehenderit incidunt ratione iure inventore non
+                                    eaque dolorum.</wtf2-tab>
+                                <wtf2-tab label="Third">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+                                    possimus dolor voluptatem hic doloribus asperiores eveniet fugiat unde dolore
+                                    perferendis ut cum harum saepe officiis similique laboriosam deleniti, fugit in
+                                    tempora molestiae distinctio incidunt adipisci! Modi facere, perferendis
+                                    consequatur aliquid ad optio reprehenderit incidunt ratione iure inventore non
+                                    eaque dolorum.</wtf2-tab>
+                            </wtf2-tab-group>
+                            <h3 class="mt-4">End</h3>
+                            <wtf2-tab-group wtf2-align-tabs="end">
+                                <wtf2-tab label="First">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+                                    possimus dolor voluptatem hic doloribus asperiores eveniet fugiat unde dolore
+                                    perferendis ut cum harum saepe officiis similique laboriosam deleniti, fugit in
+                                    tempora molestiae distinctio incidunt adipisci! Modi facere, perferendis
+                                    consequatur aliquid ad optio reprehenderit incidunt ratione iure inventore non
+                                    eaque dolorum.</wtf2-tab>
+                                <wtf2-tab label="Second">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+                                    possimus dolor voluptatem hic doloribus asperiores eveniet fugiat unde dolore
+                                    perferendis ut cum harum saepe officiis similique laboriosam deleniti, fugit in
+                                    tempora molestiae distinctio incidunt adipisci! Modi facere, perferendis
+                                    consequatur aliquid ad optio reprehenderit incidunt ratione iure inventore non
+                                    eaque dolorum.</wtf2-tab>
+                                <wtf2-tab label="Third">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+                                    possimus dolor voluptatem hic doloribus asperiores eveniet fugiat unde dolore
+                                    perferendis ut cum harum saepe officiis similique laboriosam deleniti, fugit in
+                                    tempora molestiae distinctio incidunt adipisci! Modi facere, perferendis
+                                    consequatur aliquid ad optio reprehenderit incidunt ratione iure inventore non
+                                    eaque dolorum.</wtf2-tab>
+                            </wtf2-tab-group>
+                    </div>
+                    <!-- add wtf2TabContent to ng-template tag to lazy load -->
+                    <!-- add wtf2TabContent to ng-template tag to lazy load -->
+                    <!-- add wtf2TabContent to ng-template tag to lazy load -->
+                    <h3>Tabs : Control Animation</h3>
+                    <div class="col col-12 m-2">
+                            <h3>No animation</h3>
+
+                            <wtf2-tab-group animationDuration="0ms">
+                                <wtf2-tab label="First">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ducimus labore ullam sunt consequatur necessitatibus quisquam quibusdam, ex neque
+                                    quis dolorum laborum, aliquid autem, mollitia porro consectetur modi repellendus
+                                    est obcaecati.</wtf2-tab>
+                                <wtf2-tab label="Second">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ducimus labore ullam sunt consequatur necessitatibus quisquam quibusdam, ex neque
+                                    quis dolorum laborum, aliquid autem, mollitia porro consectetur modi repellendus
+                                    est obcaecati.</wtf2-tab>
+                                <wtf2-tab label="Third">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ducimus labore ullam sunt consequatur necessitatibus quisquam quibusdam, ex neque
+                                    quis dolorum laborum, aliquid autem, mollitia porro consectetur modi repellendus
+                                    est obcaecati.</wtf2-tab>
+                            </wtf2-tab-group>
+
+                            <h3>Very slow animation</h3>
+                            <wtf2-tab-group animationDuration="2000ms">
+                                <wtf2-tab label="First">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ducimus labore ullam sunt consequatur necessitatibus quisquam quibusdam, ex neque
+                                    quis dolorum laborum, aliquid autem, mollitia porro consectetur modi repellendus
+                                    est obcaecati.</wtf2-tab>
+                                <wtf2-tab label="Second">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ducimus labore ullam sunt consequatur necessitatibus quisquam quibusdam, ex neque
+                                    quis dolorum laborum, aliquid autem, mollitia porro consectetur modi repellendus
+                                    est obcaecati.</wtf2-tab>
+                                <wtf2-tab label="Third">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ducimus labore ullam sunt consequatur necessitatibus quisquam quibusdam, ex neque
+                                    quis dolorum laborum, aliquid autem, mollitia porro consectetur modi repellendus
+                                    est obcaecati.</wtf2-tab>
+                            </wtf2-tab-group>
+                    </div>
+                    <h3>Tabs : Lazy Loading Show Current Time</h3>
+                    <div class="col col-12 m-2">
+                            <wtf2-tab-group>
+                                <wtf2-tab label="First">
+                                    <ng-template wtf2TabContent>
+                                        Current Time : {{getTimeLoaded(1) | date:'medium'}}
+                                    </ng-template>
+                                </wtf2-tab>
+                                <wtf2-tab label="Second">
+                                    <ng-template wtf2TabContent>
+                                        Current Time : {{getTimeLoaded(2) | date:'medium'}}
+                                    </ng-template>
+                                </wtf2-tab>
+                                <wtf2-tab label="Third">
+                                    <ng-template wtf2TabContent>
+                                        Current Time : {{getTimeLoaded(3) | date:'medium'}}
+                                    </ng-template>
+                                </wtf2-tab>
+                            </wtf2-tab-group>
+                    </div>
+                    <h3>Tabs : Asyncronusly Loading</h3>
+                    <div class="col col-12 m-2">
+                            <ng-container *ngIf="(asyncTabs | async) === null">
+                                Loading tabs...
+                            </ng-container>
+
+                            <wtf2-tab-group>
+                                <wtf2-tab *ngFor="let tab of asyncTabs | async">
+                                    <ng-template wtf2-tab-label>{{tab.label}}</ng-template>
+                                    {{tab.content}}
+                                </wtf2-tab>
+                            </wtf2-tab-group>
+                    </div>
+                </div>
+            </div>
+        </wtf2-page-content>
+        <!-- / CONTENT -->
+
+        <!-- </div> -->
+        <!-- / CONTENT CARD -->
+
+
+
+</wtf2-page-skeleton>

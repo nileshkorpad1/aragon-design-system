@@ -1,0 +1,71 @@
+@import '../core/style/elevation';
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin wtf2-button-toggle-theme($theme) {
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    $divider-color: wtf2-color($foreground, divider);
+    .wtf2-button-toggle-standalone,
+    .wtf2-button-toggle-group {
+        @include _wtf2-theme-elevation(2, $theme);
+    }
+    .wtf2-button-toggle-standalone.wtf2-button-toggle-appearance-standard,
+    .wtf2-button-toggle-group-appearance-standard {
+        box-shadow: none;
+    }
+    .wtf2-button-toggle {
+        color: wtf2-color($foreground, hint-text);
+        .wtf2-button-toggle-focus-overlay {
+            background-color: wtf2-color($background, focused-button);
+        }
+    }
+    .wtf2-button-toggle-appearance-standard {
+        color: wtf2-color($foreground, text);
+        background: wtf2-color($background, card);
+        .wtf2-button-toggle-focus-overlay {
+            background-color: wtf2-color($background, focused-button, 1);
+        }
+    }
+    .wtf2-button-toggle-group-appearance-standard .wtf2-button-toggle+.wtf2-button-toggle {
+        border-left: solid 1px $divider-color;
+    }
+    [dir='rtl'] .wtf2-button-toggle-group-appearance-standard .wtf2-button-toggle+.wtf2-button-toggle {
+        border-left: none;
+        border-right: solid 1px $divider-color;
+    }
+    .wtf2-button-toggle-group-appearance-standard.wtf2-button-toggle-vertical {
+        .wtf2-button-toggle+.wtf2-button-toggle {
+            border-left: none;
+            border-right: none;
+            border-top: solid 1px $divider-color;
+        }
+    }
+    .wtf2-button-toggle-checked {
+        background-color: wtf2-color($background, selected-button);
+        color: wtf2-color($foreground, secondary-text);
+        &.wtf2-button-toggle-appearance-standard {
+            color: wtf2-color($foreground, text);
+        }
+    }
+    .wtf2-button-toggle-disabled {
+        color: wtf2-color($foreground, disabled-button);
+        background-color: wtf2-color($background, disabled-button-toggle);
+        &.wtf2-button-toggle-appearance-standard {
+            background: wtf2-color($background, card);
+        }
+        &.wtf2-button-toggle-checked {
+            background-color: wtf2-color($background, selected-disabled-button);
+        }
+    }
+    .wtf2-button-toggle-standalone.wtf2-button-toggle-appearance-standard,
+    .wtf2-button-toggle-group-appearance-standard {
+        border: solid 1px $divider-color;
+    }
+}
+
+@mixin wtf2-button-toggle-typography($config) {
+    .wtf2-button-toggle {
+        font-family: wtf2-font-family($config);
+    }
+}

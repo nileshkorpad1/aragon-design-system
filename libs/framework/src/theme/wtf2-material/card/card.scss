@@ -1,0 +1,216 @@
+@import '../core/style/variables';
+@import '../core/style/elevation';
+@import '~@angular/cdk/a11y';
+$wtf2-card-padding: 16px !default;
+$wtf2-card-border-radius: 4px !default;
+$wtf2-card-header-size: 40px !default;
+.wtf2-card {
+    @include wtf2-elevation-transition;
+    display: block;
+    position: relative;
+    padding: $wtf2-card-padding;
+    border-radius: $wtf2-card-border-radius;
+    .wtf2-divider-horizontal {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        [dir='rtl'] & {
+            left: auto;
+            right: 0;
+        }
+        &.wtf2-divider-inset {
+            position: static;
+            margin: 0;
+            [dir='rtl'] & {
+                // Needs to be reset explicitly since the divider set `margin-right` in particular in RTL.
+                margin-right: 0;
+            }
+        }
+    }
+    @include cdk-high-contrast {
+        outline: solid 1px;
+    }
+}
+
+// base styles for each card section preset (wtf2-card-content, etc)
+%wtf2-card-section-base {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.wtf2-card-title {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.wtf2-card-subtitle,
+.wtf2-card-content {
+    @extend %wtf2-card-section-base;
+}
+
+.wtf2-card-actions {
+    @extend %wtf2-card-section-base;
+    margin-left: -$wtf2-card-padding / 2;
+    margin-right: -$wtf2-card-padding / 2;
+    padding: 8px 0;
+}
+
+.wtf2-card-actions-align-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wtf2-card-image {
+    width: calc(100% + #{$wtf2-card-padding * 2});
+    margin: 0 (-$wtf2-card-padding) 16px (-$wtf2-card-padding);
+}
+
+.wtf2-card-footer {
+    // The negative margins pulls out the element, countering the padding
+    // to get the footer to be flush against the side of the card.
+    $margin: -$wtf2-card-padding;
+    display: block;
+    margin: 0 $margin $margin $margin;
+}
+
+.wtf2-card-actions {
+    .wtf2-button,
+    .wtf2-raised-button {
+        margin: 0 8px;
+    }
+}
+
+// HEADER STYLES
+.wtf2-card-header {
+    display: flex;
+    flex-direction: row;
+    .wtf2-card-title {
+        margin-bottom: 12px;
+    }
+}
+
+.wtf2-card-header-text {
+    margin: 0 $wtf2-card-padding;
+}
+
+.wtf2-card-avatar {
+    height: $wtf2-card-header-size;
+    width: $wtf2-card-header-size;
+    border-radius: 50%;
+    flex-shrink: 0;
+    // Makes `<img>` tags behave like `background-size: cover`. Not supported
+    // in IE, but we're using it as a progressive enhancement.
+    object-fit: cover;
+}
+
+// TITLE-GROUP STYLES
+.wtf2-card-title-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wtf2-card-sm-image {
+    width: 80px;
+    height: 80px;
+}
+
+.wtf2-card-md-image {
+    width: 112px;
+    height: 112px;
+}
+
+.wtf2-card-lg-image {
+    width: 152px;
+    height: 152px;
+}
+
+// This should normally also extend the `%wtf2-card-title-img`, but in order to avoid breaking
+// changes, we need to keep the horizontal margin reversion for now.
+// See: https://github.com/angular/components/issues/12203
+.wtf2-card-xl-image {
+    width: 240px;
+    height: 240px;
+    margin: -8px;
+    // Special treatment inside title group in order to fix the media areas inside of a title-group.
+    // This can be removed once #12203 has been addressed.
+    .wtf2-card-title-group>& {
+        // As per Material Design specifications, the images exceed the *top* content-box and take
+        // up some space. The margin below is necessary because otherwise space of the actual card
+        // content will be overlapped.
+        margin: -8px 0 8px;
+    }
+}
+
+// MEDIA QUERIES
+@media ($wtf2-xsmall) {
+    .wtf2-card-title-group {
+        margin: 0;
+    }
+    .wtf2-card-xl-image {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+// FIRST/LAST CHILD ADJUSTMENTS
+// top els in wtf2-card-content and wtf2-card can't have their default margin-tops (e.g. <p> tags)
+// or they'll incorrectly add to card's top padding
+.wtf2-card> :first-child,
+.wtf2-card-content> :first-child {
+    margin-top: 0;
+}
+
+// last els in wtf2-card-content and wtf2-card can't have their default margin-bottoms (e.g. <p> tags)
+// or they'll incorrectly add to card's bottom padding
+.wtf2-card> :last-child:not(.wtf2-card-footer),
+.wtf2-card-content> :last-child:not(.wtf2-card-footer) {
+    margin-bottom: 0;
+}
+
+// if main image is on top, need to place it flush against top
+// (by stripping card's default padding)
+.wtf2-card-image:first-child {
+    margin-top: -$wtf2-card-padding;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+// actions panel on bottom should be 8px from bottom of card
+// so must strip 16px from default card padding
+.wtf2-card>.wtf2-card-actions:last-child {
+    margin-bottom: -8px;
+    padding-bottom: 0;
+}
+
+// actions panel should always be 8px from sides,
+// so the first button in the actions panel can't add its own margins
+.wtf2-card-actions .wtf2-button:first-child,
+.wtf2-card-actions .wtf2-raised-button:first-child {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+// should be 12px space between titles and subtitles generally
+// default margin-bottom is 16px, so need to move lower title up 4px
+.wtf2-card-title:not(:first-child),
+.wtf2-card-subtitle:not(:first-child) {
+    margin-top: -4px;
+}
+
+// should be 8px space between titles and subtitles in header
+// default margin-bottom is 16px, so need to move subtitle in header up 4px
+.wtf2-card-header .wtf2-card-subtitle:not(:first-child) {
+    margin-top: -8px;
+}
+
+// xl image should always have 16px on top.
+// when it's the first el, it'll need to remove 8px from default card padding
+.wtf2-card>.wtf2-card-xl-image:first-child {
+    margin-top: -8px;
+}
+
+// xl image should always have 16px on bottom
+// when it's the last el, it'll need to remove 8px from default card padding
+.wtf2-card>.wtf2-card-xl-image:last-child {
+    margin-bottom: -8px;
+}

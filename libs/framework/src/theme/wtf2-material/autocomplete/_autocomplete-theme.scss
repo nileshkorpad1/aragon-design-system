@@ -1,0 +1,29 @@
+@import '../core/style/elevation';
+@import '../core/theming/theming';
+
+@mixin wtf2-autocomplete-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .wtf2-autocomplete-panel {
+    @include _wtf2-theme-overridable-elevation(4, $theme);
+    background: wtf2-color($background, card);
+    color: wtf2-color($foreground, text);
+
+    // Selected options in autocompletes should not be gray, but we
+    // only want to override the background for selected options if
+    // they are *not* in hover or focus state. This change has to be
+    // made here because base option styles are shared between the
+    // autocomplete and the select.
+    .wtf2-option.wtf2-selected:not(.wtf2-active):not(:hover) {
+      background: wtf2-color($background, card);
+
+      &:not(.wtf2-option-disabled) {
+        color: wtf2-color($foreground, text);
+      }
+    }
+  }
+
+}
+
+@mixin wtf2-autocomplete-typography($config) { }

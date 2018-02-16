@@ -1,0 +1,8 @@
+@import '../core/style/vendor-prefixes';
+.wtf2-tab-body-content {
+    height: 100%;
+    overflow: auto;
+    .wtf2-tab-group-dynamic-height & {
+        overflow: hidden;
+    }
+}

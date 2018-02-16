@@ -1,0 +1,45 @@
+@import 'theme/wtf2-material/dialog/dialog.scss';
+.full-width {
+    display: block;
+}
+
+.helpTextStyle {
+    -webkit-transform: rotate(-90deg);
+    /* Safari */
+    transform: rotate(-90deg);
+    /* Standard syntax */
+}
+
+.fixed {
+    position: fixed;
+    bottom: 30px;
+    z-index: 999;
+    width: 77%;
+    background-color: #FFFFFF;
+    text-align: -webkit-right;
+}
+
+// .animation{
+//     transition: all linear 0.5s;
+// }
+.animation.ng-hide-add,
+.animation.ng-hide-remove {
+    transition: all linear 0.5s;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.text-color {
+    color: 'accent';
+}
+
+.back-arrow-color {
+    color: darkgray;
+}
+
+.divider {
+    margin-right: -24px !important;
+    margin-left: -24px !important;
+}

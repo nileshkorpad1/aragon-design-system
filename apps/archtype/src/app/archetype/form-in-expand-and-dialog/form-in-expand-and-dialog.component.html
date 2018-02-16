@@ -1,0 +1,27 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <div class="top-bg wtf2-grey-100-bg"></div>
+
+    <div class="center page-skeleton-wrapper">
+
+        <wtf2-page-header>
+            <wtf2-header-title> User Details</wtf2-header-title>
+            <wtf2-header-subtitle> Customer Details Form in Dialog and Expander Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+
+        <div class="content-card wtf2-white-bg">
+            <!-- CONTENT -->
+            <wtf2-card fullwidth>
+                <wtf2-inform-expander title="User Details Expander" icon="add">
+                    <app-form-data></app-form-data>
+                </wtf2-inform-expander>
+            </wtf2-card>
+            <wtf2-card class="mt-5">
+                <button wtf2-button (click)="openDialogScrollablea()">User Details Dialog</button>
+            </wtf2-card>
+            <!-- / CONTENT -->
+        </div>
+
+    </div>
+
+</wtf2-page-skeleton>

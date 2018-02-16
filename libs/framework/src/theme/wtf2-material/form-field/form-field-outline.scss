@@ -1,0 +1,120 @@
+@import '../core/style/variables';
+@import '../core/style/vendor-prefixes';
+// Styles that only apply to the outline appearance of the form-field.
+// The horizontal padding between the edge of the form field fill box and the start of the text.
+$wtf2-form-field-outline-side-padding: 0.75em !default;
+// The scale of the subscript and floating label text w.r.t the value text.
+$wtf2-form-field-outline-subscript-font-scale: 0.75 !default;
+// The amount of overlap between the label and the outline.
+$wtf2-form-field-outline-label-overlap: 0.25em;
+// The border radius of the outline.
+$wtf2-form-field-outline-border-radius: 5px;
+// The width of the outline.
+$wtf2-form-field-outline-width: 1px;
+// The width of the thick outline (used for focus, hover, and error state).
+$wtf2-form-field-outline-thick-width: 2px;
+// The horizontal padding between the edge of the subscript box and the start of the subscript text.
+$wtf2-form-field-outline-subscript-padding: $wtf2-form-field-outline-side-padding / $wtf2-form-field-outline-subscript-font-scale;
+.wtf2-form-field-appearance-outline {
+    // We need to add margin to the top to reserve space in the layout for the label which sticks out
+    // of the top. In order to ensure that the outline appearance aligns nicely with other form-field
+    // appearances when center-aligned, we also need to add the same amount of margin to the bottom.
+    .wtf2-form-field-wrapper {
+        margin: $wtf2-form-field-outline-label-overlap 0;
+    }
+    .wtf2-form-field-flex {
+        padding: 0 $wtf2-form-field-outline-side-padding 0 $wtf2-form-field-outline-side-padding;
+        margin-top: -$wtf2-form-field-outline-label-overlap;
+        position: relative;
+    }
+    .wtf2-form-field-prefix,
+    .wtf2-form-field-suffix {
+        top: $wtf2-form-field-outline-label-overlap;
+    }
+    .wtf2-form-field-outline {
+        display: flex;
+        position: absolute;
+        top: $wtf2-form-field-outline-label-overlap;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+    }
+    .wtf2-form-field-outline-start,
+    .wtf2-form-field-outline-end {
+        border: $wtf2-form-field-outline-width solid currentColor;
+        min-width: $wtf2-form-field-outline-border-radius;
+    }
+    .wtf2-form-field-outline-start {
+        border-radius: $wtf2-form-field-outline-border-radius 0 0 $wtf2-form-field-outline-border-radius;
+        border-right-style: none;
+        [dir='rtl'] & {
+            border-right-style: solid;
+            border-left-style: none;
+            border-radius: 0 $wtf2-form-field-outline-border-radius $wtf2-form-field-outline-border-radius 0;
+        }
+    }
+    .wtf2-form-field-outline-end {
+        border-radius: 0 $wtf2-form-field-outline-border-radius $wtf2-form-field-outline-border-radius 0;
+        border-left-style: none;
+        flex-grow: 1;
+        [dir='rtl'] & {
+            border-left-style: solid;
+            border-right-style: none;
+            border-radius: $wtf2-form-field-outline-border-radius 0 0 $wtf2-form-field-outline-border-radius;
+        }
+    }
+    .wtf2-form-field-outline-gap {
+        // hack for Chrome's treatment of borders with non-integer (scaled) widths
+        // refer to https://github.com/angular/components/issues/10710
+        border-radius: 0.000001px;
+        border: $wtf2-form-field-outline-width solid currentColor;
+        border-left-style: none;
+        border-right-style: none;
+    }
+    &.wtf2-form-field-can-float.wtf2-form-field-should-float {
+        .wtf2-form-field-outline-gap {
+            border-top-color: transparent;
+        }
+    }
+    .wtf2-form-field-outline-thick {
+        opacity: 0;
+        .wtf2-form-field-outline-start,
+        .wtf2-form-field-outline-end,
+        .wtf2-form-field-outline-gap {
+            border-width: $wtf2-form-field-outline-thick-width;
+            transition: border-color 300ms $swift-ease-out-timing-function;
+        }
+    }
+    &.wtf2-focused,
+    &.wtf2-form-field-invalid {
+        .wtf2-form-field-outline {
+            opacity: 0;
+            transition: opacity 100ms $swift-ease-out-timing-function;
+        }
+        .wtf2-form-field-outline-thick {
+            opacity: 1;
+        }
+    }
+    &:not(.wtf2-form-field-disabled) .wtf2-form-field-flex:hover {
+        & .wtf2-form-field-outline {
+            opacity: 0;
+            transition: opacity 600ms $swift-ease-out-timing-function;
+        }
+        & .wtf2-form-field-outline-thick {
+            opacity: 1;
+        }
+    }
+    .wtf2-form-field-subscript-wrapper {
+        padding: 0 $wtf2-form-field-outline-subscript-padding;
+    }
+    &._wtf2-animation-noopable {
+        &:not(.wtf2-form-field-disabled) .wtf2-form-field-flex:hover~.wtf2-form-field-outline,
+        .wtf2-form-field-outline,
+        .wtf2-form-field-outline-start,
+        .wtf2-form-field-outline-end,
+        .wtf2-form-field-outline-gap {
+            transition: none;
+        }
+    }
+}

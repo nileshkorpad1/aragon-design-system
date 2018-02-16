@@ -1,0 +1,15 @@
+<wtf2-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <wtf2-tree-node *wtf2TreeNodeDef="let node" wtf2TreeNodeToggle wtf2TreeNodePadding>
+        <button wtf2-icon-button disabled></button>
+        {{node.filename}} : {{node.type}}
+    </wtf2-tree-node>
+
+    <wtf2-tree-node *wtf2TreeNodeDef="let node;when: hasChild" wtf2TreeNodePadding>
+        <button wtf2-icon-button wtf2TreeNodeToggle [attr.aria-label]="'toggle ' + node.filename">
+            <wtf2-icon class="wtf2-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </wtf2-icon>
+        </button>
+        {{node.filename}} : {{node.type}}
+    </wtf2-tree-node>
+</wtf2-tree>

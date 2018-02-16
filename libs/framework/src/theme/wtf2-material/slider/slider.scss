@@ -1,0 +1,406 @@
+@import '../core/style/variables';
+@import '../core/style/vendor-prefixes';
+@import '~@angular/cdk/a11y';
+// This refers to the thickness of the slider. On a horizontal slider this is the height, on a
+// vertical slider this is the width.
+$wtf2-slider-thickness: 48px !default;
+$wtf2-slider-min-size: 128px !default;
+$wtf2-slider-padding: 8px !default;
+$wtf2-slider-track-thickness: 2px !default;
+$wtf2-slider-thumb-size: 20px !default;
+$wtf2-slider-thumb-border-width: 3px !default;
+$wtf2-slider-thumb-border-width-active: 2px !default;
+$wtf2-slider-thumb-border-width-disabled: 4px !default;
+$wtf2-slider-thumb-default-scale: 0.7 !default;
+$wtf2-slider-thumb-focus-scale: 1 !default;
+$wtf2-slider-thumb-disabled-scale: 0.5 !default;
+$wtf2-slider-thumb-arrow-gap: 12px !default;
+$wtf2-slider-thumb-label-size: 28px !default;
+$wtf2-slider-tick-size: 2px !default;
+$wtf2-slider-focus-ring-size: 30px !default;
+.wtf2-slider {
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    padding: $wtf2-slider-padding;
+    outline: none;
+    vertical-align: middle;
+}
+
+.wtf2-slider-wrapper {
+    position: absolute;
+}
+
+.wtf2-slider-track-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.wtf2-slider-track-fill {
+    position: absolute;
+    transform-origin: 0 0;
+    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function, background-color $swift-ease-out-duration $swift-ease-out-timing-function;
+}
+
+.wtf2-slider-track-background {
+    position: absolute;
+    transform-origin: 100% 100%;
+    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function, background-color $swift-ease-out-duration $swift-ease-out-timing-function;
+}
+
+.wtf2-slider-ticks-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+.wtf2-slider-ticks {
+    background-repeat: repeat;
+    background-clip: content-box;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity $swift-ease-out-duration $swift-ease-out-timing-function;
+}
+
+.wtf2-slider-thumb-container {
+    position: absolute;
+    z-index: 1;
+    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function;
+}
+
+.wtf2-slider-focus-ring {
+    position: absolute;
+    width: $wtf2-slider-focus-ring-size;
+    height: $wtf2-slider-focus-ring-size;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function, background-color $swift-ease-out-duration $swift-ease-out-timing-function, opacity $swift-ease-out-duration $swift-ease-out-timing-function;
+    .wtf2-slider.cdk-keyboard-focused &,
+    .wtf2-slider.cdk-program-focused & {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+%_wtf2-slider-cursor {
+    .wtf2-slider:not(.wtf2-slider-disabled) & {
+        @include cursor-grab;
+    }
+    .wtf2-slider:not(.wtf2-slider-disabled) &:active,
+    .wtf2-slider-sliding:not(.wtf2-slider-disabled) & {
+        @include cursor-grabbing;
+    }
+}
+
+.wtf2-slider-thumb {
+    @extend %_wtf2-slider-cursor;
+    position: absolute;
+    right: -$wtf2-slider-thumb-size / 2;
+    bottom: -$wtf2-slider-thumb-size / 2;
+    box-sizing: border-box;
+    width: $wtf2-slider-thumb-size;
+    height: $wtf2-slider-thumb-size;
+    border: $wtf2-slider-thumb-border-width solid transparent;
+    border-radius: 50%;
+    transform: scale($wtf2-slider-thumb-default-scale);
+    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function, background-color $swift-ease-out-duration $swift-ease-out-timing-function, border-color $swift-ease-out-duration $swift-ease-out-timing-function;
+}
+
+.wtf2-slider-thumb-label {
+    @extend %_wtf2-slider-cursor;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: $wtf2-slider-thumb-label-size;
+    height: $wtf2-slider-thumb-label-size;
+    border-radius: 50%;
+    transition: transform $swift-ease-out-duration $swift-ease-out-timing-function, border-radius $swift-ease-out-duration $swift-ease-out-timing-function, background-color $swift-ease-out-duration $swift-ease-out-timing-function;
+    @include cdk-high-contrast {
+        outline: solid 1px;
+    }
+}
+
+.wtf2-slider-thumb-label-text {
+    z-index: 1;
+    opacity: 0;
+    transition: opacity $swift-ease-out-duration $swift-ease-out-timing-function;
+}
+
+// Slider sliding state.
+.wtf2-slider-sliding {
+    .wtf2-slider-track-fill,
+    .wtf2-slider-track-background,
+    .wtf2-slider-thumb-container {
+        // Must use `transition-duration: 0ms` to disable animation rather than `transition: none`.
+        // On Mobile Safari `transition: none` causes the slider thumb to appear stuck.
+        transition-duration: 0ms;
+    }
+}
+
+// Slider with ticks when not disabled.
+.wtf2-slider-has-ticks {
+    .wtf2-slider-wrapper::after {
+        content: '';
+        position: absolute;
+        border-width: 0;
+        border-style: solid;
+        opacity: 0;
+        transition: opacity $swift-ease-out-duration $swift-ease-out-timing-function;
+    }
+    &.cdk-focused,
+    &:hover {
+        &:not(.wtf2-slider-hide-last-tick) {
+            .wtf2-slider-wrapper::after {
+                opacity: 1;
+            }
+        }
+        &:not(.wtf2-slider-disabled) .wtf2-slider-ticks {
+            opacity: 1;
+        }
+    }
+}
+
+// Slider with thumb label.
+.wtf2-slider-thumb-label-showing {
+    .wtf2-slider-focus-ring {
+        display: none;
+    }
+    .wtf2-slider-thumb-label {
+        display: flex;
+    }
+}
+
+// Inverted slider.
+.wtf2-slider-axis-inverted {
+    .wtf2-slider-track-fill {
+        transform-origin: 100% 100%;
+    }
+    .wtf2-slider-track-background {
+        transform-origin: 0 0;
+    }
+}
+
+// Active slider.
+.wtf2-slider:not(.wtf2-slider-disabled) {
+    &.cdk-focused {
+        &.wtf2-slider-thumb-label-showing .wtf2-slider-thumb {
+            transform: scale(0);
+        }
+        .wtf2-slider-thumb-label {
+            border-radius: 50% 50% 0;
+        }
+        .wtf2-slider-thumb-label-text {
+            opacity: 1;
+        }
+    }
+    &.cdk-mouse-focused,
+    &.cdk-touch-focused,
+    &.cdk-program-focused {
+        .wtf2-slider-thumb {
+            border-width: $wtf2-slider-thumb-border-width-active;
+            transform: scale($wtf2-slider-thumb-focus-scale);
+        }
+    }
+}
+
+// Disabled slider.
+.wtf2-slider-disabled {
+    .wtf2-slider-focus-ring {
+        transform: scale(0);
+        opacity: 0;
+    }
+    .wtf2-slider-thumb {
+        border-width: $wtf2-slider-thumb-border-width-disabled;
+        transform: scale($wtf2-slider-thumb-disabled-scale);
+    }
+    .wtf2-slider-thumb-label {
+        display: none;
+    }
+}
+
+// Horizontal slider.
+.wtf2-slider-horizontal {
+    height: $wtf2-slider-thickness;
+    min-width: $wtf2-slider-min-size;
+    .wtf2-slider-wrapper {
+        height: $wtf2-slider-track-thickness;
+        top: ($wtf2-slider-thickness - $wtf2-slider-track-thickness) / 2;
+        left: $wtf2-slider-padding;
+        right: $wtf2-slider-padding;
+    }
+    .wtf2-slider-wrapper::after {
+        height: $wtf2-slider-track-thickness;
+        border-left-width: $wtf2-slider-tick-size;
+        right: 0;
+        top: 0;
+    }
+    .wtf2-slider-track-wrapper {
+        height: $wtf2-slider-track-thickness;
+        width: 100%;
+    }
+    .wtf2-slider-track-fill {
+        height: $wtf2-slider-track-thickness;
+        width: 100%;
+        transform: scaleX(0);
+    }
+    .wtf2-slider-track-background {
+        height: $wtf2-slider-track-thickness;
+        width: 100%;
+        transform: scaleX(1);
+    }
+    .wtf2-slider-ticks-container {
+        height: $wtf2-slider-track-thickness;
+        width: 100%;
+        @include cdk-high-contrast {
+            height: 0;
+            outline: solid $wtf2-slider-track-thickness;
+            top: $wtf2-slider-track-thickness / 2;
+        }
+    }
+    .wtf2-slider-ticks {
+        height: $wtf2-slider-track-thickness;
+        width: 100%;
+    }
+    .wtf2-slider-thumb-container {
+        width: 100%;
+        height: 0;
+        top: 50%;
+    }
+    .wtf2-slider-focus-ring {
+        top: -$wtf2-slider-focus-ring-size / 2;
+        right: -$wtf2-slider-focus-ring-size / 2;
+    }
+    .wtf2-slider-thumb-label {
+        right: -$wtf2-slider-thumb-label-size / 2;
+        top: -($wtf2-slider-thumb-label-size + $wtf2-slider-thumb-arrow-gap);
+        transform: translateY($wtf2-slider-thumb-label-size / 2 + $wtf2-slider-thumb-arrow-gap) scale(0.01) rotate(45deg);
+    }
+    .wtf2-slider-thumb-label-text {
+        transform: rotate(-45deg);
+    }
+    &.cdk-focused {
+        .wtf2-slider-thumb-label {
+            transform: rotate(45deg);
+        }
+        @include cdk-high-contrast {
+            .wtf2-slider-thumb-label,
+            .wtf2-slider-thumb-label-text {
+                transform: none;
+            }
+        }
+    }
+}
+
+// Vertical slider.
+.wtf2-slider-vertical {
+    width: $wtf2-slider-thickness;
+    min-height: $wtf2-slider-min-size;
+    .wtf2-slider-wrapper {
+        width: $wtf2-slider-track-thickness;
+        top: $wtf2-slider-padding;
+        bottom: $wtf2-slider-padding;
+        left: ($wtf2-slider-thickness - $wtf2-slider-track-thickness) / 2;
+    }
+    .wtf2-slider-wrapper::after {
+        width: $wtf2-slider-track-thickness;
+        border-top-width: $wtf2-slider-tick-size;
+        bottom: 0;
+        left: 0;
+    }
+    .wtf2-slider-track-wrapper {
+        height: 100%;
+        width: $wtf2-slider-track-thickness;
+    }
+    .wtf2-slider-track-fill {
+        height: 100%;
+        width: $wtf2-slider-track-thickness;
+        transform: scaleY(0);
+    }
+    .wtf2-slider-track-background {
+        height: 100%;
+        width: $wtf2-slider-track-thickness;
+        transform: scaleY(1);
+    }
+    .wtf2-slider-ticks-container {
+        width: $wtf2-slider-track-thickness;
+        height: 100%;
+        @include cdk-high-contrast {
+            width: 0;
+            outline: solid $wtf2-slider-track-thickness;
+            left: $wtf2-slider-track-thickness / 2;
+        }
+    }
+    .wtf2-slider-focus-ring {
+        bottom: -$wtf2-slider-focus-ring-size / 2;
+        left: -$wtf2-slider-focus-ring-size / 2;
+    }
+    .wtf2-slider-ticks {
+        width: $wtf2-slider-track-thickness;
+        height: 100%;
+    }
+    .wtf2-slider-thumb-container {
+        height: 100%;
+        width: 0;
+        left: 50%;
+    }
+    .wtf2-slider-thumb {
+        @include backface-visibility(hidden);
+    }
+    .wtf2-slider-thumb-label {
+        bottom: -$wtf2-slider-thumb-label-size / 2;
+        left: -($wtf2-slider-thumb-label-size + $wtf2-slider-thumb-arrow-gap);
+        transform: translateX($wtf2-slider-thumb-label-size / 2 + $wtf2-slider-thumb-arrow-gap) scale(0.01) rotate(-45deg);
+    }
+    .wtf2-slider-thumb-label-text {
+        transform: rotate(45deg);
+    }
+    &.cdk-focused {
+        .wtf2-slider-thumb-label {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+// Slider in RTL languages.
+[dir='rtl'] {
+    .wtf2-slider-wrapper::after {
+        left: 0;
+        right: auto;
+    }
+    .wtf2-slider-horizontal {
+        .wtf2-slider-track-fill {
+            transform-origin: 100% 100%;
+        }
+        .wtf2-slider-track-background {
+            transform-origin: 0 0;
+        }
+        &.wtf2-slider-axis-inverted {
+            .wtf2-slider-track-fill {
+                transform-origin: 0 0;
+            }
+            .wtf2-slider-track-background {
+                transform-origin: 100% 100%;
+            }
+        }
+    }
+}
+
+// Slider inside a component with disabled animations.
+.wtf2-slider._wtf2-animation-noopable {
+    .wtf2-slider-track-fill,
+    .wtf2-slider-track-background,
+    .wtf2-slider-ticks,
+    .wtf2-slider-thumb-container,
+    .wtf2-slider-focus-ring,
+    .wtf2-slider-thumb,
+    .wtf2-slider-thumb-label,
+    .wtf2-slider-thumb-label-text,
+    .wtf2-slider-has-ticks .wtf2-slider-wrapper::after {
+        transition: none;
+    }
+}

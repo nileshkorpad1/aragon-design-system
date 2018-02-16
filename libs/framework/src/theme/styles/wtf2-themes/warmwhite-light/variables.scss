@@ -1,0 +1,34 @@
+//colors
+$wtf2-body-background-color: linear-gradient(to right top, #edebe9 0%, #f6f5f4 100%), linear-gradient(#f6f5f4, #f6f5f4);
+$wtf2-sidebar-background-color: grey;
+$wtf2-white-color: #ffffff;
+$wtf2-sidebar-selection-active: #bb191917 !important;
+$wtf2-sidebar-selection-active-text: black !important;
+$theme-options-panel: #f3f1f0;
+$wtf2-hint-text-color: wtf2_color(wtf2-palette($wtf2-dark, 200));
+$wtf2-sidebar-selection-active-carat: #b1023a;
+$wtf2-grid-hover-color: #f7f6f5 !important;
+$wtf2-grid-select-color: #ededed !important;
+$wtf2-expansion-toolbar-expanded-color: #f1f0ee !important;
+$wtf2-expansion-toolbar-action-pannel-color: #f5f5f5 !important;
+
+// set the font from partials
+
+@import '../../partials/fonts_cloudgothic';
+
+$warmwhite-typography: wtf2-typography-config(
+    $font-family: 'CloudGothic,"Arial Black",Helvetica,Arial,Lucida,sans-serif',
+    $body-1: wtf2-typography-level(16px, 1.125, 400)
+);
+
+// @import '../../partials/fonts-opensans';
+// $warmwhite-typography: wtf2-typography-config(
+//     $font-family: '"Open Sans",Helvetica,Arial,Lucida,sans-serif',
+//     $body-1: wtf2-typography-level(15px, 1.2, 400)
+// );
+
+@include wtf2-core($warmwhite-typography);
+@include wtf2-base-typography($warmwhite-typography);
+
+//font weights
+$wtf2-sidebar-selection-active-font-weight: 700;

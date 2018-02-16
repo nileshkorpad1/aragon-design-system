@@ -1,0 +1,268 @@
+@import '../core/style/variables';
+@import '../core/style/list-common';
+@import '../core/style/layout-common';
+@import '../divider/divider-offset';
+@import '~@angular/cdk/a11y';
+$wtf2-list-side-padding: 16px;
+$wtf2-list-icon-padding: 4px;
+$wtf2-list-avatar-size: 40px;
+// Normal list variables
+$wtf2-list-top-padding: 8px;
+// height for single-line lists
+$wtf2-list-base-height: 48px;
+// height for single-line lists with avatars
+$wtf2-list-avatar-height: 56px;
+// spec requires two- and three-line lists be taller
+$wtf2-list-two-line-height: 72px;
+$wtf2-list-three-line-height: 88px;
+$wtf2-list-multi-line-padding: 16px;
+$wtf2-list-icon-size: 24px;
+// Dense list variables
+$wtf2-dense-top-padding: 4px;
+$wtf2-dense-base-height: 40px;
+$wtf2-dense-avatar-height: 48px;
+$wtf2-dense-two-line-height: 60px;
+$wtf2-dense-three-line-height: 76px;
+$wtf2-dense-multi-line-padding: 16px;
+$wtf2-dense-list-icon-size: 20px;
+$wtf2-dense-avatar-size: 36px;
+$wtf2-list-item-inset-divider-offset: 72px;
+// This mixin provides all list-item styles, changing font size and height
+// based on whether the list is in dense mode.
+@mixin wtf2-list-item-base($base-height, $height-with-avatar, $two-line-height, $three-line-height, $multi-line-padding, $icon-size, $avatar-size) {
+    // Prevents the wrapper `wtf2-list-item-content` from collapsing due to it
+    // being `inline` by default.
+    display: block;
+    height: $base-height;
+    -webkit-tap-highlight-color: transparent;
+    // Override the user agent styling if the list item is a button.
+    width: 100%;
+    padding: 0;
+    .wtf2-list-item-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 $wtf2-list-side-padding;
+        position: relative;
+        height: inherit;
+    }
+    .wtf2-list-item-content-reverse {
+        display: flex;
+        align-items: center;
+        padding: 0 $wtf2-list-side-padding;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+    }
+    .wtf2-list-item-ripple {
+        @include wtf2-fill;
+        // Disable pointer events for the ripple container because the container will overlay the
+        // user content and we don't want to disable mouse events on the user content.
+        // Pointer events can be safely disabled because the ripple trigger element is the host element.
+        pointer-events: none;
+    }
+    &.wtf2-list-item-with-avatar {
+        height: $height-with-avatar;
+    }
+    &.wtf2-2-line {
+        height: $two-line-height;
+    }
+    &.wtf2-3-line {
+        height: $three-line-height;
+    }
+    // list items with more than 3 lines should expand to match
+    // the height of its contained text
+    &.wtf2-multi-line {
+        height: auto;
+        .wtf2-list-item-content {
+            padding-top: $multi-line-padding;
+            padding-bottom: $multi-line-padding;
+        }
+    }
+    .wtf2-list-text {
+        @include wtf2-line-wrapper-base();
+        // By default, there will be no padding for the list item text because the padding is already
+        // set on the `wtf2-list-item-content` element. Later, if the list-item detects that there are
+        // secondary items (avatar, checkbox), a padding on the proper side will be added.
+        padding: 0;
+    }
+    &.wtf2-list-item-with-avatar,
+    &.wtf2-list-option {
+        .wtf2-list-item-content .wtf2-list-text {
+            padding-right: 0;
+            padding-left: $wtf2-list-side-padding;
+            [dir='rtl'] & {
+                padding-right: $wtf2-list-side-padding;
+                padding-left: 0;
+            }
+        }
+        // Reversed content is mainly used by the Wtf2SelectionList for displaying the checkbox at the
+        // end of the list option. Since there is a secondary item (checkbox) at the end of the
+        // option, there needs to be a padding for the wtf2-list-text on the end-side.
+        .wtf2-list-item-content-reverse .wtf2-list-text {
+            padding-left: 0;
+            padding-right: $wtf2-list-side-padding;
+            [dir='rtl'] & {
+                padding-right: 0;
+                padding-left: $wtf2-list-side-padding;
+            }
+        }
+    }
+    &.wtf2-list-item-with-avatar.wtf2-list-option {
+        .wtf2-list-item-content-reverse .wtf2-list-text,
+        .wtf2-list-item-content .wtf2-list-text {
+            padding-right: $wtf2-list-side-padding;
+            padding-left: $wtf2-list-side-padding;
+        }
+    }
+    .wtf2-list-avatar {
+        flex-shrink: 0;
+        width: $avatar-size;
+        height: $avatar-size;
+        border-radius: 50%;
+        // Not supported in IE11, but we're using this as a
+        // progressive enhancement to get better image scaling.
+        object-fit: cover;
+        ~.wtf2-divider-inset {
+            @include wtf2-inset-divider-offset($avatar-size, $wtf2-list-side-padding);
+        }
+    }
+    .wtf2-list-icon {
+        flex-shrink: 0;
+        width: $icon-size;
+        height: $icon-size;
+        font-size: $icon-size;
+        box-sizing: content-box;
+        border-radius: 50%;
+        padding: $wtf2-list-icon-padding;
+        ~.wtf2-divider-inset {
+            @include wtf2-inset-divider-offset($icon-size + (2 * $wtf2-list-icon-padding), $wtf2-list-side-padding);
+        }
+    }
+    .wtf2-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        [dir='rtl'] & {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        &.wtf2-divider-inset {
+            position: absolute; // necessary to override card styles
+        }
+    }
+}
+
+.wtf2-subheader {
+    display: flex;
+    box-sizing: border-box;
+    padding: $wtf2-list-side-padding;
+    align-items: center;
+    // This needs slightly more specificity, because it
+    // can be overwritten by the typography styles.
+    .wtf2-list-base & {
+        margin: 0;
+    }
+}
+
+// This mixin adjusts the heights and padding based on whether the list is in dense mode.
+@mixin wtf2-subheader-spacing($top-padding, $base-height) {
+    height: $base-height;
+    line-height: $base-height - $wtf2-list-side-padding * 2;
+    &:first-child {
+        margin-top: -$top-padding;
+    }
+}
+
+.wtf2-list-base {
+    padding-top: $wtf2-list-top-padding;
+    display: block;
+    -webkit-tap-highlight-color: transparent;
+    .wtf2-subheader {
+        @include wtf2-subheader-spacing($wtf2-list-top-padding, $wtf2-list-base-height);
+    }
+    .wtf2-list-item,
+    .wtf2-list-option {
+        @include wtf2-list-item-base( $wtf2-list-base-height, $wtf2-list-avatar-height, $wtf2-list-two-line-height, $wtf2-list-three-line-height, $wtf2-list-multi-line-padding, $wtf2-list-icon-size, $wtf2-list-avatar-size);
+    }
+}
+
+.wtf2-list-base[dense] {
+    padding-top: $wtf2-dense-top-padding;
+    display: block;
+    .wtf2-subheader {
+        @include wtf2-subheader-spacing($wtf2-dense-top-padding, $wtf2-dense-base-height);
+    }
+    .wtf2-list-item,
+    .wtf2-list-option {
+        @include wtf2-list-item-base( $wtf2-dense-base-height, $wtf2-dense-avatar-height, $wtf2-dense-two-line-height, $wtf2-dense-three-line-height, $wtf2-dense-multi-line-padding, $wtf2-dense-list-icon-size, $wtf2-dense-avatar-size);
+    }
+}
+
+.wtf2-nav-list {
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .wtf2-list-item {
+        cursor: pointer;
+        outline: none;
+    }
+}
+
+wtf2-action-list {
+    // Remove the native button look and make it look like a list item
+    button {
+        background: none;
+        color: inherit;
+        border: none;
+        font: inherit;
+        outline: inherit;
+        -webkit-tap-highlight-color: transparent;
+        text-align: left;
+        [dir='rtl'] & {
+            text-align: right;
+        }
+        &::-moz-focus-inner {
+            border: 0;
+        }
+    }
+    .wtf2-list-item {
+        cursor: pointer;
+        outline: inherit;
+    }
+}
+
+.wtf2-list-option:not(.wtf2-list-item-disabled) {
+    cursor: pointer;
+    outline: none;
+}
+
+@include cdk-high-contrast {
+    .wtf2-selection-list:focus {
+        outline-style: dotted;
+    }
+    .wtf2-list-option,
+    .wtf2-nav-list .wtf2-list-item,
+    wtf2-action-list .wtf2-list-item {
+        &:hover,
+        &:focus {
+            outline: dotted 1px;
+        }
+    }
+}
+
+// Disable the hover styles on non-hover devices. Since this is more of a progressive
+// enhancement and not all desktop browsers support this kind of media query, we can't
+// use something like `@media (hover)`.
+@media (hover: none) {
+    .wtf2-list-option,
+    .wtf2-nav-list .wtf2-list-item,
+    .wtf2-action-list .wtf2-list-item {
+        &:not(.wtf2-list-item-disabled):hover {
+            background: none;
+        }
+    }
+}

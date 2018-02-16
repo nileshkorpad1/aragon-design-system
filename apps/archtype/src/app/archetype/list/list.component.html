@@ -1,0 +1,179 @@
+<wtf2-page-skeleton simple fullwidth>
+
+    <!-- TOP BACKGROUND -->
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> List</wtf2-header-title>
+        <wtf2-header-subtitle> List Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+    <!-- <div class="content-card"> -->
+
+    <!-- CONTENT TOOLBAR -->
+    <!-- <div class="toolbar px-24 py-8">
+                <span>List</span>
+            </div> -->
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <wtf2-page-content class="content">
+        <div class="container-fluid">
+            <h3>Basic List</h3>
+            <wtf2-card>
+                <wtf2-list role="list">
+                    <wtf2-list-item role="listitem" (click)="selectionItem('Item 1')">Item 1</wtf2-list-item>
+                    <wtf2-list-item role="listitem" (click)="selectionItem('Item 2')">Item 2</wtf2-list-item>
+                    <wtf2-list-item role="listitem" (click)="selectionItem('Item 3')">Item 3</wtf2-list-item>
+                </wtf2-list>
+            </wtf2-card>
+
+
+            <h3>Navigation List</h3>
+            <wtf2-card>
+                <wtf2-nav-list>
+                    <wtf2-list-item *ngFor="let link of links">
+                        <a wtf2Line (click)="showInfo(link)">{{ link }}</a>
+                        <button wtf2-icon-button (click)="showInfo(link)">
+                            <wtf2-icon>info</wtf2-icon>
+                        </button>
+                    </wtf2-list-item>
+                </wtf2-nav-list>
+            </wtf2-card>
+            <h3>Selection lists</h3>
+            <wtf2-card>
+                <wtf2-selection-list #shoes>
+                    <wtf2-list-option *ngFor="let shoe of typesOfShoes" (click)="selectionOption($event,option,shoe)"
+                        #option>
+                        {{shoe}}
+                    </wtf2-list-option>
+                </wtf2-selection-list>
+
+                <p>
+                    Options selected: {{shoes.selectedOptions.selected.length}}
+                </p>
+            </wtf2-card>
+            <h3>Multi Line lists</h3>
+            <wtf2-card>
+                <wtf2-list>
+                    <wtf2-list-item>
+                        <h3 wtf2Line> Message 1 </h3>
+                        <p wtf2Line>
+                            <span> Subject 1 </span>
+                            <span class="demo-2"> -- Message Content 1 </span>
+                        </p>
+                    </wtf2-list-item>
+                    <wtf2-list-item>
+                        <h3 wtf2Line> Message 2 </h3>
+                        <p wtf2Line>
+                            <span> Subject 2 </span>
+                            <span class="demo-2"> -- Message Content 2 </span>
+                        </p>
+                    </wtf2-list-item>
+                    <wtf2-list-item>
+                        <h3 wtf2Line> Message 3 </h3>
+                        <p wtf2Line>
+                            <span> Subject 3 </span>
+                            <span class="demo-2"> -- Message Content 3 </span>
+                        </p>
+                    </wtf2-list-item>
+                </wtf2-list>
+            </wtf2-card>
+            <h3>List with icon</h3>
+            <wtf2-card>
+                <wtf2-list>
+
+                    <wtf2-list>
+                        <wtf2-list-item>
+                            <wtf2-icon wtf2ListIcon>folder</wtf2-icon>
+                            <h3 wtf2Line> Message 1 </h3>
+                            <p wtf2Line>
+                                <span> Subject 1 </span>
+                                <span class="demo-2"> -- Message Content 1 </span>
+                            </p>
+                        </wtf2-list-item>
+                        <wtf2-list-item>
+                            <wtf2-icon wtf2ListIcon>folder</wtf2-icon>
+                            <h3 wtf2Line> Message 2 </h3>
+                            <p wtf2Line>
+                                <span> Subject 2 </span>
+                                <span class="demo-2"> -- Message Content 2 </span>
+                            </p>
+                        </wtf2-list-item>
+                        <wtf2-list-item>
+                            <wtf2-icon wtf2ListIcon>folder</wtf2-icon>
+                            <h3 wtf2Line> Message 3 </h3>
+                            <p wtf2Line>
+                                <span> Subject 3 </span>
+                                <span class="demo-2"> -- Message Content 3 </span>
+                            </p>
+                        </wtf2-list-item>
+                    </wtf2-list>
+                </wtf2-list>
+            </wtf2-card>
+            <h3>Dense List</h3>
+            <wtf2-card>
+                <wtf2-list dense>
+                    <wtf2-list-item (click)="selectionItem('ERP')"> ERP </wtf2-list-item>
+                    <wtf2-list-item (click)="selectionItem('HRMS')"> HRMS </wtf2-list-item>
+                    <wtf2-list-item (click)="selectionItem('CRM')"> CRM </wtf2-list-item>
+                </wtf2-list>
+            </wtf2-card>
+            <h3>Multi-section List</h3>
+            <wtf2-card>
+                <wtf2-list>
+                    <h3 wtf2Subheader>Lists A</h3>
+                    <wtf2-list-item>
+                        <wtf2-icon wtf2ListIcon>folder</wtf2-icon>
+                        <h4 wtf2Line>ERP</h4>
+                        <p wtf2Line class="demo-2"> 12 Jan 2019 </p>
+                    </wtf2-list-item>
+                    <wtf2-list-item>
+                        <wtf2-icon wtf2ListIcon>folder</wtf2-icon>
+                        <h4 wtf2Line>ERP</h4>
+                        <p wtf2Line class="demo-2"> 12 Jan 2019 </p>
+                    </wtf2-list-item>
+                    <wtf2-list-item>
+                        <wtf2-icon wtf2ListIcon>folder</wtf2-icon>
+                        <h4 wtf2Line>ERP</h4>
+                        <p wtf2Line class="demo-2"> 12 Jan 2019 </p>
+                    </wtf2-list-item>
+                    <wtf2-divider></wtf2-divider>
+                    <h3 wtf2Subheader>Lists B</h3>
+                    <wtf2-list-item>
+                        <wtf2-icon wtf2ListIcon>note</wtf2-icon>
+                        <h4 wtf2Line>Web</h4>
+                        <p wtf2Line class="demo-2"> 20 Dec 2018 </p>
+                    </wtf2-list-item>
+                    <wtf2-list-item>
+                        <wtf2-icon wtf2ListIcon>note</wtf2-icon>
+                        <h4 wtf2Line>Web</h4>
+                        <p wtf2Line class="demo-2"> 23 Dec 2018 </p>
+                    </wtf2-list-item>
+                    <wtf2-list-item>
+                        <wtf2-icon wtf2ListIcon>note</wtf2-icon>
+                        <h4 wtf2Line>Web</h4>
+                        <p wtf2Line class="demo-2"> 28 Dec 2018 </p>
+                    </wtf2-list-item>
+                </wtf2-list>
+            </wtf2-card>
+
+
+        </div>
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+
+    <!-- </div> -->
+    <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

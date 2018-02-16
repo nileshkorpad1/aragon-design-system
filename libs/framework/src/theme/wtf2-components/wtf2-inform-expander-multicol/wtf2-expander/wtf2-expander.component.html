@@ -1,0 +1,12 @@
+<ng-template #itemTemplate>
+    <!-- <div *ngIf="active" class="col-12">
+        <ng-content></ng-content>
+    </div> -->
+    <div [@slideInOut]="active" class="expansion-panel" #content>
+        <div class="inform-expander-inner-content">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</ng-template>
+
+<ng-container [ngTemplateOutlet]="itemTemplate" class="col-12"></ng-container>

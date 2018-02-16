@@ -1,0 +1,18 @@
+@import '../core/style/elevation';
+@import '../core/typography/typography-utils';
+@import '../core/theming/palette';
+@mixin wtf2-bottom-sheet-theme($theme) {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-bottom-sheet-container {
+        @include _wtf2-theme-elevation(16, $theme);
+        background: wtf2-color($background, dialog);
+        color: wtf2-color($foreground, text);
+    }
+}
+
+@mixin wtf2-bottom-sheet-typography($config) {
+    .wtf2-bottom-sheet-container {
+        @include wtf2-typography-level-to-styles($config, body-1);
+    }
+}

@@ -1,0 +1,5 @@
+@import "../wtf2-material/core/theming/all-theme";
+
+@include wtf2-core();
+@import "wtf2-themes/default/default";
+@import "wtf2-themes/warmwhite-light/warmwhite-light";

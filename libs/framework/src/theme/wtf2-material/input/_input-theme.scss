@@ -1,0 +1,60 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/style/form-common';
+@import '../core/typography/typography-utils';
+@import '../core/style/vendor-prefixes';
+@mixin wtf2-input-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $foreground: map-get($theme, foreground);
+    .wtf2-form-field-type-wtf2-native-select .wtf2-form-field-infix::after {
+        color: wtf2-color($foreground, secondary-text);
+    }
+    .wtf2-input-element:disabled,
+    .wtf2-form-field-type-wtf2-native-select.wtf2-form-field-disabled .wtf2-form-field-infix::after {
+        color: wtf2-color($foreground, disabled-text);
+    }
+    .wtf2-input-element {
+        caret-color: wtf2-color($primary);
+        @include input-placeholder {
+            color: _wtf2-control-placeholder-color($theme);
+        }
+        // On dark themes we set the native `select` color to some shade of white,
+        // however the color propagates to all of the `option` elements, which are
+        // always on a white background inside the dropdown, causing them to blend in.
+        // Since we can't change background of the dropdown, we need to explicitly
+        // reset the color of the options to something dark.
+        @if (map-get($theme, is-dark)) {
+            option {
+                color: $dark-primary-text;
+            }
+            option:disabled {
+                color: $dark-disabled-text;
+            }
+        }
+    }
+    .wtf2-accent .wtf2-input-element {
+        caret-color: wtf2-color($accent);
+    }
+    .wtf2-warn .wtf2-input-element,
+    .wtf2-form-field-invalid .wtf2-input-element {
+        caret-color: wtf2-color($warn);
+    }
+    .wtf2-form-field-type-wtf2-native-select.wtf2-form-field-invalid .wtf2-form-field-infix::after {
+        color: wtf2-color($warn);
+    }
+}
+
+@mixin wtf2-input-typography($config) {
+    // The unit-less line-height from the font config.
+    $line-height: wtf2-line-height($config, input);
+    // The amount of space between the top of the line and the top of the actual text
+    // (as a fraction of the font-size).
+    $line-spacing: ($line-height - 1) / 2;
+    // <input> elements seem to have their height set slightly too large on Safari causing the text to
+    // be misaligned w.r.t. the placeholder. Adding this margin corrects it.
+    input.wtf2-input-element {
+        margin-top: -$line-spacing * 1em;
+    }
+}

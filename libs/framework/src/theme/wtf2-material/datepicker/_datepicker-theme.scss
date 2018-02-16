@@ -1,0 +1,131 @@
+@import '../core/style/elevation';
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+$wtf2-datepicker-selected-today-box-shadow-width: 1px;
+$wtf2-datepicker-selected-fade-amount: 0.6;
+$wtf2-datepicker-today-fade-amount: 0.2;
+$wtf2-calendar-body-font-size: 13px !default;
+$wtf2-calendar-weekday-table-font-size: 11px !default;
+@mixin _wtf2-datepicker-color($palette) {
+    .wtf2-calendar-body-selected {
+        background-color: wtf2-color($palette);
+        color: wtf2-color($palette, default-contrast);
+    }
+    .wtf2-calendar-body-disabled>.wtf2-calendar-body-selected {
+        $background: wtf2-color($palette);
+        @if (type-of($background)==color) {
+            background-color: fade-out($background, $wtf2-datepicker-selected-fade-amount);
+        }
+        @else {
+            // If we couldn't resolve to background to a color (e.g. it's a CSS variable),
+            // fall back to fading the content out via `opacity`.
+            opacity: $wtf2-datepicker-today-fade-amount;
+        }
+    }
+    .wtf2-calendar-body-today.wtf2-calendar-body-selected {
+        box-shadow: inset 0 0 0 $wtf2-datepicker-selected-today-box-shadow-width wtf2-color($palette, default-contrast);
+    }
+}
+
+@mixin wtf2-datepicker-theme($theme) {
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    .wtf2-calendar-arrow {
+        border-top-color: wtf2-color($foreground, icon);
+    }
+    // The prev/next buttons need a bit more specificity to
+    // avoid being overwritten by the .wtf2-icon-button.
+    .wtf2-datepicker-toggle,
+    .wtf2-datepicker-content .wtf2-calendar-next-button,
+    .wtf2-datepicker-content .wtf2-calendar-previous-button {
+        color: wtf2-color($foreground, icon);
+    }
+    .wtf2-calendar-table-header {
+        color: wtf2-color($foreground, hint-text);
+    }
+    .wtf2-calendar-table-header-divider::after {
+        background: wtf2-color($foreground, divider);
+    }
+    .wtf2-calendar-body-label {
+        color: wtf2-color($foreground, secondary-text);
+    }
+    .wtf2-calendar-body-cell-content {
+        color: wtf2-color($foreground, text);
+        border-color: transparent;
+    }
+    .wtf2-calendar-body-disabled>.wtf2-calendar-body-cell-content:not(.wtf2-calendar-body-selected) {
+        color: wtf2-color($foreground, disabled-text);
+    }
+    .wtf2-calendar-body-cell:not(.wtf2-calendar-body-disabled):hover,
+    .cdk-keyboard-focused .wtf2-calendar-body-active,
+    .cdk-program-focused .wtf2-calendar-body-active {
+        &>.wtf2-calendar-body-cell-content:not(.wtf2-calendar-body-selected) {
+            background-color: wtf2-color($background, hover);
+        }
+    }
+    .wtf2-calendar-body-today:not(.wtf2-calendar-body-selected) {
+        // Note: though it's not text, the border is a hint about the fact that this is today's date,
+        // so we use the hint color.
+        border-color: wtf2-color($foreground, hint-text);
+    }
+    .wtf2-calendar-body-disabled>.wtf2-calendar-body-today:not(.wtf2-calendar-body-selected) {
+        $color: wtf2-color($foreground, hint-text);
+        @if (type-of($color)==color) {
+            border-color: fade-out($color, $wtf2-datepicker-today-fade-amount);
+        }
+        @else {
+            // If the color didn't resolve to a color value, but something like a CSS variable, we can't
+            // fade it out so we fall back to reducing the element opacity. Note that we don't use the
+            // $wtf2-datepicker-today-fade-amount, because hint text usually has some opacity applied
+            // to it already and we don't want them to stack on top of each other.
+            opacity: 0.5;
+        }
+    }
+    @include _wtf2-datepicker-color(map-get($theme, primary));
+    .wtf2-datepicker-content {
+        @include _wtf2-theme-elevation(4, $theme);
+        background-color: wtf2-color($background, card);
+        color: wtf2-color($foreground, text);
+        &.wtf2-accent {
+            @include _wtf2-datepicker-color(map-get($theme, accent));
+        }
+        &.wtf2-warn {
+            @include _wtf2-datepicker-color(map-get($theme, warn));
+        }
+    }
+    .wtf2-datepicker-content-touch {
+        @include _wtf2-theme-elevation(0, $theme);
+    }
+    .wtf2-datepicker-toggle-active {
+        color: wtf2-color(map-get($theme, primary));
+        &.wtf2-accent {
+            color: wtf2-color(map-get($theme, accent));
+        }
+        &.wtf2-warn {
+            color: wtf2-color(map-get($theme, warn));
+        }
+    }
+}
+
+@mixin wtf2-datepicker-typography($config) {
+    .wtf2-calendar {
+        font-family: wtf2-font-family($config);
+    }
+    .wtf2-calendar-body {
+        font-size: $wtf2-calendar-body-font-size;
+    }
+    .wtf2-calendar-body-label,
+    .wtf2-calendar-period-button {
+        font: {
+            size: wtf2-font-size($config, button);
+            weight: wtf2-font-weight($config, button);
+        }
+    }
+    .wtf2-calendar-table-header th {
+        font: {
+            size: $wtf2-calendar-weekday-table-font-size;
+            weight: wtf2-font-weight($config, body-1);
+        }
+    }
+}

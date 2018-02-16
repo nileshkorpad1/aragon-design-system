@@ -1,0 +1,121 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+        <!-- CONTENT HEADER -->
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> Autocomplete</wtf2-header-title>
+            <wtf2-header-subtitle> Autocomplete Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+
+        <!-- CONTENT TOOLBAR -->
+        <!-- <div class="toolbar px-24 py-8">
+                <span>Autocomplete</span>
+            </div> -->
+        <!-- / CONTENT TOOLBAR -->
+
+        <!-- CONTENT -->
+        <wtf2-page-content class="content " wtf2-carded-layout>
+            <div class="row m-2" page-content-carded>
+                <div class="col col-6 ">
+                    <h3>Display value autocomplete</h3>
+                    <form class="example-form">
+                        <wtf2-form-field class="example-full-width">
+                            <input type="text" placeholder="Assignee" aria-label="Assignee" wtf2Input [formControl]="myControl"
+                                [wtf2Autocomplete]="autouser">
+                            <wtf2-autocomplete #autouser="wtf2Autocomplete" [displayWith]="displayFn">
+                                <wtf2-option *ngFor="let option of filteredUserOptions | async" [value]="option">
+                                    {{option.username}}
+                                </wtf2-option>
+                            </wtf2-autocomplete>
+                        </wtf2-form-field>
+                    </form>
+                </div>
+
+
+                <div class="col col-6 ">
+                    <h3>Filter autocomplete</h3>
+                    <form class="example-form">
+                        <wtf2-form-field class="example-full-width">
+                            <input type="text" placeholder="Pick one" aria-label="Number" wtf2Input [formControl]="myControl"
+                                [wtf2Autocomplete]="autofilter">
+                            <wtf2-autocomplete #autofilter="wtf2Autocomplete">
+                                <wtf2-option *ngFor="let option of filteredNumOptions | async" [value]="option">
+                                    {{option}}
+                                </wtf2-option>
+                            </wtf2-autocomplete>
+                        </wtf2-form-field>
+                    </form>
+                </div>
+                <div class="col col-6 ">
+                    <h3>Option groups autocomplete</h3>
+                    <form [formGroup]="stateForm">
+                        <wtf2-form-field>
+                            <input type="text" wtf2Input placeholder="States Group" formControlName="stateGroup"
+                                required [wtf2Autocomplete]="autoGroup">
+                            <wtf2-autocomplete #autoGroup="wtf2Autocomplete">
+                                <wtf2-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                                    <wtf2-option *ngFor="let name of group.names" [value]="name">
+                                        {{name}}
+                                    </wtf2-option>
+                                </wtf2-optgroup>
+                            </wtf2-autocomplete>
+                        </wtf2-form-field>
+                    </form>
+
+                </div>
+                <div class="col col-6 ">
+                    <h3>Highlight the first autocomplete option</h3>
+                    <form class="example-form">
+                        <wtf2-form-field class="example-full-width">
+                            <input type="text" placeholder="Pick one" aria-label="Number" wtf2Input [formControl]="myControl"
+                                [wtf2Autocomplete]="auto">
+                            <wtf2-autocomplete autoActiveFirstOption #auto="wtf2Autocomplete">
+                                <wtf2-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                    {{option}}
+                                </wtf2-option>
+                            </wtf2-autocomplete>
+                        </wtf2-form-field>
+                    </form>
+                </div>
+                <div class="col col-6 ">
+                    <h3>Autocomplete overview</h3>
+                    <form class="example-form">
+                        <wtf2-form-field class="example-full-width">
+                            <input wtf2Input placeholder="State" aria-label="State" [wtf2Autocomplete]="autostate"
+                                [formControl]="stateCtrl">
+                            <wtf2-autocomplete #autostate="wtf2Autocomplete">
+                                <wtf2-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                                    <!-- <img class="example-option-img" aria-hidden [src]="state.flag" height="25"> -->
+                                    <span>{{state.statename}}</span> |
+                                    <small>Population: {{state.population}}</small>
+                                </wtf2-option>
+                            </wtf2-autocomplete>
+                        </wtf2-form-field>
+
+                        <br>
+
+                        <wtf2-slide-toggle [checked]="stateCtrl.disabled" (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
+                            Disable Input?
+                        </wtf2-slide-toggle>
+                    </form>
+                </div>
+            </div>
+        </wtf2-page-content>
+        <!-- / CONTENT -->
+
+        <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

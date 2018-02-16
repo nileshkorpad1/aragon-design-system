@@ -1,0 +1,85 @@
+// @import "theme/styles/mixins/_breakpoints.scss";
+@import "../../styles/mixins/breakpoints";
+:host {
+    .wtf2-search-bar {
+        display: flex;
+        flex: 0 1 auto;
+        min-width: 64px;
+        height: 64px;
+        font-size: 13px;
+        @include media-breakpoint-down('xs') {
+            height: 56px;
+        }
+        .wtf2-search-bar-content {
+            display: flex;
+            align-items: center;
+            flex: 1 1 auto;
+            justify-content: flex-start;
+            .wtf2-search-bar-expander,
+            .wtf2-search-bar-collapser {
+                margin: 0;
+                padding: 0 20px;
+                width: 64px !important;
+                height: 64px !important;
+                line-height: 64px !important;
+                cursor: pointer;
+                @include media-breakpoint-down('xs') {
+                    height: 56px !important;
+                    line-height: 56px !important;
+                }
+            }
+            .wtf2-search-bar-loader {
+                width: 64px !important;
+                height: 64px !important;
+                line-height: 64px !important;
+                @include media-breakpoint-down('xs') {
+                    height: 56px !important;
+                    line-height: 56px !important;
+                }
+            }
+            .wtf2-search-bar-collapser {
+                display: none;
+            }
+            wtf2-form-field {
+                display: none;
+                flex: 1 0 auto;
+                min-height: 64px;
+                background-color: transparent;
+                font-size: 16px;
+            }
+            // #wtf2-search-bar-input {
+            // }
+        }
+        &.expanded {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            .wtf2-search-bar-content {
+                // #wtf2-search-bar-input {
+                //     display: flex;
+                //     // margin-left: 25px;
+                //     min-height: 30px;
+                //     // border-bottom: 1px solid rgba(0, 0, 0, 0.38);
+                // }
+                wtf2-form-field {
+                    display: block;
+                    margin-left: 25px;
+                    min-height: 30px;
+                }
+                .wtf2-search-bar-collapser {
+                    display: flex;
+                }
+            }
+        }
+    }
+    body {
+        &.wtf2-search-bar-expanded {
+            #toolbar {
+                z-index: 999 !important;
+            }
+        }
+    }
+}

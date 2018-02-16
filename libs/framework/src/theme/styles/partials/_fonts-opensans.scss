@@ -1,0 +1,12 @@
+$opensans-font-path:'~framework/theme/styles/fonts/opensans/';
+
+@include font-face('Open Sans','#{$opensans-font-path}/OpenSans-ExtraBold',800,normal, eot woff2 woff ttf svg);
+@include font-face('Open Sans','#{$opensans-font-path}/OpenSans-ExtraBoldItalic',800,italic, eot woff2 woff ttf svg);
+@include font-face('Open Sans','#{$opensans-font-path}/OpenSans-Bold',700,normal, eot woff2 woff ttf svg);
+@include font-face('Open Sans','#{$opensans-font-path}/OpenSans-BoldItalic',700,italic, eot woff2 woff ttf svg);
+@include font-face('Open Sans','#{$opensans-font-path}/OpenSans-SemiBold',600,normal, eot woff2 woff ttf svg);
+@include font-face('Open Sans','#{$opensans-font-path}/OpenSans-SemiBoldItalic',600,italic, eot woff2 woff ttf svg);
+@include font-face('Open Sans','#{$opensans-font-path}/OpenSans-Regular',400,normal, eot woff2 woff ttf svg);
+@include font-face('Open Sans','#{$opensans-font-path}/OpenSans-Italic',400,italic, eot woff2 woff ttf svg);
+@include font-face('Open Sans','#{$opensans-font-path}/OpenSans-Light',300,normal, eot woff2 woff ttf svg);
+@include font-face('Open Sans','#{$opensans-font-path}/OpenSans-LightItalic',300,italic, eot woff2 woff ttf svg);

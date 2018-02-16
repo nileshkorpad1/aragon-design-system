@@ -1,0 +1,322 @@
+.wtf2-slidef {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  padding: 8px;
+  outline: 0;
+  vertical-align: middle;
+}
+.wtf2-slidef-wrapper {
+  position: absolute;
+}
+.wtf2-slidef-track-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.wtf2-slidef-track-fill {
+  position: absolute;
+  transform-origin: 0 0;
+  background: #b51616;
+  opacity: 1;
+
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.wtf2-slidef-track-background2 {
+  position: absolute;
+  transform-origin: 0% 0%;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.wtf2-slidef-track-background {
+  position: absolute;
+  transform-origin: 100% 100%;
+  background: #b0b0b0;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.wtf2-slidef-ticks-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+.wtf2-slidef-ticks {
+  background-repeat: repeat;
+  background-clip: content-box;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.wtf2-slidef-thumb-container {
+  position: absolute;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.wtf2-slidef-focus-ring {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.cdk-keyboard-focused .wtf2-slidef-focus-ring {
+  transform: scale(1);
+  opacity: 1;
+}
+.wtf2-slidef:not(.wtf2-slidef-disabled) .wtf2-slidef-thumb,
+.wtf2-slidef:not(.wtf2-slidef-disabled) .wtf2-slidef-thumb-label {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.wtf2-slidef-sliding:not(.wtf2-slidef-disabled) .wtf2-slidef-thumb,
+.wtf2-slidef-sliding:not(.wtf2-slidef-disabled) .wtf2-slidef-thumb-label,
+.wtf2-slidef:not(.wtf2-slidef-disabled) .wtf2-slidef-thumb-label:active,
+.wtf2-slidef:not(.wtf2-slidef-disabled) .wtf2-slidef-thumb:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+.wtf2-slider-thumb {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  transform: scale(0.7);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.wtf2-slidef-thumb-label {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  padding-top: -20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #b51616;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-radius 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.wtf2-slidef-thumb-label-text {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.wtf2-slidef-sliding .wtf2-slidef-thumb-container,
+.wtf2-slidef-sliding .wtf2-slidef-track-background,
+.wtf2-slidef-sliding .wtf2-slidef-track-fill {
+  transition-duration: 0s;
+}
+.wtf2-slidef-has-ticks .wtf2-slidef-wrapper::after {
+  content: '';
+  position: absolute;
+  border-width: 0;
+  border-style: solid;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.wtf2-slidef-has-ticks.cdk-focused:not(.wtf2-slidef-hide-last-tick) .wtf2-slidef-wrapper::after,
+.wtf2-slidef-has-ticks:hover:not(.wtf2-slidef-hide-last-tick) .wtf2-slidef-wrapper::after {
+  opacity: 1;
+}
+.wtf2-slidef-has-ticks.cdk-focused:not(.wtf2-slidef-disabled) .wtf2-slidef-ticks,
+.wtf2-slidef-has-ticks:hover:not(.wtf2-slidef-disabled) .wtf2-slidef-ticks {
+  opacity: 1;
+}
+.wtf2-slidef-thumb-label-showing .wtf2-slidef-focus-ring {
+  transform: scale(0);
+  opacity: 0;
+}
+.wtf2-slidef-thumb-label-showing .wtf2-slidef-thumb-label {
+  display: flex;
+}
+.wtf2-slidef-axis-inverted .wtf2-slidef-track-fill {
+  transform-origin: 100% 100%;
+}
+.wtf2-slidef-axis-inverted .wtf2-slidef-track-background {
+  transform-origin: 0 0;
+}
+.wtf2-slidef:not(.wtf2-slidef-disabled).cdk-focused.wtf2-slidef-thumb-label-showing .wtf2-slidef-thumb {
+  transform: scale(0);
+}
+.wtf2-slidef:not(.wtf2-slidef-disabled) .wtf2-slidef-thumb-label {
+  border-radius: 50% 50% 0;
+}
+.wtf2-slidef:not(.wtf2-slidef-disabled) .wtf2-slidef-thumb-label-text {
+  opacity: 1;
+}
+.wtf2-slidef:not(.wtf2-slidef-disabled).cdk-mouse-focused .wtf2-slidef-thumb,
+.wtf2-slidef:not(.wtf2-slidef-disabled).cdk-program-focused .wtf2-slidef-thumb,
+.wtf2-slidef:not(.wtf2-slidef-disabled).cdk-touch-focused .wtf2-slidef-thumb {
+  border-width: 2px;
+  transform: scale(1);
+}
+.wtf2-slidef-disabled .wtf2-slidef-focus-ring {
+  transform: scale(0);
+  opacity: 0;
+}
+.wtf2-slidef-disabled .wtf2-slidef-thumb {
+  border-width: 4px;
+  transform: scale(0.5);
+}
+.wtf2-slidef-disabled .wtf2-slidef-thumb-label {
+  display: none;
+}
+.wtf2-slidef-horizontal {
+  height: 48px;
+  min-width: 128px;
+}
+.wtf2-slidef-horizontal .wtf2-slidef-wrapper {
+  height: 2px;
+  top: 23px;
+  left: 8px;
+  right: 8px;
+}
+.wtf2-slidef-horizontal .wtf2-slidef-wrapper::after {
+  height: 2px;
+  border-left-width: 2px;
+  right: 0;
+  top: 0;
+}
+.wtf2-slidef-horizontal .wtf2-slidef-track-wrapper {
+  height: 2px;
+  width: 100%;
+}
+.wtf2-slidef-horizontal .wtf2-slidef-track-fill {
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+}
+.wtf2-slidef-horizontal .wtf2-slidef-track-background {
+  height: 2px;
+  width: 100%;
+  transform: scaleX(1);
+}
+.wtf2-slidef-horizontal .wtf2-slidef-ticks-container {
+  height: 2px;
+  width: 100%;
+}
+.wtf2-slidef-horizontal .wtf2-slidef-ticks {
+  height: 2px;
+  width: 100%;
+}
+.wtf2-slidef-horizontal .wtf2-slidef-thumb-container {
+  width: 100%;
+  height: 0;
+  top: 50%;
+}
+.wtf2-slidef-horizontal .wtf2-slidef-focus-ring {
+  top: -15px;
+  right: -15px;
+}
+.wtf2-slidef-horizontal .wtf2-slidef-thumb-label {
+  right: -14px;
+  top: -40px;
+  transform: translateY(26px) scale(0.01) rotate(45deg);
+}
+.wtf2-slidef-horizontal .wtf2-slidef-thumb-label-text {
+  transform: rotate(-45deg);
+}
+.wtf2-slidef-horizontal .wtf2-slidef-thumb-label {
+  transform: rotate(45deg);
+}
+.wtf2-slidef-vertical {
+  width: 48px;
+  min-height: 128px;
+}
+.wtf2-slidef-vertical .wtf2-slidef-wrapper {
+  width: 2px;
+  top: 8px;
+  bottom: 8px;
+  left: 23px;
+}
+.wtf2-slidef-vertical .wtf2-slidef-wrapper::after {
+  width: 2px;
+  border-top-width: 2px;
+  bottom: 0;
+  left: 0;
+}
+.wtf2-slidef-vertical .wtf2-slidef-track-wrapper {
+  height: 100%;
+  width: 2px;
+}
+.wtf2-slidef-vertical .wtf2-slidef-track-fill {
+  height: 100%;
+  width: 2px;
+  transform: scaleY(0);
+}
+.wtf2-slidef-vertical .wtf2-slidef-track-background {
+  height: 100%;
+  width: 2px;
+  transform: scaleY(1);
+}
+.wtf2-slidef-vertical .wtf2-slidef-ticks-container {
+  width: 2px;
+  height: 100%;
+}
+.wtf2-slidef-vertical .wtf2-slidef-focus-ring {
+  bottom: -15px;
+  left: -15px;
+}
+.wtf2-slidef-vertical .wtf2-slidef-ticks {
+  width: 2px;
+  height: 100%;
+}
+.wtf2-slidef-vertical .wtf2-slidef-thumb-container {
+  height: 100%;
+  width: 0;
+  left: 50%;
+}
+.wtf2-slidef-vertical .wtf2-slidef-thumb-label {
+  bottom: -14px;
+  left: -40px;
+  transform: translateX(26px) scale(0.01) rotate(-45deg);
+}
+.wtf2-slidef-vertical .wtf2-slidef-thumb-label-text {
+  transform: rotate(45deg);
+}
+.wtf2-slidef-vertical .wtf2-slidef-thumb-label {
+  transform: rotate(-45deg);
+}
+[dir='rtl'] .wtf2-slidef-wrapper::after {
+  left: 0;
+  right: auto;
+}
+[dir='rtl'] .wtf2-slidef-horizontal .wtf2-slidef-track-fill {
+  transform-origin: 100% 100%;
+}
+[dir='rtl'] .wtf2-slidef-horizontal .wtf2-slidef-track-background {
+  transform-origin: 0 0;
+}
+[dir='rtl'] .wtf2-slidef-horizontal.wtf2-slidef-axis-inverted .wtf2-slidef-track-fill {
+  transform-origin: 0 0;
+}
+[dir='rtl'] .wtf2-slidef-horizontal.wtf2-slidef-axis-inverted .wtf2-slidef-track-background {
+  transform-origin: 100% 100%;
+}
+.wtf2-slidef-thumb {
+  position: absolute;
+  right: -7px;
+  bottom: -7px;
+  box-sizing: border-box;
+  width: 15px;
+  height: 15px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  background: #b51616;
+  transform: scale(0.7);
+}

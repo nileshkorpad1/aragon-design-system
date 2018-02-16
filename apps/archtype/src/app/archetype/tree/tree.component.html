@@ -1,0 +1,73 @@
+<wtf2-page-skeleton simple fullwidth>
+
+    <!-- TOP BACKGROUND -->
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> Tree</wtf2-header-title>
+        <wtf2-header-subtitle> Tree Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+    <!-- <div class="content-card"> -->
+
+    <!-- CONTENT TOOLBAR -->
+    <!-- <div class="toolbar px-24 py-8">
+                <span>List</span>
+            </div> -->
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <wtf2-page-content class="content">
+        <div class="container-fluid">
+            <h3>Tree with dynamic data</h3>
+            <wtf2-card>
+                <wtf2-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                    <wtf2-tree-node *wtf2TreeNodeDef="let node" wtf2TreeNodePadding>
+                        <button wtf2-icon-button disabled></button>
+                        {{node.item}}
+                    </wtf2-tree-node>
+                    <wtf2-tree-node *wtf2TreeNodeDef="let node; when: hasChild" wtf2TreeNodePadding>
+                        <button wtf2-icon-button [attr.aria-label]="'toggle ' + node.filename" wtf2TreeNodeToggle>
+                            <wtf2-icon class="wtf2-icon-rtl-mirror">
+                                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                            </wtf2-icon>
+                        </button>
+                        {{node.item}}
+                        <wtf2-progress-bar *ngIf="node.isLoading" mode="indeterminate" class="example-tree-progress-bar"></wtf2-progress-bar>
+                    </wtf2-tree-node>
+                </wtf2-tree>
+            </wtf2-card>
+            <h3>Tree with flat nodes</h3>
+            <wtf2-card>
+                <app-tree-flat></app-tree-flat>
+            </wtf2-card>
+            <h3>Tree with checkboxes</h3>
+            <wtf2-card>
+                <app-tree-checkboxes> </app-tree-checkboxes>
+            </wtf2-card>
+            <h3>Tree with nested nodes</h3>
+            <wtf2-card>
+                <app-tree-nested></app-tree-nested>
+            </wtf2-card>
+            <h3>Tree with partially loaded data</h3>
+            <wtf2-card>
+                <app-tree-partially></app-tree-partially>
+            </wtf2-card>
+        </div>
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+
+    <!-- </div> -->
+    <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

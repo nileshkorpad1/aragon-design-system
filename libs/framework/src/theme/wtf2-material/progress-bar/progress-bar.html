@@ -1,0 +1,15 @@
+<!--
+  The background div is named as such because it appears below the other divs and is not sized based
+  on values.
+-->
+<svg width="100%" height="4" focusable="false" class="wtf2-progress-bar-background wtf2-progress-bar-element">
+  <defs>
+    <pattern [id]="progressbarId" x="4" y="0" width="8" height="4" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2"/>
+    </pattern>
+  </defs>
+  <rect [attr.fill]="_rectangleFillValue" width="100%" height="100%"/>
+</svg>
+<div class="wtf2-progress-bar-buffer wtf2-progress-bar-element" [ngStyle]="_bufferTransform()"></div>
+<div class="wtf2-progress-bar-primary wtf2-progress-bar-fill wtf2-progress-bar-element" [ngStyle]="_primaryTransform()" #primaryValueBar></div>
+<div class="wtf2-progress-bar-secondary wtf2-progress-bar-fill wtf2-progress-bar-element"></div>

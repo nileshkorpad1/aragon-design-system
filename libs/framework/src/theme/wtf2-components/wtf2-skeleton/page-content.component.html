@@ -1,0 +1,99 @@
+<!-- <div class="row pagespacer-px-1" [class.wtf2-carded-leftsidebar-layout]="cardedLeftSidebarVar"
+    [class.wtf2-carded-layout]="cardedLayoutVar" [class.pagespacer-px-1]="cardedLayoutVar"
+    [class.wtf2-carded-rightsidebar-layout]="cardedRightSidebarVar" [class.wtf2-simple-leftsidebar-layout]="simpleLeftSidebarVar"
+    [class.wtf2-simple-rightsidebar-layout]="simpleRightSidebarVar">
+    <div class="col col-12">
+        <div class="page-content" [class.pagespacer-1]="cardedLayoutVar" [class.wtf2-white-bg]="cardedLayoutVar"
+            [class.wtf2-elevation-z6]="cardedLayoutVar" [class.wtf2-carded-leftsidebar-layout]="cardedLeftSidebarVar"
+            [class.wtf2-simple-leftsidebar-layout]="simpleLeftSidebarVar" [class.wtf2-simple-rightsidebar-layout]="simpleRightSidebarVar">
+
+            <div *ngIf="wtf2Toolbar" class="toolbar px-24 py-8">
+                <span>{{wtf2Toolbar}}</span>
+            </div>
+            <div *ngIf="cardedLayoutVar">
+                <ng-content select="[page-content-carded]"></ng-content>
+
+            </div>
+            <div *ngIf="cardedLeftSidebarVar">
+                <div class="row">
+                    <div class="col col-3 px-1" [class.wtf2-cardedleftsidebar-sidebar-content]="cardedLeftSidebarVar">
+                        <ng-content select="[carded-left-sidebar]"></ng-content>
+                    </div>
+
+                    <div class="col col-9 px-0" [class.wtf2-cardedleftsidebar-page-content]="cardedLeftSidebarVar">
+                        <div [class.pagespacer-1]="cardedLeftSidebarVar" [class.wtf2-white-bg]="cardedLeftSidebarVar"
+                            [class.wtf2-elevation-z6]="cardedLeftSidebarVar">
+                            <ng-content select="[page-content-left-side]"></ng-content>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="cardedRightSidebarVar">
+                <div class="row">
+                    <div class="col col-9 px-0" [class.wtf2-cardedrightsidebar-page-content]="cardedRightSidebarVar">
+                        <div [class.pagespacer-1]="cardedRightSidebarVar" [class.wtf2-white-bg]="cardedRightSidebarVar"
+                            [class.wtf2-elevation-z6]="cardedRightSidebarVar">
+                            <ng-content select="[page-content-right-side]"></ng-content>
+                        </div>
+                    </div>
+                    <div class="col col-3 px-1" [class.wtf2-cardedrightsidebar-sidebar-content]="cardedRightSidebarVar">
+                        <ng-content select="[carded-right-sidebar]"></ng-content>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="simpleLeftSidebarVar">
+                <div class="row">
+                    <div class="col col-3 px-1" [class.wtf2-simpleleftsidebar-sidebar-content]="simpleLeftSidebarVar">
+                        <ng-content select="[simple-left-sidebar]"></ng-content>
+                    </div>
+                    <div class="col col-9 px-0" [class.wtf2-simpleleftsidebar-page-content]="simpleLeftSidebarVar">
+                        <div [class.pagespacer-1]="simpleLeftSidebarVar">
+                            <ng-content select="[page-content-simple-left-side]"></ng-content>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="simpleRightSidebarVar">
+                <div class="row">
+                    <div class="col col-9 px-0" [class.wtf2-simplerightsidebar-page-content]="simpleRightSidebarVar">
+                        <div [class.pagespacer-1]="simpleRightSidebarVar">
+                            <ng-content select="[page-content-simple-right-side]"></ng-content>
+                        </div>
+                    </div>
+                    <div class="col col-3 px-1" [class.wtf2-simplerightsidebar-sidebar-content]="simpleRightSidebarVar">
+                        <ng-content select="[simple-right-sidebar]"></ng-content>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="simpleFullWidthVar">
+                <div class="row">
+                    <div class="col col-12 px-0" [class.wtf2-simple-fullwidth-page-content]="simpleFullWidthVar">
+                        <div [class.pagespacer-1]="simpleFullWidthVar">
+                            <ng-content select="[page-content-simple-fullwidth]"></ng-content>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="simpleLayoutVar" class="container-fluid pagespacer-px-1">
+                <div class="row">
+                    <div class="col col-12 default">
+                        <ng-content></ng-content>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col col-12 px-0">
+
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>

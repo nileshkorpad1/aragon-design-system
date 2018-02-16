@@ -1,0 +1,70 @@
+@import '../core/style/elevation';
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+$wtf2-chip-remove-font-size: 18px;
+@mixin wtf2-chips-color($foreground, $background) {
+    background-color: $background;
+    color: $foreground;
+    .wtf2-chip-remove {
+        color: $foreground;
+        opacity: 0.4;
+    }
+}
+
+@mixin wtf2-chips-theme-color($palette) {
+    @include wtf2-chips-color(wtf2-color($palette, default-contrast), wtf2-color($palette));
+    .wtf2-ripple-element {
+        background: wtf2-color($palette, default-contrast, 0.1);
+    }
+}
+
+@mixin wtf2-chips-theme($theme) {
+    $is-dark-theme: map-get($theme, is-dark);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $unselected-background: wtf2-color($background, unselected-chip);
+    $unselected-foreground: wtf2-color($foreground, text);
+    .wtf2-chip.wtf2-standard-chip {
+        @include wtf2-chips-color($unselected-foreground, $unselected-background);
+        &:not(.wtf2-chip-disabled) {
+            &:active {
+                @include _wtf2-theme-elevation(3, $theme);
+            }
+            .wtf2-chip-remove:hover {
+                opacity: 0.54;
+            }
+        }
+        &.wtf2-chip-disabled {
+            opacity: 0.4;
+        }
+        &::after {
+            background: map_get($foreground, base);
+        }
+    }
+    .wtf2-chip.wtf2-standard-chip.wtf2-chip-selected {
+        &.wtf2-primary {
+            @include wtf2-chips-theme-color($primary);
+        }
+        &.wtf2-warn {
+            @include wtf2-chips-theme-color($warn);
+        }
+        &.wtf2-accent {
+            @include wtf2-chips-theme-color($accent);
+        }
+    }
+}
+
+@mixin wtf2-chips-typography($config) {
+    .wtf2-chip {
+        font-size: wtf2-font-size($config, body-2);
+        font-weight: wtf2-font-weight($config, body-2);
+        .wtf2-chip-trailing-icon.wtf2-icon,
+        .wtf2-chip-remove.wtf2-icon {
+            font-size: $wtf2-chip-remove-font-size;
+        }
+    }
+}

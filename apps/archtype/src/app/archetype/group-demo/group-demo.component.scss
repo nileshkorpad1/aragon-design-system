@@ -1,0 +1,210 @@
+wtf2-form-field {
+    width: 100%;
+}
+
+.toolbarPanel {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.nameTitle {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chat-properties {
+    #chat {
+        position: relative;
+        z-index: 7;
+        flex: 1 1 100%;
+
+        .messages {
+            position: relative;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 16px 0 40px 40px;
+            height: 500px;
+
+            .message-row {
+                position: relative;
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 0 16px 2px 16px;
+
+                .avatar {
+                    position: absolute;
+                    left: -32px;
+                    margin: 0;
+                }
+
+                .bubble {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 12px;
+                    max-width: 100%;
+
+                    .message {
+                        white-space: pre-wrap;
+                        line-height: 1.2;
+                    }
+
+                    .time {
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        display: none;
+                        margin-top: 8px;
+                        width: 100%;
+                        color: black;
+                        white-space: nowrap;
+                        font-size: 11px;
+                    }
+                }
+
+                &.contact {
+                    .bubble {
+                        border-top-left-radius: 5px;
+                        border-top-right-radius: 20px;
+                        border-bottom-right-radius: 20px;
+                        border-bottom-left-radius: 5px;
+                        background-color: #E0E0E0;
+                        color: black;
+
+                        .time {
+                            margin-left: 12px;
+                        }
+                    }
+
+                    &.first-of-group {
+                        .bubble {
+                            border-top-left-radius: 20px;
+                        }
+                    }
+
+                    &.last-of-group {
+                        .bubble {
+                            border-bottom-left-radius: 20px;
+                        }
+                    }
+                }
+
+                &.me {
+                    padding-left: 40px;
+
+                    .avatar {
+                        order: 2;
+                        margin: 0 0 0 16px;
+                    }
+
+                    .bubble {
+                        margin-left: auto;
+                        border-top-left-radius: 20px;
+                        border-top-right-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                        border-bottom-left-radius: 20px;
+                        background-color: rgb(83, 81, 81);
+                        color: white;
+
+                        .time {
+                            right: 0;
+                            justify-content: flex-end;
+                            margin-right: 12px;
+                        }
+                    }
+
+                    &.first-of-group {
+                        .bubble {
+                            border-top-right-radius: 20px;
+                        }
+                    }
+
+                    &.last-of-group {
+                        .bubble {
+                            border-bottom-right-radius: 20px;
+                        }
+                    }
+                }
+
+                &.contact+.me,
+                &.me+.contact {
+                    margin-top: 20px;
+                    padding-top: 20px;
+                }
+
+                &.first-of-group {
+                    .bubble {
+                        padding-top: 13px;
+                        border-top-left-radius: 20px;
+                    }
+                }
+
+                &.last-of-group {
+                    .bubble {
+                        padding-bottom: 13px;
+                        border-bottom-left-radius: 20px;
+
+                        .time {
+                            display: flex;
+                        }
+                    }
+                }
+            }
+
+            .no-messages-icon {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                left: 0;
+                margin-top: -64px;
+                padding: 0 24px;
+                text-align: center;
+
+                wtf2-icon {
+                    color: rgba(0, 0, 0, 0.06);
+                }
+            }
+
+            .no-messages {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                padding: 0 16px 24px 16px;
+                text-align: center;
+            }
+        }
+    }
+
+    .replyForm {
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background-color: rgb(221, 220, 220);
+
+        .inputFieldClass {
+            padding: 15px 0 15px 35px;
+            background-color: rgb(221, 220, 220);
+
+            .messagesProperty {
+                width: 100%;
+                height: 100%;
+                background-color: rgb(221, 220, 220);
+            }
+        }
+
+        .inputButtonClass {
+            background-color: rgb(200, 200, 200);
+
+            .buttonProperty {
+                width: 100%;
+                height: 100%;
+                background-color: rgb(200, 200, 200);
+            }
+        }
+    }
+}

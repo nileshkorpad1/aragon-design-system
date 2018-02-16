@@ -1,0 +1,115 @@
+<div class="container-fluid p-0 mt-1">
+    <form [formGroup]="tableForm" novalidate>
+        <wtf2-table #table formArrayName="users" [dataSource]="MyDataSource" cdkDropList [cdkDropListData]="MyDataSource"
+            (cdkDropListDropped)="dropTable($event)">
+
+
+            <!--- Note that these columns can be defined in any order. position coloumn is MUST for drag grid.
+ The actual rendered columns are set as a property on the row definition" -->
+            <ng-container wtf2ColumnDef="{{column.name}}" *ngFor="let column of columnConfig">
+                <span *ngIf="column.name=='position'">
+                    <ng-container wtf2ColumnDef="position">
+                        <div class="icon-cell" *wtf2HeaderCellDef> </div>
+                        <div class="icon-cell" *wtf2CellDef="let element">
+                            <wtf2-icon cdkDragHandle>drag_indicator</wtf2-icon>
+                        </div>
+                    </ng-container>
+                </span>
+
+                <span *ngIf="column.name!='position' && column.name!='action' && column.type=='input'">
+                    <ng-container wtf2ColumnDef="{{column.name}}">
+                        <wtf2-header-cell *wtf2HeaderCellDef> {{column.name}} </wtf2-header-cell>
+                        <wtf2-cell *wtf2CellDef="let element let i = index" [formGroupName]="i">
+                            <wtf2-form-field>
+                                <input wtf2Input formControlName="{{column.name}}" value="{{element[column.name]}}">
+                            </wtf2-form-field>
+                        </wtf2-cell>
+                    </ng-container>
+                </span>
+
+                <span *ngIf="column.name!='position' && column.name!='action' && column.type=='input-number'">
+                    <ng-container wtf2ColumnDef="{{column.name}}">
+                        <wtf2-header-cell *wtf2HeaderCellDef> {{column.name}} </wtf2-header-cell>
+                        <wtf2-cell *wtf2CellDef="let element let i = index" [formGroupName]="i">
+                            <wtf2-form-field>
+                                <input type="number" wtf2Input formControlName="{{column.name}}" value="{{element[column.name]}}">
+                            </wtf2-form-field>
+                        </wtf2-cell>
+                    </ng-container>
+                </span>
+                <span *ngIf="column.name!='position' && column.name!='action' && column.type=='textarea'">
+                    <ng-container wtf2ColumnDef="{{column.name}}">
+                        <wtf2-header-cell *wtf2HeaderCellDef> {{column.name}} </wtf2-header-cell>
+                        <wtf2-cell *wtf2CellDef="let element let i = index" [formGroupName]="i">
+                            <wtf2-form-field>
+                                <textarea wtf2Input formControlName="{{column.name}}" value="{{element[column.name]}}"></textarea>
+                            </wtf2-form-field>
+                        </wtf2-cell>
+                    </ng-container>
+                </span>
+
+                <span *ngIf="column.name!='position' && column.name!='action' && column.type=='currency'">
+                    <ng-container wtf2ColumnDef="{{column.name}}">
+                        <wtf2-header-cell *wtf2HeaderCellDef> {{column.name}} </wtf2-header-cell>
+                        <wtf2-cell *wtf2CellDef="let element let i = index" [formGroupName]="i">
+                            <wtf2-form-field>
+                                <input wtf2Input formControlName="{{column.name}}" value="{{element[column.name]}}"
+                                    class="currency-input" (change)="ShowCurrency($event,currencyformat)" hidden="true"
+                                    #inputref>
+                                <div class="w-100" (click)="showInput($event,inputref)" #currencyformat>
+                                    <wtf2-price-format currencyAmount="{{inputref.value}}" currencyCode="{{column.code}}"></wtf2-price-format>
+                                </div>
+                            </wtf2-form-field>
+                        </wtf2-cell>
+                    </ng-container>
+                </span>
+
+                <span *ngIf="column.name!='position' && column.name!='action' && column.type=='date'">
+                    <ng-container wtf2ColumnDef="{{column.name}}">
+                        <wtf2-header-cell *wtf2HeaderCellDef> {{column.name}} </wtf2-header-cell>
+                        <wtf2-cell *wtf2CellDef="let element let i = index" [formGroupName]="i">
+                            <wtf2-form-field>
+                                <input id="i" wtf2Input formControlName="{{column.name}}" [wtf2Datepicker]="picker"
+                                        value="{{element[column.name] |date:'yyyy-MM-dd'}}" placeholder="Choose a date" readonly>
+                                <wtf2-datepicker-toggle wtf2Suffix [for]="picker"></wtf2-datepicker-toggle>
+                                <wtf2-datepicker #picker></wtf2-datepicker>
+                            </wtf2-form-field>
+                        </wtf2-cell>
+                    </ng-container>
+                </span>
+
+                <span *ngIf="column.name!='position' && column.name!='action' && column.type=='select'">
+                    <ng-container wtf2ColumnDef="{{column.name}}">
+                        <wtf2-header-cell *wtf2HeaderCellDef> {{column.name}} </wtf2-header-cell>
+                        <wtf2-cell *wtf2CellDef="let element let i = index" [formGroupName]="i">
+                            <wtf2-form-field class="w-100">
+                                <wtf2-select formControlName="{{column.name}}" placeholder="{{column.lable}}">
+                                    <wtf2-option value="" selected> </wtf2-option>
+                                    <wtf2-option *ngFor="let opts of column.data" value="{{opts}}">
+                                        {{opts}}
+                                    </wtf2-option>
+                                </wtf2-select>
+                            </wtf2-form-field>
+                        </wtf2-cell>
+                    </ng-container>
+                </span>
+
+                <span *ngIf="column.name=='action'">
+                    <ng-container wtf2ColumnDef="action">
+                        <div *wtf2HeaderCellDef> </div>
+                        <div *wtf2CellDef="let element">
+                            <button wtf2-icon-button (click)="deleteItem(element.position)">
+                                <wtf2-icon [style.color]='"gray"'>delete</wtf2-icon>
+                            </button>
+                        </div>
+                    </ng-container>
+                </span>
+
+            </ng-container>
+
+            <wtf2-header-row *wtf2HeaderRowDef="displayedColumns"></wtf2-header-row>
+            <wtf2-row *wtf2RowDef="let row let i=index; columns: displayedColumns;" cdkDrag [cdkDragData]="row"
+                (change)="getLastRow($event,row,i)"></wtf2-row>
+        </wtf2-table>
+    </form>
+</div>

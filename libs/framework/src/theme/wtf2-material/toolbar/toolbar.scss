@@ -1,0 +1,58 @@
+@import '../core/style/variables';
+@import '~@angular/cdk/a11y';
+$wtf2-toolbar-height-desktop: 64px !default;
+$wtf2-toolbar-height-mobile: 56px !default;
+$wtf2-toolbar-row-padding: 16px !default;
+
+/** @deprecated @breaking-change 8.0.0 */
+
+$wtf2-toolbar-height-mobile-portrait: 56px !default;
+
+/** @deprecated @breaking-change 8.0.0 */
+
+$wtf2-toolbar-height-mobile-landscape: 48px !default;
+@mixin wtf2-toolbar-height($height) {
+    .wtf2-toolbar-multiple-rows {
+        min-height: $height;
+    }
+    .wtf2-toolbar-row,
+    .wtf2-toolbar-single-row {
+        height: $height;
+    }
+}
+
+.wtf2-toolbar {
+    @include cdk-high-contrast {
+        outline: solid 1px;
+    }
+}
+
+.wtf2-toolbar-row,
+.wtf2-toolbar-single-row {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 $wtf2-toolbar-row-padding;
+    width: 100%;
+    // Flexbox Vertical Alignment
+    flex-direction: row;
+    align-items: center;
+    // Per Material specs a toolbar cannot have multiple lines inside of a single row.
+    // Disable text wrapping inside of the toolbar. Developers are still able to overwrite it.
+    white-space: nowrap;
+}
+
+.wtf2-toolbar-multiple-rows {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 100%;
+}
+
+// Set the default height for the toolbar.
+@include wtf2-toolbar-height($wtf2-toolbar-height-desktop);
+// As per specs, toolbars should have a different height in mobile devices. This has been
+// specified in the old guidelines and is still observable in the new specifications by looking at
+// the spec images. See: https://material.io/design/components/app-bars-top.html#anatomy
+@media ($wtf2-xsmall) {
+    @include wtf2-toolbar-height($wtf2-toolbar-height-mobile);
+}

@@ -1,0 +1,129 @@
+$wtf2-header-row-height: 56px;
+$wtf2-row-height: 48px;
+$wtf2-row-horizontal-padding: 24px;
+
+/**
+ * Flex-based table structure
+ */
+
+wtf2-table {
+    display: block;
+}
+
+wtf2-header-row {
+    min-height: $wtf2-header-row-height;
+}
+
+wtf2-row,
+wtf2-footer-row {
+    min-height: $wtf2-row-height;
+}
+
+wtf2-row,
+wtf2-header-row,
+wtf2-footer-row {
+    display: flex;
+    // Define a border style, but then widths default to 3px. Reset them to 0px except the bottom
+    // which should be 1px;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-style: solid;
+    align-items: center;
+    box-sizing: border-box;
+    // Workaround for https://goo.gl/pFmjJD in IE 11. Adds a pseudo
+    // element that will stretch the row the correct height. See:
+    // https://connect.microsoft.com/IE/feedback/details/802625
+    &::after {
+        display: inline-block;
+        min-height: inherit;
+        content: '';
+    }
+}
+
+// Note: we use `first-of-type`/`last-of-type` here in order to prevent extra
+// elements like ripples or badges from throwing off the layout (see #11165).
+wtf2-cell:first-of-type,
+wtf2-header-cell:first-of-type,
+wtf2-footer-cell:first-of-type {
+    padding-left: $wtf2-row-horizontal-padding;
+    [dir='rtl'] & {
+        padding-left: 0;
+        padding-right: $wtf2-row-horizontal-padding;
+    }
+}
+
+wtf2-cell:last-of-type,
+wtf2-header-cell:last-of-type,
+wtf2-footer-cell:last-of-type {
+    padding-right: $wtf2-row-horizontal-padding;
+    [dir='rtl'] & {
+        padding-right: 0;
+        padding-left: $wtf2-row-horizontal-padding;
+    }
+}
+
+wtf2-cell,
+wtf2-header-cell,
+wtf2-footer-cell {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    word-wrap: break-word;
+    min-height: inherit;
+}
+
+
+/**
+ * Native HTML table structure
+ */
+
+table.wtf2-table {
+    border-spacing: 0;
+}
+
+tr.wtf2-header-row {
+    height: $wtf2-header-row-height;
+}
+
+tr.wtf2-row,
+tr.wtf2-footer-row {
+    height: $wtf2-row-height;
+}
+
+th.wtf2-header-cell {
+    text-align: left;
+    [dir='rtl'] & {
+        text-align: right;
+    }
+}
+
+th.wtf2-header-cell,
+td.wtf2-cell,
+td.wtf2-footer-cell {
+    padding: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+// Note: we use `first-of-type`/`last-of-type` here in order to prevent extra
+// elements like ripples or badges from throwing off the layout (see #11165).
+th.wtf2-header-cell:first-of-type,
+td.wtf2-cell:first-of-type,
+td.wtf2-footer-cell:first-of-type {
+    padding-left: $wtf2-row-horizontal-padding;
+    [dir='rtl'] & {
+        padding-left: 0;
+        padding-right: $wtf2-row-horizontal-padding;
+    }
+}
+
+th.wtf2-header-cell:last-of-type,
+td.wtf2-cell:last-of-type,
+td.wtf2-footer-cell:last-of-type {
+    padding-right: $wtf2-row-horizontal-padding;
+    [dir='rtl'] & {
+        padding-right: 0;
+        padding-left: $wtf2-row-horizontal-padding;
+    }
+}

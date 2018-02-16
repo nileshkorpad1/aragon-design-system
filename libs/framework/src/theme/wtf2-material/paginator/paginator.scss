@@ -1,0 +1,88 @@
+$wtf2-paginator-height: 56px;
+$wtf2-paginator-padding: 0 8px;
+$wtf2-paginator-page-size-margin-right: 8px;
+$wtf2-paginator-items-per-page-label-margin: 0 4px;
+$wtf2-paginator-selector-margin: 6px 4px 0 4px;
+$wtf2-paginator-selector-trigger-width: 56px;
+$wtf2-paginator-selector-trigger-outline-width: 64px;
+$wtf2-paginator-selector-trigger-fill-width: 64px;
+
+/** @deprecated Use `$wtf2-paginator-selector-trigger-width` instead. @breaking-change 8.0.0 */
+
+$wtf2-paginator-selector-trigger-min-width: $wtf2-paginator-selector-trigger-width;
+
+/** @deprecated Unused. To be removed */
+
+$wtf2-paginator-range-actions-min-height: 48px;
+$wtf2-paginator-range-label-margin: 0 32px 0 24px;
+$wtf2-paginator-button-margin: 8px;
+$wtf2-paginator-button-icon-height: 8px;
+$wtf2-paginator-button-icon-width: 8px;
+$wtf2-paginator-button-increment-icon-margin: 12px;
+$wtf2-paginator-button-decrement-icon-margin: 16px;
+$wtf2-paginator-button-first-last-icon-width: 14px;
+$wtf2-paginator-button-first-icon-margin: 3px;
+$wtf2-paginator-button-last-icon-margin: 15px;
+$wtf2-paginator-button-first-decrement-icon-margin: 21px;
+$wtf2-paginator-button-last-increment-icon-margin: 9px;
+.wtf2-paginator {
+    display: block;
+}
+
+// Note: this wrapper element is only used to get the flexbox vertical centering to work
+// with the `min-height` on IE11. It can be removed if we drop support for IE.
+.wtf2-paginator-outer-container {
+    display: flex;
+}
+
+.wtf2-paginator-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: $wtf2-paginator-height;
+    padding: $wtf2-paginator-padding;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+}
+
+.wtf2-paginator-page-size {
+    display: flex;
+    align-items: baseline;
+    margin-right: $wtf2-paginator-page-size-margin-right;
+    [dir='rtl'] & {
+        margin-right: 0;
+        margin-left: $wtf2-paginator-page-size-margin-right;
+    }
+}
+
+.wtf2-paginator-page-size-label {
+    margin: $wtf2-paginator-items-per-page-label-margin;
+}
+
+.wtf2-paginator-page-size-select {
+    margin: $wtf2-paginator-selector-margin;
+    width: $wtf2-paginator-selector-trigger-width;
+    &.wtf2-form-field-appearance-outline {
+        width: $wtf2-paginator-selector-trigger-outline-width;
+    }
+    &.wtf2-form-field-appearance-fill {
+        width: $wtf2-paginator-selector-trigger-fill-width;
+    }
+}
+
+.wtf2-paginator-range-label {
+    margin: $wtf2-paginator-range-label-margin;
+}
+
+.wtf2-paginator-range-actions {
+    display: flex;
+    align-items: center;
+}
+
+.wtf2-paginator-icon {
+    width: $wtf2-paginator-height / 2;
+    fill: currentColor;
+    [dir='rtl'] & {
+        transform: rotate(180deg);
+    }
+}

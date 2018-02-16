@@ -1,0 +1,614 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> In-form Expander</wtf2-header-title>
+        <wtf2-header-subtitle> In-form Expander Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+
+    <!-- CONTENT TOOLBAR -->
+    <!-- <div class="toolbar px-24 py-8">
+                <span>Inform Expander</span>
+            </div> -->
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <wtf2-page-content class="content">
+
+        <h2>Single Column</h2>
+        <wtf2-inform-expander title="Add Address" icon="add">
+            <div class="example-container">
+                <wtf2-form-field>
+                    <input wtf2Input placeholder="Input">
+                </wtf2-form-field>
+
+                <wtf2-form-field>
+                    <textarea wtf2Input placeholder="Textarea"></textarea>
+                </wtf2-form-field>
+                <wtf2-form-field>
+                    <wtf2-select placeholder="Select">
+                        <wtf2-option value="option">Option</wtf2-option>
+                    </wtf2-select>
+                </wtf2-form-field>
+            </div>
+        </wtf2-inform-expander>
+
+
+
+        <h2>Two Columns but only single input</h2>
+        <wtf2-inform-expander-multicol #informexpanderTCBSI>
+            <div class="row">
+                <div class="col col-12 col-md-6 col-lg-6">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons"
+                            (click)="informexpanderTCBSI.toggle($event,informexpanderTCBSI1)">add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <wtf2-expander #informexpanderTCBSI1>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem2">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem2">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+            </div>
+        </wtf2-inform-expander-multicol>
+
+        <h2>Two Column - Only For First Input</h2>
+        <wtf2-inform-expander-multicol #informexpander1>
+            <div class="row">
+                <div class="col col-12 col-md-6 col-lg-6">
+                    <wtf2-form-field>
+                        <wtf2-select>
+                            <wtf2-option>None</wtf2-option>
+                            <wtf2-option value="option1">Option 1</wtf2-option>
+                            <wtf2-option value="option2">Option 2</wtf2-option>
+                            <wtf2-option value="option3">Option 3</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="informexpander1.toggle($event,informexpander11)">
+                            add
+                        </wtf2-icon>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="informexpander1.toggle($event,informexpander151)">
+                            search
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-12 col-md-6 col-lg-6">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                    </wtf2-form-field>
+                </div>
+                <wtf2-expander #informexpander11>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="ADD">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="ADD">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+                <wtf2-expander #informexpander151>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem1">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem1">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+            </div>
+        </wtf2-inform-expander-multicol>
+
+
+        <h2>Two Column - Only For Second Input</h2>
+        <wtf2-inform-expander-multicol #informexpander2>
+            <div class="row">
+                <div class="col col-12 col-md-6 col-lg-6">
+                    <wtf2-form-field>
+                        <wtf2-select>
+                            <wtf2-option>None</wtf2-option>
+                            <wtf2-option value="option1">Option 1</wtf2-option>
+                            <wtf2-option value="option2">Option 2</wtf2-option>
+                            <wtf2-option value="option3">Option 3</wtf2-option>
+                        </wtf2-select>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-12 col-md-6 col-lg-6">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="informexpander2.toggle($event,informexpander21)">
+                            add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <wtf2-expander #informexpander21>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem2">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem2">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+            </div>
+        </wtf2-inform-expander-multicol>
+
+        <h2>Two Column - For Both Input</h2>
+        <wtf2-inform-expander-multicol #informexpander3>
+            <div class="row">
+                <div class="col col-12 col-md-6 col-lg-6">
+                    <wtf2-form-field>
+                        <wtf2-select>
+                            <wtf2-option>None</wtf2-option>
+                            <wtf2-option value="option1">Option 1</wtf2-option>
+                            <wtf2-option value="option2">Option 2</wtf2-option>
+                            <wtf2-option value="option3">Option 3</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="informexpander3.toggle($event,informexpander31)">
+                            add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-12 col-md-6 col-lg-6">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="informexpander3.toggle($event,informexpander32)">
+                            add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <wtf2-expander #informexpander31>
+                    <wtf2-inform-expander-multicol #informexpanderNested>
+                        <div class="row">
+                            <div class="col col-12 col-md-6 col-lg-6">
+                                <wtf2-form-field>
+                                    <wtf2-select>
+                                        <wtf2-option>None</wtf2-option>
+                                        <wtf2-option value="option1">Option 1</wtf2-option>
+                                        <wtf2-option value="option2">Option 2</wtf2-option>
+                                        <wtf2-option value="option3">Option 3</wtf2-option>
+                                    </wtf2-select>
+                                    <wtf2-icon wtf2Suffix class="icons"
+                                        (click)="informexpanderNested.toggle($event,informexpanderNested1)">add
+                                    </wtf2-icon>
+                                    <wtf2-icon wtf2Suffix class="icons"
+                                        (click)="informexpanderNested.toggle($event,informexpanderNested51)">search
+                                    </wtf2-icon>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col col-12 col-md-6 col-lg-6">
+                                <wtf2-form-field>
+                                    <wtf2-select placeholder="CUSTOMER" required>
+                                        <wtf2-option value="option">CUSTOMER</wtf2-option>
+                                    </wtf2-select>
+                                </wtf2-form-field>
+                            </div>
+                            <wtf2-expander #informexpanderNested1>
+                                <wtf2-inform-expander-multicol #informexpanderNestedSecondLevelFirst>
+                                    <div class="row">
+                                        <div class="col col-12 col-md-6 col-lg-6">
+                                            <wtf2-form-field>
+                                                <wtf2-select>
+                                                    <wtf2-option>None</wtf2-option>
+                                                    <wtf2-option value="option1">Option 1</wtf2-option>
+                                                    <wtf2-option value="option2">Option 2</wtf2-option>
+                                                    <wtf2-option value="option3">Option 3</wtf2-option>
+                                                </wtf2-select>
+                                            </wtf2-form-field>
+                                        </div>
+                                        <div class="col col-12 col-md-6 col-lg-6">
+                                            <wtf2-form-field>
+                                                <wtf2-select placeholder="CUSTOMER" required>
+                                                    <wtf2-option value="option">CUSTOMER</wtf2-option>
+                                                </wtf2-select>
+                                                <wtf2-icon wtf2Suffix class="icons"
+                                                    (click)="informexpanderNestedSecondLevelFirst.toggle($event,informexpanderNestedSecondLevelFirst1)">
+                                                    add
+                                                </wtf2-icon>
+                                            </wtf2-form-field>
+                                        </div>
+                                        <wtf2-expander #informexpanderNestedSecondLevelFirst1>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <wtf2-form-field class="example-full-width">
+                                                        <input wtf2Input placeholder="Favorite food" value="lorem2">
+                                                    </wtf2-form-field>
+                                                </div>
+                                                <div class="col-6">
+                                                    <wtf2-form-field class="example-full-width">
+                                                        <input wtf2Input placeholder="Favorite food" value="lorem2">
+                                                    </wtf2-form-field>
+                                                </div>
+                                            </div>
+                                        </wtf2-expander>
+                                    </div>
+                                </wtf2-inform-expander-multicol>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button wtf2-raised-button color="warn" (click)="informexpanderNested.collapseAll();"> Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </wtf2-expander>
+                            <wtf2-expander #informexpanderNested51>
+                                <wtf2-inform-expander-multicol #informexpanderNestedSecondLevelSecond>
+                                    <div class="row">
+                                        <div class="col col-12 col-md-6 col-lg-6">
+                                            <wtf2-form-field>
+                                                <wtf2-select>
+                                                    <wtf2-option>None</wtf2-option>
+                                                    <wtf2-option value="option1">Option 1</wtf2-option>
+                                                    <wtf2-option value="option2">Option 2</wtf2-option>
+                                                    <wtf2-option value="option3">Option 3</wtf2-option>
+                                                </wtf2-select>
+                                            </wtf2-form-field>
+                                        </div>
+                                        <div class="col col-12 col-md-6 col-lg-6">
+                                            <wtf2-form-field>
+                                                <wtf2-select placeholder="CUSTOMER" required>
+                                                    <wtf2-option value="option">CUSTOMER</wtf2-option>
+                                                </wtf2-select>
+                                                <wtf2-icon wtf2Suffix class="icons"
+                                                    (click)="informexpanderNestedSecondLevelSecond.toggle($event,informexpanderNestedSecondLevelSecond1)">
+                                                    add
+                                                </wtf2-icon>
+                                            </wtf2-form-field>
+                                        </div>
+                                        <wtf2-expander #informexpanderNestedSecondLevelSecond1>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <wtf2-form-field class="example-full-width">
+                                                        <input wtf2Input placeholder="Favorite food" value="lorem2">
+                                                    </wtf2-form-field>
+                                                </div>
+                                                <div class="col-6">
+                                                    <wtf2-form-field class="example-full-width">
+                                                        <input wtf2Input placeholder="Favorite food" value="lorem2">
+                                                    </wtf2-form-field>
+                                                </div>
+                                            </div>
+                                        </wtf2-expander>
+                                    </div>
+                                </wtf2-inform-expander-multicol>
+                            </wtf2-expander>
+                        </div>
+                    </wtf2-inform-expander-multicol>
+                </wtf2-expander>
+                <wtf2-expander #informexpander32>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem3">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem3">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+            </div>
+        </wtf2-inform-expander-multicol>
+
+
+        <h2>Three Column</h2>
+        <wtf2-inform-expander-multicol #informexpander3Col>
+            <div class="row">
+                <div class="col col-12 col-md-4 col-lg-4">
+                    <wtf2-form-field>
+                        <wtf2-select>
+                            <wtf2-option>None</wtf2-option>
+                            <wtf2-option value="option1">Option 1</wtf2-option>
+                            <wtf2-option value="option2">Option 2</wtf2-option>
+                            <wtf2-option value="option3">Option 3</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons"
+                            (click)="informexpander3Col.toggle($event,informexpander3Col1)">add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-12 col-md-4 col-lg-4">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons"
+                            (click)="informexpander3Col.toggle($event,informexpander3Col2)">add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-12 col-md-4 col-lg-4">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons"
+                            (click)="informexpander3Col.toggle($event,informexpander3Col3)">add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <wtf2-expander #informexpander3Col1>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem3">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem3">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+                <wtf2-expander #informexpander3Col2>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem3">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem3">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+                <wtf2-expander #informexpander3Col3>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem3">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="lorem3">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+            </div>
+        </wtf2-inform-expander-multicol>
+
+        <h2>Four Column</h2>
+        <wtf2-inform-expander-multicol #informexpander4>
+            <div class="row">
+                <div class="col col-12 col-md-6 col-lg-3">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER 1" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="informexpander4.toggle($event,informexpander41)">
+                            add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-12 col-md-6 col-lg-3">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER 2" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="informexpander4.toggle($event,informexpander42)">
+                            add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-12 col-md-6 col-lg-3">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER 3" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="informexpander4.toggle($event,informexpander43)">
+                            add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-12 col-md-6 col-lg-3">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER 4" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="informexpander4.toggle($event,informexpander44)">
+                            add
+                        </wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <wtf2-expander #informexpander41>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="Customer 1">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="Customer 1">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+                <wtf2-expander #informexpander42>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="Customer 2">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="Customer 2">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+                <wtf2-expander #informexpander43>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="Customer 3">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="Customer 3">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+                <wtf2-expander #informexpander44>
+                    <div class="row">
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="Customer 4">
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col-6">
+                            <wtf2-form-field class="example-full-width">
+                                <input wtf2Input placeholder="Favorite food" value="Customer 4">
+                            </wtf2-form-field>
+                        </div>
+                    </div>
+                </wtf2-expander>
+            </div>
+        </wtf2-inform-expander-multicol>
+
+        <h2>Six Column</h2>
+        <wtf2-inform-expander-multicol #expander>
+            <div class="row">
+                <div class="col col-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="expander.toggle($event,expander1)">add</wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="expander.toggle($event,expander2)">add</wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="expander.toggle($event,expander3)">add</wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="expander.toggle($event,expander4)">add</wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="expander.toggle($event,expander5)">add</wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <div class="col col-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="CUSTOMER" required>
+                            <wtf2-option value="option">CUSTOMER</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-icon wtf2Suffix class="icons" (click)="expander.toggle($event,expander6)">add</wtf2-icon>
+                    </wtf2-form-field>
+                </div>
+                <wtf2-expander #expander1>
+                    Lorem ipsum dolor sit amet 1.
+                </wtf2-expander>
+                <wtf2-expander #expander2>
+                    Lorem ipsum dolor sit amet 2.
+                </wtf2-expander>
+                <wtf2-expander #expander3>
+                    Lorem ipsum dolor sit amet 3.
+                </wtf2-expander>
+                <wtf2-expander #expander4>
+                    Lorem ipsum dolor sit amet 4.
+                </wtf2-expander>
+                <wtf2-expander #expander5>
+                    Lorem ipsum dolor sit amet 5.
+                </wtf2-expander>
+                <wtf2-expander #expander6>
+                    Lorem ipsum dolor sit amet .
+                </wtf2-expander>
+            </div>
+            <!-- <wtf2-expander>
+                Lorem ipsum dolor sit amet 2.
+            </wtf2-expander>
+            <wtf2-expander>
+                Lorem ipsum dolor sit amet 3.
+            </wtf2-expander> -->
+        </wtf2-inform-expander-multicol>
+
+        <!-- <div class="row">
+            <div class="col-6">
+                <button wtf2-raised-button color="accent" (click)="opendialog()"> Open Dialog </button>
+            </div>
+        </div> -->
+
+
+
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+    <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+</wtf2-page-skeleton>

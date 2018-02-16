@@ -1,0 +1,58 @@
+<ng-template #tempOutletSidebar>
+    <ng-content select="wtf2-sidebar"></ng-content>
+</ng-template>
+<ng-template #tempOutletPageHeader>
+    <ng-content select="wtf2-page-header"></ng-content>
+</ng-template>
+<ng-template #tempOutletPageContent>
+    <ng-content select="wtf2-page-content"></ng-content>
+</ng-template>
+<ng-template #tempOutletActiontoolbar>
+    <ng-content select="wtf2-expansion-toolbar"></ng-content>
+</ng-template>
+
+<div class="container-fluid ">
+    <div class="row wtf2-header-ribbon">
+        <div class="col col-12 px-0 ">
+            <ng-container *ngTemplateOutlet="tempOutletPageHeader"></ng-container>
+        </div>
+    </div>
+    <div class="row " *ngIf="actiontoolbarValue">
+        <div class="col col-12 pagespacer-1 " [class.left-sidebar-actiontoolbar]="leftSideBarValue"
+            [class.right-sidebar-actiontoolbar]="rightSideBarValue">
+            <ng-container *ngTemplateOutlet="tempOutletActiontoolbar"></ng-container>
+        </div>
+    </div>
+    <div class="row layout-body pagespacer-pt-1" [class.pagespacer-pl-1]="rightSideBarValue"
+        [class.pagespacer-mr-1]="leftSideBarValue" [class.cardedrightside-margin]="leftSideBarValue" [ngClass]="!leftSideBarValue && !rightSideBarValue ? 'pagespacer-px-1'
+: ''" >
+        <div class="col-sm-1 col-md-3 px-0 sidebar-flex-basis" *ngIf="leftSideBarValue"
+            [class.left-sidebar-content]="leftSideBarValue" >
+            <button wtf2-icon-button class="navbar-toggle-button skeleton-sidebar-toggle d-md-none"
+                (click)="toggleSidebarOpen('sidebar-wrapper')">
+                <wtf2-icon class="secondary-text">menu</wtf2-icon>
+            </button>
+            <ng-container *ngTemplateOutlet="tempOutletSidebar"></ng-container>
+        </div>
+        <div class="col " [ngClass]="!leftSideBarValue && !rightSideBarValue ? 'col-12 ' : 'col-sm-11 col-md-9 px-0 '"
+            [class.wtf2-elevation-z4]="cardedValue" [class.carded-page-content]="cardedValue"
+            [class.pagespacer-1]="cardedValue" [class.simple-page-content]="simpleValue" [class.px-0]="simpleValue"
+            [class.inner-scroll]="innerScrollValue"
+            [class.mt-0]="simpleValue && (!leftSideBarValue && !rightSideBarValue)"
+            [class.simple-page-content-sidebar]="this.simpleValue && (this.leftSideBarValue || this.rightSideBarValue )"
+            fill-height>
+            <ng-container *ngTemplateOutlet="tempOutletPageContent"></ng-container>
+            <ng-content></ng-content>
+        </div>
+        <div class="col-sm-1 col-md-3 px-0 sidebar-flex-basis" *ngIf="rightSideBarValue"
+            [class.right-sidebar-content]="rightSideBarValue">
+            <button wtf2-icon-button class="navbar-toggle-button skeleton-sidebar-toggle d-md-none"
+                (click)="toggleSidebarOpen('sidebar-wrapper')">
+                <wtf2-icon class="secondary-text">menu</wtf2-icon>
+            </button>
+            <ng-container *ngTemplateOutlet="tempOutletSidebar"></ng-container>
+        </div>
+    </div>
+</div>
+<!--35 [class.wtf2-white-bg]="cardedValue" -->
+<!-- 16 [ngClass]="[wtf2Config.layout.toolbar.position, wtf2Config.layout.toolbar.background]" -->

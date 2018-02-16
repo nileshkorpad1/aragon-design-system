@@ -1,0 +1,21 @@
+<wtf2-page-skeleton simple fullwidth>
+    <div class="center page-skeleton-wrapper">
+        <wtf2-page-header>
+            <wtf2-header-title> Bar Chart </wtf2-header-title>
+            <wtf2-header-subtitle> Bar chart c3 demo</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <div class="content-card">
+            <wtf2-page-content class="content">
+                <wtf2-card>
+                    <wtf2-card-header>
+                        c3 Bar Chart
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content>
+                        <wtf2-chart [ChartData]="PnlData" IsDrillDownReset="true" Type="2d" [chartid]="'pnl'"></wtf2-chart>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </wtf2-page-content>
+        </div>
+    </div>
+</wtf2-page-skeleton>

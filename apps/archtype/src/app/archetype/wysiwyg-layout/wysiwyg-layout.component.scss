@@ -1,0 +1,85 @@
+ .wtf2-form-field {
+     width: 100%;
+ }
+
+ .delete-header {
+     width: 5%;
+ }
+
+ .right {
+     text-align: "right";
+ }
+
+ .icon-header {
+     width: 3%;
+ }
+
+ .example-right-align {
+     text-align: right;
+ }
+
+ // ::ng-deep .wtf2-form-field-underline {
+ //     display: none;
+ // }
+ .icon {
+     color: 'red';
+ }
+
+ .save {
+     padding: 5px;
+ }
+
+ .icon-text {
+     font-size: smaller;
+ }
+
+ .text-large {
+     font-size: larger;
+ }
+
+ .rotate-45 {
+     -webkit-transform: rotate(45deg);
+     -moz-transform: rotate(45deg);
+     -ms-transform: rotate(45deg);
+     -o-transform: rotate(45deg);
+     transform: rotate(45deg);
+ }
+
+ .icon-cell {
+     width: 1%;
+ }
+
+ wtf2-table {
+
+     // drag handle and delete button on hover show/hide
+     [cdkDragHandle],
+     .row-delete-btn {
+         display: none;
+     }
+
+     [cdkDrag]:hover [cdkDragHandle],
+     [cdkDrag]:hover .row-delete-btn {
+         display: block;
+     }
+
+     wtf2-cell:first-of-type {
+         padding-left: 24px;
+     }
+
+     wtf2-cell:last-of-type {
+         padding-right: 24px;
+     }
+
+ }
+
+ .pricing-menu {
+     line-height: 3rem;
+ }
+
+ .invert-vertical-margin-64 {
+     margin-top: -64px !important;
+ }
+
+ .quote-demo {
+     margin-left: -24px;
+ }

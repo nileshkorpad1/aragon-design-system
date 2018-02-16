@@ -1,0 +1,11 @@
+<wtf2-accordion>
+    <wtf2-expansion-panel [expanded]="isOpen" [class.wtf2-expansion-panel-enabled]="!disabled" [disabled]="disabled"
+#mep="wtf2ExpansionPanel" hideToggle="false" (afterExpand)="afterExpand($event)" [class.wtf2-dark-50-bg]="isselectedrow" [displayPosition]="displayPosition">
+        <wtf2-expansion-panel-header class="wtf2-row" [class.wtf2-position-zero]="!displayPosition">
+            <ng-container cdkCellOutlet></ng-container>
+        </wtf2-expansion-panel-header>
+        <div class="wtf2-row-detail">
+            <ng-content></ng-content>
+        </div>
+    </wtf2-expansion-panel>
+</wtf2-accordion>

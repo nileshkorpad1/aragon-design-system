@@ -1,0 +1,67 @@
+@import '../core/style/elevation';
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin _wtf2-slide-toggle-checked($palette, $thumb-checked-hue) {
+    &.wtf2-checked {
+        .wtf2-slide-toggle-thumb {
+            background-color: wtf2-color($palette, $thumb-checked-hue);
+        }
+        .wtf2-slide-toggle-bar {
+            // Opacity is determined from the specs for the selection controls.
+            // See: https://material.io/design/components/selection-controls.html#specs
+            background-color: wtf2-color($palette, $thumb-checked-hue, 0.54);
+        }
+        .wtf2-ripple-element {
+            // Set no opacity for the ripples because the ripple opacity will be adjusted dynamically
+            // based on the type of interaction with the slide-toggle (e.g. for hover, focus)
+            background-color: wtf2-color($palette, $thumb-checked-hue);
+        }
+    }
+}
+
+@mixin wtf2-slide-toggle-theme($theme) {
+    $is-dark: map_get($theme, is-dark);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    // Color hues are based on the specs which briefly show the hues that are applied to a switch.
+    // The 2018 specs no longer describe how dark switches should look like. Due to the lack of
+    // inFormation for dark themed switches, we partially keep the old behavior that is based on
+    // the previous specifications. For the checked color we always use the `default` hue because
+    // that follows MDC and also makes it easier for people to create a custom theme without needing
+    // to specify each hue individually.
+    $thumb-unchecked-hue: if($is-dark, 400, 50);
+    $thumb-checked-hue: default;
+    $bar-unchecked-color: wtf2-color($foreground, disabled);
+    $ripple-unchecked-color: wtf2-color($foreground, base);
+    .wtf2-slide-toggle {
+        @include _wtf2-slide-toggle-checked($accent, $thumb-checked-hue);
+        &.wtf2-primary {
+            @include _wtf2-slide-toggle-checked($primary, $thumb-checked-hue);
+        }
+        &.wtf2-warn {
+            @include _wtf2-slide-toggle-checked($warn, $thumb-checked-hue);
+        }
+        &:not(.wtf2-checked) .wtf2-ripple-element {
+            // Set no opacity for the ripples because the ripple opacity will be adjusted dynamically
+            // based on the type of interaction with the slide-toggle (e.g. for hover, focus)
+            background-color: $ripple-unchecked-color;
+        }
+    }
+    .wtf2-slide-toggle-thumb {
+        @include _wtf2-theme-elevation(1, $theme);
+        background-color: wtf2-color($wtf2-grey, $thumb-unchecked-hue);
+    }
+    .wtf2-slide-toggle-bar {
+        background-color: $bar-unchecked-color;
+    }
+}
+
+@mixin wtf2-slide-toggle-typography($config) {
+    .wtf2-slide-toggle-content {
+        font-family: wtf2-font-family($config);
+    }
+}

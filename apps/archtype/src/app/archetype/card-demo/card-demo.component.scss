@@ -1,0 +1,30 @@
+wtf2-card.wtf2-card {
+    span.default-tag{
+        position: absolute;
+        top: 0;
+        right: 10%;
+        padding-right: 10px;
+        padding-left: 10px;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+        background: #3c4252;
+        color: white;
+    }
+    &.selected {
+        position: relative;
+        border-top:4px solid #3c4252;
+    }
+    .showOnHover {
+        display: none;
+    }
+}
+
+
+
+wtf2-card.wtf2-card:hover {
+
+    // background: red;
+    .showOnHover {
+        display: block;
+    }
+}

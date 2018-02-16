@@ -1,0 +1,7 @@
+@import '../style/menu-common';
+@import '../style/vendor-prefixes';
+.wtf2-optgroup-label {
+    @include wtf2-menu-item-base();
+    @include user-select(none);
+    cursor: default;
+}

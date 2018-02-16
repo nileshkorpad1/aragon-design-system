@@ -1,0 +1,59 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/style/elevation';
+@import '../core/typography/typography-utils';
+@mixin wtf2-expansion-panel-theme($theme) {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-expansion-panel {
+        @include _wtf2-theme-overridable-elevation(2, $theme);
+        background: wtf2-color($background, card);
+        color: wtf2-color($foreground, text);
+    }
+    .wtf2-action-row {
+        border-top-color: wtf2-color($foreground, divider);
+    }
+    .wtf2-expansion-panel:not(.wtf2-expanded) .wtf2-expansion-panel-header {
+        &:not([aria-disabled='true']) {
+            &.cdk-keyboard-focused,
+            &.cdk-program-focused,
+            &:hover {
+                background: wtf2-color($background, hover);
+            }
+        }
+    }
+    // Disable the hover on touch devices since it can appear like it is stuck. We can't use
+    // `@media (hover)` above, because the desktop support browser support isn't great.
+    @media (hover: none) {
+        .wtf2-expansion-panel:not(.wtf2-expanded):not([aria-disabled='true']) .wtf2-expansion-panel-header:hover {
+            background: wtf2-color($background, card);
+        }
+    }
+    .wtf2-expansion-panel-header-title {
+        color: wtf2-color($foreground, text);
+    }
+    .wtf2-expansion-panel-header-description,
+    .wtf2-expansion-indicator::after {
+        color: wtf2-color($foreground, secondary-text);
+    }
+    .wtf2-expansion-panel-header[aria-disabled='true'] {
+        color: wtf2-color($foreground, disabled-button);
+        .wtf2-expansion-panel-header-title,
+        .wtf2-expansion-panel-header-description {
+            color: inherit;
+        }
+    }
+}
+
+@mixin wtf2-expansion-panel-typography($config) {
+    .wtf2-expansion-panel-header {
+        font: {
+            family: wtf2-font-family($config, subheading-1);
+            size: wtf2-font-size($config, subheading-1);
+            weight: wtf2-font-weight($config, subheading-1);
+        }
+    }
+    .wtf2-expansion-panel-content {
+        @include wtf2-typography-level-to-styles($config, body-1);
+    }
+}

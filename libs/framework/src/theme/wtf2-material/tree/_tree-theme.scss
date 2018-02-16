@@ -1,0 +1,25 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin wtf2-tree-theme($theme) {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-tree {
+        background: wtf2-color($background, 'card');
+    }
+    .wtf2-tree-node,
+    .wtf2-nested-tree-node {
+        color: wtf2-color($foreground, text);
+    }
+}
+
+@mixin wtf2-tree-typography($config) {
+    .wtf2-tree {
+        font-family: wtf2-font-family($config);
+    }
+    .wtf2-tree-node,
+    .wtf2-nested-tree-node {
+        font-weight: wtf2-font-weight($config, body-1);
+        font-size: wtf2-font-size($config, body-1);
+    }
+}

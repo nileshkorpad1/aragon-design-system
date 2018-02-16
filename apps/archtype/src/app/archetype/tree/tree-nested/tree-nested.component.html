@@ -1,0 +1,24 @@
+<wtf2-tree [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl" class="example-tree">
+    <wtf2-tree-node *wtf2TreeNodeDef="let node" wtf2TreeNodeToggle>
+        <li class="wtf2-tree-node">
+            <button wtf2-icon-button disabled></button>
+            {{node.filename}}: {{node.type}}
+        </li>
+    </wtf2-tree-node>
+
+    <wtf2-nested-tree-node *wtf2TreeNodeDef="let node; when: hasNestedChild">
+        <li>
+            <div class="wtf2-tree-node">
+                <button wtf2-icon-button wtf2TreeNodeToggle [attr.aria-label]="'toggle ' + node.filename">
+                    <wtf2-icon class="wtf2-icon-rtl-mirror">
+                        {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                    </wtf2-icon>
+                </button>
+                {{node.filename}}
+            </div>
+            <ul [class.example-tree-invisible]="!nestedTreeControl.isExpanded(node)">
+                <ng-container wtf2TreeNodeOutlet></ng-container>
+            </ul>
+        </li>
+    </wtf2-nested-tree-node>
+</wtf2-tree>

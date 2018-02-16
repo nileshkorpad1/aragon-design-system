@@ -1,0 +1,23 @@
+<wtf2-tab-header #tabHeader [selectedIndex]="selectedIndex" [disableRipple]="disableRipple" (indexFocused)="_focusChanged($event)" (selectFocusedIndex)="selectedIndex = $event">
+    <div class="wtf2-tab-label" role="tab" wtf2TabLabelWrapper wtf2-ripple cdkMonitorElementFocus *ngFor="let tab of _tabs; let i = index" [id]="_getTabLabelId(i)" [attr.tabIndex]="_getTabIndex(tab, i)" [attr.aria-posinset]="i + 1" [attr.aria-setsize]="_tabs.length"
+        [attr.aria-controls]="_getTabContentId(i)" [attr.aria-selected]="selectedIndex == i" [attr.aria-label]="tab.ariaLabel || null" [attr.aria-labelledby]="(!tab.ariaLabel && tab.ariaLabelledby) ? tab.ariaLabelledby : null" [class.wtf2-tab-label-active]="selectedIndex == i"
+        [disabled]="tab.disabled" [wtf2RippleDisabled]="tab.disabled || disableRipple" (click)="_handleClick(tab, tabHeader, i)">
+
+
+        <div class="wtf2-tab-label-content">
+            <!-- If there is a label template, use it. -->
+            <ng-template [ngIf]="tab.templateLabel">
+                <ng-template [cdkPortalOutlet]="tab.templateLabel"></ng-template>
+            </ng-template>
+
+            <!-- If there is not a label template, fall back to the text label. -->
+            <ng-template [ngIf]="!tab.templateLabel">{{tab.textLabel}}</ng-template>
+        </div>
+    </div>
+</wtf2-tab-header>
+
+<div class="wtf2-tab-body-wrapper" #tabBodyWrapper>
+    <wtf2-tab-body role="tabpanel" *ngFor="let tab of _tabs; let i = index" [id]="_getTabContentId(i)" [attr.aria-labelledby]="_getTabLabelId(i)" [class.wtf2-tab-body-active]="selectedIndex == i" [content]="tab.content" [position]="tab.position" [origin]="tab.origin"
+        [animationDuration]="animationDuration" (_onCentered)="_removeTabBodyWrapperHeight()" (_onCentering)="_setTabBodyWrapperHeight($event)">
+    </wtf2-tab-body>
+</div>

@@ -1,0 +1,20 @@
+$btnWidth : 120px;
+
+.wtf2-menu-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+    height: auto;
+    white-space: pre-wrap;
+    line-height: normal;
+}
+
+.inline-editor-textarea .wtf2-form-field-infix {
+    width: auto !important;
+    background: black;
+}
+
+
+.inline-editor-textarea {
+    width: calc(100% - #{$btnWidth});
+}

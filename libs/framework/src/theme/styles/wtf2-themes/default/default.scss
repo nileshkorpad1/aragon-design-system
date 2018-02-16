@@ -1,0 +1,276 @@
+@import 'theme-colors.scss';
+@import 'variables.scss';
+
+body,
+html {
+    wtf2-theme-options {
+        display: flex;
+        overflow: hidden;
+
+        .theme-options-panel {
+            display: flex;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            flex: 1 0 auto;
+            flex-direction: column;
+            padding: 40px 24px 24px;
+            height: -webkit-fill-available;
+            background: $theme-options-panel;
+
+            .header {
+                display: flex;
+                align-items: center;
+                flex: 0 1 auto;
+                justify-content: space-between;
+                margin-bottom: 32px;
+
+                .title {
+                    padding-left: 4px;
+                    font-weight: 500;
+                    font-size: 20px;
+                }
+            }
+
+            form {
+                display: flex;
+                flex: 1 1 auto;
+                flex-direction: column;
+
+                .group {
+                    position: relative;
+                    display: flex;
+                    flex: 1 0 auto;
+                    flex-direction: column;
+                    margin: 16px 0;
+                    padding: 28px 16px 8px;
+                    border: 1px solid rgba(0, 0, 0, .12);
+                    border-radius: 2px;
+
+                    h2 {
+                        position: absolute;
+                        top: -11px;
+                        left: 8px;
+                        margin: 0;
+                        padding: 0 8px;
+                        background: #e6e0e0;
+                        color: rgba(0, 0, 0, .54);
+                        font-weight: 500;
+                        font-size: 16px;
+                    }
+
+                    h3 {
+                        margin: 24px 0 16px;
+                        padding: 0;
+                        color: rgba(0, 0, 0, .54);
+                        font-weight: 500;
+                        font-size: 14px;
+
+                        &:first-of-type {
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // #wtf2-splash-screen .theme-default {
+    //     background-color:red;
+
+    // }
+    .theme-default {
+        font-family: wtf2-font-family($default-typography);
+
+        #main {
+            // Container 1
+            > .layout-container {
+                wtf2-sidebar {
+                    // main sidebar -
+                    navbar-vertical-style-2 {
+                        background: $wtf2-sidebar-background-color;
+                        color: $wtf2-white-color;
+
+                        a.nav-link.active {
+                            // left: 5%;
+                            // padding-left: 18px;
+                            // width: 95%;
+                            border-width: 2px;
+                            border-top: 3px solid transparent;
+                            border-right: 3px solid;
+                            border-right-color: $wtf2-sidebar-selection-active-carat;
+                            border-bottom: 3px solid transparent;
+                            border-radius: 3px;
+                            // border-image: linear-gradient(to left, red, red);
+                            border-image-slice: 1;
+                            // background-color: red !important;
+                            background-color: $wtf2-sidebar-selection-active;
+                            color: $wtf2-sidebar-selection-active-text;
+                            font-weight: $wtf2-sidebar-selection-active-font-weight;
+
+                            wtf2-icon {
+                                color: $wtf2-white-color;
+                            }
+                        }
+
+                        wtf2-navigation {
+                            .collapsable-arrow {
+                                margin-right: -28px;
+                            }
+                        }
+
+                        .hint-text {
+                            color: $wtf2-hint-text-color;
+                        }
+
+                        .navbar-header {
+                            background: $wtf2-sidebar-header-background-color;
+                            color: $wtf2-white-color !important;
+                        }
+                    }
+                }
+
+                .subsidenav-container {
+                    padding: .25rem !important;
+
+                    .icon-wrapper {
+                        padding: 1rem !important;
+                        width: 50px !important;
+                        height: 50px !important;
+                    }
+                }
+
+                // Container 2
+                > .layout-container {
+                    background: $wtf2-body-background-color;
+
+                    toolbar {
+                        .wtf2-toolbar-single-row {
+                            background: $wtf2-header-ribbon-color;
+
+                            wtf2-search-bar {
+                                background: $wtf2-header-ribbon-color;
+
+                                .expanded {
+                                    background: $wtf2-header-ribbon-color;
+                                }
+                            }
+                        }
+                    }
+
+                    wtf2-table {
+                        .wtf2-expansion-panel-header:not(.wtf2-expanded):hover {
+                            background: $wtf2-grid-hover-color !important;
+                        }
+
+                        .wtf2-grid-select-color {
+                            background: $wtf2-grid-select-color;
+                        }
+                    }
+
+                    // Container 3 (Scrollable)
+                    > .layout-container {
+                        .scroll-spy-active {
+                            position: absolute;
+                            right: 0;
+                            display: block;
+                            width: 5px;
+                            height: 35px;
+                            border-radius: 6px 0 0 6px;
+                            background: #e46a45;
+                            // @include gradient-vertical-three-colors(#0e0e0ed5, #b1023a, 40%, #f92525fa);
+                        }
+
+                        // Content component
+                        wtf2-page-skeleton {
+                            .container-fluid {
+                                .wtf2-header-ribbon {
+                                    background: $wtf2-header-ribbon-color;
+
+                                    @include wtf2-elevation(2);
+
+                                    .wtf2-page-header-title {
+                                        color: $wtf2-header-text-color;
+                                    }
+                                }
+
+                                .layout-body {
+                                    .carded-page-content {
+                                        background: $wtf2-white-color;
+                                    }
+                                }
+
+                                @media (max-width: 960px) {
+                                    wtf2-sidebar {
+                                        background: $wtf2-white-color;
+                                    }
+                                }
+
+                                wtf2-expansion-toolbar {
+                                    .action-bar {
+                                        &.toolbar {
+                                            .action-panel {
+                                                background: $wtf2-expansion-toolbar-action-pannel-color;
+
+                                                @include wtf2-elevation(2);
+
+                                                .arrow-up {
+                                                    border-bottom: 18px solid $wtf2-expansion-toolbar-expanded-color;
+                                                }
+
+                                                .wtf2-search-bar-content {
+                                                    background-color: $wtf2-expansion-toolbar-action-pannel-color;
+                                                }
+                                            }
+
+                                            .expansion-panel {
+                                                background: $wtf2-expansion-toolbar-expanded-color;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                wtf2-inform-expander {
+                                    .expansion-panel {
+                                        background: #ededed;
+                                    }
+
+                                    .arrow-up::after {
+                                        // border-color: rgba(136, 183, 213, 0);
+                                        border-bottom-color: #ededed;
+                                        box-shadow: 0 0 0 0 #ededed;
+                                    }
+
+                                    .arrow-up::before {
+                                        // border-color: rgba(194, 225, 245, 0);
+                                        border-bottom-color: rgba(0, 0, 0, .4);
+                                        box-shadow: 0 10px 0 0 #ededed;
+                                        // 0 35px 10px 0px silver;
+                                    }
+                                }
+
+                                wtf2-inform-expander-multicol {
+                                    .expansion-panel {
+                                        background: #ededed;
+                                    }
+
+                                    .arrow-up::after {
+                                        // border-color: rgba(136, 183, 213, 0);
+                                        border-bottom-color: #ededed;
+                                        box-shadow: 0 0 0 0 #ededed;
+                                    }
+
+                                    .arrow-up::before {
+                                        // border-color: rgba(194, 225, 245, 0);
+                                        border-bottom-color: rgba(0, 0, 0, .4);
+                                        box-shadow: 0 10px 0 0 #ededed;
+                                        // 0 35px 10px 0px silver;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

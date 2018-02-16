@@ -1,0 +1,393 @@
+html {
+    letter-spacing: -.1px !important;
+    font-size: 62.5%;
+    line-height: 1.4 !important;
+}
+
+body {
+    font-size: 16px;
+}
+
+html, body {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: normal;
+}
+
+h1, .h1 {
+    font-size: 24px;
+}
+
+h2, .h2 {
+    font-size: 20px;
+}
+
+h3, .h3 {
+    font-size: 16px;
+}
+
+h4, .h4 {
+    font-size: 15px;
+}
+
+h5, .h5 {
+    font-size: 13px;
+}
+
+h6, .h6 {
+    font-size: 12px;
+}
+
+// Links
+a {
+    color: wtf2-color($accent);
+    text-decoration: none;
+
+    &:not(.wtf2-button):not(.wtf2-raised-button):not(.wtf2-icon-button) {
+
+        &:hover, &:active {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Abbr
+abbr {
+    border-bottom: 1px dotted rgba(0, 0, 0, .54);
+    cursor: help;
+}
+
+// Blockquote
+blockquote {
+    margin: 1em 0;
+    padding-left: 16px;
+    border-left: 3px solid rgba(0, 0, 0, .12);
+    font-style: italic;
+
+    footer {
+        font-style: normal;
+
+        &:before {
+            content: '\2014 \00A0';
+        }
+    }
+
+    &.reverse {
+        padding-right: 16px;
+        padding-left: 0;
+        border-right: 3px solid rgba(0, 0, 0, .12);
+        border-left: none;
+        text-align: right;
+
+        footer {
+
+            &:before {
+                content: '';
+            }
+
+            &:after {
+                content: '\2014 \00A0';
+            }
+        }
+    }
+}
+
+// Code
+code {
+    font-family: 'Monaco', 'Menlo', 'Consolas', 'Ubuntu Mono', monospace;;
+
+    &:not(.highlight) {
+        margin: 0 1px;
+        padding: 2px 3px;
+        border-radius: 2px;
+        background: rgba(0, 0, 0, .065);
+        color: #106CC8;
+    }
+}
+
+// Definition lists
+dl {
+
+    dt {
+        font-weight: bold;
+    }
+
+    dd {
+        margin: 4px 0 16px 0;
+    }
+}
+
+// Mark
+mark {
+    background: #F7F49A;
+}
+
+// Pre
+pre {
+    margin: 8px 16px;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+// Small
+small {
+    font-size: 80%;
+}
+
+// Table
+table {
+
+    thead {
+
+        tr {
+
+            th {
+                text-align: left;
+            }
+        }
+    }
+}
+
+// Text format helpers
+.text-italic {
+    font-style: italic;
+}
+
+.text-semibold {
+    font-weight: 600;
+}
+
+.text-bold,
+strong {
+    font-weight: 700;
+}
+
+.text-strike {
+    text-decoration: line-through;
+}
+
+.text-super {
+    vertical-align: super;
+}
+
+.text-sub {
+    vertical-align: sub;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+// Text align helpers
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+// Font weight helpers
+@for $weight from 1 through 9 {
+
+    .font-weight-#{$weight * 100} {
+        font-weight: #{$weight * 100};
+    }
+}
+
+// Font size helpers
+@for $size from 1 through 60 {
+
+    .font-size-#{$size * 2} {
+        font-size: #{$size * 2}px;
+    }
+}
+
+// Line height helpers
+@for $lineHeight from 1 through 60 {
+
+    .line-height-#{$lineHeight * 2} {
+        line-height: #{$lineHeight * 2}px;
+    }
+}
+
+.line-height-1 {
+    line-height: 1;
+}
+
+.line-height-1\.25 {
+    line-height: 1.25;
+}
+
+.line-height-1\.50 {
+    line-height: 1.5;
+}
+
+.line-height-1\.75 {
+    line-height: 1.75;
+}
+
+// Boxed text
+.text-boxed {
+    margin: 0 8px;
+    padding: 4px 8px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, .12);
+    color: rgba(0, 0, 0, .54);
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 11px;
+}
+
+// Boxed text light
+.text-boxed-light {
+    background-color: rgba(255, 255, 255, .7);
+
+    @extend .text-boxed;
+}
+
+// Truncate
+.text-truncate {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Nowrap
+.text-nowrap {
+    white-space: nowrap;
+}
+
+// Changelog
+.changelog {
+
+    .entry {
+        margin-bottom: 24px;
+        padding: 24px 32px;
+        background: white;
+
+        @include wtf2-elevation(2);
+
+        > .title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+
+            .version {
+                font-size: 24px;
+            }
+
+            .date {
+                margin-left: 8px;
+                font-size: 17px;
+                opacity: .54;
+            }
+        }
+
+        .groups {
+
+            div {
+                margin-bottom: 32px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .title {
+                display: inline-flex;
+                padding: 5px 8px;
+                border-radius: 2px;
+                color: white;
+                letter-spacing: .015em;
+                font-size: 13px;
+                line-height: 1;
+            }
+
+            .breaking-changes {
+
+                .title {
+                    background: #F44336;
+                }
+            }
+
+            .new {
+
+                .title {
+                    background: #43A047;
+                }
+            }
+
+            .improved {
+
+                .title {
+                    background: #673AB7;
+                }
+            }
+
+            .fixed {
+
+                .title {
+                    background: #2196F3;
+                }
+            }
+
+            ul {
+                padding-left: 24px;
+
+                li {
+                    margin-bottom: 6px;
+                    letter-spacing: .015em;
+                }
+            }
+        }
+    }
+}
+
+// Message boxes
+.message-box {
+    padding: 16px;
+    border-left: 6px solid #37474F;
+    background: #607D8B;
+    color: rgba(255, 255, 255, 1);
+
+    &.error {
+        border-left-color: #B71C1C;
+        background: #EF5350;
+    }
+
+    &.warning {
+        border-left-color: #FFC107;
+        background: #FFECB3;
+        color: rgba(0, 0, 0, .87);
+    }
+
+    &.success {
+        border-left-color: #2E7D32;
+        background: #4CAF50;
+    }
+
+    &.info {
+        border-left-color: #03A9F4;
+        background: #B3E5FC;
+        color: rgba(0, 0, 0, .87);
+    }
+}

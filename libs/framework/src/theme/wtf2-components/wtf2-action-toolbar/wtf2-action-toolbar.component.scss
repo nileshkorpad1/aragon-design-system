@@ -1,0 +1,86 @@
+// .action-bar {
+//     z-index: -2;
+//     margin-bottom: 5px;
+//     width: 100%;
+//     wtf2-icon {
+//         font-family: 'Material Icons';
+//     }
+//     .ng-star-inserted {
+//         position: relative;
+//     }
+//     .expanded-card {
+//         .icon-row {
+//             display: inline-block;
+//             vertical-align: bottom;
+//             text-align: center;
+//             font-size: 43px;
+//         }
+//     }
+//     .action-panel {
+//         top: -10%;
+//         right: 0;
+//         left: 0;
+//         display: flex;
+//         align-items: center;
+//         margin-right: auto;
+//         margin-left: auto;
+//         // width: 97%;
+//         height: 60px;
+//         border: 1px grey;
+//         border-radius: 5px;
+//         background: white;
+//         box-shadow: 3px 3px 5px 0px silver;
+//         >.button-group {
+//             margin-left: 20px;
+//             >.button {
+//                 width: 100%;
+//             }
+//             .arrow-up {
+//                 position: absolute;
+//                 top: 100%;
+//                 left: 50%;
+//                 margin-right: auto;
+//                 margin-left: auto;
+//                 padding-bottom: 0;
+//                 width: 0;
+//                 height: 0;
+//                 border-right: 15px solid transparent;
+//                 border-bottom: 15px solid silver;
+//                 border-left: 15px solid transparent;
+//             }
+//             .arrow-space {
+//                 margin-right: auto;
+//                 margin-left: auto;
+//                 padding-bottom: 0;
+//                 width: 0;
+//                 height: 0;
+//                 border-right: 15px solid transparent;
+//                 border-bottom: 15px solid transparent;
+//                 border-left: 15px solid transparent;
+//             }
+//         }
+//     }
+//     .expansion-panel {
+//         position: relative;
+//         // position: absolute;
+//         top: -10%;
+//         z-index: -1;
+//         display: flex;
+//         // -32 for invert page spacer
+//         margin-right: -32px;
+//         margin-left: -32px;
+//         padding: 30px;
+//         border: 1px solid grey;
+//         border-right: none;
+//         border-bottom: none;
+//         border-left: none;
+//         background: silver;
+//         >.flex-container {
+//             wtf2-card {
+//                 margin: 1rem;
+//                 /* background: green; */
+//                 width: 90%;
+//             }
+//         }
+//     }
+// }

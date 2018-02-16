@@ -1,0 +1,7 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "directive-selector": [true, "attribute", "microframework", "camelCase"],
+    "component-selector": [true, "element", "microframework", "kebab-case"]
+  }
+}

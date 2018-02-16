@@ -1,0 +1,110 @@
+<wtf2-page-skeleton carded fullwidth>
+
+
+
+    <wtf2-page-header>
+        <wtf2-header-title class=" ">File Upload Demo</wtf2-header-title>
+        <wtf2-header-subtitle>File upload sample with different options</wtf2-header-subtitle>
+    </wtf2-page-header>
+
+
+
+
+    <wtf2-page-content class="content">
+
+        <h3>Basic File Upload</h3>
+        <div class="m-3">
+            <wtf2-file-upload></wtf2-file-upload>
+        </div>
+
+        <h3>Raised Button File Upload</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton></wtf2-file-upload>
+        </div>
+
+        <h3>Hide Button Icon</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton buttonIcon="false"></wtf2-file-upload>
+        </div>
+
+        <h3>Hide Button Label</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton buttonLabel="false"></wtf2-file-upload>
+        </div>
+
+        <h3>Hide Button</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton buttonIcon="false" buttonLabel="false"></wtf2-file-upload>
+        </div>
+
+        <h3>Toggle Button ( Hide Button label )</h3>
+        <div class="m-3">
+            <wtf2-file-upload toggleButton buttonLabel="false"></wtf2-file-upload>
+        </div>
+
+        <h3>Toggle Raised Button</h3>
+        <div class="m-3">
+            <wtf2-file-upload toggleButton wtf2RaisedButton></wtf2-file-upload>
+        </div>
+
+        <h3>Button Position Left</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton buttonPosition="left"></wtf2-file-upload>
+        </div>
+
+        <h3>Toggle Button Position Left</h3>
+        <div class="m-3">
+            <wtf2-file-upload toggleButton wtf2RaisedButton buttonPosition="left"></wtf2-file-upload>
+        </div>
+
+        <h3>Hide Field ( Button )</h3>
+        <div class="m-3">
+            <wtf2-file-upload nameField="false"></wtf2-file-upload>
+        </div>
+
+        <h3>Hide Field ( Raised Button )</h3>
+        <div class="m-3">
+            <wtf2-file-upload nameField="false" wtf2RaisedButton></wtf2-file-upload>
+        </div>
+
+        <h3>Customized Name Field Placeholder ( Default :- Choose file )</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton fieldPlaceholder="Upload File"></wtf2-file-upload>
+        </div>
+
+        <h3>Customized Button Placeholder ( Default :- Attachment )</h3>
+        <div class="m-3">
+            <wtf2-file-upload nameField="false" wtf2RaisedButton buttonPlaceholder="Brows Image"></wtf2-file-upload>
+        </div>
+
+        <h3>Customized Color ( Button )</h3>
+        <div class="m-3">
+            <wtf2-file-upload color="accent"></wtf2-file-upload>
+        </div>
+
+        <h3>Customized Color ( Raised Button )</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton color="accent"></wtf2-file-upload>
+        </div>
+
+        <h3>Custom Validation Of Image[image/jpeg] For File Type On Field ( Default :- CSV[text/csv] )</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton fileType="image/jpeg"></wtf2-file-upload>
+        </div>
+
+        <h3>Custom Validation Of Image[image/jpeg] For File Type On Button ( Default :- CSV[text/csv] )</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton nameField="false" fileType="image/jpeg"></wtf2-file-upload>
+        </div>
+
+        <h3>Custom Validation For Required On Field ( Default :- false ) [Not applicable on button]</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton required="true"></wtf2-file-upload>
+        </div>
+
+        <h3>Multiple File Upload ( Default :- false )</h3>
+        <div class="m-3">
+            <wtf2-file-upload wtf2RaisedButton multiple></wtf2-file-upload>
+        </div>
+    </wtf2-page-content>
+</wtf2-page-skeleton>

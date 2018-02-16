@@ -1,0 +1,9 @@
+<div class="wtf2-drawer-backdrop" (click)="_onBackdropClicked()" *ngIf="hasBackdrop" [class.wtf2-drawer-shown]="_isShowingBackdrop()"></div>
+
+<ng-content select="wtf2-sidenav"></ng-content>
+
+<ng-content select="wtf2-sidenav-content">
+</ng-content>
+<wtf2-sidenav-content *ngIf="!_content" cdkScrollable>
+    <ng-content></ng-content>
+</wtf2-sidenav-content>

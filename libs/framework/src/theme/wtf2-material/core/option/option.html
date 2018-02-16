@@ -1,0 +1,6 @@
+<wtf2-pseudo-checkbox *ngIf="multiple" class="wtf2-option-pseudo-checkbox" [state]="selected ? 'checked' : ''" [disabled]="disabled"></wtf2-pseudo-checkbox>
+
+<span class="wtf2-option-text"><ng-content></ng-content></span>
+
+<div class="wtf2-option-ripple" wtf2-ripple [wtf2RippleTrigger]="_getHostElement()" [wtf2RippleDisabled]="disabled || disableRipple">
+</div>

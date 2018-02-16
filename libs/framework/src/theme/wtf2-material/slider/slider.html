@@ -1,0 +1,16 @@
+<div class="wtf2-slider-wrapper" #sliderWrapper>
+    <div class="wtf2-slider-track-wrapper">
+        <div class="wtf2-slider-track-background" [ngStyle]="_trackBackgroundStyles"></div>
+        <div class="wtf2-slider-track-fill" [ngStyle]="_trackFillStyles"></div>
+    </div>
+    <div class="wtf2-slider-ticks-container" [ngStyle]="_ticksContainerStyles">
+        <div class="wtf2-slider-ticks" [ngStyle]="_ticksStyles"></div>
+    </div>
+    <div class="wtf2-slider-thumb-container" [ngStyle]="_thumbContainerStyles">
+        <div class="wtf2-slider-focus-ring"></div>
+        <div class="wtf2-slider-thumb"></div>
+        <div class="wtf2-slider-thumb-label">
+            <span class="wtf2-slider-thumb-label-text">{{displayValue}}</span>
+        </div>
+    </div>
+</div>

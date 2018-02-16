@@ -1,0 +1,91 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!--   -->
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+        <!-- CONTENT HEADER -->
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> Checkbox</wtf2-header-title>
+            <wtf2-header-subtitle> Checkbox Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+
+        <!-- CONTENT TOOLBAR -->
+        <!-- <div class="toolbar px-24 py-8">
+                <span>Checkbox</span>
+            </div> -->
+        <!-- / CONTENT TOOLBAR -->
+
+        <!-- CONTENT -->
+        <wtf2-page-content class="content ">
+            <div class="row m-2">
+                <h3>Checkbox</h3>
+                <div class="col col-12 m-2">
+                    <wtf2-checkbox>Default</wtf2-checkbox>
+
+                </div>
+                <div class="col col-12 m-2">
+                    <wtf2-checkbox color="warn">Warn</wtf2-checkbox>
+
+                </div>
+                <div class="col col-12 m-2">
+                    <wtf2-checkbox color="primary">Primary</wtf2-checkbox>
+
+                </div>
+                <div class="col col-12 m-2">
+                    <wtf2-checkbox color="accent">Accent</wtf2-checkbox>
+
+                </div>
+                <div class="col col-12 m-2">
+                    <wtf2-checkbox color="accent" disabled>Disabled</wtf2-checkbox>
+
+                </div>
+                <h3>Checkbox configuration</h3>
+                <div class="col col-12 m-2">
+
+                    <section class="example-section">
+                        <wtf2-checkbox class="example-margin" [(ngModel)]="checked">Checked</wtf2-checkbox>
+                        <wtf2-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</wtf2-checkbox>
+                    </section>
+
+                    <section class="example-section">
+                        <label class="example-margin">Align:</label>
+                        <wtf2-radio-group [(ngModel)]="labelPosition">
+                            <wtf2-radio-button class="example-margin" value="after">After</wtf2-radio-button>
+                            <wtf2-radio-button class="example-margin" value="before">Before</wtf2-radio-button>
+                        </wtf2-radio-group>
+                    </section>
+
+                    <section class="example-section">
+                        <wtf2-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</wtf2-checkbox>
+                    </section>
+
+                    <h2 class="example-h2">Result</h2>
+
+                    <section class="example-section">
+                        <wtf2-checkbox class="example-margin" [(ngModel)]="checked" [(indeterminate)]="indeterminate"
+                            [labelPosition]="labelPosition" [disabled]="disabled">
+                            I'm a checkbox
+                        </wtf2-checkbox>
+                    </section>
+
+                </div>
+
+            </div>
+        </wtf2-page-content>
+        <!-- / CONTENT -->
+
+        <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

@@ -1,0 +1,10 @@
+{
+    "__symbolic": "module",
+    "version": 3,
+    "metadata": {},
+    "exports": [{
+        "from": "./typings/index"
+    }],
+    "flatModuleIndexRedirect": true,
+    "importAs": "libs/framework/src/theme/wtf2-components/wtf2-range-slider"
+}

@@ -1,0 +1,13 @@
+<ng-template [cdkPortalOutlet]="_calendarHeaderPortal">
+</ng-template>
+
+<div class="wtf2-calendar-content" [ngSwitch]="currentView" cdkMonitorSubtreeFocus tabindex="-1">
+    <wtf2-month-view *ngSwitchCase="'month'" [(activeDate)]="activeDate" [selected]="selected" [dateFilter]="dateFilter" [maxDate]="maxDate" [minDate]="minDate" [dateClass]="dateClass" (selectedChange)="_dateSelected($event)" (_userSelection)="_userSelected()">
+    </wtf2-month-view>
+
+    <wtf2-year-view *ngSwitchCase="'year'" [(activeDate)]="activeDate" [selected]="selected" [dateFilter]="dateFilter" [maxDate]="maxDate" [minDate]="minDate" (monthSelected)="_monthSelectedInYearView($event)" (selectedChange)="_goToDateInView($event, 'month')">
+    </wtf2-year-view>
+
+    <wtf2-multi-year-view *ngSwitchCase="'multi-year'" [(activeDate)]="activeDate" [selected]="selected" [dateFilter]="dateFilter" [maxDate]="maxDate" [minDate]="minDate" (yearSelected)="_yearSelectedInMultiYearView($event)" (selectedChange)="_goToDateInView($event, 'year')">
+    </wtf2-multi-year-view>
+</div>

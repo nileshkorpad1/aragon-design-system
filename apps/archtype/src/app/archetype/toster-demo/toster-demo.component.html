@@ -1,0 +1,206 @@
+<wtf2-page-skeleton carded fullwidth>
+
+
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> Toastr / Snackbar</wtf2-header-title>
+            <wtf2-header-subtitle> Toastr / Snackbar Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- CONTENT -->
+        <wtf2-page-content class="content" >
+            <div page-content-carded>
+
+                <div class="row m-2">
+                    <div class="col-12">
+                        <wtf2-radio-group>
+                            <wtf2-radio-button class="example-radio-button" checked=true #istoastr>
+                                Toastr
+                            </wtf2-radio-button>
+                            <wtf2-radio-button class="example-radio-button ml-3" value="top-right">
+                                Snackbar
+                            </wtf2-radio-button>
+                        </wtf2-radio-group>
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="col-12">
+                        <wtf2-form-field>
+                            <input class="form-control" wtf2Input placeholder="Enter Title" name="title" [(ngModel)]="title" />
+                        </wtf2-form-field>
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="col-12">
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="Enter Message" name="msg" [(ngModel)]="msg" />
+                        </wtf2-form-field>
+                    </div>
+                </div>
+                <div *ngIf="istoastr.checked" class="row m-2">
+                    <div class="col col-12">
+                        <h3>Message Type</h3>
+                        <wtf2-radio-group name="msgtype" [(ngModel)]="msgtype">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="success">
+                                        Success
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="error">
+                                        Error
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="info">
+                                        Info
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="warning">
+                                        Warning
+                                    </wtf2-radio-button>
+                                </div>
+                            </div>
+                        </wtf2-radio-group>
+                    </div>
+                </div>
+                <div *ngIf="istoastr.checked" class="row m-2">
+                    <div class="col col-12">
+                        <h3>Position</h3>
+                        <wtf2-radio-group name="position" [(ngModel)]="position">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="top-right">
+                                        Top Right
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="bottom-right">
+                                        Bottom Right
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="bottom-left">
+                                        Bottom Left
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="top-left">
+                                        Top Left
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="top-full-width">
+                                        Top Full Width
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="bottom-full-width">
+                                        Bottom Full Width
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="top-center">
+                                        Top Center
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="bottom-center">
+                                        Bottom Center</wtf2-radio-button>
+                                </div>
+                            </div>
+                        </wtf2-radio-group>
+                    </div>
+                </div>
+                <div *ngIf="!istoastr.checked" class="row m-2">
+                    <div class="col col-12">
+                        <h3>Horizontal Position</h3>
+                        <wtf2-radio-group name="verticalposition" [(ngModel)]="hposition">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="start">
+                                        Start
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="end">
+                                        end
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="center">
+                                        Center
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="left">
+                                        Left
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="right">
+                                        Right
+                                    </wtf2-radio-button>
+                                </div>
+                            </div>
+                        </wtf2-radio-group>
+                    </div>
+                </div>
+                <div *ngIf="!istoastr.checked" class="row m-2">
+                    <div class="col col-12">
+                        <h3>Vertical Position</h3>
+                        <wtf2-radio-group name="horizontalposition" [(ngModel)]="vposition">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="top">
+                                        Top
+                                    </wtf2-radio-button>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                                    <wtf2-radio-button class="example-radio-button" value="bottom">
+                                        Bottom
+                                    </wtf2-radio-button>
+                                </div>
+                            </div>
+                        </wtf2-radio-group>
+                    </div>
+                </div>
+                <div *ngIf="istoastr.checked" class="row m-2">
+                    <div class="col col-12">
+                        <h3>Other Option</h3>
+                        <div class="row">
+                            <div class="col-12">
+                                <wtf2-checkbox class="wtf2-checkbox-inner-container" [(ngModel)]="isprogressbar">Progress
+                                    bar
+                                </wtf2-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="istoastr.checked" class="">
+                    <div class="row m-2 mt-5">
+                        <div class="col-6">
+                            <button wtf2-raised-button color="primary" (click)="openToastr()">
+                                Open Toast
+                            </button>
+                            <button wtf2-raised-button color="accent" class='ml-3' (click)="clearToastr()">
+                                Clear Toast
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!istoastr.checked" class="">
+                    <div class="row m-2 mt-5">
+                        <div class="col-6">
+                            <button wtf2-raised-button color="primary" (click)="openSnackbar()">
+                                Open Snackbar
+                            </button>
+                            <button wtf2-raised-button color="accent" class='ml-3' (click)="clearSnackbar()">
+                                Clear Snackbar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </wtf2-page-content>
+</wtf2-page-skeleton>

@@ -1,0 +1,21 @@
+<div class="hidden-control float-right row">
+    <div class="col col-12 hiddenpannel">
+        <div class="">
+            <div class="row">
+                <div class="col {{show ? 'col-6':'col-12'}}">
+                    <ng-content select="[wtf2dialogconstantpannel]"></ng-content>
+                </div>
+                <div class="col col-6" *ngIf="show" [@slideInOut]>
+                    <ng-content select="[wtf2dialoghiddenpannel]"></ng-content>
+                </div>
+            </div>
+
+        </div>
+        <button class="hiddenbutton  " (click)="toggle()" disabledRipple>
+            <span *ngIf="show">
+                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+            </span>
+            <span *ngIf="!show"> <i class="fa fa-caret-down"></i> </span>{{ show ? "Hide" : "Show" }}
+        </button>
+    </div>
+</div>

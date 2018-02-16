@@ -1,0 +1,343 @@
+<wtf2-page-skeleton simple fullwidth>
+
+    <!-- TOP BACKGROUND -->
+    <!-- / TOP BACKGROUND -->
+
+
+    <!-- CENTER -->
+
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title> Stepper</wtf2-header-title>
+        <wtf2-header-subtitle> Stepper Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+
+    <!-- CONTENT TOOLBAR -->
+    <!-- <div class="toolbar px-24 py-8"> -->
+
+    <!-- <button wtf2-icon-button class="sidebar-toggle" fxHide.gt-md (click)="toggleSidebar()"> -->
+    <!-- (click)="toggleSidebar('carded-left-sidebar-1')"> -->
+    <!-- </button> -->
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <wtf2-page-content class="content">
+
+        <h3>Horizontal Stepper</h3>
+        <wtf2-card>
+
+            <wtf2-horizontal-stepper #stepper>
+                <wtf2-step>
+                    <div class=" container ">
+                        <form class="personeldetails" #userForm="ngForm" [formGroup]="firstFormGroupHorizontal">
+                            <ng-template wtf2StepLabel>Customer Information</ng-template>
+                            <div class="row mt-5">
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="CUSTOMER CODE" required [formControl]="getFirstFormGroupHorizontal.customerCodeFormControl"
+                                            [errorStateMatcher]="matcher">
+                                    </wtf2-form-field>
+                                    <wtf2-error *ngIf="getFirstFormGroupHorizontal.customerCodeFormControl.hasError('pattern') ">
+                                        Please enter a valid Customer Code
+                                    </wtf2-error>
+
+
+                                </div>
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="CUSTOMER NAME" required [formControl]="getFirstFormGroupHorizontal.customerNameFormControl"
+                                            [errorStateMatcher]="matcher">
+                                        <wtf2-error *ngIf="getFirstFormGroupHorizontal.customerNameFormControl.hasError('pattern') && !getFirstFormGroupHorizontal.customerNameFormControl.hasError('required')">
+                                            Please enter a valid Customer Name
+                                        </wtf2-error>
+                                        <wtf2-error *ngIf="getFirstFormGroupHorizontal.customerNameFormControl.hasError('required')">
+                                            Customer Name is <strong>required</strong>
+                                        </wtf2-error>
+                                    </wtf2-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="ACCOUNT" required [formControl]="getFirstFormGroupHorizontal.accountFormControl"
+                                            [errorStateMatcher]="matcher">
+                                    </wtf2-form-field>
+                                    <wtf2-error *ngIf="getFirstFormGroupHorizontal.accountFormControl.hasError('pattern') ">
+                                        Please enter a valid Account Number
+                                    </wtf2-error>
+                                </div>
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="CURRENCY" required [formControl]="getFirstFormGroupHorizontal.currencyFormControl"
+                                            [errorStateMatcher]="matcher">
+                                        <wtf2-error *ngIf="getFirstFormGroupHorizontal.currencyFormControl.hasError('pattern') && !getFirstFormGroupHorizontal.currencyFormControl.hasError('required')">
+                                            Please enter a valid Currency
+                                        </wtf2-error>
+                                        <wtf2-error *ngIf="getFirstFormGroupHorizontal.currencyFormControl.hasError('required')">
+                                            Currency is <strong>required</strong>
+                                        </wtf2-error>
+                                    </wtf2-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="CUSTOMER UEN" required [formControl]="getFirstFormGroupHorizontal.customerUenFormControl"
+                                            [errorStateMatcher]="matcher">
+                                    </wtf2-form-field>
+                                    <wtf2-error *ngIf="getFirstFormGroupHorizontal.customerUenFormControl.hasError('pattern') ">
+                                        Please enter a valid Account Number
+                                    </wtf2-error>
+                                </div>
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="TAX NUMBER" required [formControl]="getFirstFormGroupHorizontal.accountFormControl"
+                                            [errorStateMatcher]="matcher">
+                                    </wtf2-form-field>
+                                    <wtf2-error *ngIf="getFirstFormGroupHorizontal.accountFormControl.hasError('pattern') ">
+                                        Please enter a valid Account Number
+                                    </wtf2-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <wtf2-select placeholder="PAYMENT TERM" required [formControl]="getFirstFormGroupHorizontal.paymentTermFormControl"
+                                            [errorStateMatcher]="matcher">
+                                            <wtf2-option value="test">Payment term 1</wtf2-option>
+                                            <wtf2-option value="test">Payment term 2</wtf2-option>
+                                        </wtf2-select>
+                                        <wtf2-error *ngIf="getFirstFormGroupHorizontal.paymentTermFormControl.hasError('required')">
+                                            Payment term is <strong>required</strong>
+                                        </wtf2-error>
+                                    </wtf2-form-field>
+                                </div>
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <wtf2-select placeholder="TAX" required [formControl]="getFirstFormGroupHorizontal.cityFormControl"
+                                            [errorStateMatcher]="matcher">
+                                            <wtf2-option value="test">Tax 1</wtf2-option>
+                                            <wtf2-option value="test">Tax 1</wtf2-option>
+                                        </wtf2-select>
+                                        <wtf2-error *ngIf="getFirstFormGroupHorizontal.cityFormControl.hasError('required')">
+                                            Tax is <strong>required</strong>
+                                        </wtf2-error>
+                                    </wtf2-form-field>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <button class="submit-Button" wtf2-raised-button color="warn" (click)="submitData('firstFormGroupHorizontal')">Save</button>
+                                    <!-- // <button wtf2-button wtf2-flat-button color="primary" class="ml-5">NEXT</button> -->
+                                    <button wtf2-button wtf2StepperNext class="ml-5">Next</button>
+                                    <button wtf2-button color="primary" class="ml-5">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </wtf2-step>
+                <wtf2-step>
+                    <div class=" container ">
+                        <form [formGroup]="billingAddressFormGroup">
+                            <ng-template wtf2StepLabel>Billing Address</ng-template>
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="Address" required [formControl]="getBillingAddressFormGroup.secondCtrl">
+                            </wtf2-form-field>
+                            <div>
+                                <button class="submit-Button " wtf2-raised-button color="warn" (click)="submitData('billingAddress')">Save</button>
+                                <button wtf2-button wtf2StepperPrevious class="ml-5">Back</button>
+                                <button wtf2-button wtf2StepperNext class="ml-5">Next</button>
+                            </div>
+                        </form>
+                    </div>
+                </wtf2-step>
+                <wtf2-step>
+                    <div class=" container ">
+                        <form [formGroup]="shippingAddressFormGroup">
+                            <ng-template wtf2StepLabel>Shipping Address</ng-template>
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="Address" required [formControl]="getShippingAddressFormGroup.secondCtrl">
+                            </wtf2-form-field>
+                            <div>
+                                <button class="submit-Button " wtf2-raised-button color="warn" (click)="submitData('shippingAddressFormGroup')">Save</button>
+                                <button wtf2-button wtf2StepperPrevious class="ml-5">Back</button>
+                                <button wtf2-button wtf2StepperNext class="ml-5">Next</button>
+                            </div>
+                        </form>
+                    </div>
+                </wtf2-step>
+                <wtf2-step>
+                    <div class=" container ">
+                        <form [formGroup]="ibgFormGroup">
+                            <ng-template wtf2StepLabel>IBG Details</ng-template>
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="Address" required [formControl]="getIbgFormGroup.secondCtrl">
+                            </wtf2-form-field>
+                            <div>
+                                <button class="submit-Button " wtf2-raised-button color="warn" (click)="submitData('ibgFormGroup')">Save</button>
+                                <button wtf2-button wtf2StepperPrevious class="ml-5">Back</button>
+                                <button wtf2-button (click)="stepper.reset()" class="ml-5">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </wtf2-step>-->
+            </wtf2-horizontal-stepper>
+        </wtf2-card>
+
+
+        <wtf2-divider class="mt-5"></wtf2-divider>
+        <wtf2-card>
+            <h3>Vertical Stepper</h3>
+            <wtf2-vertical-stepper [linear]="isLinear" #stepper>
+                <wtf2-step>
+                    <ng-template wtf2StepLabel>Customer Information</ng-template>
+                    <form class="personeldetails" #userForm="ngForm" [formGroup]="firstFormGroupVertical">
+                        <div class="row mt-5">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="CUSTOMER CODE" required [formControl]="getFirstFormGroupVertical.customerCodeFormControl"
+                                        [errorStateMatcher]="matcher">
+                                </wtf2-form-field>
+                                <wtf2-error *ngIf="getFirstFormGroupVertical.customerCodeFormControl.hasError('pattern') ">
+                                    Please enter a valid Customer Code
+                                </wtf2-error>
+
+
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="CUSTOMER NAME" required [formControl]="getFirstFormGroupVertical.customerNameFormControl"
+                                        [errorStateMatcher]="matcher">
+                                    <wtf2-error *ngIf="getFirstFormGroupVertical.customerNameFormControl.hasError('pattern') && !getFirstFormGroupVertical.customerNameFormControl.hasError('required')">
+                                        Please enter a valid Customer Name
+                                    </wtf2-error>
+                                    <wtf2-error *ngIf="getFirstFormGroupVertical.customerNameFormControl.hasError('required')">
+                                        Customer Name is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="ACCOUNT" required [formControl]="getFirstFormGroupVertical.accountFormControl"
+                                        [errorStateMatcher]="matcher">
+                                </wtf2-form-field>
+                                <wtf2-error *ngIf="getFirstFormGroupVertical.accountFormControl.hasError('pattern') ">
+                                    Please enter a valid Account Number
+                                </wtf2-error>
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="CURRENCY" required [formControl]="getFirstFormGroupVertical.currencyFormControl"
+                                        [errorStateMatcher]="matcher">
+                                    <wtf2-error *ngIf="getFirstFormGroupVertical.currencyFormControl.hasError('pattern') && !getFirstFormGroupVertical.currencyFormControl.hasError('required')">
+                                        Please enter a valid Currency
+                                    </wtf2-error>
+                                    <wtf2-error *ngIf="getFirstFormGroupVertical.currencyFormControl.hasError('required')">
+                                        Currency is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="CUSTOMER UEN" required [formControl]="getFirstFormGroupVertical.customerUenFormControl"
+                                        [errorStateMatcher]="matcher">
+                                </wtf2-form-field>
+                                <wtf2-error *ngIf="getFirstFormGroupVertical.customerUenFormControl.hasError('pattern') ">
+                                    Please enter a valid Account Number
+                                </wtf2-error>
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="TAX NUMBER" required [formControl]="getFirstFormGroupVertical.accountFormControl"
+                                        [errorStateMatcher]="matcher">
+                                </wtf2-form-field>
+                                <wtf2-error *ngIf="getFirstFormGroupVertical.accountFormControl.hasError('pattern') ">
+                                    Please enter a valid Account Number
+                                </wtf2-error>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <wtf2-select placeholder="PAYMENT TERM" required [formControl]="getFirstFormGroupVertical.paymentTermFormControl"
+                                        [errorStateMatcher]="matcher">
+                                        <wtf2-option value="test">Payment term 1</wtf2-option>
+                                        <wtf2-option value="test">Payment term 2</wtf2-option>
+                                    </wtf2-select>
+                                    <wtf2-error *ngIf="getFirstFormGroupVertical.paymentTermFormControl.hasError('required')">
+                                        Payment term is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <wtf2-select placeholder="TAX" required [formControl]="getFirstFormGroupVertical.cityFormControl"
+                                        [errorStateMatcher]="matcher">
+                                        <wtf2-option value="test">Tax 1</wtf2-option>
+                                        <wtf2-option value="test">Tax 1</wtf2-option>
+                                    </wtf2-select>
+                                    <wtf2-error *ngIf="getFirstFormGroupVertical.cityFormControl.hasError('required')">
+                                        Tax is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <button class="submit-Button" wtf2-raised-button color="warn" (click)="submitData('firstFormGroupVertical')">Save</button>
+                                <!-- //  <button wtf2-button wtf2-flat-button color="primary" class="ml-5">NEXT</button> -->
+                                <button wtf2-button wtf2StepperNext class="ml-5">Next</button>
+                                <button wtf2-button color="primary" class="ml-5">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </wtf2-step>
+                <wtf2-step>
+                    <form [formGroup]="fillOutFormGroup">
+                        <ng-template wtf2StepLabel>Fill out your address</ng-template>
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="Address" [formControl]="getFillOutFormGroup.secondCtrl"
+                                required>
+                        </wtf2-form-field>
+                        <div>
+                            <button class="submit-Button" wtf2-raised-button color="warn" (click)="submitData('fillOutFormGroup')">Save</button>
+                            <!-- //<button wtf2-button wtf2-flat-button color="primary" class="ml-5">NEXT</button> -->
+                            <button wtf2-button wtf2StepperPrevious class="ml-5">Back</button>
+                            <button wtf2-button wtf2StepperNext class="ml-5">Next</button>
+                        </div>
+                    </form>
+                </wtf2-step>
+                <wtf2-step>
+                    <form [formGroup]="doneAddressFormGroup">
+                        <ng-template wtf2StepLabel>Done</ng-template>
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="Address" [formControl]="getDoneAddressFormGroup.secondCtrl"
+                                required>
+                        </wtf2-form-field>
+                        <div>
+                            <button class="submit-Button" wtf2-raised-button color="warn" (click)="submitData('doneAddressFormGroup')">Save</button>
+                            <button wtf2-button wtf2StepperPrevious class="ml-5">Back</button>
+                            <button wtf2-button (click)="stepper.reset()" class="ml-5">Reset</button>
+                        </div>
+                    </form>
+                </wtf2-step>
+            </wtf2-vertical-stepper>
+        </wtf2-card>
+
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+
+    <!-- / CONTENT CARD -->
+
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

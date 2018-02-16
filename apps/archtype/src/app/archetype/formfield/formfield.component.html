@@ -1,0 +1,188 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> Formfield</wtf2-header-title>
+        <wtf2-header-subtitle>Formfield Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+
+    <!-- CONTENT TOOLBAR -->
+    <!-- <div class="toolbar px-24 py-8">
+                <span>Form Field</span>
+            </div> -->
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <wtf2-page-content class="content">
+        <div class="row m-2" page-content-carded>
+            <div class="col col-12">
+                <h3>Simple form field</h3>
+                <div class="ml-4">
+                    <div class="example-container">
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="Input">
+                        </wtf2-form-field>
+
+                        <wtf2-form-field>
+                            <textarea wtf2Input placeholder="Textarea"></textarea>
+                        </wtf2-form-field>
+
+                        <wtf2-form-field>
+                            <wtf2-select placeholder="Select">
+                                <wtf2-option value="option">Option</wtf2-option>
+                            </wtf2-select>
+                        </wtf2-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-12">
+                <h3>Form field appearance variants</h3>
+                <div class="ml-4">
+                    <div class="example-container">
+                        <p>
+                            <wtf2-form-field appearance="legacy">
+                                <wtf2-label>Legacy form field</wtf2-label>
+                                <input wtf2Input placeholder="Placeholder">
+                                <wtf2-icon wtf2Suffix>sentiment_very_satisfied</wtf2-icon>
+                                <wtf2-hint>Hint</wtf2-hint>
+                            </wtf2-form-field>
+                        </p>
+                        <p>
+                            <wtf2-form-field appearance="standard">
+                                <wtf2-label>Standard form field</wtf2-label>
+                                <input wtf2Input placeholder="Placeholder">
+                                <wtf2-icon wtf2Suffix>sentiment_very_satisfied</wtf2-icon>
+                                <wtf2-hint>Hint</wtf2-hint>
+                            </wtf2-form-field>
+                        </p>
+                        <p>
+                            <wtf2-form-field appearance="fill">
+                                <wtf2-label>Fill form field</wtf2-label>
+                                <input wtf2Input placeholder="Placeholder">
+                                <wtf2-icon wtf2Suffix>sentiment_very_satisfied</wtf2-icon>
+                                <wtf2-hint>Hint</wtf2-hint>
+                            </wtf2-form-field>
+                        </p>
+                        <p>
+                            <wtf2-form-field appearance="outline">
+                                <wtf2-label>Outline form field</wtf2-label>
+                                <input wtf2Input placeholder="Placeholder">
+                                <wtf2-icon wtf2Suffix>sentiment_very_satisfied</wtf2-icon>
+                                <wtf2-hint>Hint</wtf2-hint>
+                            </wtf2-form-field>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-12">
+                <h3>Form field with label</h3>
+                <div class="ml-4">
+                    <div class="example-container">
+                        <form class="example-container" [formGroup]="options">
+                            <wtf2-checkbox formControlName="hideRequired">Hide required marker</wtf2-checkbox>
+                            <label>Float label: </label>
+                            <wtf2-radio-group formControlName="floatLabel">
+                                <wtf2-radio-button class="ml-2" value="auto">Auto</wtf2-radio-button>
+                                <wtf2-radio-button class="ml-2" value="always">Always</wtf2-radio-button>
+                                <wtf2-radio-button class="ml-2" value="never">Never</wtf2-radio-button>
+                            </wtf2-radio-group>
+
+                            <wtf2-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel">
+                                <input wtf2Input placeholder="Simple placeholder" required>
+                            </wtf2-form-field>
+                            <wtf2-form-field [floatLabel]="options.value.floatLabel">
+                                <wtf2-label>Both a label and a placeholder</wtf2-label>
+                                <input wtf2Input placeholder="Simple placeholder">
+                            </wtf2-form-field>
+                            <wtf2-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel">
+                                <wtf2-select required>
+                                    <wtf2-option>-- None --</wtf2-option>
+                                    <wtf2-option value="option">Option</wtf2-option>
+                                </wtf2-select>
+                                <wtf2-label>
+                                    <wtf2-icon>favorite</wtf2-icon> <b> Fancy</b> <i> label</i>
+                                </wtf2-label>
+                            </wtf2-form-field>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-12">
+                <h3>Form field with hints</h3>
+                <div class="ml-4">
+                    <div class="example-container">
+                        <wtf2-form-field hintLabel="Max 10 characters">
+                            <input wtf2Input #input maxlength="10" placeholder="Enter some input">
+                            <wtf2-hint align="end">{{input.value?.length || 0}}/10</wtf2-hint>
+                        </wtf2-form-field>
+
+                        <wtf2-form-field>
+                            <wtf2-select placeholder="Select me">
+                                <wtf2-option value="option">Option</wtf2-option>
+                            </wtf2-select>
+                            <wtf2-hint align="end">Here's the dropdown arrow</wtf2-hint>
+                        </wtf2-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-12">
+                <h3>Form field with prefix & suffix</h3>
+                <div class="ml-4">
+                    <div class="example-container">
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+                            <wtf2-icon wtf2Suffix (click)="hide = !hide">{{hide ? 'visibility_off' :
+                                'visibility'}}</wtf2-icon>
+                        </wtf2-form-field>
+
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="Amount" type="number" class="example-right-align">
+                            <span wtf2Prefix>$&nbsp;</span>
+                            <span wtf2Suffix>.00</span>
+                        </wtf2-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-12">
+                <h3>Form field with selection</h3>
+                <div class="ml-4">
+                    <div class="example-container">
+                        <form class="example-container" [formGroup]="options" [style.fontSize.px]="getFontSize()">
+                            <wtf2-form-field [color]="options.value.color">
+                                <wtf2-select placeholder="Color" formControlName="color">
+                                    <wtf2-option value="primary">Primary</wtf2-option>
+                                    <wtf2-option value="accent">Accent</wtf2-option>
+                                    <wtf2-option value="warn">Warn</wtf2-option>
+                                </wtf2-select>
+                            </wtf2-form-field>
+
+                            <wtf2-form-field [color]="options.value.color">
+                                <input wtf2Input type="number" placeholder="Font size (px)" formControlName="fontSize"
+                                    min="10">
+                                <wtf2-error *ngIf="options.get('fontSize')?.invalid">Min size: 10px</wtf2-error>
+                            </wtf2-form-field>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+
+    <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

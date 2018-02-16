@@ -1,0 +1,91 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin wtf2-stepper-theme($theme) {
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    $primary: map-get($theme, primary);
+    $warn: map-get($theme, warn);
+    .wtf2-step-header {
+        &.cdk-keyboard-focused,
+        &.cdk-program-focused,
+        &:hover {
+            background-color: wtf2-color($background, hover);
+        }
+        // On touch devices the :hover state will linger on the element after a tap.
+        // Reset it via `@media` after the declaration, because the media query isn't
+        // supported by all browsers yet.
+        @media (hover: none) {
+            &:hover {
+                background: none;
+            }
+        }
+        .wtf2-step-label,
+        .wtf2-step-optional {
+            // TODO(josephperrott): Update to using a corrected disabled-text contrast
+            // instead of secondary-text.
+            color: wtf2-color($foreground, secondary-text);
+        }
+        .wtf2-step-icon {
+            // TODO(josephperrott): Update to using a corrected disabled-text contrast
+            // instead of secondary-text.
+            background-color: wtf2-color($foreground, secondary-text);
+            color: wtf2-color($primary, default-contrast);
+        }
+        .wtf2-step-icon-selected,
+        .wtf2-step-icon-state-done,
+        .wtf2-step-icon-state-edit {
+            background-color: wtf2-color($primary);
+            color: wtf2-color($primary, default-contrast);
+        }
+        .wtf2-step-icon-state-error {
+            background-color: transparent;
+            color: wtf2-color($warn);
+        }
+        .wtf2-step-label.wtf2-step-label-active {
+            color: wtf2-color($foreground, text);
+        }
+        .wtf2-step-label.wtf2-step-label-error {
+            color: wtf2-color($warn);
+        }
+    }
+    .wtf2-stepper-horizontal,
+    .wtf2-stepper-vertical {
+        background-color: wtf2-color($background, card);
+    }
+    .wtf2-stepper-vertical-line::before {
+        border-left-color: wtf2-color($foreground, divider);
+    }
+    .wtf2-horizontal-stepper-header::before,
+    .wtf2-horizontal-stepper-header::after,
+    .wtf2-stepper-horizontal-line {
+        border-top-color: wtf2-color($foreground, divider);
+    }
+}
+
+@mixin wtf2-stepper-typography($config) {
+    .wtf2-stepper-vertical,
+    .wtf2-stepper-horizontal {
+        font-family: wtf2-font-family($config);
+    }
+    .wtf2-step-label {
+        font: {
+            size: wtf2-font-size($config, body-1);
+            weight: wtf2-font-weight($config, body-1);
+        }
+        ;
+    }
+    .wtf2-step-sub-label-error {
+        font-weight: normal;
+    }
+    .wtf2-step-label-error {
+        font-size: wtf2-font-size($config, body-2);
+    }
+    .wtf2-step-label-selected {
+        font: {
+            size: wtf2-font-size($config, body-2);
+            weight: wtf2-font-weight($config, body-2);
+        }
+        ;
+    }
+}

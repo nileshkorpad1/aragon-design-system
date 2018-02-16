@@ -1,0 +1,222 @@
+<wtf2-page-skeleton simple fullwidth actiontoolbar>
+    <!-- TOP BACKGROUND -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> Actiontoolbar</wtf2-header-title>
+        <wtf2-header-subtitle> Actiontoolbar Example</wtf2-header-subtitle>
+        <wtf2-Hide-Button>
+            <div class="row">
+                <div class="col-md-7">
+                    <a href="#">
+                        <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <!-- <h3>Project One</h3> -->
+                    <wtf2-header-title class="wtf2-orange-700-text">Project One</wtf2-header-title>
+                    <p>Lorem ipsum dolor sit amet, consectetur
+                        adipisicing elit. Laudantium veniam exercitationem
+                        expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni
+                        pariatur
+                        quos perspiciatis atque eveniet unde.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam inventore
+                        doloribus
+                        ratione totam doloremque, a obcaecati libero cupiditate facere quam, porro illum nulla
+                        ea
+                    </p>
+                    <p>
+                        maiores mollitia, aliquam optio perferendis minus modi voluptatibus autem architecto
+                        consequatur minima. Id tenetur, quod consectetur culpa, optio alias labore, itaque
+                        laudantium
+                        ab error quibusdam et laboriosam? Eaque saepe sapiente natus atque dolor, cupiditate
+                        quaerat in
+                        tenetur praesentium rerum consectetur, sint quia reprehenderit beatae impedit dicta
+                        distinctio
+                        iusto nesciunt eius alias earum nobis. Quo, similique sunt voluptatum natus fuga
+                        consectetur
+                    </p>
+                    <!-- <a class="btn btn-primary wtf2-orange-700-text" href="#">View Project
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a> -->
+                </div>
+            </div>
+        </wtf2-Hide-Button>
+    </wtf2-page-header>
+    <wtf2-expansion-toolbar name="expToolbar" id="expToolbar" [buttonData]="buttonData" (cardClick)="actionToolbarClickEvents($event)"
+        (searchInput)="testInput($event)"></wtf2-expansion-toolbar>
+    <wtf2-page-content class="content ">
+
+        <!-- <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col col-12"> -->
+        <wtf2-tab-group>
+            <wtf2-tab label="Account">
+                <div class="container-fluid p-0 wtf2-elevation-z8">
+                    <div class="pt-3 d-flex justify-content-end">
+                        <!-- <button wtf2-button class="mr-1">
+                                <wtf2-icon color="warn">edit</wtf2-icon>
+                                Edit
+                            </button>
+                            <button wtf2-button class="mr-1">
+                                <wtf2-icon color="warn">block</wtf2-icon>
+                                Deactivate
+                            </button>
+                            <button wtf2-button class="mr-1">
+                                <wtf2-icon color="warn">delete</wtf2-icon>
+                                Delete
+                            </button> -->
+                        <button wtf2-button [wtf2MenuTriggerFor]="menu" class="mr-1">
+                            Sort By
+                            <wtf2-icon class="wtf2-grey-700-text">expand_more</wtf2-icon>
+                        </button>
+                        <wtf2-menu #menu="wtf2Menu">
+                            <button wtf2-menu-item> ID</button>
+                            <button wtf2-menu-item> User ID</button>
+                            <button wtf2-menu-item> Title</button>
+                            <button wtf2-menu-item> Completion Status</button>
+                        </wtf2-menu>
+                        <button wtf2-button [wtf2MenuTriggerFor]="menuSelectGroup" class="mr-1">
+                            Select Group
+                            <wtf2-icon class="wtf2-grey-700-text">expand_more</wtf2-icon>
+                        </button>
+                        <wtf2-menu #menuSelectGroup="wtf2Menu">
+                            <button wtf2-menu-item> Select Group 1</button>
+                            <button wtf2-menu-item> Select Group 2</button>
+                            <button wtf2-menu-item> Select Group 3</button>
+                            <button wtf2-menu-item> Select Group 4</button>
+                        </wtf2-menu>
+                        <button wtf2-button [wtf2MenuTriggerFor]="menuSelectGeneralLedger" class="mr-1">
+                            Select General Ledger
+                            <wtf2-icon class="wtf2-grey-700-text">expand_more</wtf2-icon>
+                        </button>
+                        <wtf2-menu #menuSelectGeneralLedger="wtf2Menu">
+                            <button wtf2-menu-item> Select General Ledger 1</button>
+                            <button wtf2-menu-item> Select General Ledger 2</button>
+                            <button wtf2-menu-item> Select General Ledger 3</button>
+                            <button wtf2-menu-item> Select General Ledger 4</button>
+                        </wtf2-menu>
+                    </div>
+                    <wtf2-table #Table [dataSource]="MyDataSource" multiTemplateDataRows wtf2Sort>
+
+                        <!-- For ID -->
+                        <ng-container wtf2ColumnDef="ACCOUNT_CODE">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> ACCOUNT CODE </wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let post"> {{post.account_code}} </wtf2-cell>
+                        </ng-container>
+
+                        <!-- For User ID -->
+                        <!-- <ng-container wtf2ColumnDef="userId">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> User ID
+                            </wtf2-header-cell>
+<wtf2-cell *wtf2CellDef="let post"> {{post.account_name}} </wtf2-cell>
+                        </ng-container> -->
+
+                        <!-- For Title -->
+                        <ng-container wtf2ColumnDef="ACCOUNT">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> ACCOUNT </wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let post">
+                                <div class="ellipsis">
+                                    <div><strong>{{post.account_name}}</strong></div>
+                                    <div>{{post.account_details}}</div>
+                                </div>
+                            </wtf2-cell>
+                        </ng-container>
+
+                        <!-- For Completion Status -->
+                        <ng-container wtf2ColumnDef="ACCOUNT_GROUP">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> Account Group</wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let post"> {{post.account_group}} </wtf2-cell>
+                        </ng-container>
+
+
+                        <!-- For Completion Status -->
+                        <ng-container wtf2ColumnDef="MASTER_TYPE">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> Master Type</wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let post"> {{post.master_type}} </wtf2-cell>
+                        </ng-container>
+
+
+                        <!-- For Completion Status -->
+                        <ng-container wtf2ColumnDef="BALANCE">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> Balance</wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let post">
+                                <wtf2-price-format currencyAmount="{{post.balance}}" currencySymbol="S$"></wtf2-price-format>
+                            </wtf2-cell>
+                        </ng-container>
+
+                        <!-- For Completion Status -->
+                        <ng-container wtf2ColumnDef="STATUS">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> Status</wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let post"> {{post.status}} </wtf2-cell>
+                        </ng-container>
+
+                        <ng-container wtf2ColumnDef="select">
+                            <wtf2-header-cell *wtf2HeaderCellDef>
+                                <wtf2-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                                </wtf2-checkbox>
+                            </wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let post">
+                                <wtf2-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(post) : null"
+                                    [checked]="selection.isSelected(post)">
+                                </wtf2-checkbox>
+                            </wtf2-cell>
+                        </ng-container>
+
+                        <ng-container wtf2ColumnDef="action">
+                            <wtf2-header-cell *wtf2HeaderCellDef>
+                            </wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let post" class="justify-content-end">
+                                <button wtf2-icon-button [wtf2MenuTriggerFor]="menu">
+                                    <wtf2-icon>more_vert</wtf2-icon>
+                                </button>
+                                <wtf2-menu #menu="wtf2Menu">
+                                    <button wtf2-menu-item (click)="ShowAccordion(post,$event)">
+                                        <wtf2-icon class="wtf2-orange-700-text">edit</wtf2-icon>
+                                        <span>Edit</span>
+                                    </button>
+                                    <button wtf2-menu-item disabled>
+                                        <wtf2-icon class="wtf2-warn-700-text">block</wtf2-icon>
+                                        <span>Deactivate</span>
+                                    </button>
+                                    <button wtf2-menu-item>
+                                        <wtf2-icon class="wtf2-warn-700-text">delete</wtf2-icon>
+                                        <span>Delete</span>
+                                    </button>
+                                </wtf2-menu>
+                                <!-- <button class="btn" (click)="ShowAccordion(post,$event)">ggh</button> -->
+                            </wtf2-cell>
+                        </ng-container>
+
+                        <wtf2-header-row *wtf2HeaderRowDef="displayedColumns"></wtf2-header-row>
+
+                        <!-- Expanded Content Column - The detail row is made up of this one column -->
+<wtf2-row-detail *wtf2RowDef="let row; columns: displayedColumns;" class="element-row" [isOpen]="expandedElement == row"
+    [isselectedrow]="selection.isSelected(row)"
+                            [disabled]="true" [hideToggle]="true">
+                            <h1>this is test accrodian</h1>{{row.title}}
+                        </wtf2-row-detail>
+                    </wtf2-table>
+                    <div *ngIf="!totalRows" class="spinner-container d-flex justify-content-center">
+                        <wtf2-spinner></wtf2-spinner>
+                    </div>
+
+                    <!-- To paginate between pages with search -->
+                    <wtf2-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+                    </wtf2-paginator>
+                </div>
+            </wtf2-tab>
+            <wtf2-tab label="Account Group"> Content 2 </wtf2-tab>
+        </wtf2-tab-group>
+        <!-- </div>
+            </div>
+        </div> -->
+
+        <!-- / CONTENT CARD -->
+
+
+    </wtf2-page-content>
+
+    <!-- / CENTER -->
+
+
+</wtf2-page-skeleton>

@@ -1,0 +1,14 @@
+<div class="wtf2-list-item-content" [class.wtf2-list-item-content-reverse]="checkboxPosition == 'after'">
+
+    <div wtf2-ripple class="wtf2-list-item-ripple" [wtf2RippleTrigger]="_getHostElement()" [wtf2RippleDisabled]="_isRippleDisabled()"></div>
+
+    <wtf2-pseudo-checkbox [state]="selected ? 'checked' : 'unchecked'" [disabled]="disabled"></wtf2-pseudo-checkbox>
+
+    <div class="wtf2-list-text" #text>
+        <ng-content></ng-content>
+    </div>
+
+    <ng-content select="[wtf2-list-avatar], [wtf2-list-icon], [wtf2ListAvatar], [wtf2ListIcon]">
+    </ng-content>
+
+</div>

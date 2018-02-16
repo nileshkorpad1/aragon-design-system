@@ -1,0 +1,149 @@
+@import '../core/theming/theming';
+@import '../core/style/elevation';
+@import '../core/typography/typography-utils';
+$_wtf2-button-ripple-opacity: 0.1;
+// Applies a focus style to an wtf2-button element for each of the supported palettes.
+@mixin _wtf2-button-focus-overlay-color($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    &.wtf2-primary .wtf2-button-focus-overlay {
+        background-color: wtf2-color($primary);
+    }
+    &.wtf2-accent .wtf2-button-focus-overlay {
+        background-color: wtf2-color($accent);
+    }
+    &.wtf2-warn .wtf2-button-focus-overlay {
+        background-color: wtf2-color($warn);
+    }
+    &[disabled] .wtf2-button-focus-overlay {
+        background-color: transparent;
+    }
+}
+
+@mixin _wtf2-button-ripple-color($theme, $hue, $opacity: $_wtf2-button-ripple-opacity) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    &.wtf2-primary .wtf2-ripple-element {
+        background-color: wtf2-color($primary, $hue, $opacity);
+    }
+    &.wtf2-accent .wtf2-ripple-element {
+        background-color: wtf2-color($accent, $hue, $opacity);
+    }
+    &.wtf2-warn .wtf2-ripple-element {
+        background-color: wtf2-color($warn, $hue, $opacity);
+    }
+}
+
+// Applies a property to an wtf2-button element for each of the supported palettes.
+@mixin _wtf2-button-theme-property($theme, $property, $hue) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    &.wtf2-primary {
+        #{$property}: wtf2-color($primary, $hue);
+    }
+    &.wtf2-accent {
+        #{$property}: wtf2-color($accent, $hue);
+    }
+    &.wtf2-warn {
+        #{$property}: wtf2-color($warn, $hue);
+    }
+    &.wtf2-primary,
+    &.wtf2-accent,
+    &.wtf2-warn,
+    &[disabled] {
+        &[disabled] {
+            $palette: if($property=='color', $foreground, $background);
+            #{$property}: wtf2-color($palette, disabled-button);
+        }
+    }
+}
+
+@mixin wtf2-button-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-button,
+    .wtf2-icon-button,
+    .wtf2-stroked-button {
+        // Buttons without a background color should inherit the font color. This is necessary to
+        // ensure that the button is readable on custom background colors. It's wrong to always assume
+        // that those buttons are always placed inside of containers with the default background
+        // color of the theme (e.g. themed toolbars).
+        color: inherit;
+        background: transparent;
+        @include _wtf2-button-theme-property($theme, 'color', default);
+        @include _wtf2-button-focus-overlay-color($theme);
+        // Setup the ripple color to be based on the text color. This ensures that the ripples
+        // are matching with the current theme palette and are in contrast to the background color
+        // (e.g in themed toolbars).
+        .wtf2-ripple-element {
+            opacity: $_wtf2-button-ripple-opacity;
+            background-color: currentColor;
+        }
+    }
+    .wtf2-button-focus-overlay {
+        background: map_get($foreground, base);
+    }
+    // Note: this needs a bit extra specificity, because we're not guaranteed the inclusion
+    // order of the theme styles and the button reset may end up resetting this as well.
+    .wtf2-stroked-button:not([disabled]) {
+        border-color: wtf2-color($foreground, divider);
+    }
+    .wtf2-flat-button,
+    .wtf2-raised-button,
+    .wtf2-fab,
+    .wtf2-mini-fab {
+        // Default font and background color when not using any color palette.
+        color: wtf2-color($foreground, text);
+        background-color: wtf2-color($background, raised-button);
+        @include _wtf2-button-theme-property($theme, 'color', default-contrast);
+        @include _wtf2-button-theme-property($theme, 'background-color', default);
+        @include _wtf2-button-ripple-color($theme, default-contrast);
+    }
+    .wtf2-stroked-button,
+    .wtf2-flat-button {
+        @include _wtf2-theme-overridable-elevation(0, $theme);
+    }
+    .wtf2-raised-button {
+        @include _wtf2-theme-overridable-elevation(2, $theme);
+        &:not([disabled]):active {
+            @include _wtf2-theme-overridable-elevation(8, $theme);
+        }
+        &[disabled] {
+            @include _wtf2-theme-overridable-elevation(0, $theme);
+        }
+    }
+    .wtf2-fab,
+    .wtf2-mini-fab {
+        @include _wtf2-theme-overridable-elevation(6, $theme);
+        &:not([disabled]):active {
+            @include _wtf2-theme-overridable-elevation(12, $theme);
+        }
+        &[disabled] {
+            @include _wtf2-theme-overridable-elevation(0, $theme);
+        }
+    }
+}
+
+@mixin wtf2-button-typography($config) {
+    .wtf2-button,
+    .wtf2-raised-button,
+    .wtf2-icon-button,
+    .wtf2-stroked-button,
+    .wtf2-flat-button,
+    .wtf2-fab,
+    .wtf2-mini-fab {
+        font: {
+            family: wtf2-font-family($config, button);
+            size: wtf2-font-size($config, button);
+            weight: wtf2-font-weight($config, button);
+        }
+    }
+}

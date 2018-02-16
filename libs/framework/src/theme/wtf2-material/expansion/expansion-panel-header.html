@@ -1,0 +1,11 @@
+<span *ngIf="_displayPosition() == 0">
+  <span [@indicatorRotate]="_getExpandedState()" *ngIf="_showToggle()" class="wtf2-expansion-indicator"></span>
+</span>
+<span class="wtf2-content">
+  <ng-content select="wtf2-panel-title"></ng-content>
+  <ng-content select="wtf2-panel-description"></ng-content>
+  <ng-content></ng-content>
+</span>
+<span *ngIf="_displayPosition()!= 0">
+  <span [@indicatorRotate]="_getExpandedState()" *ngIf="_showToggle()" class="wtf2-expansion-indicator"></span>
+</span>

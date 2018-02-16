@@ -1,0 +1,33 @@
+wtf2-form-field {
+    width: 100%;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.fullWidthWithEnd {
+    padding-right: 0;
+    width: 100%;
+    text-align: end;
+}
+
+.fullWidthWithStart {
+    padding-left: 0;
+    width: 100%;
+    text-align: start;
+}
+
+.fullWidthWithEndToggle {
+    padding-right: 2px;
+    padding-left: 5px;
+    width: 100%;
+    text-align: end;
+}
+
+.fullWidthWithStartToggle {
+    padding-right: 5px;
+    padding-left: 2px;
+    width: 100%;
+    text-align: start;
+}

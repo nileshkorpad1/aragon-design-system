@@ -1,0 +1,27 @@
+<wtf2-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <wtf2-tree-node *wtf2TreeNodeDef="let node" wtf2TreeNodeToggle wtf2TreeNodePadding>
+        <button wtf2-icon-button disabled></button>
+        <wtf2-checkbox class="checklist-leaf-node" [checked]="checklistSelection.isSelected(node)" (change)="todoLeafItemSelectionToggle(node)">{{node.item}}</wtf2-checkbox>
+    </wtf2-tree-node>
+
+    <wtf2-tree-node *wtf2TreeNodeDef="let node; when: hasNoContent" wtf2TreeNodePadding>
+        <button wtf2-icon-button disabled></button>
+        <wtf2-form-field>
+            <input wtf2Input #itemValue placeholder="New item...">
+        </wtf2-form-field>
+        <button wtf2-button (click)="saveNode(node, itemValue.value)">Save</button>
+    </wtf2-tree-node>
+
+    <wtf2-tree-node *wtf2TreeNodeDef="let node; when: hasChild" wtf2TreeNodePadding>
+        <button wtf2-icon-button wtf2TreeNodeToggle [attr.aria-label]="'toggle ' + node.filename">
+            <wtf2-icon class="wtf2-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </wtf2-icon>
+        </button>
+        <wtf2-checkbox [checked]="descendantsAllSelected(node)" [indeterminate]="descendantsPartiallySelected(node)"
+            (change)="todoItemSelectionToggle(node)">{{node.item}}</wtf2-checkbox>
+        <button wtf2-icon-button (click)="addNewItem(node)">
+            <wtf2-icon>add</wtf2-icon>
+        </button>
+    </wtf2-tree-node>
+</wtf2-tree>

@@ -1,0 +1,63 @@
+<wtf2-icon class="dialog-back-arrow" (click)="closeDialog()">arrow_back</wtf2-icon>
+<button wtf2-dialog-close class="dialog-close-button">
+    <wtf2-icon>close</wtf2-icon>
+</button>
+<h2 wtf2-dialog-title class="dialog-header-title">ADD NEW ACCOUNT</h2>
+<wtf2-divider class="divider"></wtf2-divider>
+<wtf2-dialog-content class="wtf2-typography">
+    <!-- <div class="content-card wtf2-white-bg">
+        <wtf2-page-content class="content">
+            <div class="container"> -->
+    <div class="row">
+        <div class="col-12">
+            <wtf2-form-field>
+                <input wtf2Input placeholder="ACCOUNT CODE">
+            </wtf2-form-field>
+        </div>
+
+        <div class="col-12">
+            <wtf2-form-field>
+                <input wtf2Input placeholder="ACCOUNT NAME">
+            </wtf2-form-field>
+        </div>
+        <div class="col-12">
+            <wtf2-form-field>
+                <input wtf2Input placeholder="ACCOUNT DESCRIPTION">
+            </wtf2-form-field>
+        </div>
+
+        <div class="col-12">
+            <wtf2-form-field>
+                <wtf2-select placeholder="ACCOUNT GROUP">
+                    <wtf2-option>None</wtf2-option>
+                    <wtf2-option class='ml-0 p-0' footerAction>
+                        <button wtf2-button class="ml-0">
+                            <wtf2-icon>add</wtf2-icon>CREATE NEW
+                        </button>
+                    </wtf2-option>
+                </wtf2-select>
+            </wtf2-form-field>
+        </div>
+
+        <div class="col-12">
+            <wtf2-form-field>
+                <input wtf2Input [wtf2Datepicker]="picker" placeholder="Choose a date">
+                <wtf2-datepicker-toggle wtf2Suffix [for]="picker"></wtf2-datepicker-toggle>
+                <wtf2-datepicker #picker></wtf2-datepicker>
+            </wtf2-form-field>
+        </div>
+
+        <div class="col-12">
+            <wtf2-form-field>
+                <input wtf2Input placeholder="OPENING BALANCE" value="500.00">
+            </wtf2-form-field>
+        </div>
+    </div>
+    <!-- </div>
+        </wtf2-page-content>
+    </div> -->
+</wtf2-dialog-content>
+<wtf2-dialog-actions>
+    <button wtf2-raised-button wtf2-button (click)="submitData()" color="warn" classwtf2-button>Save</button>
+    <button wtf2-raised-button wtf2-button wtf2-dialog-close>Cancel</button>
+</wtf2-dialog-actions>

@@ -1,0 +1,21 @@
+{
+  "npmScope": "microframework",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "archtype": {
+      "tags": []
+    },
+    "archtype-e2e": {
+      "tags": []
+    },
+    "framework": {
+      "tags": []
+    }
+  }
+}

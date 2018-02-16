@@ -1,0 +1,66 @@
+{
+  "name": "wtf2-permissions",
+  "version": "6.0.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexKhymenko/wtf2-permissions"
+  },
+  "author": {
+    "name": "Oleksandr Khymenko",
+    "email": "alexanderKhymenko@gmail.com"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "angular 2",
+    "angular4",
+    "angular 4",
+    "angular5",
+    "angular 5",
+    "angular6",
+    "angular 6",
+    "angular 7",
+    "angular7",
+    "angularx",
+    "angular-x",
+    "ng",
+    "wtf2",
+    "ng2",
+    "ng4",
+    "ng5",
+    "permissions",
+    "permission",
+    "role",
+    "roles",
+    "guard",
+    "router",
+    "wtf2-router",
+    "wtf2-permissions",
+    "wtf2 permissions",
+    "ng permissions",
+    "ng permission",
+    "ng-permissions",
+    "ng-permission",
+    "wtf2-permission",
+    "angular2-router",
+    "angular4-router",
+    "access-control",
+    "access",
+    "acl",
+    "rbac"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexKhymenko/wtf2-permissions/issues"
+  },
+  "main": "wtf2-permissions.umd.js",
+  "module": "wtf2-permissions.js",
+  "jsnext:main": "wtf2-permissions.js",
+  "typings": "wtf2-permissions.d.ts",
+  "peerDependencies": {
+    "@angular/core": ">=4.0.0 || >8.0.0",
+    "@angular/router": ">=4.0.0 || >8.0.0",
+    "rxjs": "^6.0.0",
+    "zone.js": "^0.8.4"
+  }
+}

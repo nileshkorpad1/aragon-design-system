@@ -1,0 +1,521 @@
+<wtf2-page-skeleton simple fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> WYSIWYG</wtf2-header-title>
+        <wtf2-header-subtitle> WYSIWYG layout Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+    <!-- CONTENT CARD -->
+    <!-- CONTENT -->
+    <wtf2-page-content class="content">
+        <div class="content-card wtf2-white-bg wtf2-elevation-z6 p-5 invert-vertical-margin-64">
+
+            <form class="salesInvoice" [formGroup]="salesInvoiceFormGroup">
+                <div class="row">
+                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                        <wtf2-form-field>
+                            <wtf2-select placeholder="CUSTOMER" required [formControl]="salesInvoiceGroup.customerFormControl">
+                                <wtf2-option value="option">CUSTOMER</wtf2-option>
+                            </wtf2-select>
+                            <wtf2-error *ngIf="salesInvoiceGroup.customerFormControl.hasError('required')">
+                                Please enter <strong>customer</strong>
+                            </wtf2-error>
+                            <wtf2-icon class="icons">add</wtf2-icon>
+                        </wtf2-form-field>
+                    </div>
+                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                        <wtf2-form-field>
+                            <wtf2-select placeholder="CURRENCY" required [formControl]="salesInvoiceGroup.currencyFormControl">
+                                <wtf2-option value="option" *ngFor="let currency of currencies">{{currency}}</wtf2-option>
+                            </wtf2-select>
+                            <wtf2-error *ngIf="salesInvoiceGroup.currencyFormControl.hasError('required')">
+                                Please enter <strong>currency</strong>
+                            </wtf2-error>
+                        </wtf2-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                        <wtf2-form-field>
+                            <wtf2-select placeholder="BASE SALES INVOICE" required [formControl]="salesInvoiceGroup.basesalesinvoiceFormControl">
+                                <wtf2-option value="option">BASE SALES INVOICE</wtf2-option>
+                            </wtf2-select>
+                            <wtf2-error *ngIf="salesInvoiceGroup.basesalesinvoiceFormControl.hasError('required')">
+                                Please enter <strong>base sales invoice</strong>
+                            </wtf2-error>
+                            <wtf2-icon class="icons">search</wtf2-icon>
+                        </wtf2-form-field>
+                    </div>
+                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="EXCHANGE RATE" required [formControl]="salesInvoiceGroup.exchangerateFormControl">
+                            <wtf2-error *ngIf="salesInvoiceGroup.exchangerateFormControl.hasError('required')">
+                                Please enter <strong>exchange rate</strong>
+                            </wtf2-error>
+                        </wtf2-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="MEMO" required [formControl]="salesInvoiceGroup.memoControl">
+                            <wtf2-error *ngIf="salesInvoiceGroup.memoControl.hasError('required')">
+                                Please enter <strong>meno</strong>
+                            </wtf2-error>
+                        </wtf2-form-field>
+                    </div>
+                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="DOCUMENT NUMBER" required [formControl]="salesInvoiceGroup.doccumentNumberFormControl">
+                            <wtf2-error *ngIf="salesInvoiceGroup.doccumentNumberFormControl.hasError('required')">
+                                Please enter <strong>doccument number</strong>
+                            </wtf2-error>
+                        </wtf2-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="CUSTOMER PO REFERENCE NO" required [formControl]="salesInvoiceGroup.customerporefnoFormControl">
+                            <wtf2-error *ngIf="salesInvoiceGroup.customerporefnoFormControl.hasError('required')">
+                                Please enter <strong>customer PO refrence number</strong>
+                            </wtf2-error>
+                        </wtf2-form-field>
+                    </div>
+                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                        <wtf2-form-field>
+                            <input wtf2Input [wtf2Datepicker]="picker" placeholder="NEXT INVOICE DATE" required
+                                [formControl]="salesInvoiceGroup.invoicedatecustomerFormControl">
+                            <wtf2-error *ngIf="salesInvoiceGroup.invoicedatecustomerFormControl.hasError('required')">
+
+                                Please enter <strong>next invoice date</strong>
+                            </wtf2-error>
+                            <wtf2-datepicker-toggle wtf2Suffix [for]="picker"></wtf2-datepicker-toggle>
+                            <wtf2-datepicker #picker></wtf2-datepicker>
+                        </wtf2-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 ">
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="REPEAT THIS INVOICE EVERY">
+                        </wtf2-form-field>
+                    </div>
+                    <div class="col col-3 ">
+                        <wtf2-form-field>
+                            <wtf2-select>
+                                <wtf2-option value="option">DAYS</wtf2-option>
+                            </wtf2-select>
+                        </wtf2-form-field>
+                    </div>
+                    <div class="col col-3 ">
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="RECURRING INVOICE COUNT">
+                        </wtf2-form-field>
+                    </div>
+                    <div class="col col-3 ">
+                        <wtf2-form-field>
+                            <input wtf2Input [wtf2Datepicker]="invoicedate" placeholder="RECURRING INVOICE COUNT DATE"
+                                required [formControl]="salesInvoiceGroup.reccFormControl">
+                            <wtf2-error *ngIf="salesInvoiceGroup.reccFormControl.hasError('required')">
+                                Please enter <strong>recurring invoice count date</strong>
+                            </wtf2-error>
+                            <wtf2-datepicker-toggle wtf2Suffix [for]="invoicedate"></wtf2-datepicker-toggle>
+                            <wtf2-datepicker #invoicedate></wtf2-datepicker>
+                        </wtf2-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                        <wtf2-form-field>
+                            <input wtf2Input placeholder="GENERATE INVOICE DATE">
+                        </wtf2-form-field>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="content">
+            <div class="content-card wtf2-white-bg wtf2-elevation-z6 mt-5">
+                <!-- CONTENT TOOLBAR -->
+                <div class="toolbar px-24 py-8 position-relative">
+                    <span class=""></span>
+                    <wtf2-quote left color="red" class="quote-demo">Awaiting Payment</wtf2-quote>
+                </div>
+                <wtf2-divider></wtf2-divider>
+                <!-- / CONTENT TOOLBAR -->
+
+                <!--  -->
+                <div class="content  px-5">
+                    <div class="container-fluid p-0">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mt-3">
+                                    <inline-editor type="date" [(ngModel)]="editabledate" (onSave)="saveEditableDate($event)"
+                                        value="valoreditabledate"></inline-editor>
+                                </div>
+                                <div class="mt-3">
+                                    <h1 class="font-weight-bold">
+                                        <inline-editor type="text" [(ngModel)]="editableText" (onSave)="saveEditable($event)"
+                                            name="editableTextCompany" size="8"></inline-editor>
+                                    </h1>
+                                    <!-- <wtf2-error *ngIf="dateControl.hasError('required')">
+                                text is <strong>required</strong>
+                            </wtf2-error> -->
+
+                                </div>
+                                <div class="mt-3">
+                                    <inline-editor type="textarea" cols="50" rows="4" [(ngModel)]="editableTextArea"
+                                        (onSave)="saveEditableTextarea($event)" (onSaveDialog)="saveEditableTextarea($event)"
+                                        [options]="editableSelectOptions" [dynamicformfields]="formConfig">
+                                    </inline-editor>
+
+                                    <!-- <button wtf2-button (click)="RenderDataSelect()">Get Customet Data</button> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+
+                                    <div class="col-12 mt-3 d-flex justify-content-end">
+                                        <div class="">
+                                            <div>
+                                                <small class="pull-right">Due Date</small>
+                                            </div>
+                                            <div>
+                                                <inline-editor type="date" [(ngModel)]="editableDuedate1" class="pull-right"
+                                                    (onSave)="saveEditableDate($event)" [options]="editableSelectOptions"
+                                                    value="editableDuedate"></inline-editor>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-3 d-flex justify-content-end">
+                                        <div class="">
+                                            <div>
+                                                <small class="pull-right">Sales Invoice Date</small>
+                                            </div>
+                                            <div>
+                                                <inline-editor type="date" [(ngModel)]="editableInvoicedate1" class="pull-right"
+                                                    (onSave)="saveEditableDate($event)" [options]="editableSelectOptions"
+                                                    value="editableInvoicedate"></inline-editor>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-5">
+                        <wtf2-checkbox>Amount Include GST</wtf2-checkbox>
+                    </div>
+                    <div class="container-fluid p-0 mt-1">
+                        <form [formGroup]="tableForm" novalidate>
+                            <wtf2-table #table formArrayName="users" [dataSource]="dataSource" cdkDropList
+                                [cdkDropListData]="dataSource" (cdkDropListDropped)="dropTable($event)">
+
+                                <!--- Note that these columns can be defined in any order.
+ The actual rendered columns are set as a property on the row definition" -->
+
+                                <!-- Position Column -->
+                                <ng-container wtf2ColumnDef="position">
+                                    <div class="icon-cell" *wtf2HeaderCellDef> </div>
+                                    <div class="icon-cell" *wtf2CellDef="let element">
+                                        <wtf2-icon cdkDragHandle>drag_indicator</wtf2-icon>
+                                    </div>
+                                </ng-container>
+
+                                <!-- product Column -->
+                                <ng-container wtf2ColumnDef="product">
+                                    <wtf2-header-cell *wtf2HeaderCellDef> Product </wtf2-header-cell>
+                                    <wtf2-cell *wtf2CellDef="let element let i = index" [formGroupName]="i">
+                                        <wtf2-form-field>
+                                            <input wtf2Input formControlName="product" value="{{element.product}}">
+                                        </wtf2-form-field>
+                                    </wtf2-cell>
+                                </ng-container>
+
+                                <!-- Description Column -->
+                                <ng-container wtf2ColumnDef="description">
+                                    <wtf2-header-cell *wtf2HeaderCellDef> Description </wtf2-header-cell>
+                                    <wtf2-cell *wtf2CellDef="let element">
+                                        <wtf2-form-field>
+                                            <input wtf2Input value="{{element.description}}">
+                                        </wtf2-form-field>
+                                    </wtf2-cell>
+                                </ng-container>
+
+                                <!-- quantity Column -->
+                                <ng-container wtf2ColumnDef="quantity">
+                                    <wtf2-header-cell *wtf2HeaderCellDef> Quantity </wtf2-header-cell>
+                                    <wtf2-cell *wtf2CellDef="let element">
+                                        <wtf2-form-field>
+                                            <input type="number" wtf2Input value="{{element.quantity}}">
+                                        </wtf2-form-field>
+                                    </wtf2-cell>
+                                </ng-container>
+
+                                <!-- unit price Column -->
+                                <ng-container wtf2ColumnDef="unitprice">
+                                    <wtf2-header-cell *wtf2HeaderCellDef> Unit Price </wtf2-header-cell>
+                                    <wtf2-cell *wtf2CellDef="let element">
+                                        <wtf2-form-field>
+                                            <input type="number" wtf2Input value="{{element.unitprice}}">
+                                        </wtf2-form-field>
+                                    </wtf2-cell>
+                                </ng-container>
+
+                                <!-- dicount Column -->
+                                <ng-container wtf2ColumnDef="discount">
+                                    <wtf2-header-cell *wtf2HeaderCellDef> Discount </wtf2-header-cell>
+                                    <wtf2-cell *wtf2CellDef="let element">
+                                        <wtf2-form-field>
+                                            <input wtf2Input value="{{element.discount}} %">
+                                        </wtf2-form-field>
+                                    </wtf2-cell>
+                                </ng-container>
+
+                                <!-- tax Column -->
+                                <ng-container wtf2ColumnDef="tax">
+                                    <wtf2-header-cell *wtf2HeaderCellDef> Tax </wtf2-header-cell>
+                                    <wtf2-cell *wtf2CellDef="let element">
+                                        <wtf2-form-field>
+                                            <input wtf2Input value="{{element.tax}}">
+                                        </wtf2-form-field>
+                                    </wtf2-cell>
+                                </ng-container>
+
+                                <!-- tax amount Column -->
+                                <ng-container wtf2ColumnDef="taxamount">
+                                    <wtf2-header-cell *wtf2HeaderCellDef> Tax Amount </wtf2-header-cell>
+                                    <wtf2-cell *wtf2CellDef="let element">
+                                        <wtf2-form-field>
+                                            <input type="number" wtf2Input value="{{element.taxamount}}">
+                                        </wtf2-form-field>
+                                    </wtf2-cell>
+                                </ng-container>
+
+                                <!-- Amount -->
+                                <ng-container wtf2ColumnDef="amount">
+                                    <wtf2-header-cell *wtf2HeaderCellDef> Amount (SGD) </wtf2-header-cell>
+                                    <wtf2-cell *wtf2CellDef="let element">
+                                        <wtf2-form-field>
+                                            <input class="example-right-align " type="number" wtf2Input value="{{element.amount}}">
+                                        </wtf2-form-field>
+                                    </wtf2-cell>
+                                </ng-container>
+
+                                <!-- delete -->
+                                <ng-container wtf2ColumnDef="action">
+                                    <div *wtf2HeaderCellDef> </div>
+                                    <div *wtf2CellDef="let element">
+                                        <button wtf2-icon-button (click)="deleteItem(element.position)">
+                                            <wtf2-icon [style.color]='"gray"' class="row-delete-btn">delete</wtf2-icon>
+                                        </button>
+                                    </div>
+                                </ng-container>
+
+                                <wtf2-header-row *wtf2HeaderRowDef="displayedColumns"></wtf2-header-row>
+                                <wtf2-row *wtf2RowDef="let row; columns: displayedColumns;" cdkDrag [cdkDragData]="row"
+                                    (change)="getLastRow($event,row)"></wtf2-row>
+
+                            </wtf2-table>
+                        </form>
+                    </div>
+                    <div class="p-24 px-24">
+                        <div class="row ">
+                            <div class="col-md-7"></div>
+                            <div class="col-md-5 px-12 pricing-menu">
+                                <div class="row">
+                                    <div class="col-md-9 col-sm-9 text-right">
+                                        <ng-container>SUB-TOTAL</ng-container>
+                                    </div>
+                                    <div class="col-md-2 col-sm-3">
+                                        {{SubTotal}}
+                                    </div>
+                                </div>
+                                <wtf2-divider></wtf2-divider>
+                                <div class="row">
+                                    <div class="col-md-9 col-sm-9 text-right">
+                                        <ng-container>AMOUNT BEFORE TAX</ng-container>
+                                    </div>
+                                    <div class="col-md-2 col-sm-2">{{AmountBeforTax}}</div>
+                                </div>
+                                <wtf2-divider></wtf2-divider>
+                                <div class="row">
+                                    <div class="col-md-9 col-sm-9 text-right">
+                                        <ng-container>+ TAX</ng-container>
+                                    </div>
+                                    <div class="col-md-2 col-sm-2">
+                                        {{TaxAmount}}
+                                    </div>
+                                </div>
+                                <!-- <wtf2-divider></wtf2-divider>
+                                <div class="row">
+                                    <div class="col-md-9 col-sm-9 text-right text-large">
+                                        <ng-container><strong>TOTAL</strong></ng-container>
+                                    </div>
+                                    <div class="col-md-2 col-sm-2">
+                                        {{TotalAmoumt}}
+                                    </div>
+                                </div> -->
+                                <wtf2-divider></wtf2-divider>
+                                <div class="row">
+                                    <div class="col-md-9 col-sm-9 text-right ">
+                                        <div class="row">
+                                            <div class="col-md-12 text-large">
+                                                <ng-container><strong>TOTAL</strong></ng-container>
+                                            </div>
+                                            <small class="col-md-12">(IN BASE CURRENCY)</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-2">
+                                        {{TotalInBaseCurrency}}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <wtf2-divider></wtf2-divider>
+                        <div class="row">
+                            <div class="col-md-7"></div>
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="col-md-9 col-sm-9 text-right">
+                                        <div class="row">
+                                            <div class="col-md-12 text-large">
+                                                <ng-container><strong>OUTSTANDING BALANCE</strong></ng-container>
+                                            </div>
+                                            <small class="col-md-12">(IN BASE CURRUNCY)</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-2">
+                                        {{OutstandingBalance}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div>
+                <div class="row py-24">
+                    <div class="col col-12 d-line">
+                        <wtf2-split-button title="Save" (onClick)="openTest()" color="warn" class="d-line">
+                            <button wtf2-menu-item (click)="openTest()">Item 1</button>
+                            <button wtf2-menu-item (click)="openTest()">Item 2</button>
+                            <button wtf2-menu-item (click)="openTest()">Item 3</button>
+                            <button wtf2-menu-item (click)="openTest()">Item 4</button>
+                        </wtf2-split-button>
+
+                        <span *ngIf="showtool">
+                            <button wtf2-icon-button click="sendEmail()">
+                                <wtf2-icon [style.color]='"red"'>email</wtf2-icon>
+                            </button>
+                            <span class="icon-text">EMAIL</span>
+
+                            <button wtf2-icon-button click="sendEmail()">
+                                <wtf2-icon [style.color]='"red"'>local_printshop</wtf2-icon>
+                            </button>
+                            <span class="icon-text">PRINT</span>
+
+                            <button wtf2-icon-button click="sendEmail()">
+                                <wtf2-icon class="rotate-45" [style.color]='"red"'>attach_file</wtf2-icon>
+                            </button>
+                            <span class="icon-text">ADD ATTACHMENT</span>
+
+                            <button wtf2-icon-button click="sendEmail()">
+                                <wtf2-icon [style.color]='"red"'>settings_backup_restore</wtf2-icon>
+                            </button>
+                            <span class="icon-text">SET RECURRING</span>
+
+                            <button wtf2-icon-button click="sendEmail()">
+                                <wtf2-icon [style.color]='"red"'>note_add</wtf2-icon>
+                            </button>
+                            <span class="icon-text">DEBIT NOTE</span>
+
+                            <button wtf2-icon-button click="sendEmail()">
+                                <wtf2-icon [style.color]='"red"'>note_add</wtf2-icon>
+                            </button>
+                            <span class="icon-text">CREDIT NOTE</span>
+
+                            <button wtf2-icon-button click="sendEmail()">
+                                <wtf2-icon [style.color]='"red"'>account_balance_wallet</wtf2-icon>
+                            </button>
+                            <span class="icon-text">PAYMENT</span>
+                        </span>
+                        <button class="pull-right" wtf2-icon-button (click)="openCancelToaster()">
+                            <wtf2-icon [style.color]='"gray"'>close</wtf2-icon>
+                        </button>
+                    </div>
+                </div>
+
+
+
+
+
+                <div fullwidth>
+                    <ng-container>
+                        <strong> History</strong>
+                    </ng-container>
+                </div>
+                <!-- *********Bouttom grid******* -->
+                <!-- <div class="container\-fluid p-0 wtf2-elevation-z8"> -->
+                <div class="py-24">
+                    <wtf2-table #historytable [dataSource]="dataSourceHistory" class="wtf2-elevation-z8">
+                        <ng-container wtf2ColumnDef="date">
+                            <!-- action user notes -->
+                            <wtf2-header-cell *wtf2HeaderCellDef> Date </wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let element">
+                                {{element.date}}
+                            </wtf2-cell>
+                        </ng-container>
+                        <ng-container wtf2ColumnDef="action">
+                            <wtf2-header-cell *wtf2HeaderCellDef> Action </wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let element">
+                                {{element.action}}
+                            </wtf2-cell>
+                        </ng-container>
+                        <ng-container wtf2ColumnDef="user">
+                            <wtf2-header-cell *wtf2HeaderCellDef> User </wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let element">
+                                {{element.user}}
+                            </wtf2-cell>
+                        </ng-container>
+                        <ng-container wtf2ColumnDef="note">
+                            <wtf2-header-cell *wtf2HeaderCellDef> Notes </wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let element">
+                                {{element.note}}
+                            </wtf2-cell>
+                        </ng-container>
+
+                        <wtf2-header-row *wtf2HeaderRowDef="displayhistorycols"></wtf2-header-row>
+                        <wtf2-row *wtf2RowDef="let row; columns: displayhistorycols;"></wtf2-row>
+                    </wtf2-table>
+                </div>
+            </div>
+        </div>
+
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+
+
+
+
+
+    <!-- / CONTENT CARD -->
+
+
+</wtf2-page-skeleton>

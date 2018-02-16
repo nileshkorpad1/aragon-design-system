@@ -1,0 +1,315 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!-- / TOP BACKGROUND -->
+
+
+    <!-- CENTER -->
+
+        <!-- CONTENT HEADER -->
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> Stepper</wtf2-header-title>
+            <wtf2-header-subtitle> Stepper Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+
+            <!-- CONTENT TOOLBAR -->
+            <!-- <div class="toolbar px-24 py-8"> -->
+
+            <!-- <button wtf2-icon-button class="sidebar-toggle" fxHide.gt-md (click)="toggleSidebar()"> -->
+            <!-- (click)="toggleSidebar('carded-left-sidebar-1')"> -->
+            <!-- </button> -->
+            <!--
+                <span>ADD CUSTOMER</span>
+
+            </div> -->
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <wtf2-page-content class="content ">
+                <h3>Horizontal Stepper</h3>
+                <wtf2-horizontal-stepper #stepper>
+                    <wtf2-step [stepControl]="firstFormGroup">
+                        <ng-template wtf2StepLabel>Customer Information</ng-template>
+                        <div class=" container ">
+                            <form class="personeldetails" #userForm="ngForm">
+                                <div class="row mt-5">
+                                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                        <wtf2-form-field>
+                                            <input wtf2Input placeholder="CUSTOMER CODE" required [formControl]="customerCodeFormControl" [errorStateMatcher]="matcher">
+                                        </wtf2-form-field>
+                                        <wtf2-error *ngIf="customerCodeFormControl.hasError('pattern') ">
+                                            Please enter a valid Customer Code
+                                        </wtf2-error>
+
+
+                                    </div>
+                                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                        <wtf2-form-field>
+                                            <input wtf2Input placeholder="CUSTOMER NAME" required [formControl]="customerNameFormControl" [errorStateMatcher]="matcher">
+                                            <wtf2-error *ngIf="customerNameFormControl.hasError('pattern') && !customerNameFormControl.hasError('required')">
+                                                Please enter a valid Customer Name
+                                            </wtf2-error>
+                                            <wtf2-error *ngIf="customerNameFormControl.hasError('required')">
+                                                Customer Name is <strong>required</strong>
+                                            </wtf2-error>
+                                        </wtf2-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                        <wtf2-form-field>
+                                            <input wtf2Input placeholder="ACCOUNT" required [formControl]="accountFormControl" [errorStateMatcher]="matcher">
+                                        </wtf2-form-field>
+                                        <wtf2-error *ngIf="accountFormControl.hasError('pattern') ">
+                                            Please enter a valid Account Number
+                                        </wtf2-error>
+                                    </div>
+                                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                        <wtf2-form-field>
+                                            <input wtf2Input placeholder="CURRENCY" required [formControl]="currencyFormControl" [errorStateMatcher]="matcher">
+                                            <wtf2-error *ngIf="currencyFormControl.hasError('pattern') && !currencyFormControl.hasError('required')">
+                                                Please enter a valid Currency
+                                            </wtf2-error>
+                                            <wtf2-error *ngIf="currencyFormControl.hasError('required')">
+                                                Currency is <strong>required</strong>
+                                            </wtf2-error>
+                                        </wtf2-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                        <wtf2-form-field>
+                                            <input wtf2Input placeholder="CUSTOMER UEN" required [formControl]="customerUenFormControl" [errorStateMatcher]="matcher">
+                                        </wtf2-form-field>
+                                        <wtf2-error *ngIf="customerUenFormControl.hasError('pattern') ">
+                                            Please enter a valid Account Number
+                                        </wtf2-error>
+                                    </div>
+                                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                        <wtf2-form-field>
+                                            <input wtf2Input placeholder="TAX NUMBER" required [formControl]="accountFormControl" [errorStateMatcher]="matcher">
+                                        </wtf2-form-field>
+                                        <wtf2-error *ngIf="accountFormControl.hasError('pattern') ">
+                                            Please enter a valid Account Number
+                                        </wtf2-error>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                        <wtf2-form-field>
+                                            <wtf2-select placeholder="PAYMENT TERM" required [formControl]="paymentTermFormControl" [errorStateMatcher]="matcher">
+                                                <wtf2-option value="test">Payment term 1</wtf2-option>
+                                                <wtf2-option value="test">Payment term 2</wtf2-option>
+                                            </wtf2-select>
+                                            <wtf2-error *ngIf="paymentTermFormControl.hasError('required')">
+                                                Payment term is <strong>required</strong>
+                                            </wtf2-error>
+                                        </wtf2-form-field>
+                                    </div>
+                                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                        <wtf2-form-field>
+                                            <wtf2-select placeholder="TAX" required [formControl]="cityFormControl" [errorStateMatcher]="matcher">
+                                                <wtf2-option value="test">Tax 1</wtf2-option>
+                                                <wtf2-option value="test">Tax 1</wtf2-option>
+                                            </wtf2-select>
+                                            <wtf2-error *ngIf="cityFormControl.hasError('required')">
+                                                Tax is <strong>required</strong>
+                                            </wtf2-error>
+                                        </wtf2-form-field>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                        <button class="submit-Button" wtf2-raised-button color="warn" (click)="submitData()">Save</button>
+                                        <!-- <button wtf2-button wtf2-flat-button color="primary" class="ml-5">NEXT</button> -->
+                                        <button class="submit-Button " wtf2-raised-button color="warn" (click)="submitData()">Next</button>
+                                        <button wtf2-button color="primary" class="ml-5">Cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </wtf2-step>
+                    <wtf2-step>
+                        <div class=" container ">
+                            <form>
+                                <ng-template wtf2StepLabel>Billing Address</ng-template>
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="Address" required>
+                                </wtf2-form-field>
+                                <div>
+                                    <button class="submit-Button " wtf2-raised-button color="warn" (click)="submitData()">Save</button>
+                                    <button wtf2-button wtf2StepperPrevious class="ml-5">Back</button>
+                                    <button wtf2-button wtf2StepperNext class="ml-5">Next</button>
+                                </div>
+                            </form>
+                        </div>
+                    </wtf2-step>
+                    <wtf2-step>
+                        <div class=" container ">
+                            <ng-template wtf2StepLabel>Shipping Address</ng-template>
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="Address" required>
+                            </wtf2-form-field>
+                            <div>
+                                <button class="submit-Button " wtf2-raised-button color="warn" (click)="submitData()">Save</button>
+                                <button wtf2-button wtf2StepperPrevious class="ml-5">Back</button>
+                                <button wtf2-button wtf2StepperNext class="ml-5">Next</button>
+                            </div>
+                        </div>
+                    </wtf2-step>
+                    <wtf2-step>
+                        <div class=" container ">
+                            <ng-template wtf2StepLabel>IBG Details</ng-template>
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="Address" required>
+                            </wtf2-form-field>
+                            <div>
+                                <button class="submit-Button " wtf2-raised-button color="warn" (click)="submitData()">Save</button>
+                                <button wtf2-button wtf2StepperPrevious class="ml-5">Back</button>
+                                <button wtf2-button (click)="stepper.reset()" class="ml-5">Reset</button>
+                            </div>
+                        </div>
+                    </wtf2-step>
+                </wtf2-horizontal-stepper>
+                <h3>Vertical Stepper</h3>
+                <wtf2-vertical-stepper [linear]="isLinear" #stepper>
+                    <wtf2-step [stepControl]="firstFormGroup">
+                        <ng-template wtf2StepLabel>Customer Information</ng-template>
+                        <form class="personeldetails" #userForm="ngForm">
+                            <div class="row mt-5">
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="CUSTOMER CODE" required [formControl]="customerCodeFormControl" [errorStateMatcher]="matcher">
+                                    </wtf2-form-field>
+                                    <wtf2-error *ngIf="customerCodeFormControl.hasError('pattern') ">
+                                        Please enter a valid Customer Code
+                                    </wtf2-error>
+
+
+                                </div>
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="CUSTOMER NAME" required [formControl]="customerNameFormControl" [errorStateMatcher]="matcher">
+                                        <wtf2-error *ngIf="customerNameFormControl.hasError('pattern') && !customerNameFormControl.hasError('required')">
+                                            Please enter a valid Customer Name
+                                        </wtf2-error>
+                                        <wtf2-error *ngIf="customerNameFormControl.hasError('required')">
+                                            Customer Name is <strong>required</strong>
+                                        </wtf2-error>
+                                    </wtf2-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="ACCOUNT" required [formControl]="accountFormControl" [errorStateMatcher]="matcher">
+                                    </wtf2-form-field>
+                                    <wtf2-error *ngIf="accountFormControl.hasError('pattern') ">
+                                        Please enter a valid Account Number
+                                    </wtf2-error>
+                                </div>
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="CURRENCY" required [formControl]="currencyFormControl" [errorStateMatcher]="matcher">
+                                        <wtf2-error *ngIf="currencyFormControl.hasError('pattern') && !currencyFormControl.hasError('required')">
+                                            Please enter a valid Currency
+                                        </wtf2-error>
+                                        <wtf2-error *ngIf="currencyFormControl.hasError('required')">
+                                            Currency is <strong>required</strong>
+                                        </wtf2-error>
+                                    </wtf2-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="CUSTOMER UEN" required [formControl]="customerUenFormControl" [errorStateMatcher]="matcher">
+                                    </wtf2-form-field>
+                                    <wtf2-error *ngIf="customerUenFormControl.hasError('pattern') ">
+                                        Please enter a valid Account Number
+                                    </wtf2-error>
+                                </div>
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <input wtf2Input placeholder="TAX NUMBER" required [formControl]="accountFormControl" [errorStateMatcher]="matcher">
+                                    </wtf2-form-field>
+                                    <wtf2-error *ngIf="accountFormControl.hasError('pattern') ">
+                                        Please enter a valid Account Number
+                                    </wtf2-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <wtf2-select placeholder="PAYMENT TERM" required [formControl]="paymentTermFormControl" [errorStateMatcher]="matcher">
+                                            <wtf2-option value="test">Payment term 1</wtf2-option>
+                                            <wtf2-option value="test">Payment term 2</wtf2-option>
+                                        </wtf2-select>
+                                        <wtf2-error *ngIf="paymentTermFormControl.hasError('required')">
+                                            Payment term is <strong>required</strong>
+                                        </wtf2-error>
+                                    </wtf2-form-field>
+                                </div>
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <wtf2-form-field>
+                                        <wtf2-select placeholder="TAX" required [formControl]="cityFormControl" [errorStateMatcher]="matcher">
+                                            <wtf2-option value="test">Tax 1</wtf2-option>
+                                            <wtf2-option value="test">Tax 1</wtf2-option>
+                                        </wtf2-select>
+                                        <wtf2-error *ngIf="cityFormControl.hasError('required')">
+                                            Tax is <strong>required</strong>
+                                        </wtf2-error>
+                                    </wtf2-form-field>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                    <button class="submit-Button" wtf2-raised-button color="warn" (click)="submitData()">Save</button>
+                                    <!-- <button wtf2-button wtf2-flat-button color="primary" class="ml-5">NEXT</button> -->
+                                    <button wtf2-button wtf2StepperNext class="ml-5">Next</button>
+                                    <button wtf2-button color="primary" class="ml-5">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </wtf2-step>
+                    <wtf2-step [stepControl]="secondFormGroup">
+                        <form [formGroup]="secondFormGroup">
+                            <ng-template wtf2StepLabel>Fill out your address</ng-template>
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="Address" formControlName="secondCtrl" required>
+                            </wtf2-form-field>
+                            <div>
+                                <button class="submit-Button" wtf2-raised-button color="warn" (click)="submitData()">Save</button>
+                                <!-- <button wtf2-button wtf2-flat-button color="primary" class="ml-5">NEXT</button> -->
+                                <button wtf2-button wtf2StepperPrevious class="ml-5">Back</button>
+                                <button wtf2-button wtf2StepperNext class="ml-5">Next</button>
+                            </div>
+                        </form>
+                    </wtf2-step>
+                    <wtf2-step>
+                        <form [formGroup]="thirdFormGroup">
+                            <ng-template wtf2StepLabel>Done</ng-template>
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="Address" formControlName="secondCtrl1" required>
+                            </wtf2-form-field>
+                            <div>
+                                <button class="submit-Button" wtf2-raised-button color="warn" (click)="submitData()">Save</button>
+                                <button wtf2-button wtf2StepperPrevious class="ml-5">Back</button>
+                                <button wtf2-button (click)="stepper.reset()" class="ml-5">Reset</button>
+                            </div>
+                        </form>
+                    </wtf2-step>
+                </wtf2-vertical-stepper>
+            </wtf2-page-content>
+            <!-- / CONTENT -->
+
+        <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

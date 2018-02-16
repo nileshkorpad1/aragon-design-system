@@ -1,0 +1,37 @@
+@import '~@angular/cdk/a11y';
+$wtf2-snack-bar-padding: 14px 16px !default;
+$wtf2-snack-bar-min-height: 48px !default;
+$wtf2-snack-bar-min-width: 344px !default;
+$wtf2-snack-bar-max-width: 33vw !default;
+$wtf2-snack-bar-spacing-margin: 24px !default;
+$wtf2-snack-bar-spacing-margin-handset: 8px !default;
+.wtf2-snack-bar-container {
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    margin: $wtf2-snack-bar-spacing-margin;
+    max-width: $wtf2-snack-bar-max-width;
+    min-width: $wtf2-snack-bar-min-width;
+    padding: $wtf2-snack-bar-padding;
+    min-height: $wtf2-snack-bar-min-height;
+    transform-origin: center;
+    @include cdk-high-contrast {
+        border: solid 1px;
+    }
+}
+
+
+/**
+ * The wtf2-snack-bar-handset class will be applied to the overlay
+ * element causing styling to both it and the snack bar container.
+ */
+
+.wtf2-snack-bar-handset {
+    width: 100%;
+    .wtf2-snack-bar-container {
+        margin: $wtf2-snack-bar-spacing-margin-handset;
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
+    }
+}

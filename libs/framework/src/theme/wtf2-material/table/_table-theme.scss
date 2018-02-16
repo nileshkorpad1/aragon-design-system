@@ -1,0 +1,51 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin wtf2-table-theme($theme) {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-table {
+        background: wtf2-color($background, 'card');
+    }
+    .wtf2-table thead,
+    .wtf2-table tbody,
+    .wtf2-table tfoot,
+    wtf2-header-row,
+    wtf2-row,
+    wtf2-footer-row,
+    [wtf2-header-row],
+    [wtf2-row],
+    [wtf2-footer-row],
+    .wtf2-table-sticky {
+        background: inherit;
+    }
+    wtf2-row,
+    wtf2-header-row,
+    wtf2-footer-row,
+    th.wtf2-header-cell,
+    td.wtf2-cell,
+    td.wtf2-footer-cell {
+        border-bottom-color: wtf2-color($foreground, divider);
+    }
+    .wtf2-header-cell {
+        color: wtf2-color($foreground, secondary-text);
+    }
+    .wtf2-cell,
+    .wtf2-footer-cell {
+        color: wtf2-color($foreground, text);
+    }
+}
+
+@mixin wtf2-table-typography($config) {
+    .wtf2-table {
+        font-family: wtf2-font-family($config);
+    }
+    .wtf2-header-cell {
+        font-size: wtf2-font-size($config, caption);
+        font-weight: wtf2-font-weight($config, body-2);
+    }
+    .wtf2-cell,
+    .wtf2-footer-cell {
+        font-size: wtf2-font-size($config, body-1);
+    }
+}

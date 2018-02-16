@@ -1,0 +1,15 @@
+{
+    "keys": [
+        "value"
+    ],
+    "type": "gauge",
+    "data": [
+        {
+            "value": 1,
+            "labelname":"data1",
+            "maxvalue": 10,
+            "gaugeid": "gaugechartid",
+            "partition": 5
+        }
+    ]
+}

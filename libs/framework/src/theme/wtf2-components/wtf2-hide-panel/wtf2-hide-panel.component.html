@@ -1,0 +1,34 @@
+<div *ngIf="VerticalbuttonVar" class="center">
+    <wtf2-sidenav-container class="expantion-container  wtf2-white-bg">
+        <wtf2-sidenav position="end" #sidenav mode="side" opened class="wtf2-hide-sidenav wtf2-grey-200-bg">
+            <ng-content select="[verticalhidden]"></ng-content>
+        </wtf2-sidenav>
+        <wtf2-sidenav-content class="dialog-sidenav-content">
+            <ng-content select="[verticalconstant]"></ng-content>
+        </wtf2-sidenav-content>
+    </wtf2-sidenav-container>
+    <div class="d-flex justify-content-end">
+        <button wtf2-button disableRipple class="mt-2 hide-btn-toggle" (click)="sidenav.toggle()">{{ sidenav._opened ?
+            HideLabel:ShowLabel}}
+            <wtf2-icon>{{ sidenav._opened ? "highlight_off" : "visibility"}}</wtf2-icon>
+        </button>
+    </div>
+</div>
+<div *ngIf="HorizontalbuttonVar" class="center">
+    <wtf2-accordion>
+        <wtf2-expansion-panel [expanded]="show" disabled="true" hideToggle="false">
+            <wtf2-expansion-panel-header>
+                <button wtf2-button disableRipple class="hide-btn-toggle" *ngIf="!show" (click)="showExpander($event)">{{ShowLabel}}
+                    <wtf2-icon>visibility</wtf2-icon></button>
+            </wtf2-expansion-panel-header>
+            <div class="wtf2-hide-panel-detail">
+                <ng-content></ng-content>
+                <div class="d-flex justify-content-end">
+                    <button wtf2-button disableRipple class="mt-2 hide-btn-toggle" *ngIf="show" (click)="hideExpander($event)">{{HideLabel}}
+                        <wtf2-icon>highlight_off</wtf2-icon>
+                    </button>
+                </div>
+            </div>
+        </wtf2-expansion-panel>
+    </wtf2-accordion>
+</div>

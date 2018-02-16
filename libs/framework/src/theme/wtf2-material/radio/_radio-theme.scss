@@ -1,0 +1,63 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin _wtf2-radio-color($palette) {
+    &.wtf2-radio-checked .wtf2-radio-outer-circle {
+        border-color: wtf2-color($palette);
+    }
+    .wtf2-radio-inner-circle,
+    .wtf2-radio-ripple .wtf2-ripple-element:not(.wtf2-radio-persistent-ripple),
+    &.wtf2-radio-checked .wtf2-radio-persistent-ripple,
+    &:active .wtf2-radio-persistent-ripple {
+        background-color: wtf2-color($palette);
+    }
+}
+
+@mixin wtf2-radio-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-radio-outer-circle {
+        border-color: wtf2-color($foreground, secondary-text);
+    }
+    .wtf2-radio-button {
+        &.wtf2-primary {
+            @include _wtf2-radio-color($primary);
+        }
+        &.wtf2-accent {
+            @include _wtf2-radio-color($accent);
+        }
+        &.wtf2-warn {
+            @include _wtf2-radio-color($warn);
+        }
+        // This needs extra specificity, because the classes above are combined
+        // (e.g. `.wtf2-radio-button.wtf2-accent`) which increases their specificity a lot.
+        // TODO: consider making the selectors into descendants (`.wtf2-primary .wtf2-radio-button`).
+        &.wtf2-radio-disabled {
+            &.wtf2-radio-checked .wtf2-radio-outer-circle,
+            .wtf2-radio-outer-circle {
+                border-color: wtf2-color($foreground, disabled);
+            }
+            .wtf2-radio-ripple .wtf2-ripple-element,
+            .wtf2-radio-inner-circle {
+                background-color: wtf2-color($foreground, disabled);
+            }
+            .wtf2-radio-label-content {
+                color: wtf2-color($foreground, disabled);
+            }
+        }
+        // Switch this to a solid color since we're using `opacity`
+        // to control how opaque the ripple should be.
+        .wtf2-ripple-element {
+            background-color: map_get($foreground, base);
+        }
+    }
+}
+
+@mixin wtf2-radio-typography($config) {
+    .wtf2-radio-button {
+        font-family: wtf2-font-family($config);
+    }
+}

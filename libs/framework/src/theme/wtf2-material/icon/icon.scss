@@ -1,0 +1,33 @@
+@import '../core/style/variables';
+// The width/height of the icon element.
+$wtf2-icon-size: 24px !default;
+.wtf2-icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: $wtf2-icon-size;
+    width: $wtf2-icon-size;
+    &.wtf2-icon-inline {
+        font-size: inherit;
+        height: inherit;
+        line-height: inherit;
+        width: inherit;
+    }
+}
+
+// Icons that will be mirrored in RTL.
+[dir='rtl'] .wtf2-icon-rtl-mirror {
+    transform: scale(-1, 1);
+}
+
+.wtf2-form-field:not(.wtf2-form-field-appearance-legacy) {
+    .wtf2-form-field-prefix,
+    .wtf2-form-field-suffix {
+        .wtf2-icon {
+            display: block;
+        }
+        .wtf2-icon-button .wtf2-icon {
+            margin: auto;
+        }
+    }
+}

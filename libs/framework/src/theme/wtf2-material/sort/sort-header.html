@@ -1,0 +1,15 @@
+<div class="wtf2-sort-header-container" [class.wtf2-sort-header-sorted]="_isSorted()" [class.wtf2-sort-header-position-before]="arrowPosition == 'before'">
+    <button class="wtf2-sort-header-button" type="button" [attr.disabled]="_isDisabled() || null" [attr.aria-label]="_intl.sortButtonLabel(id)" (focus)="_setIndicatorHintVisible(true)" (blur)="_setIndicatorHintVisible(false)">
+    <ng-content></ng-content>
+  </button>
+
+    <!-- Disable animations while a current animation is running -->
+    <div class="wtf2-sort-header-arrow" *ngIf="_renderArrow()" [@arrowOpacity]="_getArrowViewState()" [@arrowPosition]="_getArrowViewState()" [@allowChildren]="_getArrowDirectionState()" (@arrowPosition.start)="_disableViewStateAnimation = true" (@arrowPosition.done)="_disableViewStateAnimation = false">
+        <div class="wtf2-sort-header-stem"></div>
+        <div class="wtf2-sort-header-indicator" [@indicator]="_getArrowDirectionState()">
+            <div class="wtf2-sort-header-pointer-left" [@leftPointer]="_getArrowDirectionState()"></div>
+            <div class="wtf2-sort-header-pointer-right" [@rightPointer]="_getArrowDirectionState()"></div>
+            <div class="wtf2-sort-header-pointer-middle"></div>
+        </div>
+    </div>
+</div>

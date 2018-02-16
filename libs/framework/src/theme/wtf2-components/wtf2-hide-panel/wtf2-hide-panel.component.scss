@@ -1,0 +1,35 @@
+wtf2-hide-panel {
+    wtf2-accordion {
+        wtf2-expansion-panel {
+            &.wtf2-expansion-panel {
+                background: transparent;
+                box-shadow: none !important;
+                padding: 0;
+            }
+            wtf2-expansion-panel-header {
+                &.wtf2-expansion-panel-header {
+                    padding: 0;
+                }
+                .wtf2-content {
+                    justify-content: flex-end;
+                }
+            }
+            .wtf2-expansion-panel-body {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.expantion-container {
+    min-height: 80vh;
+}
+
+.wtf2-hide-sidenav {
+    display: inherit;
+    width: 45%;
+}
+
+.wtf2-drawer-side.wtf2-drawer-end {
+    border-left: none;
+}

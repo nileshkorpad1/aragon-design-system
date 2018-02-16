@@ -1,0 +1,56 @@
+.wtf2-expansion-panel-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 24px;
+    border-radius: inherit;
+    &:focus,
+    &:hover {
+        outline: none;
+    }
+    &.wtf2-expanded:focus,
+    &.wtf2-expanded:hover {
+        background: inherit;
+    }
+    &:not([aria-disabled='true']) {
+        cursor: pointer;
+    }
+}
+
+.wtf2-content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.wtf2-expansion-panel-header-title,
+.wtf2-expansion-panel-header-description {
+    display: flex;
+    flex-grow: 1;
+    margin-right: 16px;
+    [dir='rtl'] & {
+        margin-right: 0;
+        margin-left: 16px;
+    }
+}
+
+.wtf2-expansion-panel-header-description {
+    flex-grow: 2;
+}
+
+
+/**
+ * Creates the expansion indicator arrow. Done using ::after rather than having
+ * additional nodes in the template.
+ */
+
+.wtf2-expansion-indicator::after {
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    content: '';
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    vertical-align: middle;
+}

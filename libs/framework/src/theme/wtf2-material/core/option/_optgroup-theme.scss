@@ -1,0 +1,18 @@
+@import '../theming/palette';
+@import '../theming/theming';
+@import '../typography/typography-utils';
+@mixin wtf2-optgroup-theme($theme) {
+    $foreground: map-get($theme, foreground);
+    .wtf2-optgroup-label {
+        color: wtf2-color($foreground, secondary-text);
+    }
+    .wtf2-optgroup-disabled .wtf2-optgroup-label {
+        color: wtf2-color($foreground, hint-text);
+    }
+}
+
+@mixin wtf2-optgroup-typography($config) {
+    .wtf2-optgroup-label {
+        @include wtf2-typography-level-to-styles($config, body-2);
+    }
+}

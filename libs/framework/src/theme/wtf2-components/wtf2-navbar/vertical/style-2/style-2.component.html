@@ -1,0 +1,24 @@
+<div class="navbar-header ">
+
+    <div class="info-container row">
+        <div class="col-6 avatar-container">
+            <img class="user-avatar" src="assets/images/logos/logo-Invinctus.png">
+        </div>
+        <div class="col-6 company-container">
+            <span class="user-text mt-2">Invinctus</span>
+        </div>
+    </div>
+
+    <button wtf2-icon-button class="toggle-sidebar-folded" (click)="toggleSidebarFolded()" fxHide.lt-lg>
+        <wtf2-icon>menu</wtf2-icon>
+    </button>
+
+    <button wtf2-icon-button class="toggle-sidebar-opened" (click)="toggleSidebarOpened()" fxHide.gt-md>
+        <wtf2-icon>arrow_back</wtf2-icon>
+    </button>
+
+</div>
+
+<div class="navbar-content " wtf2PerfectScrollbar [wtf2PerfectScrollbarOptions]="{suppressScrollX: true}">
+    <wtf2-navigation layout="vertical"></wtf2-navigation>
+</div>

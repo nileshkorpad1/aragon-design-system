@@ -1,0 +1,61 @@
+@import '../core/style/variables';
+@import '../core/style/layout-common';
+@import './tabs-common';
+.wtf2-tab-group {
+    display: flex;
+    flex-direction: column;
+    &.wtf2-tab-group-inverted-header {
+        flex-direction: column-reverse;
+    }
+}
+
+// Wraps each tab label
+.wtf2-tab-label {
+    @include tab-label;
+    position: relative;
+}
+
+@media ($wtf2-xsmall) {
+    .wtf2-tab-label {
+        padding: 0 12px;
+    }
+}
+
+@media ($wtf2-small) {
+    .wtf2-tab-label {
+        padding: 0 12px;
+    }
+}
+
+// Note that we only want to target direct descendant tabs.
+.wtf2-tab-group[wtf2-stretch-tabs]>.wtf2-tab-header .wtf2-tab-label {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+// The bottom section of the view; contains the tab bodies
+.wtf2-tab-body-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    transition: height $wtf2-tab-animation-duration $ease-in-out-curve-function;
+}
+
+// Wraps each tab body
+.wtf2-tab-body {
+    @include wtf2-fill;
+    display: block;
+    overflow: hidden;
+    // Fix for auto content wrapping in IE11
+    flex-basis: 100%;
+    &.wtf2-tab-body-active {
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+        z-index: 1;
+        flex-grow: 1;
+    }
+    .wtf2-tab-group.wtf2-tab-group-dynamic-height &.wtf2-tab-body-active {
+        overflow-y: hidden;
+    }
+}

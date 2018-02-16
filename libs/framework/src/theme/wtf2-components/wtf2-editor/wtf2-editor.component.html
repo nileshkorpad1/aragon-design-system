@@ -1,0 +1,10 @@
+<div (focus)="onEditorFocus()" class="wtf2-editor" id="angularEditor" [style.width]="config.width" [style.minWidth]="config.minWidth">
+    <wtf2-editor-toolbar #editorToolbar (execute)="executeCommand($event)"></wtf2-editor-toolbar>
+
+    <div class="wtf2-editor-wrapper" #editorWrapper>
+        <div #editor id="editor" class="wtf2-editor-textarea" [attr.contenteditable]="config.editable" [attr.translate]="config.translate" [attr.spellcheck]="config.spellcheck" [style.height]="config.height" [style.minHeight]="config.minHeight" [style.maxHeight]="config.maxHeight"
+            (input)="onContentChange($event.target.innerHTML)" (focus)="onTextAreaFocus()" (blur)="onTextAreaBlur($event)" (click)="exec()" (keyup)="exec()">
+        </div>
+        <span class="wtf2-editor-placeholder">{{ placeholder || config['placeholder'] }}</span>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<!-- <div class="mainelement"> -->
+<!-- <span [innerHTML]="parent">fgfgh</span> -->
+<ng-container *ngIf="SingleColumn">
+    <ng-container *ngTemplateOutlet="singleInForm"></ng-container>
+</ng-container>
+
+<!-- </div> -->
+<ng-template #singleInForm>
+    <div>
+
+        <!-- <div class="inform-expander-panel col col-12">
+            <div class="inform-expander-panel-container">
+
+                <button wtf2-button (click)="toggle()">
+                    <wtf2-icon *ngIf="icon">{{icon}}</wtf2-icon>
+                    add
+                </button>
+                <div *ngIf="menuState == 'in'" class="arrow-up"></div>
+            </div>
+        </div> -->
+        <div [@slideInOut]="menuState" class="expansion-panel" #content>
+            <div class="inform-expander-inner-content">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+</ng-template>

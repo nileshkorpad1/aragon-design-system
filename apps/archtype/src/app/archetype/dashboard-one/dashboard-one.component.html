@@ -1,0 +1,158 @@
+<wtf2-page-skeleton simple fullwidth>
+    <!-- CENTER -->
+    <!-- CONTENT HEADER -->
+    <!-- <wtf2-page-header>
+    <div class="row">
+      <div class="col-md-12">
+        DASHBOARD
+      </div>
+      <div class="col-md-12">
+        Your Deskera Cloud Account
+      </div>
+    </div>
+  </wtf2-page-header> -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> DASHBOARD</wtf2-header-title>
+        <wtf2-header-subtitle>Your Deskera Cloud Account</wtf2-header-subtitle>
+    </wtf2-page-header>
+
+    <!-- CONTENT -->
+
+    <wtf2-page-content wtf2Class="content " wtf2-simple-layout>
+        <!-- drow first row charts -->
+        <div class="row">
+            <!-- PIE CHART -->
+            <div class="col-md-4">
+                <!-- Card -->
+                <wtf2-card>
+                    <wtf2-card-header>
+                        <wtf2-card-title> PIE </wtf2-card-title>
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content class="py-8">
+                        <canvas id="piewidget-0"></canvas>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </div>
+            <!-- Donut Chart -->
+            <div class="col-md-4">
+                <!-- card -->
+                <wtf2-card>
+                    <wtf2-card-header>
+                        <wtf2-card-title> DOUGHNUT </wtf2-card-title>
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content class="py-8">
+                        <canvas id="piewidget-1"></canvas>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </div>
+            <!-- Polar Chart -->
+            <div class="col-md-4">
+                <!-- Card -->
+                <wtf2-card>
+                    <wtf2-card-header>
+                        <wtf2-card-title> POLAR </wtf2-card-title>
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content class="py-8">
+                        <canvas id="piewidget-2"></canvas>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </div>
+        </div>
+        <!-- Drow Second Line Chart -->
+        <div class="row py-24">
+            <!-- Bar Chart -->
+            <div class="col-md-6">
+                <!-- card -->
+                <wtf2-card>
+                    <wtf2-card-header>
+                        <wtf2-card-title> BAR </wtf2-card-title>
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content class="py-8">
+                        <canvas id="piewidget-bar"></canvas>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </div>
+            <!-- Stacked Bar Chart -->
+            <div class="col-md-6">
+                <wtf2-card>
+                    <wtf2-card-header>
+                        <wtf2-card-title> Stacked Bar </wtf2-card-title>
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content class="py-8">
+                        <canvas id="piewidget-stacked"></canvas>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </div>
+        </div>
+        <!-- Drow LAST ROW CHART -->
+        <div class="row py-24">
+            <!-- Radar Chart -->
+            <div class="col-md-4">
+                <wtf2-card>
+                    <wtf2-card-header>
+                        <wtf2-card-title> RADAR </wtf2-card-title>
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content class="py-8">
+                        <canvas id="piewidget-3"></canvas>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </div>
+            <!-- Line Chart -->
+            <div class="col-md-4">
+                <wtf2-card>
+                    <wtf2-card-header>
+                        <wtf2-card-title> LINE </wtf2-card-title>
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content class="py-8">
+                        <canvas id="piewidget-4"></canvas>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </div>
+            <!-- Gauge chart -->
+            <div class="col-md-4">
+                <wtf2-card>
+                    <wtf2-card-header>
+                        <wtf2-card-title> Gauge </wtf2-card-title>
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content class="py-8">
+                        <canvas id="piewidget-gauge"></canvas>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </div>
+        </div>
+        <div class="row py-24">
+            <!-- Combination Chart -->
+            <div class="col-md-6">
+                <wtf2-card>
+                    <wtf2-card-header>
+                        <wtf2-card-title> Combination of Line </wtf2-card-title>
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content class="py-8">
+                        <canvas id="piewidget-5"></canvas>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </div>
+            <!-- Combination Bar And Line Char -->
+            <div class="col-md-6">
+                <wtf2-card>
+                    <wtf2-card-header>
+                        <wtf2-card-title> Combination of Bar and Line </wtf2-card-title>
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content class="py-8">
+                        <canvas id="piewidget-6"></canvas>
+                    </wtf2-card-content>
+                </wtf2-card>
+            </div>
+        </div>
+    </wtf2-page-content>
+</wtf2-page-skeleton>

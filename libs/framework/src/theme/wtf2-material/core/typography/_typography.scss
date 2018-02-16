@@ -1,0 +1,103 @@
+@import 'typography-utils';
+// Represents a typography level from the Material design spec.
+@function wtf2-typography-level( $font-size, $line-height: $font-size, $font-weight: 400, $font-family: null, $letter-spacing: null) {
+    @return ( font-size: $font-size, line-height: $line-height, font-weight: $font-weight, font-family: $font-family, letter-spacing: $letter-spacing);
+}
+
+// Represents a collection of typography levels.
+// Defaults come from https://material.io/guidelines/style/typography.html
+// Note: The spec doesn't mention letter spacing. The values here come from
+// eyeballing it until it looked exactly like the spec examples.
+@function wtf2-typography-config( $font-family: 'Roboto, "Helvetica Neue", sans-serif', $display-4: wtf2-typography-level(112px, 112px, 300, $letter-spacing: -0.05em), $display-3: wtf2-typography-level(56px, 56px, 400, $letter-spacing: -0.02em), $display-2: wtf2-typography-level(45px, 48px, 400, $letter-spacing: -0.005em), $display-1: wtf2-typography-level(34px, 40px, 400), $headline: wtf2-typography-level(24px, 32px, 400), $title: wtf2-typography-level(20px, 32px, 500), $subheading-2: wtf2-typography-level(16px, 28px, 400), $subheading-1: wtf2-typography-level(15px, 24px, 400), $body-2: wtf2-typography-level(14px, 24px, 500), $body-1: wtf2-typography-level(14px, 20px, 400), $caption: wtf2-typography-level(12px, 20px, 400), $button: wtf2-typography-level(14px, 14px, 500), // Line-height must be unit-less fraction of the font-size.
+$input: wtf2-typography-level(inherit, 1.125, 400)) {
+    // Declare an initial map with all of the levels.
+    $config: ( display-4: $display-4, display-3: $display-3, display-2: $display-2, display-1: $display-1, headline: $headline, title: $title, subheading-2: $subheading-2, subheading-1: $subheading-1, body-2: $body-2, body-1: $body-1, caption: $caption, button: $button, input: $input, );
+    // Loop through the levels and set the `font-family` of the ones that don't have one to the base.
+    // Note that Sass can't modify maps in place, which means that we need to merge and re-assign.
+    @each $key,
+    $level in $config {
+        @if map-get($level, font-family)==null {
+            $new-level: map-merge($level, (font-family: $font-family));
+            $config: map-merge($config, ($key: $new-level));
+        }
+    }
+    // Add the base font family to the config.
+    @return map-merge($config, (font-family: $font-family));
+}
+
+// Adds the base typography styles, based on a config.
+@mixin wtf2-base-typography($config, $selector: '.wtf2-typography') {
+    .wtf2-h1,
+    .wtf2-headline,
+    #{$selector} h1 {
+        @include wtf2-typography-level-to-styles($config, headline);
+        margin: 0 0 16px;
+    }
+    .wtf2-h2,
+    .wtf2-title,
+    #{$selector} h2 {
+        @include wtf2-typography-level-to-styles($config, title);
+        margin: 0 0 16px;
+    }
+    .wtf2-h3,
+    .wtf2-subheading-2,
+    #{$selector} h3 {
+        @include wtf2-typography-level-to-styles($config, subheading-2);
+        margin: 0 0 16px;
+    }
+    .wtf2-h4,
+    .wtf2-subheading-1,
+    #{$selector} h4 {
+        @include wtf2-typography-level-to-styles($config, subheading-1);
+        margin: 0 0 16px;
+    }
+    // Note: the spec doesn't have anything that would correspond to h5 and h6, but we add these for
+    // consistency. The font sizes come from the Chrome user agent styles which have h5 at 0.83em
+    // and h6 at 0.67em.
+    .wtf2-h5,
+    #{$selector} h5 {
+        @include wtf2-typography-font-shorthand( wtf2-font-size($config, body-1) * 0.83, wtf2-font-weight($config, body-1), wtf2-line-height($config, body-1), wtf2-font-family($config, body-1));
+        margin: 0 0 12px;
+    }
+    .wtf2-h6,
+    #{$selector} h6 {
+        @include wtf2-typography-font-shorthand( wtf2-font-size($config, body-1) * 0.67, wtf2-font-weight($config, body-1), wtf2-line-height($config, body-1), wtf2-font-family($config, body-1));
+        margin: 0 0 12px;
+    }
+    .wtf2-body-strong,
+    .wtf2-body-2 {
+        @include wtf2-typography-level-to-styles($config, body-2);
+    }
+    .wtf2-body,
+    .wtf2-body-1,
+    #{$selector} {
+        @include wtf2-typography-level-to-styles($config, body-1);
+        p {
+            margin: 0 0 12px;
+        }
+    }
+    .wtf2-small,
+    .wtf2-caption {
+        @include wtf2-typography-level-to-styles($config, caption);
+    }
+    .wtf2-display-4,
+    #{$selector} .wtf2-display-4 {
+        @include wtf2-typography-level-to-styles($config, display-4);
+        margin: 0 0 56px;
+    }
+    .wtf2-display-3,
+    #{$selector} .wtf2-display-3 {
+        @include wtf2-typography-level-to-styles($config, display-3);
+        margin: 0 0 64px;
+    }
+    .wtf2-display-2,
+    #{$selector} .wtf2-display-2 {
+        @include wtf2-typography-level-to-styles($config, display-2);
+        margin: 0 0 64px;
+    }
+    .wtf2-display-1,
+    #{$selector} .wtf2-display-1 {
+        @include wtf2-typography-level-to-styles($config, display-1);
+        margin: 0 0 64px;
+    }
+}

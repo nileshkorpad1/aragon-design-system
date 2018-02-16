@@ -1,0 +1,38 @@
+@import '../core/style/menu-common';
+@import '~@angular/cdk/a11y';
+
+/**
+ * The max-height of the panel, currently matching wtf2-select value.
+ */
+
+$wtf2-autocomplete-panel-max-height: 256px !default;
+$wtf2-autocomplete-panel-border-radius: 4px !default;
+.wtf2-autocomplete-panel {
+    @include wtf2-menu-base();
+    visibility: hidden;
+    max-width: none;
+    max-height: $wtf2-autocomplete-panel-max-height;
+    position: relative;
+    width: 100%;
+    border-bottom-left-radius: $wtf2-autocomplete-panel-border-radius;
+    border-bottom-right-radius: $wtf2-autocomplete-panel-border-radius;
+    &.wtf2-autocomplete-visible {
+        visibility: visible;
+    }
+    &.wtf2-autocomplete-hidden {
+        visibility: hidden;
+    }
+    .wtf2-autocomplete-panel-above & {
+        border-radius: 0;
+        border-top-left-radius: $wtf2-autocomplete-panel-border-radius;
+        border-top-right-radius: $wtf2-autocomplete-panel-border-radius;
+    }
+    // We need to offset horizontal dividers by their height, because
+    // they throw off the keyboard navigation inside the panel.
+    .wtf2-divider-horizontal {
+        margin-top: -1px;
+    }
+    @include cdk-high-contrast {
+        outline: solid 1px;
+    }
+}

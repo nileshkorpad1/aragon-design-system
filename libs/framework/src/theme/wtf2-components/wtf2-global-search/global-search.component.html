@@ -1,0 +1,18 @@
+<div class="search-box-layout">
+    <button class="searchcross wtf2-gray-200-bg" (click)="closesearch()">
+        <wtf2-icon class="form-control-search">clear</wtf2-icon>
+    </button>
+    <form>
+        <wtf2-form-field class="has-search" floatLabel="never">
+            <wtf2-icon class="form-control-search">search</wtf2-icon>
+            <input wtf2Input id="wtf2-search-bar-input" type="text" placeholder="SEARCH" [formControl]="globalsearch"
+                [wtf2Autocomplete]="autofilter">
+            <wtf2-autocomplete #autofilter="wtf2Autocomplete">
+                <wtf2-option *ngFor="let option of filteredOptions | async" [value]="option"
+                    (onSelectionChange)="onSelected($event)">
+                    <wtf2-icon>{{option.icon}}</wtf2-icon>{{option.title}}
+                </wtf2-option>
+            </wtf2-autocomplete>
+        </wtf2-form-field>
+    </form>
+</div>

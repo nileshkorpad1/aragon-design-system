@@ -1,0 +1,60 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin _wtf2-toolbar-color($palette) {
+    background: wtf2-color($palette);
+    color: wtf2-color($palette, default-contrast);
+}
+
+@mixin _wtf2-toolbar-form-field-overrides {
+    .wtf2-form-field-underline,
+    .wtf2-form-field-ripple,
+    .wtf2-focused .wtf2-form-field-ripple {
+        background-color: currentColor;
+    }
+    .wtf2-form-field-label,
+    .wtf2-focused .wtf2-form-field-label,
+    .wtf2-select-value,
+    .wtf2-select-arrow,
+    .wtf2-form-field.wtf2-focused .wtf2-select-arrow {
+        color: inherit;
+    }
+    .wtf2-input-element {
+        caret-color: currentColor;
+    }
+}
+
+@mixin wtf2-toolbar-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-toolbar {
+        background: wtf2-color($background, app-bar);
+        color: wtf2-color($foreground, text);
+        &.wtf2-primary {
+            @include _wtf2-toolbar-color($primary);
+        }
+        &.wtf2-accent {
+            @include _wtf2-toolbar-color($accent);
+        }
+        &.wtf2-warn {
+            @include _wtf2-toolbar-color($warn);
+        }
+        @include _wtf2-toolbar-form-field-overrides;
+    }
+}
+
+@mixin wtf2-toolbar-typography($config) {
+    .wtf2-toolbar,
+    .wtf2-toolbar h1,
+    .wtf2-toolbar h2,
+    .wtf2-toolbar h3,
+    .wtf2-toolbar h4,
+    .wtf2-toolbar h5,
+    .wtf2-toolbar h6 {
+        @include wtf2-typography-level-to-styles($config, title);
+        margin: 0;
+    }
+}

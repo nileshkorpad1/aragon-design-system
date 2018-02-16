@@ -1,0 +1,196 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!--   -->
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> Datepicker</wtf2-header-title>
+        <wtf2-header-subtitle>Datepicker Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+
+    <!-- CONTENT TOOLBAR -->
+    <!-- <div class="toolbar px-24 py-8">
+                <span>Datepicker</span>
+            </div> -->
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <wtf2-page-content class="content">
+        <div class="row m-2">
+            <h3>Date Range picker</h3>
+            <div class="col col-12 m-2 daterangebox">
+                <wtf2-form-field>
+                    <input wtf2Input [formControl]="datenew" #origin (click)="show(null, origin)" />
+                    <wtf2-icon wtf2Prefix>date_range</wtf2-icon>
+                    <!-- <wtf2-datepicker-range #tpl></wtf2-datepicker-range> -->
+                </wtf2-form-field>
+            </div>
+            
+            <h3>Basic datepicker</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field>
+                    <input wtf2Input [wtf2Datepicker]="picker" placeholder="Choose a date">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="picker"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #picker></wtf2-datepicker>
+                </wtf2-form-field>
+            </div>
+
+            <h3>Datepicker start date</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field>
+                    <input wtf2Input [wtf2Datepicker]="pickerSD" placeholder="Choose a date">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="pickerSD"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #pickerSD startView="year" [startAt]="startDate"></wtf2-datepicker>
+                </wtf2-form-field>
+            </div>
+
+            <h3>Datepicker selected value</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field>
+                    <input wtf2Input [wtf2Datepicker]="pickerSelectedDate1" placeholder="Angular forms" [formControl]="date">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="pickerSelectedDate1"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #pickerSelectedDate1></wtf2-datepicker>
+                </wtf2-form-field>
+
+                <wtf2-form-field>
+                    <input wtf2Input [wtf2Datepicker]="pickerSelectedDate2" placeholder="Angular forms (w/ deserialization)"
+                        [formControl]="serializedDate">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="pickerSelectedDate2"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #pickerSelectedDate2></wtf2-datepicker>
+                </wtf2-form-field>
+
+                <wtf2-form-field>
+                    <input wtf2Input [wtf2Datepicker]="pickerSelectedDate3" placeholder="Value binding" [value]="date.value">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="pickerSelectedDate3"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #pickerSelectedDate3></wtf2-datepicker>
+                </wtf2-form-field>
+            </div>
+
+            <h3>Datepicker with min & max validation</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field class="example-full-width">
+                    <input wtf2Input [min]="minDate" [max]="maxDate" [wtf2Datepicker]="pickerMinMax" placeholder="Choose a date">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="pickerMinMax"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #pickerMinMax></wtf2-datepicker>
+                </wtf2-form-field>
+            </div>
+
+            <h3>Datepicker with filter validation</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field class="example-full-width">
+                    <input wtf2Input [wtf2DatepickerFilter]="myFilter" [wtf2Datepicker]="pickerFilterValidate"
+                        placeholder="Choose a date">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="pickerFilterValidate"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #pickerFilterValidate></wtf2-datepicker>
+                </wtf2-form-field>
+            </div>
+
+            <h3>Datepicker with Input & change events</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field>
+                    <input wtf2Input [wtf2Datepicker]="pickerInputAndChangeEvent" placeholder="Input & change events"
+                        (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="pickerInputAndChangeEvent"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #pickerInputAndChangeEvent></wtf2-datepicker>
+                </wtf2-form-field>
+
+                <div class="example-events">
+                    <div *ngFor="let e of events">{{e}}</div>
+                </div>
+            </div>
+
+            <h3>Disabled datepicker</h3>
+            <div class="col col-12 m-2">
+                <p>
+                    <wtf2-form-field>
+                        <input wtf2Input [wtf2Datepicker]="dpDisabled" placeholder="Completely disabled" disabled>
+                        <wtf2-datepicker-toggle wtf2Suffix [for]="dpDisabled"></wtf2-datepicker-toggle>
+                        <wtf2-datepicker #dpDisabled></wtf2-datepicker>
+                    </wtf2-form-field>
+                </p>
+
+                <p>
+                    <wtf2-form-field>
+                        <input wtf2Input [wtf2Datepicker]="dpDisabled1" placeholder="Popup disabled">
+                        <wtf2-datepicker-toggle wtf2Suffix [for]="dpDisabled1" disabled></wtf2-datepicker-toggle>
+                        <wtf2-datepicker #dpDisabled1></wtf2-datepicker>
+                    </wtf2-form-field>
+                </p>
+
+                <p>
+                    <wtf2-form-field>
+                        <input wtf2Input [wtf2Datepicker]="dpDisabled2" placeholder="Input disabled" disabled>
+                        <wtf2-datepicker-toggle wtf2Suffix [for]="dpDisabled2"></wtf2-datepicker-toggle>
+                        <wtf2-datepicker #dpDisabled2 disabled="false"></wtf2-datepicker>
+                    </wtf2-form-field>
+                </p>
+            </div>
+
+            <h3>Datepicker touch UI</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field class="example-full-width">
+                    <input wtf2Input [wtf2Datepicker]="pickerTouch" placeholder="Choose a date">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="pickerTouch"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker touchUi #pickerTouch></wtf2-datepicker>
+                </wtf2-form-field>
+            </div>
+            <h3>Datepicker open method</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field class="example-full-width">
+                    <input wtf2Input [wtf2Datepicker]="pickerOpenBtn" placeholder="Choose a date">
+                    <wtf2-datepicker #pickerOpenBtn></wtf2-datepicker>
+                </wtf2-form-field>
+                <button wtf2-raised-button (click)="pickerOpenBtn.open()">Open</button>
+            </div>
+
+
+            <h3>Datepicker with different locale</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field>
+                    <input wtf2Input [wtf2Datepicker]="dpLocale" placeholder="Different locale">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="dpLocale"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #dpLocale></wtf2-datepicker>
+                </wtf2-form-field>
+
+                <button wtf2-button (click)="french()">Dynamically switch to French</button>
+            </div>
+
+
+            <h3>Datepicker that uses Moment.js dates</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field>
+                    <input wtf2Input [wtf2Datepicker]="dpMoment" placeholder="Moment.js datepicker" [formControl]="date">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="dpMoment"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #dpMoment></wtf2-datepicker>
+                </wtf2-form-field>
+            </div>
+
+            <h3>Datepicker with custom formats</h3>
+            <div class="col col-12 m-2">
+                <wtf2-form-field>
+                    <input wtf2Input [wtf2Datepicker]="dpCustomFormat" placeholder="Verbose datepicker" [formControl]="date">
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="dpCustomFormat"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #dpCustomFormat></wtf2-datepicker>
+                </wtf2-form-field>
+
+            </div>
+        </div>
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+
+    <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

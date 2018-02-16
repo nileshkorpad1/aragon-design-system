@@ -1,0 +1,46 @@
+// // Slated for phase-out/deletion - use the partials folder for  _fonts-fontname files
+
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-Black',900,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-BlackIt',900,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-Extrabold',800,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-ExtraboldIt',800,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-Bold',700,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-BoldIt',700,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-Semibold',600,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-SemiboldIt',600,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-Regular',400,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-RegularIt',400,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-Light',300,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-LightIt',300,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-Thin',200,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothic,'#{$cloudgothic-font-path}/cloudgothic/CloudGothic-ThinIt',200,italic, eot woff2 woff ttf svg);
+
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-Black',900,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-BlackIt',900,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-Extrabold',800,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-ExtraboldIt',800,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-Bold',700,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-BoldIt',700,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-Semibold',600,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-SemiboldIt',600,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-Regular',400,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-RegularIt',400,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-Light',300,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-LightIt',300,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-Thin',200,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicCond-ThinIt',200,italic, eot woff2 woff ttf svg);
+
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-Black',900,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-BlackIt',900,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-Extrabold',800,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-ExtraboldIt',800,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-Bold',700,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-BoldIt',700,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-Semibold',600,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-SemiboldIt',600,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-Regular',400,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-RegularIt',400,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-Light',300,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-LightIt',300,italic, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-Thin',200,normal, eot woff2 woff ttf svg);
+// @include font-face(CloudGothicExCn,'#{$cloudgothic-font-path}/cloudgothic/CloudGothicExCn-ThinIt',200,italic, eot woff2 woff ttf svg);

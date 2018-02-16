@@ -1,0 +1,81 @@
+<wtf2-page-skeleton carded fullwidth>
+
+        <wtf2-page-header>
+            <wtf2-header-title class=" ">TEAM CHAT</wtf2-header-title>
+            <wtf2-header-subtitle>Your Deskera Cloud Account</wtf2-header-subtitle>
+        </wtf2-page-header>
+
+        <wtf2-page-content class="content">
+            <div class="content-card wtf2-white-bg mt-0 toolbarPanel">
+                <div class="row p-4">
+                    <div class="col-12">
+                        <button type="button" wtf2-button color="primary" (click)="showDialog()">
+                            <wtf2-icon>add</wtf2-icon>Add Group
+                        </button>
+                        <button type="button" class="ml-2" wtf2-button color="primary" (click)="fileInput.click()">
+                            <wtf2-icon>attach_file</wtf2-icon>Attachment
+                        </button>
+                        <input name="file" (change)="onFileSelectEvent($event)" hidden type="file" #fileInput>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card wtf2-white-bg mt-5 nameTitle">
+                <div fxLayout="row" class="ml-4 mt-3 mb-3">
+                    <img class="avatar" src="{{selectedContact.avatar}}">
+                    <span class="username mr-12" fxHide fxShow.gt-sm>PRODUCT TEAM<br>{{selectedContact.name}}</span>
+                </div>
+            </div>
+
+            <div class="chat-properties">
+                <div class="content-card wtf2-white-bg mt-0">
+                    <div fxLayout="row">
+                        <div id="chat" fxLayout="column" fxFlex="1 1 auto">
+                            <div class="p-3">
+                                <div id="messages" class="messages" fxFlex="1 1 auto" wtf2PerfectScrollbar>
+                                    <ng-container *ngIf="chat && chat.dialog && chat.dialog.length > 0">
+                                        <div *ngFor="let message of chat.dialog; let i = index" class="message-row"
+                                            [ngClass]="{'me': message.who === user.id,
+                                            'contact': message.who !== user.id,
+                                            'first-of-group': isFirstMessageOfGroup(message, i),
+                                            'last-of-group': isLastMessageOfGroup(message, i)}">
+                                            <img *ngIf="shouldShowContactAvatar(message, i)" src="{{selectedContact.avatar}}"
+                                                class="avatar">
+                                            <div class="bubble">
+                                                <div class="message">{{message.message}}</div>
+                                                <div class="time secondary-text">{{message.time | date:'short'}}</div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="chat && chat.dialog && chat.dialog.length === 0">
+                                        <div class="no-messages-icon">
+                                            <wtf2-icon class="s-128">chat</wtf2-icon>
+                                        </div>
+                                        <div class="no-messages secondary-text">
+                                            Start a conversation by typing your message below.
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-card wtf2-white-bg mt-0 replyForm">
+                    <form #replyForm="ngForm" (ngSubmit)="reply($event)" (keydown.enter)="reply($event)">
+                        <div class="row">
+                            <div class="col col-11 inputFieldClass">
+                                <textarea class="messagesProperty" wtf2Input #replyInput ngModel name="message"
+                                    placeholder="Type your message" [rows]="1" [wtf2TextareaAutosize]="true"></textarea>
+                            </div>
+                            <div class="col col-1 inputButtonClass">
+                                <button wtf2Suffix class="buttonProperty" wtf2-icon-button type="submit" aria-label="Send message">
+                                    <wtf2-icon class="secondary-text">send</wtf2-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </wtf2-page-content>
+
+</wtf2-page-skeleton>

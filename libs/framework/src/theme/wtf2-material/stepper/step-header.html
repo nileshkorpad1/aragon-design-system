@@ -1,0 +1,21 @@
+<div class="wtf2-step-header-ripple" wtf2Ripple [wtf2RippleTrigger]="_getHostElement()" [wtf2RippleDisabled]="disableRipple"></div>
+
+<div class="wtf2-step-icon-state-{{state}} wtf2-step-icon" [class.wtf2-step-icon-selected]="selected">
+    <div class="wtf2-step-icon-content" [ngSwitch]="!!(iconOverrides && iconOverrides[state])">
+        <ng-container *ngSwitchCase="true" [ngTemplateOutlet]="iconOverrides[state]" [ngTemplateOutletContext]="_getIconContext()"></ng-container>
+        <ng-container *ngSwitchDefault [ngSwitch]="state">
+            <span *ngSwitchCase="'number'">{{_getDefaultTextForState(state)}}</span>
+            <wtf2-icon *ngSwitchDefault>{{_getDefaultTextForState(state)}}</wtf2-icon>
+        </ng-container>
+    </div>
+</div>
+<div class="wtf2-step-label" [class.wtf2-step-label-active]="active" [class.wtf2-step-label-selected]="selected" [class.wtf2-step-label-error]="state == 'error'">
+    <!-- If there is a label template, use it. -->
+    <ng-container *ngIf="_templateLabel()" [ngTemplateOutlet]="_templateLabel()!.template">
+    </ng-container>
+    <!-- If there is no label template, fall back to the text label. -->
+    <div class="wtf2-step-text-label" *ngIf="_stringLabel()">{{label}}</div>
+
+    <div class="wtf2-step-optional" *ngIf="optional && state != 'error'">{{_intl.optionalLabel}}</div>
+    <div class="wtf2-step-sub-label-error" *ngIf="state == 'error'">{{errorMessage}}</div>
+</div>

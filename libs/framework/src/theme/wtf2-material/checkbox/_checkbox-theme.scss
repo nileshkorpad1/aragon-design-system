@@ -1,0 +1,104 @@
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@import '~@angular/cdk/a11y';
+@mixin wtf2-checkbox-theme($theme) {
+    $is-dark-theme: map-get($theme, is-dark);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    // The color of the checkbox's checkmark / mixedmark.
+    $checkbox-mark-color: wtf2-color($background, background);
+    // NOTE(traviskaufman): While the spec calls for translucent blacks/whites for disabled colors,
+    // this does not work well with elements layered on top of one another. To get around this we
+    // blend the colors together based on the base color and the theme background.
+    $white-30pct-opacity-on-dark: #686868;
+    $black-26pct-opacity-on-light: #b0b0b0;
+    $disabled-color: if($is-dark-theme, $white-30pct-opacity-on-dark, $black-26pct-opacity-on-light);
+    .wtf2-checkbox-frame {
+        border-color: wtf2-color($foreground, secondary-text);
+    }
+    .wtf2-checkbox-checkmark {
+        fill: $checkbox-mark-color;
+    }
+    .wtf2-checkbox-checkmark-path {
+        // !important is needed here because a stroke must be set as an
+        // attribute on the SVG in order for line animation to work properly.
+        stroke: $checkbox-mark-color !important;
+        @include cdk-high-contrast(black-on-white) {
+            // Having the one above be !important ends up overriding the browser's autowtf2ic
+            // color inversion so we need to re-invert it ourselves for black-on-white.
+            stroke: #000 !important;
+        }
+    }
+    .wtf2-checkbox-mixedmark {
+        background-color: $checkbox-mark-color;
+    }
+    .wtf2-checkbox-indeterminate,
+    .wtf2-checkbox-checked {
+        &.wtf2-primary .wtf2-checkbox-background {
+            background-color: wtf2-color($primary);
+        }
+        &.wtf2-accent .wtf2-checkbox-background {
+            background-color: wtf2-color($accent);
+        }
+        &.wtf2-warn .wtf2-checkbox-background {
+            background-color: wtf2-color($warn);
+        }
+    }
+    .wtf2-checkbox-disabled {
+        &.wtf2-checkbox-checked,
+        &.wtf2-checkbox-indeterminate {
+            .wtf2-checkbox-background {
+                background-color: $disabled-color;
+            }
+        }
+        &:not(.wtf2-checkbox-checked) {
+            .wtf2-checkbox-frame {
+                border-color: $disabled-color;
+            }
+        }
+        .wtf2-checkbox-label {
+            color: wtf2-color($foreground, secondary-text);
+        }
+        @include cdk-high-contrast {
+            opacity: 0.5;
+        }
+    }
+    // This one is moved down here so it can target both
+    // the theme colors and the disabled state.
+    @include cdk-high-contrast {
+        .wtf2-checkbox-background {
+            // Needs to be removed because it hides the checkbox outline.
+            background: none;
+        }
+    }
+    // Switch this to a solid color since we're using `opacity`
+    // to control how opaque the ripple should be.
+    .wtf2-checkbox .wtf2-ripple-element {
+        background-color: map_get(map-get($theme, foreground), base);
+    }
+    .wtf2-checkbox-checked:not(.wtf2-checkbox-disabled),
+    .wtf2-checkbox:active:not(.wtf2-checkbox-disabled) {
+        &.wtf2-primary .wtf2-ripple-element {
+            background: wtf2-color($primary);
+        }
+        &.wtf2-accent .wtf2-ripple-element {
+            background: wtf2-color($accent);
+        }
+        &.wtf2-warn .wtf2-ripple-element {
+            background: wtf2-color($warn);
+        }
+    }
+}
+
+@mixin wtf2-checkbox-typography($config) {
+    .wtf2-checkbox {
+        font-family: wtf2-font-family($config);
+    }
+    // TODO(kara): Remove this style when fixing vertical baseline
+    .wtf2-checkbox-layout .wtf2-checkbox-label {
+        line-height: wtf2-line-height($config, body-2);
+    }
+}

@@ -1,0 +1,23 @@
+<ng-template #tempOutletMenuItem>
+    <ng-content></ng-content>
+</ng-template>
+
+
+
+<button wtf2-raised-button class="main-btn " [ngClass]="classVariable"
+    (click)="handleClick($event)"
+    [disabled]="disabled ? 'true' : 'false'">
+    <!-- <wtf2-icon>add</wtf2-icon> -->
+    <ng-content select="wtf2-split-button-title"></ng-content>
+    {{title}}
+</button>
+<div class="dropdown">
+    <button wtf2-raised-button [ngClass]="classVariable" class="dropdown-btn " [wtf2MenuTriggerFor]="menu"
+        [disabled]="disabled ? 'true' : 'false'">
+        <!-- <i class="fa fa-chevron-down dropdown-icon"></i> -->
+        <wtf2-icon>keyboard_arrow_down</wtf2-icon>
+    </button>
+    <wtf2-menu #menu="wtf2Menu" [class]="classVariable">
+        <ng-container *ngTemplateOutlet="tempOutletMenuItem"></ng-container>
+    </wtf2-menu>
+</div>

@@ -1,0 +1,29 @@
+<wtf2-icon class="dialog-back-arrow" (click)="closeDialog()">arrow_back</wtf2-icon>
+<button wtf2-dialog-close class="dialog-close-button">
+    <wtf2-icon>close</wtf2-icon>
+</button>
+<h2 wtf2-dialog-title class="dialog-header-title">ADD NEW ACCOUNT</h2>
+<wtf2-divider class="divider"></wtf2-divider>
+<wtf2-dialog-content class="wtf2-typography">
+    <div class="row">
+        <div class="col-12">
+            <wtf2-form-field>
+                <input wtf2Input placeholder="GROUP NAME">
+            </wtf2-form-field>
+        </div>
+        <div class="col-12">
+            <wtf2-form-field>
+                <input wtf2Input placeholder="PARENT GROUP">
+            </wtf2-form-field>
+        </div>
+        <div class="col-12">
+            <wtf2-form-field>
+                <input wtf2Input placeholder="NATURE">
+            </wtf2-form-field>
+        </div>
+    </div>
+</wtf2-dialog-content>
+<wtf2-dialog-actions>
+<button wtf2-raised-button wtf2-button color="warn" classwtf2-button>Save</button>
+<button wtf2-raised-button wtf2-button wtf2-dialog-close>Cancel</button>
+</wtf2-dialog-actions>

@@ -1,0 +1,72 @@
+{
+    "keys": [
+        "in",
+        "out"
+    ],
+    "type": "stacked",
+    "data": [
+        {
+            "labelname": "Jan",
+            "in": 10,
+            "out": 3,
+            "subdata": {
+                "keys": [
+                    "in",
+                    "out"
+                ],
+                "data": [
+                    {
+                        "labelname": "Jan1",
+                        "in": 10,
+                        "out": 3
+                    },
+                    {
+                        "labelname": "Jan2",
+                        "in": 7,
+                        "out": 3
+                    },
+                    {
+                        "labelname": "Jan3",
+                        "in": 4,
+                        "out": 1
+                    },
+                    {
+                        "labelname": "Jan4",
+                        "in": 6,
+                        "out": 2
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "Feb",
+            "in": 8,
+            "out": 5
+        },
+        {
+            "labelname": "Mar",
+            "in": 9,
+            "out": 6
+        },
+        {
+            "labelname": "Apr",
+            "in": 4,
+            "out": 1
+        },
+        {
+            "labelname": "May",
+            "in": 6,
+            "out": 2
+        },
+        {
+            "labelname": "Jun",
+            "in": 2,
+            "out": 4
+        },
+        {
+            "labelname": "Jul",
+            "in": 13,
+            "out": 7
+        }
+    ]
+}

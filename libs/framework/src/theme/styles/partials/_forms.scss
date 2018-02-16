@@ -1,0 +1,16 @@
+button,
+input[type=button],
+input[type=email],
+input[type=image],
+input[type=password],
+input[type=search],
+input[type=submit],
+input[type=tel],
+input[type=text],
+textarea {
+    outline           : none;
+
+    appearance        : none;
+    -moz-appearance   : none;
+    -webkit-appearance: none;
+}

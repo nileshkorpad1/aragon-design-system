@@ -1,0 +1,13 @@
+content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1 0 auto;
+
+    > *:not(router-outlet) {
+        display: flex;
+        flex: 1 0 auto;
+        min-width: 100%;
+        width: 100%;
+    }
+}

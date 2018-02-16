@@ -1,0 +1,15 @@
+.wtf2-quote {
+    display: flex;
+    margin: 0.5rem auto;
+    position: relative;
+    &.wtf2-quote-left {
+        padding-left: 1rem;
+        border-left: 4px solid;
+        justify-content: flex-start;
+    }
+    &.wtf2-quote-right {
+        border-right: 4px solid;
+        padding-right: 1rem;
+        justify-content: flex-end;
+    }
+}

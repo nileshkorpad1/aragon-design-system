@@ -1,0 +1,117 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin _wtf2-slider-inner-content-theme($palette) {
+    .wtf2-slider-track-fill,
+    .wtf2-slider-thumb,
+    .wtf2-slider-thumb-label {
+        background-color: wtf2-color($palette);
+    }
+    .wtf2-slider-thumb-label-text {
+        color: wtf2-color($palette, default-contrast);
+    }
+}
+
+@mixin wtf2-slider-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $wtf2-slider-off-color: wtf2-color($foreground, slider-off);
+    $wtf2-slider-off-focused-color: wtf2-color($foreground, slider-off-active);
+    $wtf2-slider-disabled-color: wtf2-color($foreground, slider-off);
+    $wtf2-slider-labeled-min-value-thumb-color: wtf2-color($foreground, slider-min);
+    $wtf2-slider-labeled-min-value-thumb-label-color: wtf2-color($foreground, slider-off);
+    $wtf2-slider-focus-ring-color: wtf2-color($accent, default, 0.2);
+    $wtf2-slider-focus-ring-min-value-color: wtf2-color($foreground, base, 0.12);
+    $wtf2-slider-tick-color: wtf2-color($foreground, base, 0.7);
+    $wtf2-slider-tick-size: 2px;
+    .wtf2-slider-track-background {
+        background-color: $wtf2-slider-off-color;
+    }
+    .wtf2-primary {
+        @include _wtf2-slider-inner-content-theme($primary);
+    }
+    .wtf2-accent {
+        @include _wtf2-slider-inner-content-theme($accent);
+    }
+    .wtf2-warn {
+        @include _wtf2-slider-inner-content-theme($warn);
+    }
+    .wtf2-slider-focus-ring {
+        background-color: $wtf2-slider-focus-ring-color;
+    }
+    .wtf2-slider:hover,
+    .cdk-focused {
+        .wtf2-slider-track-background {
+            background-color: $wtf2-slider-off-focused-color;
+        }
+    }
+    .wtf2-slider-disabled {
+        .wtf2-slider-track-background,
+        .wtf2-slider-track-fill,
+        .wtf2-slider-thumb {
+            background-color: $wtf2-slider-disabled-color;
+        }
+        &:hover {
+            .wtf2-slider-track-background {
+                background-color: $wtf2-slider-disabled-color;
+            }
+        }
+    }
+    .wtf2-slider-min-value {
+        .wtf2-slider-focus-ring {
+            background-color: $wtf2-slider-focus-ring-min-value-color;
+        }
+        &.wtf2-slider-thumb-label-showing {
+            .wtf2-slider-thumb,
+            .wtf2-slider-thumb-label {
+                background-color: $wtf2-slider-labeled-min-value-thumb-color;
+            }
+            &.cdk-focused {
+                .wtf2-slider-thumb,
+                .wtf2-slider-thumb-label {
+                    background-color: $wtf2-slider-labeled-min-value-thumb-label-color;
+                }
+            }
+        }
+        &:not(.wtf2-slider-thumb-label-showing) {
+            .wtf2-slider-thumb {
+                border-color: $wtf2-slider-off-color;
+                background-color: transparent;
+            }
+            &:hover,
+            &.cdk-focused {
+                .wtf2-slider-thumb {
+                    border-color: $wtf2-slider-off-focused-color;
+                }
+                &.wtf2-slider-disabled .wtf2-slider-thumb {
+                    border-color: $wtf2-slider-disabled-color;
+                }
+            }
+        }
+    }
+    .wtf2-slider-has-ticks .wtf2-slider-wrapper::after {
+        border-color: $wtf2-slider-tick-color;
+    }
+    .wtf2-slider-horizontal .wtf2-slider-ticks {
+        background-image: repeating-linear-gradient(to right, $wtf2-slider-tick-color, $wtf2-slider-tick-color $wtf2-slider-tick-size, transparent 0, transparent);
+        // Firefox doesn't draw the gradient correctly with 'to right'
+        // (see https://bugzilla.mozilla.org/show_bug.cgi?id=1314319).
+        background-image: -moz-repeating-linear-gradient(0.0001deg, $wtf2-slider-tick-color, $wtf2-slider-tick-color $wtf2-slider-tick-size, transparent 0, transparent);
+    }
+    .wtf2-slider-vertical .wtf2-slider-ticks {
+        background-image: repeating-linear-gradient(to bottom, $wtf2-slider-tick-color, $wtf2-slider-tick-color $wtf2-slider-tick-size, transparent 0, transparent);
+    }
+}
+
+@mixin wtf2-slider-typography($config) {
+    .wtf2-slider-thumb-label-text {
+        font: {
+            family: wtf2-font-family($config);
+            size: wtf2-font-size($config, caption);
+            weight: wtf2-font-weight($config, body-2);
+        }
+    }
+}

@@ -1,0 +1,65 @@
+<ng-container *ngIf="!item.hidden">
+
+    <!-- normal collapse -->
+    <a class="nav-link" [ngClass]="item.classes" *ngIf="!item.url && !item.function"
+       (click)="toggleOpen($event)" matRipple>
+        <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+    </a>
+
+    <!-- item.url -->
+    <a class="nav-link" [ngClass]="item.classes" *ngIf="item.url && !item.externalUrl && !item.function"
+       (click)="toggleOpen($event)"
+       [routerLink]="[item.url]" [routerLinkActive]="['active', 'wtf2-accent-bg']"
+       [routerLinkActiveOptions]="{exact: item.exactMatch || false}"
+       [target]="item.openInNewTab ? '_blank' : '_self'" matRipple>
+        <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+    </a>
+
+    <!-- item.externalUrl -->
+    <a class="nav-link" [ngClass]="item.classes" *ngIf="item.url && item.externalUrl && !item.function"
+       (click)="toggleOpen($event)"
+       [href]="item.url" [target]="item.openInNewTab ? '_blank' : '_self'" matRipple>
+        <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+    </a>
+
+    <!-- item.function -->
+    <span class="nav-link" [ngClass]="item.classes" *ngIf="!item.url && item.function"
+          (click)="toggleOpen($event);item.function()" matRipple>
+        <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+    </span>
+
+    <!-- item.url && item.function -->
+    <a class="nav-link" [ngClass]="item.classes" *ngIf="item.url && !item.externalUrl && item.function"
+       (click)="toggleOpen($event);item.function()"
+       [routerLink]="[item.url]" [routerLinkActive]="['active', 'wtf2-accent-bg']"
+       [routerLinkActiveOptions]="{exact: item.exactMatch || false}" matRipple>
+        <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+    </a>
+
+    <!-- item.externalUrl && item.function -->
+    <a class="nav-link" [ngClass]="item.classes" *ngIf="item.url && item.externalUrl && item.function"
+       (click)="toggleOpen($event);item.function()"
+       [href]="item.url" [target]="item.openInNewTab ? '_blank' : '_self'" matRipple>
+        <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+    </a>
+
+    <ng-template #itemContent>
+        <wtf2-icon class="nav-link-icon" *ngIf="item.icon">{{item.icon}}</wtf2-icon>
+        <span class="nav-link-title" [translate]="item.translate">{{item.title}}</span>
+        <span class="nav-link-badge" *ngIf="item.badge" [translate]="item.badge.translate"
+              [ngStyle]="{'background-color': item.badge.bg,'color': item.badge.fg}">
+            {{item.badge.title}}
+        </span>
+        <wtf2-icon class="collapsable-arrow">keyboard_arrow_right</wtf2-icon>
+    </ng-template>
+
+    <div class="children" [@slideInOut]="isOpen">
+        <ng-container *ngFor="let item of item.children">
+            <wtf2-nav-vertical-item *ngIf="item.type=='item'" [item]="item"></wtf2-nav-vertical-item>
+            <wtf2-nav-vertical-collapsable *ngIf="item.type=='collapsable'"
+                                           [item]="item"></wtf2-nav-vertical-collapsable>
+            <wtf2-nav-vertical-group *ngIf="item.type=='group'" [item]="item"></wtf2-nav-vertical-group>
+        </ng-container>
+    </div>
+
+</ng-container>

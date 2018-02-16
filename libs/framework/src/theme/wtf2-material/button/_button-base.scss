@@ -1,0 +1,88 @@
+@import '../core/style/variables';
+@import '../core/style/elevation';
+@import '../core/style/button-common';
+@import '../core/style/noop-animation';
+// Flat and raised button standards
+$wtf2-button-padding: 0 16px !default;
+$wtf2-button-min-width: 64px !default;
+$wtf2-button-margin: 0 !default;
+$wtf2-button-line-height: 36px !default;
+$wtf2-button-border-radius: 4px !default;
+$wtf2-button-focus-transition: opacity 200ms $swift-ease-in-out-timing-function,
+background-color 200ms $swift-ease-in-out-timing-function !default;
+// Stroked button padding is 1px less horizontally than default/flat/raised
+// button's padding.
+$wtf2-stroked-button-line-height: $wtf2-button-line-height - 2;
+$wtf2-stroked-button-padding: 0 15px;
+$wtf2-stroked-button-border-width: 1px;
+// Icon Button standards
+$wtf2-icon-button-size: 40px !default;
+$wtf2-icon-button-border-radius: 50% !default;
+$wtf2-icon-button-line-height: 24px !default;
+// Fab standards
+$wtf2-fab-border-radius: 50% !default;
+$wtf2-fab-size: 56px !default;
+$wtf2-fab-padding: 16px !default;
+$wtf2-mini-fab-size: 40px !default;
+$wtf2-mini-fab-padding: 8px !default;
+// Applies base styles to all button types.
+@mixin wtf2-button-base {
+    box-sizing: border-box;
+    position: relative;
+    // Reset browser <button> styles.
+    @include wtf2-button-reset();
+    // Make anchors render like buttons.
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    // Sizing.
+    margin: $wtf2-button-margin;
+    min-width: $wtf2-button-min-width;
+    line-height: $wtf2-button-line-height;
+    padding: $wtf2-button-padding;
+    border-radius: $wtf2-button-border-radius;
+    // Explicitly set the default overflow to `visible`. It is already set
+    // on most browsers except on IE11 where it defaults to `hidden`.
+    overflow: visible;
+    &[disabled] {
+        cursor: default;
+    }
+    &.cdk-keyboard-focused,
+    &.cdk-program-focused {
+        .wtf2-button-focus-overlay {
+            opacity: 0.12;
+        }
+    }
+    &::-moz-focus-inner {
+        border: 0;
+    }
+}
+
+// Applies styles to buttons with backgrounds: raised, fab, and mini-fab
+@mixin wtf2-raised-button {
+    @include wtf2-button-base;
+    @include _noop-animation();
+    // Force hardware acceleration.
+    transform: translate3d(0, 0, 0);
+    // Animation.
+    transition: background $swift-ease-out-duration $swift-ease-out-timing-function, wtf2-elevation-transition-property-value();
+}
+
+// Applies styles to fab and mini-fab button types only
+@mixin wtf2-fab($size, $padding) {
+    @include wtf2-raised-button;
+    // Reset the min-width from the button base.
+    min-width: 0;
+    border-radius: $wtf2-fab-border-radius;
+    width: $size;
+    height: $size;
+    padding: 0;
+    flex-shrink: 0;
+    .wtf2-button-wrapper {
+        padding: $padding 0;
+        display: inline-block;
+        line-height: $wtf2-icon-button-line-height;
+    }
+}

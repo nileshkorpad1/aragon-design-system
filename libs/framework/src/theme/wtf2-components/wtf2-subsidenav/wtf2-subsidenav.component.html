@@ -1,0 +1,12 @@
+<div class="subsidenav-container wtf2-grey-200-bg p-10">
+    <div class="icon-wrapper" *ngFor="let image of imageList">
+        <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div class="apps-wrapper">
+                <a href="/">
+                    <img src="{{ image.url }}" class="apps-icon" alt="{{ image.title }}" />
+                </a>
+                <label>{{ image.title }}</label>
+            </div>
+        </div>
+    </div>
+</div>

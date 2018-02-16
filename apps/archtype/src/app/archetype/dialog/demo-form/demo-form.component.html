@@ -1,0 +1,321 @@
+<button wtf2-dialog-close class="dialog-close-button">
+    <wtf2-icon>close</wtf2-icon>
+</button>
+<!-- <wtf2-dialog-content> -->
+    <wtf2-tab-group class="dialog-tab-group">
+        <!-- HELP-->
+        <wtf2-tab h1 wtf2-dialog-title label="HELP">
+            <ng-template wtf2TabContent>
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-12">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </wtf2-tab>
+        <!-- Contact Support -->
+        <wtf2-tab h1 wtf2-dialog-title label="Contact Support">
+            <ng-template wtf2TabContent>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-12">
+                            <h3> CONTACT SUPPORT DETAILS</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                        </div>
+                        <div class="col col-6">
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="FIRST NAME" required>
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col col-6">
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="LAST NAME" required>
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col col-6">
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="ADDRESS LINE 1" required>
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col col-6">
+                            <wtf2-form-field>
+                                <input wtf2Input placeholder="ADDRESS LINE 2" required>
+                            </wtf2-form-field>
+                        </div>
+
+                        <div class="col col-6">
+                            <wtf2-form-field>
+                                <wtf2-select placeholder="Country">
+                                    <wtf2-option>None</wtf2-option>
+                                    <wtf2-option *ngFor="let country of countries" [value]="country">{{country}}</wtf2-option>
+                                </wtf2-select>
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col col-6">
+                            <wtf2-form-field>
+                                <wtf2-select placeholder="City">
+                                    <wtf2-option>None</wtf2-option>
+                                    <wtf2-option *ngFor="let city of cities" [value]="city">{{city}}</wtf2-option>
+                                </wtf2-select>
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col col-6">
+                            <wtf2-form-field>
+                                <wtf2-select placeholder="Job-Title">
+                                    <wtf2-option>None</wtf2-option>
+                                    <wtf2-option *ngFor="let job of jobes" [value]="job">{{job}}</wtf2-option>
+                                </wtf2-select>
+                            </wtf2-form-field>
+                        </div>
+                        <div class="col col-12">
+                            <button wtf2-flat-button cdkFocusInitial color="warn" (click)="submitData()">ADD</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </ng-template>
+        </wtf2-tab>
+
+        <!-- INVOICE -->
+        <wtf2-tab h1 wtf2-dialog-title label="ABOUT US">
+            <ng-template wtf2TabContent>
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-12">
+                            <h3> Overview</h3>
+
+                            <p>Deskera is a leading cloud-based business software provider in South East Asia. Deskera
+                                has been recognized as the
+                                #1 Integrated Business Applications as a Service (BAaaS) provider in 2015 for the South
+                                East Asian market by Frost
+                                & Sullivan. Today, our cloud services power more than 3,000 SMEs and businesses
+                                globally. We are headquartered in
+                                Singapore and have offices in India, Malaysia and Indonesia along with presence in the
+                                rest of South East Asia.
+                                Deskera products serve a wide range of industries such as manufacturing, trading,
+                                distribution, engineering,
+                                building and construction. For over a decade, we have proved our mettle as a company
+                                that is focused on creating
+                                simple and robust enterprise software that drives progress for our clients. </p>
+
+                            <h3> The Future Looks Promising</h3>
+                            <p>The present market displays an exponential growth in the demand for cloud solutions that
+                                drive business operations
+                                with enormous amount of data being processed everyday. Deskera products with its Big
+                                Data backbone offer a much
+                                required industry tool for devising new solutions that cater to a large customer base.
+                                Our focus is to configure
+                                our products to fit customer needs and industries of all sizes. Within a short span of
+                                about 8 years, we have
+                                become a leading provider of cloud services that facilitates process automation. We aim
+                                to keep up the momentum of
+                                making businesses simpler, user-friendly and automated. With a customer-centric
+                                approach, our aim is to help
+                                enterprises and businesses thrive. </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </wtf2-tab>
+        <wtf2-tab h1 wtf2-dialog-title label="HELP1">
+            <ng-template wtf2TabContent>
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-12">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </wtf2-tab>
+
+        <wtf2-tab h1 wtf2-dialog-title label="HELP2">
+            <ng-template wtf2TabContent>
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-12">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been
+                                the
+                                industry's
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                and
+                                scrambled </p>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </wtf2-tab>
+
+
+    </wtf2-tab-group>
+<!-- </wtf2-dialog-content> -->

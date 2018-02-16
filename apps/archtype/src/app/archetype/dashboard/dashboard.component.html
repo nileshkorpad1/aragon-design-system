@@ -1,0 +1,140 @@
+<wtf2-page-skeleton simple fullwidth>
+    <!-- CENTER -->
+    <!-- CONTENT HEADER -->
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> DASHBOARD</wtf2-header-title>
+            <wtf2-header-subtitle>Your Deskera Cloud Account</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+
+        <!-- CONTENT -->
+
+        <wtf2-page-content wtf2Class="content" >
+            <div>
+
+                <!-- DEMO CONTENT -->
+                <div class="row">
+                    <div class="col-md-12 my-4">
+                        <wtf2-card *ngIf="imageList.length > 0">
+                            <div class="row">
+                                <div class="col-md-2 text-center" *ngFor="let image of imageList">
+                                    <img src="{{ image.url }}" class="apps-icon" alt="{{ image.title }}" />
+                                    <label>{{ image.title }}</label>
+                                </div>
+                            </div>
+                        </wtf2-card>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 my-4" *ngFor="let user of userInfo">
+                        <wtf2-card>
+                            <wtf2-card-header>
+                                <wtf2-card-subtitle>{{ user.title }}</wtf2-card-subtitle>
+                            </wtf2-card-header>
+                            <wtf2-card-content class="countContent">
+                                <h1> <strong>{{ user.userCount }} </strong></h1>
+                            </wtf2-card-content>
+                            <wtf2-card-actions>
+                                <wtf2-card-subtitle class="countContent">{{ user.lastSync }}</wtf2-card-subtitle>
+                            </wtf2-card-actions>
+                        </wtf2-card>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 my-4">
+                        <wtf2-card class="countchart align-self-stretch">
+                            <wtf2-card-content>
+                                <wtf2-tab-group wtf2-stretch-tabs [selectedIndex]="0" (selectedTabChange)="statusChart($event.index)">
+                                    <wtf2-tab *ngFor="let chartObj of chartCount">
+                                        <ng-template wtf2-tab-label>
+                                            <span>{{ chartObj.title }}</span>
+                                            <span class="tab-number">{{chartObj.count}}</span>
+                                            <span class="positive" *ngIf="chartObj.perc < 0">
+                                                <wtf2-icon>keyboard_arrow_down</wtf2-icon>{{chartObj.perc}}%
+                                            </span>
+                                            <span class="negative" *ngIf="chartObj.perc > 0">
+                                                <wtf2-icon>keyboard_arrow_down</wtf2-icon>{{chartObj.perc}}%
+                                            </span>
+                                        </ng-template>
+                                        <div class="chart">
+                                            <canvas id="{{chartObj.id}}" width="10"></canvas>
+                                        </div>
+                                    </wtf2-tab>
+                                </wtf2-tab-group>
+                            </wtf2-card-content>
+                            <wtf2-card-actions>
+                                <wtf2-divider></wtf2-divider>
+                                <button wtf2-button [wtf2MenuTriggerFor]="menu">
+                                    Select Year <wtf2-icon>keyboard_arrow_down</wtf2-icon>
+                                </button>
+                                <wtf2-menu #menu="wtf2Menu">
+                                    <button wtf2-menu-item *ngFor='let year of years'>{{year}}</button>
+                                </wtf2-menu>
+                                <button wtf2-button class="overviewBtn"> Overview<wtf2-icon>keyboard_arrow_right</wtf2-icon>
+                                </button>
+                            </wtf2-card-actions>
+                        </wtf2-card>
+                    </div>
+                    <div class="col-md-4 my-4">
+                        <wtf2-card class="activechart align-self-stretch">
+                            <wtf2-card-header>
+                                <div class="activeheader d-flex flex-column">
+                                    <span>Active Users 12</span>
+                                    <h1> <strong> 3561</strong> </h1>
+                                    <span>Page views per minute </span>
+                                </div>
+                            </wtf2-card-header>
+                            <wtf2-card-content class="activelist">
+                                <wtf2-divider></wtf2-divider>
+                                <canvas id="activeuser" width="10" height="8"></canvas>
+                                <wtf2-list role="list" class="activeuserlist">
+                                    <div wtf2-subheader class="activeuserlist d-flex flex-row align-content-start justify-content-between align-items-start">
+                                        <span> Top Active Pages</span> <span>Active User</span>
+                                    </div>
+                                    <wtf2-list-item role="listitem">/Portfolio</wtf2-list-item>
+                                    <wtf2-divider></wtf2-divider>
+                                    <wtf2-list-item role="listitem">/Form</wtf2-list-item>
+                                    <wtf2-divider></wtf2-divider>
+                                    <wtf2-list-item role="listitem">/Gallery</wtf2-list-item>
+                                    <wtf2-divider></wtf2-divider>
+                                    <wtf2-list-item role="listitem">/Download</wtf2-list-item>
+                                </wtf2-list>
+                            </wtf2-card-content>
+                            <wtf2-card-actions align="end">
+                                <wtf2-divider></wtf2-divider>
+                                <button wtf2-button color="accent"> REAL TIME REPORT <wtf2-icon>keyboard_arrow_right</wtf2-icon>
+                                </button>
+                            </wtf2-card-actions>
+                        </wtf2-card>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 my-4" *ngFor="let tile of tiles">
+                        <wtf2-card class="chartcart" class="align-self-stretch">
+                            <wtf2-card-header>
+                                <wtf2-card-title> <strong> {{ tile.text }} </strong></wtf2-card-title>
+                            </wtf2-card-header>
+                            <wtf2-card-content>
+                                <canvas id="dashWidget_{{ tile.id }}" width="10" height="8"></canvas>
+
+                            </wtf2-card-content>
+
+                        </wtf2-card>
+                    </div>
+                </div>
+            </div>
+            <!-- / DEMO CONTENT -->
+
+        </wtf2-page-content>
+        <!-- / CONTENT -->
+
+    <!-- / CONTENT CARD -->
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

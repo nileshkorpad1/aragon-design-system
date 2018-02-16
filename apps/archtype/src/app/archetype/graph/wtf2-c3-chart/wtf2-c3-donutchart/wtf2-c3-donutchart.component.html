@@ -1,0 +1,25 @@
+<wtf2-page-skeleton simple fullwidth>
+  <div class="center page-skeleton-wrapper">
+    <wtf2-page-header>
+      <wtf2-header-title> Donut Chart </wtf2-header-title>
+      <wtf2-header-subtitle> Donut chart with loop demo</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <div class="content-card">
+      <wtf2-page-content class="content">
+        <div class="row">
+          <div *ngFor="let i of arr" class="col-md-6">
+            <wtf2-card>
+              <wtf2-card-header>
+                c3 Donut Chart
+              </wtf2-card-header>
+              <wtf2-divider></wtf2-divider>
+              <wtf2-card-content>
+                <wtf2-chart [ChartData]="Donutdata" Type="2d" [chartid]="i"></wtf2-chart>
+              </wtf2-card-content>
+            </wtf2-card>
+          </div>
+        </div>
+      </wtf2-page-content>
+    </div>
+  </div>
+</wtf2-page-skeleton>

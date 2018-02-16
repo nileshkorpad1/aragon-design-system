@@ -1,0 +1,39 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/style/elevation';
+@import '../core/typography/typography-utils';
+@mixin wtf2-card-theme($theme) {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-card {
+        @include _wtf2-theme-overridable-elevation(1, $theme);
+        background: wtf2-color($background, card);
+        color: wtf2-color($foreground, text);
+        // Needs extra specificity to be able to override the elevation selectors.
+        &.wtf2-card-flat {
+            @include _wtf2-theme-overridable-elevation(0, $theme);
+        }
+    }
+    .wtf2-card-subtitle {
+        color: wtf2-color($foreground, secondary-text);
+    }
+}
+
+@mixin wtf2-card-typography($config) {
+    .wtf2-card {
+        font-family: wtf2-font-family($config);
+    }
+    .wtf2-card-title {
+        font: {
+            size: wtf2-font-size($config, headline);
+            weight: wtf2-font-weight($config, title);
+        }
+    }
+    .wtf2-card-header .wtf2-card-title {
+        font-size: wtf2-font-size($config, title);
+    }
+    .wtf2-card-subtitle,
+    .wtf2-card-content {
+        font-size: wtf2-font-size($config, body-1);
+    }
+}

@@ -1,0 +1,125 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> Slider</wtf2-header-title>
+        <wtf2-header-subtitle> Slider Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+
+    <!-- CONTENT TOOLBAR -->
+    <!-- <div class="toolbar px-24 py-8">
+                <span>Slider</span>
+            </div> -->
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <wtf2-page-content class="content">
+        <div class="row m-2" page-content-carded>
+            <h3>Slider configuration</h3>
+            <div class="col col-12 ml-4">
+                <!-- <h2 class="example-h2">Slider configuration</h2> -->
+
+                <section class="example-section">
+                    <wtf2-form-field class="example-margin">
+                        <input wtf2Input type="number" placeholder="Value" [(ngModel)]="value">
+                    </wtf2-form-field>
+                    <wtf2-form-field class="example-margin">
+                        <input wtf2Input type="number" placeholder="Min value" [(ngModel)]="min">
+                    </wtf2-form-field>
+                    <wtf2-form-field class="example-margin">
+                        <input wtf2Input type="number" placeholder="Max value" [(ngModel)]="max">
+                    </wtf2-form-field>
+                    <wtf2-form-field class="example-margin">
+                        <input wtf2Input type="number" placeholder="Step size" [(ngModel)]="step">
+                    </wtf2-form-field>
+                </section>
+
+                <section class="example-section">
+                    <wtf2-checkbox class="example-margin" [(ngModel)]="showTicks">Show ticks</wtf2-checkbox>
+                    <wtf2-checkbox class="example-margin" [(ngModel)]="autoTicks" *ngIf="showTicks">
+                        Auto ticks
+                    </wtf2-checkbox>
+                    <wtf2-form-field class="example-margin" *ngIf="showTicks && !autoTicks">
+                        <input wtf2Input type="number" placeholder="Tick interval" [(ngModel)]="tickInterval">
+                    </wtf2-form-field>
+                </section>
+
+                <section class="example-section">
+                    <wtf2-checkbox class="example-margin" [(ngModel)]="thumbLabel">Show thumb label</wtf2-checkbox>
+                </section>
+
+                <section class="example-section">
+                    <wtf2-checkbox class="example-margin" [(ngModel)]="vertical">Vertical</wtf2-checkbox>
+                    <wtf2-checkbox class="example-margin" [(ngModel)]="invert">Inverted</wtf2-checkbox>
+                </section>
+
+                <section class="example-section">
+                    <wtf2-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</wtf2-checkbox>
+                </section>
+
+
+                <h2 class="example-h2">Result</h2>
+
+                <wtf2-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max" [min]="min"
+                    [step]="step" [thumbLabel]="thumbLabel" [tickInterval]="tickInterval" [(ngModel)]="value"
+                    [vertical]="vertical">
+                </wtf2-slider>
+            </div>
+            <h3>Slider</h3>
+            <div class="col col-12 ml-4">
+                <h3>Basic slider</h3>
+                <div class="col col-12 ml-4">
+                    <wtf2-slider></wtf2-slider>
+                </div>
+                <h3>Basic slider with default value set</h3>
+                <div class="col col-12 ml-4">
+                    <wtf2-slider min="1" max="5" step="0.5" value="3"></wtf2-slider>
+                </div>
+
+                <h3>Slider with custom thumb label formatting</h3>
+                <div class="col col-12 ml-4">
+                    <wtf2-slider thumbLabel [displayWith]="formatLabel" tickInterval="10" min="1" max="300">
+                    </wtf2-slider>
+                </div>
+                <h3>Invert Slider</h3>
+                <div class="col col-12 ml-4">
+                    <wtf2-slider invert></wtf2-slider>
+                </div>
+                <h3>Thumblabel Slider</h3>
+                <div class="col col-12 ml-4">
+                    <wtf2-slider thumbLabel tickInterval="1"></wtf2-slider>
+                </div>
+                <h3>Verical Slider</h3>
+                <div class="col col-12 ml-4">
+                    <wtf2-slider vertical></wtf2-slider>
+                </div>
+                <h3>Range Slider</h3>
+                <div class="col col-12 ml-4">
+                    <wtf2-range-slider style="width:35%;" [values]="rangeslideData" [value]="rangeslideData.range_end"
+                        [startRange]="startRange1value" [max]="1000" [min]="0">
+                    </wtf2-range-slider>
+                    <div>{{ rangeslideData | json}}</div>
+                </div>
+            </div>
+        </div>
+    </wtf2-page-content>
+    <!-- / CONTENT  -->
+
+    <!-- / CONTENT CARD -->
+
+
+
+</wtf2-page-skeleton>

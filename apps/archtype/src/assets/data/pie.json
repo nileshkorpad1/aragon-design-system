@@ -1,0 +1,96 @@
+{
+    "keys": [
+        "Salar",
+        "Rent",
+        "MarketExpense",
+        "Office"
+    ],
+    "type": "pie",
+    "data": [
+        {
+            "labelname": "jan",
+            "Salar": 170,
+            "subdata": {
+                "keys": [
+                    "subdata1",
+                    "subdata2"
+                ],
+                "data": [
+                    {
+                        "labelname": "jan1",
+                        "subdata1": 30
+                    },
+                    {
+                        "labelname": "jan2",
+                        "subdata2": 70
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "feb",
+            "Rent": 100,
+            "subdata": {
+                "keys": [
+                    "subdata1",
+                    "subdata2",
+                    "subdata3"
+                ],
+                "data": [
+                    {
+                        "labelname": "feb1",
+                        "subdata1": 130
+                    },
+                    {
+                        "labelname": "feb2",
+                        "subdata2": 70
+                    },
+                    {
+                        "labelname": "feb3",
+                        "subdata3": 30
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "mar",
+            "MarketExpense": 30
+        },
+        {
+            "labelname": "apr",
+            "Office": 30,
+            "subdata": {
+                "keys": [
+                    "subdata1",
+                    "subdata2"
+                ],
+                "data": [
+                    {
+                        "labelname": "mar1",
+                        "subdata1": 30,
+                        "subdata": {
+                            "keys": [
+                                "subsubdata1",
+                                "subsubdata2"
+                            ],
+                            "data": [
+                                {
+                                    "labelname": "submar1",
+                                    "subsubdata1": 40
+                                },
+                                {
+                                    "labelname": "submar2",
+                                    "subsubdata2": 60
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "labelname": "mar2",
+                        "subdata2": 70
+                    }
+                ]
+            }
+        }
+    ]
+}

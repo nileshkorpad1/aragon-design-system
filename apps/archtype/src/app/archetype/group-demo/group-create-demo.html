@@ -1,0 +1,18 @@
+<wtf2-page-content wtf2Class="content-card wtf2-white-bg" wtf2Toolbar="Create Group">
+    <div class="container">
+        <div class="row">
+            <wtf2-form-field>
+                <input wtf2Input placeholder="Choose file" required />
+            </wtf2-form-field>
+        </div>
+        <div class="row">
+            <wtf2-form-field>
+                <wtf2-select placeholder="Select User(s)" multiple>
+                    <wtf2-option *ngFor="let fileType of FiletypesList" [value]="fileType">{{ fileType }}</wtf2-option>
+                </wtf2-select>
+            </wtf2-form-field>
+        </div>
+        <button wtf2-button [wtf2-dialog-close]="true" cdkFocusInitial>Add</button>
+        <button wtf2-button wtf2-dialog-close class="m-2">Cancel</button>
+    </div>
+</wtf2-page-content>

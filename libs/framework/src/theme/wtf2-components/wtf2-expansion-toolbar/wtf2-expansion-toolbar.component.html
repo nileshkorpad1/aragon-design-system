@@ -1,0 +1,98 @@
+<div class="col col-12">
+    <wtf2-action-toolbar>
+        <div class="action-panel d-flex align-items-center {{panelClass}}">
+            <div class="button-group mx-4" *ngFor="let eD of buttonData; let i = index">
+
+                <div *ngIf="eD.type == 'expand'">
+                    <button wtf2-button (click)="expandButtonClick(eD, i)">
+                        <wtf2-icon *ngIf="eD.icon">{{eD.icon}}</wtf2-icon>
+                        {{eD.label}}
+                        <div class="arrow-up" *ngIf="eD.selected && eD.type == 'expand'"></div>
+                    </button>
+                </div>
+
+                <div *ngIf="eD.type == 'button'">
+                    <button wtf2-button (click)="buttonClick(eD, i)">
+                        <wtf2-icon *ngIf="eD.icon">{{eD.icon}}</wtf2-icon>
+                        {{eD.label}}
+                        <!-- <wtf2-icon>keyboard_arrow_right</wtf2-icon> -->
+                    </button>
+                </div>
+
+                <!-- <div *ngIf="eD.type == 'menu'" triggerFor="eD.triggerFor">
+                <button wtf2-button [wtf2MenuTriggerFor]="eD.triggerFor">            -->
+                <div *ngIf="eD.type == 'menu'">
+                    <button wtf2-button [wtf2MenuTriggerFor]="mainmenu">
+                        {{eD.label}}
+                        {{eD.icon}}
+                        <!-- <wtf2-icon>keyboard_arrow_down</wtf2-icon> -->
+                    </button>
+                    <!-- <wtf2-menu #triggerFor="wtf2Menu"> -->
+                    <wtf2-menu #mainmenu="wtf2Menu">
+                        <div *ngFor="let menu of eD.menus; let j = index">
+                            <!-- <button wtf2-menu-item [wtfMenuTriggerFor]="menu.triggerFor" ////submenu > -->
+                            <button wtf2-menu-item (click)="menuButtonClick(eD, i, j)">
+                                {{menu.label}}
+                                {{menu.icon}}
+                            </button>
+                        </div>
+                    </wtf2-menu>
+                    <!-- <wtf2-menu #submenu="wtf2Menu">
+                                    <div *ngFor='let menu of eD.menus'>
+                                        <button wtf2-menu-item [wtfMenuTriggerFor]="menu.triggerFor" >
+                                            {{menu.label}}
+                                            {{eD.icon}}
+                                        </button>
+                                    </div>
+                                </wtf2-menu> -->
+                </div>
+
+                <!-- split button -->
+                <div *ngIf="eD.type == 'split-button'" class="action-split-button">
+                    <button wtf2-button class="primary-btn" (click)="splitClick(eD,i)">
+                        <wtf2-icon *ngIf="eD.icon">{{eD.icon}}</wtf2-icon>
+                        {{eD.label}}
+                    </button>
+                    <button wtf2-button class="dropdown-btn" (click)="expandButtonClick(eD, i)">
+                        <wtf2-icon>keyboard_arrow_down</wtf2-icon>
+                        <div class="arrow-up" *ngIf="eD.selected && eD.type == 'split-button'"></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- searchbar for actiontoolbar -->
+            <div class="ml-auto search-btn" *ngIf="searchButtonFlag">
+                <wtf2-search-bar (input)="searchInput.emit($event)"></wtf2-search-bar>
+            </div>
+            <!-- <div *ngFor="let eD of buttonData"> -->
+
+        </div>
+        <ng-container *ngFor="let eD of buttonData; let i = index">
+            <div *ngIf=" (eD.selected && eD.type == 'expand') || (eD.selected && eD.type == 'split-button')" class="row expansion-panel pagespacer-invert-mx-1 pagespacer-px-1">
+                <div class="col col-3 card-btn" *ngFor="let card of eD.card; let j = index">
+                    <div *ngIf="eD.selected">
+                        <div class="card" (click)="cardClickAction(ed,card)">
+                            <wtf2-card class="expanded-card">
+                                <wtf2-card-content>
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-sm-4 icon-row text-center">
+                                            <wtf2-icon class="card-icon">{{card.avatar}}</wtf2-icon>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <strong>
+                                                {{card.title}}
+                                            </strong> <br>
+                                            <span class="card-subtitle"> {{card.description}} </span>
+                                        </div>
+                                    </div>
+                                </wtf2-card-content>
+                            </wtf2-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+    </wtf2-action-toolbar>
+
+</div>

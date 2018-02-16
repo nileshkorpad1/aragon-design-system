@@ -1,0 +1,65 @@
+@import '../core/style/list-common';
+@import '../core/style/layout-common';
+// height of tile header or footer if it has one line
+$wtf2-grid-list-one-line-height: 48px;
+// height of tile header or footer if it has two lines
+$wtf2-grid-list-two-line-height: 68px;
+// side padding for text in tile headers and footers
+$wtf2-grid-list-text-padding: 16px;
+.wtf2-grid-list {
+    display: block;
+    position: relative;
+}
+
+.wtf2-grid-tile {
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    .wtf2-figure {
+        @include wtf2-fill;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    // Headers & footers
+    .wtf2-grid-tile-header,
+    .wtf2-grid-tile-footer {
+        @include wtf2-normalize-text();
+        display: flex;
+        align-items: center;
+        height: $wtf2-grid-list-one-line-height;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.38);
+        overflow: hidden;
+        padding: 0 $wtf2-grid-list-text-padding;
+        // Positioning
+        position: absolute;
+        left: 0;
+        right: 0;
+        &.wtf2-2-line {
+            height: $wtf2-grid-list-two-line-height;
+        }
+    }
+    .wtf2-grid-list-text {
+        @include wtf2-line-wrapper-base();
+    }
+    .wtf2-grid-tile-header {
+        top: 0;
+    }
+    .wtf2-grid-tile-footer {
+        bottom: 0;
+    }
+    .wtf2-grid-avatar {
+        padding-right: $wtf2-grid-list-text-padding;
+        [dir='rtl'] & {
+            padding-right: 0;
+            padding-left: $wtf2-grid-list-text-padding;
+        }
+        &:empty {
+            display: none;
+        }
+    }
+}

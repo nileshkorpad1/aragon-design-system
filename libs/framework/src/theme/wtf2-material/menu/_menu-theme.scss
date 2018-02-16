@@ -1,0 +1,44 @@
+@import '../core/style/elevation';
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin wtf2-menu-theme($theme) {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-menu-panel {
+        @include _wtf2-theme-overridable-elevation(4, $theme);
+        background: wtf2-color($background, 'card');
+    }
+    .wtf2-menu-item {
+        background: transparent;
+        color: wtf2-color($foreground, 'text');
+        &[disabled] {
+            &,
+            &::after {
+                color: wtf2-color($foreground, 'disabled');
+            }
+        }
+    }
+    .wtf2-menu-item .wtf2-icon-no-color,
+    .wtf2-menu-item-submenu-trigger::after {
+        color: wtf2-color($foreground, 'icon');
+    }
+    .wtf2-menu-item:hover,
+    .wtf2-menu-item.cdk-program-focused,
+    .wtf2-menu-item.cdk-keyboard-focused,
+    .wtf2-menu-item-highlighted {
+        &:not([disabled]) {
+            background: wtf2-color($background, 'hover');
+        }
+    }
+}
+
+@mixin wtf2-menu-typography($config) {
+    .wtf2-menu-item {
+        font: {
+            family: wtf2-font-family($config, body-1);
+            size: wtf2-font-size($config, body-1);
+            weight: wtf2-font-weight($config, body-1);
+        }
+    }
+}

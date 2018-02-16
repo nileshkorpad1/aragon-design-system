@@ -1,0 +1,23 @@
+.daterange-layout {
+    width: 586px;
+    background-color: #FEFEFE;
+}
+
+.daterange-layout .calander-range {
+    width: 50%;
+    display: inline-block;
+    flex-direction: column;
+}
+
+.date-range-action {
+    width: 100%;
+    display: inline-block;
+}
+
+.special-date {
+    background-color: #F3F3F3;
+}
+
+.wtf2-calendar-body-selected {
+    background-color: #b51616;
+}

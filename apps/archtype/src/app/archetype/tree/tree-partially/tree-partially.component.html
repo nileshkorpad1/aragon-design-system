@@ -1,0 +1,24 @@
+<wtf2-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <!-- Leaf node -->
+    <wtf2-tree-node *wtf2TreeNodeDef="let node" wtf2TreeNodePadding>
+        <button wtf2-icon-button disabled></button>
+        {{node.item}}
+    </wtf2-tree-node>
+
+    <!-- expandable node -->
+    <wtf2-tree-node *wtf2TreeNodeDef="let node; when: hasChild" wtf2TreeNodePadding>
+        <button wtf2-icon-button [attr.aria-label]="'toggle ' + node.filename" (click)="loadChildren(node)"
+            wtf2TreeNodeToggle>
+            <wtf2-icon class="wtf2-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </wtf2-icon>
+        </button>
+        {{node.item}}
+    </wtf2-tree-node>
+
+    <wtf2-tree-node *wtf2TreeNodeDef="let node; when: isLoadMore">
+        <button wtf2-button (click)="loadMore(node.loadMoreParentItem)">
+            Load more...
+        </button>
+    </wtf2-tree-node>
+</wtf2-tree>

@@ -1,0 +1,97 @@
+<wtf2-page-skeleton simple fullwidth>
+    <!-- CENTER -->
+    <!-- CONTENT HEADER -->
+    <!-- <wtf2-page-header></wtf2-page-header> -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> Accrodion Grid with checkbox Demo</wtf2-header-title>
+        <wtf2-header-subtitle>Grid with checkbox Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+
+    <!-- CONTENT -->
+
+    <wtf2-page-content wtf2class="content">
+
+        <!-- DEMO CONTENT -->
+        <div class="container-fluid p-0 ">
+            <div class="row">
+                <div class="col-md-3 offset-md-9">
+                    <div class="table-filter ">
+                        <wtf2-form-field>
+                            <input wtf2Input (keyup)="Filter($event.target.value)" placeholder="Filter">
+                        </wtf2-form-field>
+                    </div>
+                </div>
+            </div>
+            <wtf2-table #Table [dataSource]="MyDataSource" multiTemplateDataRows wtf2Sort>
+
+                <!-- For ID -->
+                <ng-container wtf2ColumnDef="id">
+                    <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> ID </wtf2-header-cell>
+                    <wtf2-cell *wtf2CellDef="let post">
+                        {{post.id}}
+                    </wtf2-cell>
+                </ng-container>
+
+                <!-- For User ID -->
+                <ng-container wtf2ColumnDef="userId">
+                    <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> User ID </wtf2-header-cell>
+                    <wtf2-cell *wtf2CellDef="let post">
+                        {{post.userId}}
+                    </wtf2-cell>
+                </ng-container>
+
+                <!-- For Title -->
+                <ng-container wtf2ColumnDef="title">
+                    <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> Title </wtf2-header-cell>
+                    <wtf2-cell *wtf2CellDef="let post">
+                        <div class="ellipsis">{{post.title}}</div>
+                    </wtf2-cell>
+                </ng-container>
+
+                <!-- For Completion Status -->
+                <ng-container wtf2ColumnDef="completed">
+                    <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> Completion Status</wtf2-header-cell>
+                    <wtf2-cell *wtf2CellDef="let post">
+                        {{post.completed}} </wtf2-cell>
+                </ng-container>
+
+                <ng-container wtf2ColumnDef="select">
+                    <wtf2-header-cell *wtf2HeaderCellDef>
+                        <wtf2-checkbox (change)="$event ? masterToggle() : null;" [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+                        </wtf2-checkbox>
+                    </wtf2-header-cell>
+                    <wtf2-cell *wtf2CellDef="let post">
+                        <wtf2-checkbox (click)="$event.stopPropagation();" (change)="$event ? selection.toggle(post) : null;"
+                            [checked]="selection.isSelected(post)">
+                        </wtf2-checkbox>
+                    </wtf2-cell>
+                </ng-container>
+
+                <wtf2-header-row *wtf2HeaderRowDef="displayedColumns"></wtf2-header-row>
+
+                <!-- Expanded Content Column - The detail row is made up of this one column -->
+                <wtf2-row-detail *wtf2RowDef="let row; columns: displayedColumns;" class="element-row" [isselectedrow]="selection.isSelected(row)" [isOpen]="expandedElement == row" [disabled]="false" [hideToggle]="false">
+                    <h1>this is test accrodian</h1>{{row.title}}
+                </wtf2-row-detail>
+            </wtf2-table>
+            <div *ngIf="!totalRows" class="spinner-container d-flex justify-content-center">
+                <wtf2-spinner></wtf2-spinner>
+            </div>
+
+            <!-- To paginate between pages with search -->
+            <wtf2-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+            </wtf2-paginator>
+        </div>
+        <!-- / DEMO CONTENT -->
+
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+
+    <!-- / CONTENT CARD -->
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

@@ -1,0 +1,15 @@
+wtf2-progress-bar {
+    position: absolute!important ;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99998;
+    width: 100%;
+
+    wtf2-progress-bar {
+
+        .wtf2-progress-bar-buffer {
+            background-color: #C5C6CB !important;
+        }
+    }
+}

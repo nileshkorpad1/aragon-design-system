@@ -1,0 +1,66 @@
+<!-- <button wtf2-button (click)="openDialog()">Open dialog</button> -->
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> Dialog</wtf2-header-title>
+        <wtf2-header-subtitle>Dialog Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+
+    <!-- CONTENT TOOLBAR -->
+    <!-- <div class="toolbar px-24 py-8">
+                <span>Dialog box</span>
+            </div> -->
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <wtf2-page-content class="content" wtf2-carded-layout>
+        <div class="container-fluid" page-content-carded>
+            <div class="row">
+                <div class="col col-6">
+                    <h3>Injecting data when opening a dialog</h3>
+                    <button wtf2-button (click)="openDialog()">Open Plain dialog</button>
+                </div>
+                <div class="col col-6">
+                    <h3>Dialog with header, scrollable content and actions</h3>
+                    <button wtf2-button (click)="openDialogScrollablea()">Open Scrollable dialog</button>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col col-6">
+                    <h3>Dialog with header, tab wise content and actions</h3>
+                    <button wtf2-button (click)="showTestDialog()">Open dialog with tab</button>
+                </div>
+                <div class="col col-6">
+                    <h3>Dialog with hide show content and actions</h3>
+                    <button wtf2-button (click)="showDialog()">Open dialog with hide show content</button>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col col-6">
+                    <h3>Nested Dialog Box </h3>
+                    <button wtf2-button (click)="nestedDialog()">Open nested dialog box</button>
+                </div>
+
+            </div>
+        </div>
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+
+    <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

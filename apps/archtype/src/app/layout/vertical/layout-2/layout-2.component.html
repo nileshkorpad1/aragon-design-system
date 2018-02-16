@@ -1,0 +1,129 @@
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!wtf2Config.layout.sidepanel.hidden && wtf2Config.layout.sidepanel.position === 'left'">
+
+    <!-- CHAT PANEL -->
+    <wtf2-sidebar name="chatPanel" position="left" class="chat-panel left-chat-panel" [folded]="true" [foldedWidth]="70" [foldedAutoTriggerOnHover]="false" lockedOpen="gt-md">
+        <chat-panel></chat-panel>
+    </wtf2-sidebar>
+    <!-- / CHAT PANEL -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<div id="main">
+
+    <!-- TOOLBAR: Above fixed -->
+    <ng-container *ngIf="wtf2Config.layout.toolbar.position === 'above-fixed'">
+        <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+    </ng-container>
+    <!-- / TOOLBAR: Above fixed -->
+
+    <div id="container-1" class="layout-container" wtf2PerfectScrollbar [wtf2PerfectScrollbarOptions]="{suppressScrollX: true, updateOnRouteChange : true}">
+
+        <!-- TOOLBAR: Above static -->
+        <ng-container *ngIf="wtf2Config.layout.toolbar.position === 'above-static'">
+            <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+        </ng-container>
+        <!-- / TOOLBAR: Above static -->
+
+        <div id="container-2" class="layout-container">
+
+            <!-- NAVBAR: Left -->
+            <ng-container *ngIf="wtf2Config.layout.navbar.position === 'left'">
+                <ng-container *ngTemplateOutlet="leftNavbar"></ng-container>
+            </ng-container>
+            <!-- / NAVBAR: Left -->
+
+            <div id="container-3" class="layout-container">
+
+                <!-- TOOLBAR: Below -->
+                <ng-container *ngIf="wtf2Config.layout.toolbar.position === 'below'">
+                    <ng-container *ngTemplateOutlet="toolbar"></ng-container>
+                </ng-container>
+                <!-- / TOOLBAR: Below -->
+
+                <!-- CONTENT -->
+                <content></content>
+                <!-- / CONTENT -->
+
+                <!-- FOOTER: Below -->
+                <!-- <ng-container *ngIf="wtf2Config.layout.footer.position === 'below'">
+                    <ng-container *ngTemplateOutlet="footer"></ng-container>
+                </ng-container> -->
+                <!-- / FOOTER: Below -->
+
+            </div>
+
+            <!-- NAVBAR: Right -->
+            <ng-container *ngIf="wtf2Config.layout.navbar.position === 'right'">
+                <ng-container *ngTemplateOutlet="rightNavbar"></ng-container>
+            </ng-container>
+            <!-- / NAVBAR: Right -->
+
+        </div>
+
+        <!-- FOOTER: Above static -->
+        <!-- <ng-container *ngIf="wtf2Config.layout.footer.position === 'above-static'">
+            <ng-container *ngTemplateOutlet="footer"></ng-container>
+        </ng-container> -->
+        <!-- FOOTER: Above static -->
+
+    </div>
+
+    <!-- FOOTER: Above fixed -->
+    <!-- <ng-container *ngIf="wtf2Config.layout.footer.position === 'above-fixed'">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+    </ng-container> -->
+    <!-- FOOTER: Above fixed -->
+
+</div>
+
+<!-- SIDE PANEL -->
+<ng-container *ngIf="!wtf2Config.layout.sidepanel.hidden && wtf2Config.layout.sidepanel.position === 'right'">
+
+    <!-- CHAT PANEL -->
+    <wtf2-sidebar name="chatPanel" position="right" class="chat-panel right-chat-panel" [folded]="true" [foldedWidth]="70" [foldedAutoTriggerOnHover]="false" lockedOpen="gt-md">
+        <chat-panel></chat-panel>
+    </wtf2-sidebar>
+    <!-- / CHAT PANEL -->
+
+</ng-container>
+<!-- / SIDE PANEL -->
+
+<!-- QUICK PANEL -->
+<!-- <wtf2-sidebar name="quickPanel" position="right" class="quick-panel">
+    <quick-panel></quick-panel>
+</wtf2-sidebar> -->
+<!-- / QUICK PANEL -->
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- @ PARTIALS
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- TOOLBAR -->
+<ng-template #toolbar>
+    <toolbar *ngIf="!wtf2Config.layout.toolbar.hidden" [ngClass]="[wtf2Config.layout.toolbar.position, wtf2Config.layout.toolbar.background]"></toolbar>
+</ng-template>
+<!-- / TOOLBAR -->
+
+<!-- FOOTER -->
+<!-- <ng-template #footer>
+    <footer *ngIf="!wtf2Config.layout.footer.hidden" [ngClass]="[wtf2Config.layout.footer.position, wtf2Config.layout.footer.background]"></footer>
+</ng-template> -->
+<!-- / FOOTER -->
+
+<!-- LEFT NAVBAR -->
+<ng-template #leftNavbar>
+    <wtf2-sidebar name="navbar" class="navbar-wtf2-sidebar" [folded]="wtf2Config.layout.navbar.folded" lockedOpen="gt-md" *ngIf="!wtf2Config.layout.navbar.hidden">
+        <navbar [variant]="wtf2Config.layout.navbar.variant" class="left-navbar" [ngClass]="wtf2Config.layout.navbar.background"></navbar>
+    </wtf2-sidebar>
+</ng-template>
+<!-- / LEFT NAVBAR -->
+
+<!-- RIGHT NAVBAR -->
+<ng-template #rightNavbar>
+    <wtf2-sidebar name="navbar" position="right" class="navbar-wtf2-sidebar" [folded]="wtf2Config.layout.navbar.folded" lockedOpen="gt-md" *ngIf="!wtf2Config.layout.navbar.hidden">
+        <navbar [variant]="wtf2Config.layout.navbar.variant" class="right-navbar" [ngClass]="wtf2Config.layout.navbar.background"></navbar>
+    </wtf2-sidebar>
+</ng-template>
+<!-- / RIGHT NAVBAR -->

@@ -1,0 +1,25 @@
+{
+    "keys": [
+        "value"
+    ],
+    "type": "gauge",
+    "data": [
+        {
+            "labelname": "mar",
+            "value": 30,
+            "maxvalue": 100,
+            "subdata": {
+                "keys": [
+                    "value"
+                ],
+                "data": [
+                    {
+                        "labelname": "mar1",
+                        "value": 10,
+                        "maxvalue": 100
+                    }
+                ]
+            }
+        }
+    ]
+}

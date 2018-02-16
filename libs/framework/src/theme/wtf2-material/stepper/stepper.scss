@@ -1,0 +1,162 @@
+@import '../core/style/variables';
+$wtf2-horizontal-stepper-header-height: 72px !default;
+$wtf2-stepper-label-header-height: 24px !default;
+$wtf2-stepper-label-position-bottom-top-gap: 16px !default;
+$wtf2-stepper-side-gap: 24px !default;
+$wtf2-vertical-stepper-content-margin: 36px !default;
+$wtf2-stepper-line-width: 1px !default;
+$wtf2-stepper-line-gap: 8px !default;
+.wtf2-stepper-vertical,
+.wtf2-stepper-horizontal {
+    display: block;
+}
+
+.wtf2-horizontal-stepper-header-container {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    .wtf2-stepper-label-position-bottom & {
+        align-items: flex-start;
+    }
+}
+
+.wtf2-stepper-horizontal-line {
+    border-top-width: $wtf2-stepper-line-width;
+    border-top-style: solid;
+    flex: auto;
+    height: 0;
+    margin: 0 $wtf2-stepper-line-gap - $wtf2-stepper-side-gap;
+    min-width: $wtf2-stepper-line-gap + $wtf2-stepper-side-gap;
+    .wtf2-stepper-label-position-bottom & {
+        margin: 0;
+        min-width: 0;
+        position: relative;
+        top: $wtf2-stepper-side-gap + $wtf2-stepper-label-header-height / 2;
+    }
+}
+
+%wtf2-header-horizontal-line-label-position-bottom {
+    border-top-width: $wtf2-stepper-line-width;
+    border-top-style: solid;
+    content: '';
+    display: inline-block;
+    height: 0;
+    position: absolute;
+    top: $wtf2-stepper-side-gap + $wtf2-stepper-label-header-height / 2;
+    width: calc(50% - #{$wtf2-stepper-label-header-height / 2 + $wtf2-stepper-line-gap});
+}
+
+.wtf2-horizontal-stepper-header {
+    display: flex;
+    height: $wtf2-horizontal-stepper-header-height;
+    overflow: hidden;
+    align-items: center;
+    padding: 0 $wtf2-stepper-side-gap;
+    .wtf2-step-icon {
+        margin-right: $wtf2-stepper-line-gap;
+        flex: none;
+        [dir='rtl'] & {
+            margin-right: 0;
+            margin-left: $wtf2-stepper-line-gap;
+        }
+    }
+    .wtf2-stepper-label-position-bottom & {
+        box-sizing: border-box;
+        flex-direction: column;
+        // We use auto instead of fixed 104px (by spec) because when there is an optional step
+        //  the height is greater than that
+        height: auto;
+        padding: $wtf2-stepper-side-gap;
+        &:not(:last-child)::after,
+        [dir='rtl'] &:not(:first-child)::after {
+            @extend %wtf2-header-horizontal-line-label-position-bottom;
+            right: 0;
+        }
+        &:not(:first-child)::before,
+        [dir='rtl'] &:not(:last-child)::before {
+            @extend %wtf2-header-horizontal-line-label-position-bottom;
+            left: 0;
+        }
+        [dir='rtl'] &:last-child::before,
+        [dir='rtl'] &:first-child::after {
+            display: none;
+        }
+        & .wtf2-step-icon {
+            // Cleans margin both for ltr and rtl direction
+            margin-right: 0;
+            margin-left: 0;
+        }
+        & .wtf2-step-label {
+            padding: $wtf2-stepper-label-position-bottom-top-gap 0 0 0;
+            text-align: center;
+            width: 100%;
+        }
+    }
+}
+
+.wtf2-vertical-stepper-header {
+    display: flex;
+    align-items: center;
+    padding: $wtf2-stepper-side-gap;
+    // We can't use `max-height` here, because it breaks the flexbox centering in IE.
+    height: $wtf2-stepper-label-header-height;
+    .wtf2-step-icon {
+        margin-right: $wtf2-vertical-stepper-content-margin - $wtf2-stepper-side-gap;
+        [dir='rtl'] & {
+            margin-right: 0;
+            margin-left: $wtf2-vertical-stepper-content-margin - $wtf2-stepper-side-gap;
+        }
+    }
+}
+
+.wtf2-horizontal-stepper-content {
+    outline: 0;
+    &[aria-expanded='false'] {
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+.wtf2-horizontal-content-container {
+    overflow: hidden;
+    padding: 0 $wtf2-stepper-side-gap $wtf2-stepper-side-gap $wtf2-stepper-side-gap;
+}
+
+.wtf2-vertical-content-container {
+    margin-left: $wtf2-vertical-stepper-content-margin;
+    border: 0;
+    position: relative;
+    [dir='rtl'] & {
+        margin-left: 0;
+        margin-right: $wtf2-vertical-stepper-content-margin;
+    }
+}
+
+.wtf2-stepper-vertical-line::before {
+    content: '';
+    position: absolute;
+    top: $wtf2-stepper-line-gap - $wtf2-stepper-side-gap;
+    bottom: $wtf2-stepper-line-gap - $wtf2-stepper-side-gap;
+    left: 0;
+    border-left-width: $wtf2-stepper-line-width;
+    border-left-style: solid;
+    [dir='rtl'] & {
+        left: auto;
+        right: 0;
+    }
+}
+
+.wtf2-vertical-stepper-content {
+    overflow: hidden;
+    outline: 0;
+}
+
+.wtf2-vertical-content {
+    padding: 0 $wtf2-stepper-side-gap $wtf2-stepper-side-gap $wtf2-stepper-side-gap;
+}
+
+.wtf2-step:last-child {
+    .wtf2-vertical-content-container {
+        border: none;
+    }
+}

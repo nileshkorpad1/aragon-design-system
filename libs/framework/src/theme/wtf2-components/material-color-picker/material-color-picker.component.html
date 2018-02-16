@@ -1,0 +1,53 @@
+<button wtf2-icon-button type="button" class="wtf2-elevation-z1" [wtf2MenuTriggerFor]="colorMenu" (menuOpened)="onMenuOpen()" [ngClass]="'wtf2-'+selectedPalette+'-'+selectedHue+'-bg'">
+    <wtf2-icon>palette</wtf2-icon>
+</button>
+
+<wtf2-menu #colorMenu="wtf2Menu" class="wtf2-material-color-picker-menu">
+
+    <header [ngClass]="selectedColor?.class || 'wtf2-accent-bg'" class="wtf2-elevation-z4" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <button wtf2-icon-button [style.visibility]="view==='hues'?'visible':'hidden'" (click)="$event.stopPropagation();backToPaletteSelection()" aria-label="Palette">
+            <wtf2-icon class="s-20">arrow_back</wtf2-icon>
+        </button>
+
+        <span *ngIf="selectedColor?.palette">
+            {{selectedColor.palette}} {{selectedColor.hue}}
+        </span>
+
+        <span *ngIf="!selectedColor?.palette">
+            Select Color
+        </span>
+
+        <button wtf2-icon-button class="remove-color-button" (click)="$event.stopPropagation();removeColor()" aria-label="Remove Color">
+            <wtf2-icon class="s-20">delete</wtf2-icon>
+        </button>
+    </header>
+
+
+    <div [ngSwitch]="view" class="views">
+
+        <div class="view" *ngSwitchCase="'palettes'">
+
+            <div fxLayout="row wrap" fxLayoutAlign="start start" class="colors" wtf2PerfectScrollbar>
+                <div class="color" [ngClass]="'wtf2-'+color.key+'-bg'" *ngFor="let color of colors" (click)="$event.stopPropagation($event);selectPalette(color.key)" wtf2-ink-ripple>
+                    <span class="label">
+                        {{color.key}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="view" *ngSwitchCase="'hues'">
+            <div fxLayout="row wrap" fxLayoutAlign="start start" class="colors" wtf2PerfectScrollbar>
+                <div class="color" *ngFor="let hue of hues" [fxHide]="selectedPalette === 'white' && hue !== '500'|| selectedPalette === 'black' && hue !== '500'" [ngClass]="'wtf2-'+selectedPalette+'-'+hue+'-bg'" (click)="selectHue(hue)" fxLayout="row" fxLayoutAlign="start end"
+                    wtf2-ink-ripple>
+                    <span class="label">
+                        {{hue}}
+                    </span>
+                    <wtf2-icon *ngIf="selectedHue === hue" class="s-16">check</wtf2-icon>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</wtf2-menu>

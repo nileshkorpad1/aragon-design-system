@@ -1,0 +1,92 @@
+// Fix: "Icon button ripple radius is not correct on Edge & Safari"
+
+.wtf2-icon-button {
+    .wtf2-button-ripple {
+        border-radius: 50%;
+    }
+}
+
+// Fix: "Smooth scrolling for iOS"
+.wtf2-dialog-container {
+    -webkit-overflow-scrolling: touch;
+}
+
+// Fix: "Inconsistent font sizes across elements"
+.wtf2-form-field-wrapper {
+    font-size: 16px;
+}
+
+.wtf2-checkbox {
+    font-size: 16px;
+}
+
+.wtf2-radio-button {
+    font-size: 16px;
+}
+
+.wtf2-pseudo-checkbox-checked:after {
+    width : 14px !important;
+    height: 7px !important;
+}
+
+// Fix: "Input underlines has wrong color opacity value"
+.wtf2-form-field-underline {
+    background-color: rgba(0, 0, 0, .12);
+}
+
+// Fix: "Some idiots using table-cell and inline-table in wtf2-select"
+.wtf2-form-field {
+    &.wtf2-form-field-type-wtf2-select {
+        .wtf2-form-field-infix {
+            display: inline-flex;
+            width  : auto;
+
+            .wtf2-select-trigger {
+                display    : inline-flex;
+                align-items: center;
+                width      : 100%;
+
+                .wtf2-select-value {
+                    display     : flex;
+                    max-width   : none;
+                    margin-right: 8px;
+                }
+
+                .wtf2-select-arrow-wrapper {
+                    display: inline-flex;
+                }
+            }
+        }
+    }
+}
+
+// Fix: Stepper icons are broken due to Wtf2's icon helpers
+wtf2-horizontal-stepper,
+wtf2-vertical-stepper {
+    wtf2-step-header {
+        wtf2-icon {
+            height    : 16px !important;
+            width     : 16px !important;
+            min-width : 0 !important;
+            min-height: 0 !important;
+            color     : inherit !important;
+        }
+    }
+}
+
+wtf2-vertical-stepper {
+    padding: 16px 0;
+}
+
+// Fix: Chip remove icon is broken due to Wtf2's icon helpers
+wtf2-chip {
+    wtf2-icon {
+        min-width : 0 !important;
+        min-height: 0 !important;
+    }
+}
+
+// Fix: wtf2-card-image requires a bigger width than 100%
+.wtf2-card-image {
+    max-width: none !important;
+}

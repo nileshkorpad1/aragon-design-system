@@ -1,0 +1,225 @@
+wtf2-page-skeleton {
+    min-width: 100%;
+    width: 100%;
+}
+
+.inner-scroll {
+
+    wtf2-page-skeleton,
+    wtf2-page-content {
+        display: flex;
+        flex: 1 1 0% !important;
+        flex: 1 0 auto;
+    }
+}
+
+.wtf2-page-header-title {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.wtf2-page-header-subtitle {
+    display: flex;
+    font-weight: normal;
+    font-size: 1.5rem;
+}
+
+.wtf2-page-heading {
+    &.large {
+        font-size: 2.15rem;
+    }
+
+    &.medium {
+        font-size: 1.25rem;
+    }
+
+    &.small {
+        font-size: 1rem;
+    }
+}
+
+.sidebar {
+    display: block;
+
+    wtf2-page-header {
+        margin-top: 2rem;
+    }
+
+    .wtf2-page-header-title,
+    .wtf2-page-header-subtitle {
+        font-size: 90%;
+    }
+}
+
+.invert-vertical-margin {
+    //   background: red;
+    margin-top: -32px !important;
+}
+
+
+.carded-page-content {
+    margin-top: -64px;
+}
+
+.left-sidebar-content,
+.simple-page-content,
+.right-sidebar-content {
+    margin-top: -32px;
+}
+
+.action-bar {
+    margin-top: -64px;
+}
+
+.right-sidebar-content {
+    margin-top: -20px;
+    padding-left: 2px !important;
+
+    wtf2-sidebar {
+        background: transparent!important;
+        box-shadow: none;
+    }
+
+    .sidebar {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.left-sidebar-content {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -20px;
+    padding-right: 2px !important;
+    direction: rtl;
+
+    wtf2-sidebar {
+        box-shadow: none;
+    }
+
+    .sidebar {
+        min-width: 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.sidebar-simple-page-content {
+    margin-top: 18px;
+}
+
+.simple-page-content-sidebar {
+    padding-top: 32px !important;
+    padding-right: 32px !important;
+    padding-left: 32px !important;
+}
+
+.skeleton-sidebar-toggle {
+    z-index: 1080;
+    margin-top: -42px;
+}
+
+.left-sidebar-actiontoolbar {
+    margin-bottom: 1% !important;
+    wtf2-expansion-toolbar {
+        wtf2-action-toolbar {
+            .action-bar {
+                .action-panel {
+                    margin-right: 1% !important;
+                    margin-left: 23% !important;
+                }
+            }
+        }
+    }
+}
+
+
+.right-sidebar-actiontoolbar {
+    margin-bottom: 1% !important;
+    wtf2-expansion-toolbar {
+        wtf2-action-toolbar {
+            .action-bar {
+                .action-panel {
+                    // margin-right: 1% !important;
+                    margin-right: 23% !important;
+                }
+            }
+        }
+    }
+}
+
+    // .simple-page-content {
+    //     .wtf2-page-content {
+    //         padding-top: 32px;
+    //         padding-right: 32px;
+    //         padding-left: 32px;
+    //     }
+    // }
+    @media (max-width: 600px) {
+        wtf2-page-skeleton {
+
+            wtf2-sidebar {
+                min-width: 0 !important;
+                max-width: 80vw !important;
+                width: 80vw !important;
+            }
+
+        }
+
+        .sidebar-flex-basis {
+            flex-basis: 0 !important;
+
+        }
+    }
+
+
+    // @media (min-width: 600px) <style>…</style>.col-sm-1 {
+    //     flex: 0 0 8.33333%;
+    //     max-width: 8.33333%;
+    // }
+
+    @media (max-width: 960px) {
+        wtf2-page-skeleton {
+            wtf2-sidebar {
+                min-width: 0 !important;
+                max-width: 45vw !important;
+                width: 45vw !important;
+            }
+        }
+
+        .sidebar-flex-basis {
+            flex-basis: 0 !important;
+
+        }
+        .left-sidebar-actiontoolbar {
+            margin-bottom: 1% !important;
+            wtf2-expansion-toolbar {
+                wtf2-action-toolbar {
+                    .action-bar {
+                        .action-panel {
+                            margin-right: 32px !important;
+                            margin-left: 0% !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .right-sidebar-actiontoolbar {
+            margin-bottom: 1% !important;
+            wtf2-expansion-toolbar {
+                wtf2-action-toolbar {
+                    .action-bar {
+                        .action-panel {
+                            // margin-right: 32px !important;
+                            margin-right: 0% !important;
+                        }
+                    }
+                }
+            }
+        }
+    }

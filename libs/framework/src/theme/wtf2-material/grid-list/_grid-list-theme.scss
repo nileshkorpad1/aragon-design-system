@@ -1,0 +1,14 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@import '../core/style/list-common';
+// Include this empty mixin for consistency with the other components.
+@mixin wtf2-grid-list-theme($theme) {}
+
+@mixin wtf2-grid-list-typography($config) {
+    .wtf2-grid-tile-header,
+    .wtf2-grid-tile-footer {
+        @include wtf2-line-base(wtf2-font-size($config, caption));
+        font-size: wtf2-font-size($config, body-1);
+    }
+}

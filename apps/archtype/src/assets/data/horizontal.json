@@ -1,0 +1,44 @@
+{
+    "keys": [
+        "total"
+    ],
+    "type": "bar",
+    "data": [
+        {
+            "labelname": "Singles.Inc",
+            "total": 32101,
+            "subdata": {
+                "keys": [
+                    "total"
+                ],
+                "data": [
+                    {
+                        "labelname": "Singles.Inc1",
+                        "total": 321
+                    },
+                    {
+                        "labelname": "Singles.Inc2",
+                        "total": 32
+                    },
+                    {
+                        "labelname": "Singles.Inc3",
+                        "total": 200
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "Restol.Inc",
+            "total": 27560
+        },
+        {
+            "labelname": "Remarks.Inc",
+            "total": 53262
+        },
+        {
+            "labelname": "kenon.pty",
+            "total": 22000
+        }
+    ],
+    "horizontalChart": true
+}

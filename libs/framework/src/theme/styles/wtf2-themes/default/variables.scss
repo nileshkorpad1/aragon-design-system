@@ -1,0 +1,30 @@
+//colors
+$wtf2-body-background-color: #fafaf7;
+$wtf2-sidebar-header-background-color: #343843;
+$wtf2-sidebar-background-color: #343843;
+$wtf2-sidebar-selection-active: #1d1e23 !important;
+$wtf2-sidebar-selection-active-text: #fafafa !important;
+$wtf2-white-color: #ffffff;
+$wtf2-hint-text-color: wtf2_color(wtf2-palette($wtf2-dark, 200));
+$wtf2-header-ribbon-color: #ededed;
+$wtf2-header-text-color: #121321;
+$theme-options-panel: #f3f1f0;
+$wtf2-sidebar-selection-active-carat: #e46a45;
+$wtf2-grid-hover-color: #f7f6f5 !important;
+$wtf2-grid-select-color: #ededed !important;
+$wtf2-expansion-toolbar-expanded-color: #d3d3d3 !important;
+$wtf2-expansion-toolbar-action-pannel-color: #f5f5f5 !important;
+
+// set the font from partials
+@import '../../partials/fonts_cloudgothic';
+
+$default-typography: wtf2-typography-config(
+    $font-family: 'CloudGothic,"Arial Black",Helvetica,Arial,Lucida,sans-serif',
+    $body-1: wtf2-typography-level(16px, 1.125, 400)
+);
+
+@include wtf2-core($default-typography);
+@include wtf2-base-typography($default-typography);
+
+//font weights
+$wtf2-sidebar-selection-active-font-weight: 700;

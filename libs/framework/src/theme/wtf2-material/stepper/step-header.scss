@@ -1,0 +1,71 @@
+@import '../core/style/layout-common';
+$wtf2-stepper-label-header-height: 24px !default;
+$wtf2-stepper-label-min-width: 50px !default;
+$wtf2-stepper-side-gap: 24px !default;
+$wtf2-vertical-stepper-content-margin: 36px !default;
+$wtf2-stepper-line-gap: 8px !default;
+$wtf2-step-sub-label-font-size: 12px;
+$wtf2-step-header-icon-size: 16px !default;
+.wtf2-step-header {
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    box-sizing: content-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.wtf2-step-optional,
+.wtf2-step-sub-label-error {
+    font-size: $wtf2-step-sub-label-font-size;
+}
+
+.wtf2-step-icon {
+    border-radius: 50%;
+    height: $wtf2-stepper-label-header-height;
+    width: $wtf2-stepper-label-header-height;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.wtf2-step-icon-content,
+.wtf2-step-icon .wtf2-icon {
+    // Use absolute positioning to center the content, because it works better with text.
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wtf2-step-icon .wtf2-icon {
+    font-size: $wtf2-step-header-icon-size;
+    height: $wtf2-step-header-icon-size;
+    width: $wtf2-step-header-icon-size;
+}
+
+.wtf2-step-icon-state-error .wtf2-icon {
+    font-size: $wtf2-step-header-icon-size + 8;
+    height: $wtf2-step-header-icon-size + 8;
+    width: $wtf2-step-header-icon-size + 8;
+}
+
+.wtf2-step-label {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: $wtf2-stepper-label-min-width;
+    vertical-align: middle;
+}
+
+.wtf2-step-text-label {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+// Increase specificity because ripple styles are part of the `wtf2-core` mixin and can
+// potentially overwrite the absolute position of the container.
+.wtf2-step-header .wtf2-step-header-ripple {
+    @include wtf2-fill;
+    pointer-events: none;
+}

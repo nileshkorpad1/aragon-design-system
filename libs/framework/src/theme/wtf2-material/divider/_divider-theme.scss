@@ -1,0 +1,11 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@mixin wtf2-divider-theme($theme) {
+    $foreground: map-get($theme, foreground);
+    .wtf2-divider {
+        border-top-color: wtf2-color($foreground, divider);
+    }
+    .wtf2-divider-vertical {
+        border-right-color: wtf2-color($foreground, divider);
+    }
+}

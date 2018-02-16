@@ -1,0 +1,22 @@
+@import '../core/theming/theming';
+// Include this empty mixin for consistency with the other components.
+@mixin wtf2-icon-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-icon {
+        &.wtf2-primary {
+            color: wtf2-color($primary);
+        }
+        &.wtf2-accent {
+            color: wtf2-color($accent);
+        }
+        &.wtf2-warn {
+            color: wtf2-color($warn);
+        }
+    }
+}
+
+@mixin wtf2-icon-typography($config) {}

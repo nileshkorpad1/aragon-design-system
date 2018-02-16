@@ -1,0 +1,31 @@
+<div class="content-card wtf2-white-bg pt-0">
+    <!-- CONTENT TOOLBAR -->
+
+    <div class="row">
+        <div class="col-2 pull-left d-flex justify-content-center">
+            <button (click)="close($event)">
+                <wtf2-icon>arrow_back</wtf2-icon>
+            </button>
+        </div>
+        <div class="col-10">
+            <h2>ADD NEW ADDRESS</h2>
+        </div>
+    </div>
+
+    <wtf2-dialog-content>
+        <div class="content p-24">
+            <div class="container">
+                <div class="row">
+                    <dynamic-form [fields]="formConfig" (submit)="submit($event)">
+                        <div class="col-12">
+                            <wtf2-dialog-actions>
+                                <button wtf2-button class="wtf2-raised-button wtf2-warn" type="submit" (click)="test($event)">SAVE
+                                    AND SELECT</button>
+                            </wtf2-dialog-actions>
+                        </div>
+                    </dynamic-form>
+                </div>
+            </div>
+        </div>
+    </wtf2-dialog-content>
+</div>

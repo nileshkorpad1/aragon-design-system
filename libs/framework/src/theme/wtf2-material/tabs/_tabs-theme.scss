@@ -1,0 +1,140 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+
+@mixin wtf2-tabs-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $header-border: 1px solid wtf2-color($foreground, divider);
+
+  .wtf2-tab-nav-bar,
+  .wtf2-tab-header {
+    border-bottom: $header-border;
+  }
+
+  .wtf2-tab-group-inverted-header {
+    .wtf2-tab-nav-bar,
+    .wtf2-tab-header {
+      border-top: $header-border;
+      border-bottom: none;
+    }
+  }
+
+  .wtf2-tab-label, .wtf2-tab-link {
+    color: wtf2-color($foreground, text);
+
+    &.wtf2-tab-disabled {
+      color: wtf2-color($foreground, disabled-text);
+    }
+  }
+
+  .wtf2-tab-header-pagination-chevron {
+    border-color: wtf2-color($foreground, text);
+  }
+
+  .wtf2-tab-header-pagination-disabled .wtf2-tab-header-pagination-chevron {
+    border-color: wtf2-color($foreground, disabled-text);
+  }
+
+  // Remove header border when there is a background color
+  .wtf2-tab-group[class*='wtf2-background-'] .wtf2-tab-header,
+  .wtf2-tab-nav-bar[class*='wtf2-background-'] {
+    border-bottom: none;
+    border-top: none;
+  }
+
+  .wtf2-tab-group, .wtf2-tab-nav-bar {
+    $theme-colors: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn
+    );
+
+    @each $name, $color in $theme-colors {
+      // Set the foreground color of the tabs
+      &.wtf2-#{$name} {
+        @include _wtf2-tab-label-focus($color);
+        @include _wtf2-ink-bar($color);
+
+        // Override ink bar when background color is the same
+        &.wtf2-background-#{$name} {
+          @include _wtf2-ink-bar($color, default-contrast);
+        }
+      }
+    }
+
+    @each $name, $color in $theme-colors {
+      // Set background color of the tabs and override focus color
+      &.wtf2-background-#{$name} {
+        @include _wtf2-tab-label-focus($color);
+        @include _wtf2-tabs-background($color);
+      }
+    }
+  }
+}
+
+@mixin _wtf2-ink-bar($color, $hue: default) {
+  .wtf2-ink-bar {
+    background-color: wtf2-color($color, $hue);
+  }
+}
+
+@mixin _wtf2-tab-label-focus($tab-focus-color) {
+  .wtf2-tab-label,
+  .wtf2-tab-link {
+    &.cdk-keyboard-focused,
+    &.cdk-program-focused {
+      &:not(.wtf2-tab-disabled) {
+        background-color: wtf2-color($tab-focus-color, lighter, 0.3);
+      }
+    }
+  }
+}
+
+@mixin _wtf2-tabs-background($background-color) {
+  // Set background color for the tab group
+  .wtf2-tab-header, .wtf2-tab-links {
+    background-color: wtf2-color($background-color);
+  }
+
+  // Set labels to contrast against background
+  .wtf2-tab-label, .wtf2-tab-link {
+    color: wtf2-color($background-color, default-contrast);
+
+    &.wtf2-tab-disabled {
+      color: wtf2-color($background-color, default-contrast, 0.4);
+    }
+  }
+
+  // Set pagination chevrons to contrast background
+  .wtf2-tab-header-pagination-chevron {
+    border-color: wtf2-color($background-color, default-contrast);
+  }
+
+  .wtf2-tab-header-pagination-disabled .wtf2-tab-header-pagination-chevron {
+    border-color: wtf2-color($background-color, default-contrast, 0.4);
+  }
+
+  // Set ripples color to be the contrast color of the new background. Otherwise the ripple
+  // color will be based on the app background color.
+  .wtf2-ripple-element {
+    background-color: wtf2-color($background-color, default-contrast, 0.12);
+  }
+}
+
+@mixin wtf2-tabs-typography($config) {
+  .wtf2-tab-group {
+    font-family: wtf2-font-family($config);
+  }
+
+  .wtf2-tab-label, .wtf2-tab-link {
+    font: {
+      family: wtf2-font-family($config, button);
+      size: wtf2-font-size($config, button);
+      weight: wtf2-font-weight($config, button);
+    }
+  }
+}

@@ -1,0 +1,366 @@
+@import "theme-colors.scss";
+@import "variables.scss";
+
+// @mixin icon-gradiant-color() {
+// @include gradient-diagonal-four-colors();
+
+body,
+html {
+    wtf2-theme-options {
+        display: flex;
+        overflow: hidden;
+
+        .theme-options-panel {
+            display: flex;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            flex: 1 0 auto;
+            flex-direction: column;
+            padding: 40px 24px 24px 24px;
+            height: -webkit-fill-available;
+            background: $theme-options-panel;
+
+            .header {
+                display: flex;
+                align-items: center;
+                flex: 0 1 auto;
+                justify-content: space-between;
+                margin-bottom: 32px;
+
+                .title {
+                    padding-left: 4px;
+                    font-weight: 500;
+                    font-size: 20px;
+                }
+            }
+
+            form {
+                display: flex;
+                flex: 1 1 auto;
+                flex-direction: column;
+
+                .group {
+                    position: relative;
+                    display: flex;
+                    flex: 1 0 auto;
+                    flex-direction: column;
+                    margin: 16px 0;
+                    padding: 28px 16px 8px 16px;
+                    border: 1px solid rgba(0, 0, 0, 0.12);
+                    border-radius: 2px;
+
+                    h2 {
+                        position: absolute;
+                        top: -11px;
+                        left: 8px;
+                        margin: 0;
+                        padding: 0 8px;
+                        background: #e6e0e0;
+                        color: rgba(0, 0, 0, 0.54);
+                        font-weight: 500;
+                        font-size: 16px;
+                    }
+
+                    h3 {
+                        margin: 24px 0 16px 0;
+                        padding: 0;
+                        color: rgba(0, 0, 0, 0.54);
+                        font-weight: 500;
+                        font-size: 14px;
+
+                        &:first-of-type {
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //   #wtf2-splash-screen {
+    //       background-color: #363A44;
+
+    //   }
+    .theme-warmwhite {
+        font-family: wtf2-font-family($warmwhite-typography);
+
+        wtf2-inform-expander {
+            .expansion-panel {
+                background: #F1F0EE;
+            }
+
+            .arrow-up:after {
+                // border-color: rgba(136, 183, 213, 0);
+                border-bottom-color: #F1F0EE;
+                box-shadow: 0 0px 0px 0px #F1F0EE;
+            }
+
+            .arrow-up:before {
+                // border-color: rgba(194, 225, 245, 0);
+                border-bottom-color: rgba(0, 0, 0, 0.4);
+                box-shadow: 0px 10px 0px 0px #F1F0EE;
+                // 0 35px 10px 0px silver;
+            }
+        }
+
+        wtf2-inform-expander-multicol {
+            .expansion-panel {
+                background: #F1F0EE;
+            }
+
+            .arrow-up:after {
+                // border-color: rgba(136, 183, 213, 0);
+                border-bottom-color: #F1F0EE;
+                box-shadow: 0 0px 0px 0px #F1F0EE;
+            }
+
+            .arrow-up:before {
+                // border-color: rgba(194, 225, 245, 0);
+                border-bottom-color: rgba(0, 0, 0, 0.4);
+                box-shadow: 0px 10px 0px 0px #F1F0EE;
+                // 0 35px 10px 0px silver;
+            }
+        }
+
+        #main {
+
+            // Container 1
+            >.layout-container {
+
+                // main sidebar -- with gradient
+                wtf2-sidebar {
+                    navbar-vertical-style-2 {
+                        @include gradient-diagonal-four-colors-invert(#edebe9, #edebe9, #f6f5f4, #faf9f9);
+
+                        a.nav-link.active {
+                            // left: 5%;
+                            // padding-left: 18px;
+                            // width: 95%;
+                            border-width: 2px;
+                            border-top: 3px solid transparent;
+                            border-right: 3px solid;
+                            border-right-color: $wtf2-sidebar-selection-active-carat;
+                            border-bottom: 3px solid transparent;
+                            border-radius: 3px;
+                            // border-image: linear-gradient(to left, red, red);
+                            border-image-slice: 1;
+                            // background-color: red !important;
+                            background-color: $wtf2-sidebar-selection-active;
+                            color: $wtf2-sidebar-selection-active-text;
+                            font-weight: $wtf2-sidebar-selection-active-font-weight;
+
+                            wtf2-icon {
+                                @include icon-gradiant-color();
+                            }
+                        }
+
+                        wtf2-navigation {
+                            .collapsable-arrow {
+                                margin-right: -28px;
+                            }
+                        }
+
+                        .hint-text {
+                            color: $wtf2-hint-text-color;
+                        }
+
+                        .navbar-header {
+                            //  background: $wtf2-sidebar-header-background-color;
+                            //  color: $wtf2-white-color !important;
+                        }
+                    }
+                }
+
+                .subsidenav-container {
+                    padding: 0.25rem !important;
+
+                    .icon-wrapper {
+                        padding: 1rem !important;
+                        width: 50px !important;
+                        height: 50px !important;
+                    }
+                }
+
+                // Container 2
+                >.layout-container {
+                    // #f9f8f7 #f5f4f2 #faf9f9
+                    @include gradient-diagonal-four-colors(#f9f8f7, #f5f4f2, #faf9f9, #faf9f9);
+
+                    toolbar {
+                        .wtf2-toolbar-single-row {
+                            @include gradient-diagonal-four-colors(#f9f8f7, #f5f4f2, #faf9f9, #faf9f9);
+
+                            wtf2-search-bar {
+                                //    @include gradient-diagonal-four-colors(#f9f8f7, #f5f4f2, #faf9f9, #faf9f9);
+
+                                .expanded {
+                                    @include gradient-diagonal-four-colors(#f9f8f7, #f5f4f2, #faf9f9, #faf9f9);
+                                }
+                            }
+                        }
+                    }
+
+
+
+                    wtf2-table {
+                        .wtf2-expansion-panel-header:not(.wtf2-expanded):hover {
+                            background: $wtf2-grid-hover-color !important;
+                        }
+
+                        .wtf2-grid-select-color {
+                            background: $wtf2-grid-select-color;
+                        }
+                    }
+
+                    // Container 3 (Scrollable)
+                    >.layout-container {
+                        .scroll-spy-active {
+                            position: absolute;
+                            right: 0;
+                            display: block;
+                            width: 5px;
+                            height: 35px;
+                            border-radius: 6px 0px 0px 6px;
+
+                            @include gradient-vertical-three-colors(#0e0e0ed5, #b1023a, 40%, #f92525fa);
+                        }
+
+                        wtf2-page-skeleton {
+                            .container-fluid {
+
+                                .wtf2-checkbox-indeterminate.wtf2-accent .wtf2-checkbox-background,
+                                .wtf2-checkbox-checked.wtf2-accent .wtf2-checkbox-background {
+                                    @include icon-gradiant-color();
+                                }
+
+                                .wtf2-header-ribbon {
+                                    .wtf2-page-header-title {
+                                        -webkit-background-clip: text !important;
+
+                                        @include gradient-horizontal-three-colors(#0e0e0ed5, #b1023a, 10%, #e02020fa);
+                                        -webkit-text-fill-color: transparent;
+                                    }
+                                }
+
+                                .cardedrightside-margin {
+                                    margin-right: 17px !important;
+                                }
+
+                                .layout-body {
+
+                                    .carded-page-content {
+                                        border-radius: 4px;
+                                        background: $wtf2-white-color;
+                                        // box-shadow: none !important;
+                                    }
+
+                                    .simple-page-content {
+                                        margin-top: 0px !important;
+                                    }
+
+                                }
+
+
+
+                                @media (max-width: 960px) {
+                                    .layout-body {
+                                        margin-left: 0;
+                                    }
+
+                                    .left-sidebar-content,
+                                    .right-sidebar-content {
+                                        wtf2-sidebar {
+                                            // box-shadow: none;
+                                            background: $wtf2-white-color !important;
+                                        }
+                                    }
+                                }
+
+                                wtf2-expansion-toolbar {
+                                    .action-bar {
+                                        &.toolbar {
+                                            .action-panel {
+                                                background: $wtf2-expansion-toolbar-action-pannel-color;
+
+                                                @include wtf2-elevation(2);
+
+                                                .arrow-up {
+                                                    border-bottom: 18px solid $wtf2-expansion-toolbar-expanded-color;
+                                                }
+
+                                                .wtf2-search-bar-content {
+                                                    background-color: $wtf2-expansion-toolbar-action-pannel-color;
+                                                }
+                                            }
+
+                                            .expansion-panel {
+                                                background: $wtf2-expansion-toolbar-expanded-color;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                //expansion panel
+                                .left-sidebar-actiontoolbar {
+                                    // margin-left: 32px;
+
+                                    wtf2-expansion-toolbar {
+
+                                        wtf2-action-toolbar {
+
+                                            .action-bar .action-panel {
+                                                margin-right: unset !important;
+                                                margin-left: unset !important;
+                                                box-shadow: 0px 2px 1px -1px rgba(128, 128, 128, 0.2),
+                                                    1px 1px 1px 0px rgba(128, 128, 128, 0.14),
+                                                    1px 0px 2px 1px rgba(128, 128, 128, 0.12);
+                                            }
+                                        }
+                                    }
+                                }
+
+                                wtf2-inform-expander {
+                                    .expansion-panel {
+                                        background: #F1F0EE;
+                                    }
+
+                                    .arrow-up:after {
+                                        // border-color: rgba(136, 183, 213, 0);
+                                        border-bottom-color: #F1F0EE;
+                                        box-shadow: 0 0px 0px 0px #F1F0EE;
+                                    }
+
+                                    .arrow-up:before {
+                                        // border-color: rgba(194, 225, 245, 0);
+                                        border-bottom-color: rgba(0, 0, 0, 0.4);
+                                        box-shadow: 0px 10px 0px 0px #F1F0EE;
+                                        // 0 35px 10px 0px silver;
+                                    }
+                                }
+
+                                wtf2-inform-expander-multicol {
+                                    .expansion-panel {
+                                        background: #F1F0EE;
+                                    }
+
+                                    .arrow-up:after {
+                                        // border-color: rgba(136, 183, 213, 0);
+                                        border-bottom-color: #F1F0EE;
+                                        box-shadow: 0 0px 0px 0px #F1F0EE;
+                                    }
+
+                                    .arrow-up:before {
+                                        // border-color: rgba(194, 225, 245, 0);
+                                        border-bottom-color: rgba(0, 0, 0, 0.4);
+                                        box-shadow: 0px 10px 0px 0px #F1F0EE;
+                                        // 0 35px 10px 0px silver;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

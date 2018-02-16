@@ -1,0 +1,45 @@
+<wtf2-page-skeleton carded fullwidth>
+    <!-- CENTER -->
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>Dynamic Accordion Invoice Row1</wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+    <!-- CONTENT CARD -->
+    <wtf2-page-content wtf2Class="content-card wtf2-white-bg">
+        <!-- CONTENT -->
+        <wtf2-expansion-toolbar name="expToolbar" id="expToolbar" [buttonData]="buttonData"></wtf2-expansion-toolbar>
+        <!-- <wtf2-expansion-toolbar></wtf2-expansion-toolbar> -->
+        <wtf2-page-content wtf2Class="content">
+
+            <wtf2-accordion displayMode="default" multi class="wtf2-table">
+                <!-- <wtf2-accordion displayMode="flat" multi class="wtf2-table"> -->
+                <section wtf2Sort class="wtf2-elevation-z2 wtf2-header-row">
+                    <ng-container *ngFor="let col of columnArray$ | async">
+                        <span class="wtf2-header-cell" *ngIf="(col.isSummery == 0)" wtf2-sort-header="col.colname">{{col.displayName}}</span>
+                    </ng-container>
+                </section>
+                <wtf2-expansion-panel *ngFor="let item of dataArray">
+                    <wtf2-expansion-panel-header class="wtf2-row">
+                        <ng-container *ngFor="let col of columnArray$ | async">
+                            <span class="wtf2-cell" *ngIf="(col.isSummery == 0)">{{item[col.colname]}}</span>
+                        </ng-container>
+                    </wtf2-expansion-panel-header>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- <canvas id="myRadarChart" width="10" height="10"></canvas> -->
+                            <ng-container *ngFor="let col of columnArray$ | async">
+                                <p *ngIf="(col.isSummery == 1)">
+                                    {{col.displayName}}: <strong>{{item[col.colname]}}</strong>
+                                </p>
+                            </ng-container>
+                        </div>
+                    </div>
+                </wtf2-expansion-panel>
+            </wtf2-accordion>
+            <!-- / DEMO CONTENT -->
+            <wtf2-paginator #paginator [length]="currentSection" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></wtf2-paginator>
+        </wtf2-page-content>
+        <!-- / CONTENT -->
+    </wtf2-page-content>
+    <!-- / CONTENT CARD -->
+    <!-- / CENTER -->
+</wtf2-page-skeleton>

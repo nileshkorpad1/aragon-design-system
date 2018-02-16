@@ -1,0 +1,38 @@
+<!-- TODO(jelbourn): render the radio on either side of the content -->
+<!-- TODO(mtlin): Evaluate trade-offs of using native radio vs. cost of additional bindings. -->
+<label [attr.for]="inputId" class="wtf2-radio-label" #label>
+  <!-- The actual 'radio' part of the control. -->
+  <div class="wtf2-radio-container">
+    <div class="wtf2-radio-outer-circle"></div>
+    <div class="wtf2-radio-inner-circle"></div>
+    <div wtf2-ripple class="wtf2-radio-ripple"
+         [wtf2RippleTrigger]="label"
+         [wtf2RippleDisabled]="_isRippleDisabled()"
+         [wtf2RippleCentered]="true"
+         [wtf2RippleRadius]="20"
+         [wtf2RippleAnimation]="{enterDuration: 150}">
+
+      <div class="wtf2-ripple-element wtf2-radio-persistent-ripple"></div>
+    </div>
+
+    <input #input class="wtf2-radio-input cdk-visually-hidden" type="radio"
+        [id]="inputId"
+        [checked]="checked"
+        [disabled]="disabled"
+        [tabIndex]="tabIndex"
+        [attr.name]="name"
+        [required]="required"
+        [attr.aria-label]="ariaLabel"
+        [attr.aria-labelledby]="ariaLabelledby"
+        [attr.aria-describedby]="ariaDescribedby"
+        (change)="_onInputChange($event)"
+        (click)="_onInputClick($event)">
+  </div>
+
+  <!-- The label content for radio control. -->
+  <div class="wtf2-radio-label-content" [class.wtf2-radio-label-before]="labelPosition == 'before'">
+    <!-- Add an invisible span so JAWS can read the label -->
+    <span style="display:none">&nbsp;</span>
+    <ng-content></ng-content>
+  </div>
+</label>

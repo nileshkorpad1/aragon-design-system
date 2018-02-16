@@ -1,0 +1,23 @@
+<div cdk-overlay-origin class="wtf2-select-trigger" aria-hidden="true" (click)="toggle()" #origin="cdkOverlayOrigin" #trigger>
+    <div class="wtf2-select-value" [ngSwitch]="empty">
+        <span class="wtf2-select-placeholder" *ngSwitchCase="true">{{placeholder || '\u00A0'}}</span>
+        <span class="wtf2-select-value-text" *ngSwitchCase="false" [ngSwitch]="!!customTrigger">
+      <span *ngSwitchDefault>{{triggerValue || '\u00A0'}}</span>
+        <ng-content select="wtf2-select-trigger" *ngSwitchCase="true"></ng-content>
+        </span>
+    </div>
+
+    <div class="wtf2-select-arrow-wrapper">
+        <div class="wtf2-select-arrow"></div>
+    </div>
+</div>
+
+<ng-template cdk-connected-overlay cdkConnectedOverlayLockPosition cdkConnectedOverlayHasBackdrop cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop" [cdkConnectedOverlayScrollStrategy]="_scrollStrategy" [cdkConnectedOverlayOrigin]="origin"
+    [cdkConnectedOverlayOpen]="panelOpen" [cdkConnectedOverlayPositions]="_positions" [cdkConnectedOverlayMinWidth]="_triggerRect?.width" [cdkConnectedOverlayOffsetY]="_offsetY" (backdropClick)="close()" (attach)="_onAttached()" (detach)="close()">
+    <div class="wtf2-select-panel-wrap" [@transformPanelWrap]>
+        <div #panel class="wtf2-select-panel {{ _getPanelTheme() }}" [ngClass]="panelClass" [@transformPanel]="multiple ? 'showing-multiple' : 'showing'" (@transformPanel.done)="_panelDoneAniwtf2ingStream.next($event.toState)" [style.transformOrigin]="_transformOrigin"
+            [style.font-size.px]="_triggerFontSize" (keydown)="_handleKeydown($event)">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</ng-template>

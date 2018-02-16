@@ -1,0 +1,18 @@
+<div class="daterange-layout">
+    <div class="wtf2-elevation-z1">
+        <div class="calander-range">
+            <wtf2-calendar [selected]="selectedFromDate" [headerComponent]="displayMonthFrom()"
+                (selectedChange)="onSelectFrom($event)">
+            </wtf2-calendar>
+        </div>
+        <div class="calander-range border-left">
+            <wtf2-calendar [selected]="selectedToDate" (selectedChange)="onSelectTo($event)"
+                [headerComponent]="displayMonthTo()">
+            </wtf2-calendar>
+        </div>
+    </div>
+    <div class="date-range-action wtf2-elevation-z1 px-5 py-4">
+        <button (click)="savedate()" wtf2-raised-button class="wtf2-accent pull-right">FILTER</button>
+        <button (click)="closedate()" wtf2-button class="mr-16 pull-right">CANCEL</button>
+    </div>
+</div>

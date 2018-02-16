@@ -1,0 +1,74 @@
+{
+    "keys": [
+        "balance"
+    ],
+    "type": "area-spline",
+    "data": [
+        {
+            "labelname": "Jan",
+            "balance": 10,
+            "subdata": {
+                "keys": [
+                    "balance"
+                ],
+                "data": [
+                    {
+                        "labelname": "Jan1",
+                        "balance": 10
+                    },
+                    {
+                        "labelname": "Jan2",
+                        "balance": 8
+                    },
+                    {
+                        "labelname": "Jan3",
+                        "balance": 9
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "Feb",
+            "balance": 8,
+            "subdata": {
+                "keys": [
+                    "balance"
+                ],
+                "data": [
+                    {
+                        "labelname": "Feb1",
+                        "balance": 10
+                    },
+                    {
+                        "labelname": "feb2",
+                        "balance": 1
+                    },
+                    {
+                        "labelname": "Feb3",
+                        "balance": 9
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "Mar",
+            "balance": 9
+        },
+        {
+            "labelname": "Apr",
+            "balance": 4
+        },
+        {
+            "labelname": "May",
+            "balance": 6
+        },
+        {
+            "labelname": "Jun",
+            "balance": 2
+        },
+        {
+            "labelname": "Jul",
+            "balance": 13
+        }
+    ]
+}

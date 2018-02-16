@@ -1,0 +1,63 @@
+<wtf2-page-skeleton simple fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+
+        <!-- CONTENT HEADER -->
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> Card</wtf2-header-title>
+            <wtf2-header-subtitle> Card Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+
+        <!-- CONTENT TOOLBAR -->
+        <!-- <div class="toolbar px-24 py-8">
+                <span>Card</span>
+            </div> -->
+        <!-- / CONTENT TOOLBAR -->
+
+        <!-- CONTENT -->
+        <wtf2-page-content class="content">
+            <div class="row m-2" page-content-carded>
+                <div class="col-sm-6 mb-4" *ngFor="let card of cards">
+                    <!-- <wtf2-card class="wtf2-grey-300-bg"> -->
+                    <wtf2-card [ngClass]="card.selected ? 'selected' : ''">
+                        <span class="wf2-color-grey default-tag" *ngIf="card.selected">default</span>
+                        <div class="m-4">
+                            <wtf2-card-subtitle>
+                                {{card.title}}
+                            </wtf2-card-subtitle>
+                            <wtf2-card-content>
+                                {{card.description}}
+                            </wtf2-card-content>
+                            <wtf2-card-actions>
+                                <button wtf2-raised-button color="">Select</button>
+                                <wtf2-checkbox class="ml-2">Set As Default</wtf2-checkbox>
+                                <button wtf2-icon-button class="pull-right showOnHover">
+                                    <wtf2-icon aria-label="Example icon-button with a heart icon">delete</wtf2-icon>
+                                </button>
+                                <button wtf2-icon-button class="pull-right showOnHover">
+                                    <wtf2-icon aria-label="Example icon-button with a heart icon">edit</wtf2-icon>
+                                </button>
+                            </wtf2-card-actions>
+                        </div>
+                    </wtf2-card>
+                </div>
+            </div>
+        </wtf2-page-content>
+        <!-- / CONTENT -->
+
+        <!-- / CONTENT CARD -->
+
+
+
+</wtf2-page-skeleton>

@@ -1,0 +1,43 @@
+// .wtf2-accordion .wtf2-header-row {
+//     padding-right: 2rem;
+//     padding-left: 1.5rem;
+//     border-bottom: none;
+// }
+// .wtf2-expansion-panel-header.wtf2-row {
+//     border-bottom: none;
+// }
+// $wtf2-header-row-height: 56px;
+// $wtf2-row-height: 48px;
+// $wtf2-row-horizontal-padding: 24px;
+// .wtf2-table {
+//     display: block;
+// }
+// .wtf2-header-row {
+//     min-height: $wtf2-header-row-height;
+// }
+// .wtf2-row {
+//     min-height: $wtf2-row-height;
+// }
+// .wtf2-row,
+// .wtf2-header-row {
+//     display: flex;
+//     align-items: center;
+//     box-sizing: border-box;
+//     padding: 0 $wtf2-row-horizontal-padding;
+//     border-bottom-width: 1px;
+//     border-bottom-style: solid;
+//     // Workaround for https://goo.gl/pFmjJD in IE 11. Adds a pseudo
+//     // element that will stretch the row the correct height. See:
+//     // https://connect.microsoft.com/IE/feedback/details/802625
+//     &::after {
+//         display: inline-block;
+//         min-height: inherit;
+//         content: '';
+//     }
+// }
+// .wtf2-cell,
+// .wtf2-header-cell {
+//     overflow: hidden;
+//     flex: 1;
+//     word-wrap: break-word;
+// }

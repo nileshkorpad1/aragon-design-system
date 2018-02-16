@@ -1,0 +1,27 @@
+<wtf2-sidenav-container class="sidenav-container">
+  <wtf2-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <wtf2-toolbar>Menu</wtf2-toolbar>
+    <wtf2-nav-list>
+      <a wtf2-list-item href="#">Link 1</a>
+      <a wtf2-list-item href="#">Link 2</a>
+      <a wtf2-list-item href="#">Link 3</a>
+    </wtf2-nav-list>
+  </wtf2-sidenav>
+  <wtf2-sidenav-content>
+    <wtf2-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        wtf2-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <wtf2-icon aria-label="Side nav toggle icon">menu</wtf2-icon>
+      </button>
+      <span><%= project %></span>
+    </wtf2-toolbar>
+    <!-- Add Content Here -->
+  </wtf2-sidenav-content>
+</wtf2-sidenav-container>

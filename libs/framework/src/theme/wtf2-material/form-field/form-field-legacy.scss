@@ -1,0 +1,59 @@
+@import '../core/style/variables';
+@import '../core/style/vendor-prefixes';
+@import '~@angular/cdk/a11y';
+// Styles that only apply to the legacy appearance of the form-field.
+// The height of the underline.
+$wtf2-form-field-legacy-underline-height: 1px !default;
+.wtf2-form-field-appearance-legacy {
+    .wtf2-form-field-label {
+        transform: perspective(100px);
+        -ms-transform: none;
+    }
+    .wtf2-form-field-prefix,
+    .wtf2-form-field-suffix {
+        // Allow icons in a prefix or suffix to adapt to the correct size.
+        .wtf2-icon {
+            width: 1em;
+        }
+        // Allow icon buttons in a prefix or suffix to adapt to the correct size.
+        .wtf2-icon-button {
+            font: inherit;
+            vertical-align: baseline;
+            .wtf2-icon {
+                font-size: inherit;
+            }
+        }
+    }
+    // The underline is what's shown under the control, its prefix and its suffix.
+    // The ripple is the blue animation coming on top of it.
+    .wtf2-form-field-underline {
+        height: $wtf2-form-field-legacy-underline-height;
+        @include cdk-high-contrast {
+            height: 0;
+            border-top: solid $wtf2-form-field-legacy-underline-height;
+        }
+    }
+    .wtf2-form-field-ripple {
+        $height: $wtf2-form-field-legacy-underline-height * 2;
+        top: 0;
+        height: $height;
+        // In some browsers like Microsoft Edge, the `scaleX` transform causes overflow that exceeds
+        // the desired form-field ripple height. See: angular/components#6351
+        overflow: hidden;
+        @include cdk-high-contrast {
+            height: 0;
+            border-top: solid $height;
+        }
+    }
+    &.wtf2-form-field-disabled .wtf2-form-field-underline {
+        background-position: 0;
+        background-color: transparent;
+        @include cdk-high-contrast {
+            border-top-style: dotted;
+            border-top-width: 2px;
+        }
+    }
+    &.wtf2-form-field-invalid:not(.wtf2-focused) .wtf2-form-field-ripple {
+        height: $wtf2-form-field-legacy-underline-height;
+    }
+}

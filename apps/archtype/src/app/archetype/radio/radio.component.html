@@ -1,0 +1,64 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!--   -->
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+        <!-- CONTENT HEADER -->
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> Radio</wtf2-header-title>
+            <wtf2-header-subtitle> Radio Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+
+        <!-- CONTENT TOOLBAR -->
+        <!-- <div class="toolbar px-24 py-8">
+                <span>Checkbox</span>
+            </div> -->
+        <!-- / CONTENT TOOLBAR -->
+
+        <!-- CONTENT -->
+        <wtf2-page-content class="content">
+            <div class="row m-2" page-content-carded>
+                <div class="col col-12">
+                    <h3>Radio Buttons</h3>
+                    <div class="ml-4">
+                        <wtf2-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason">
+                            <wtf2-radio-button class="example-radio-button m-2" *ngFor="let season of seasons" [value]="season">
+                                {{season}}
+                            </wtf2-radio-button>
+                        </wtf2-radio-group>
+                        <div class="example-selected-value m-2">Your favorite season is: {{favoriteSeason}}</div>
+                    </div>
+
+                </div>
+                <div class="col col-12">
+                    <h3>Radio Buttons with different color </h3>
+                    <div class="ml-4">
+                        <wtf2-radio-group>
+                            <wtf2-radio-button class="m-2" value="0" checked=true>Default</wtf2-radio-button>
+                            <wtf2-radio-button color="warn" class="m-2" value="1">warn</wtf2-radio-button>
+                            <wtf2-radio-button color="primary" class="m-2" value="2">primary</wtf2-radio-button>
+                            <wtf2-radio-button color="accent" class="m-2" value="3">accent</wtf2-radio-button>
+                            <wtf2-radio-button color="accent" class="m-2" value="4" disabled>Disabled</wtf2-radio-button>
+                        </wtf2-radio-group>
+                    </div>
+
+                </div>
+            </div>
+        </wtf2-page-content>
+        <!-- / CONTENT -->
+
+        <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

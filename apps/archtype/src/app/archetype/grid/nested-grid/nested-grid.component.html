@@ -1,0 +1,72 @@
+<wtf2-page-skeleton simple fullwidth>
+    <!-- CENTER -->
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> Nested Grid Demo</wtf2-header-title>
+        <wtf2-header-subtitle> Nested Grid Demo Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+
+    <!-- CONTENT -->
+
+    <wtf2-page-content wtf2Class="content">
+
+        <!-- DEMO CONTENT -->
+        <div class="container-fluid p-0 ">
+            <div class="row">
+                <div class="col-md-3 offset-md-9">
+                    <div class="table-filter ">
+                        <wtf2-form-field>
+                            <input wtf2Input (keyup)="Filter($event.target.value)" placeholder="Filter">
+                        </wtf2-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <wtf2-page-content class="">
+
+                <!-- ****************Parent Table***************** -->
+                <wtf2-table #Table [dataSource]="MyDataSource" multiTemplateDataRows wtf2Sort>
+                    <ng-container [wtf2ColumnDef]="column" *ngFor="let column of displayedColumns">
+                        <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> {{column}} </wtf2-header-cell>
+                        <wtf2-cell *wtf2CellDef="let element">
+                            {{element[column]}}
+                        </wtf2-cell>
+                    </ng-container>
+                    <wtf2-header-row *wtf2HeaderRowDef="displayedColumns"></wtf2-header-row>
+
+                    <!-- Expanded Content Column - The detail row is made up of this one column -->
+                    <wtf2-row-detail *wtf2RowDef="let element; columns: displayedColumns;" class="RowExpansion"
+                        [isOpen]="expandedElement == element" [disabled]="!isExpanded" [hideToggle]="false">
+                        <!-- **************************Expanded Child Table************** -->
+                        <wtf2-table class="wtf2-grey-300-bg" #childtable [dataSource]="element.childtable" wtf2Sort>
+                            <ng-container [wtf2ColumnDef]="column" *ngFor="let column of displaychildcols">
+                                <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header> {{column}} </wtf2-header-cell>
+                                <wtf2-cell *wtf2CellDef="let element">
+                                    {{element[column]}}
+                                </wtf2-cell>
+                            </ng-container>
+                            <wtf2-header-row *wtf2HeaderRowDef="displaychildcols">
+                            </wtf2-header-row>
+                            <wtf2-row *wtf2RowDef="let row; columns: displaychildcols;"></wtf2-row>
+                        </wtf2-table>
+                        <!-- ********************************End Expanded***************************************** -->
+                    </wtf2-row-detail>
+                </wtf2-table>
+            </wtf2-page-content>
+
+            <!-- To paginate between pages with search -->
+            <wtf2-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+            </wtf2-paginator>
+        </div>
+        <!-- / DEMO CONTENT -->
+
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+
+    <!-- / CONTENT CARD -->
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

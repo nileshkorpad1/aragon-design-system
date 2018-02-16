@@ -1,0 +1,118 @@
+@import '~@angular/cdk/a11y';
+$wtf2-sort-header-arrow-margin: 6px;
+$wtf2-sort-header-arrow-container-size: 12px;
+$wtf2-sort-header-arrow-stem-size: 10px;
+$wtf2-sort-header-arrow-pointer-length: 6px;
+$wtf2-sort-header-arrow-thickness: 2px;
+$wtf2-sort-header-arrow-hint-opacity: 0.38;
+.wtf2-sort-header-container {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    .wtf2-sort-header-disabled & {
+        cursor: default;
+    }
+}
+
+.wtf2-sort-header-position-before {
+    flex-direction: row-reverse;
+}
+
+.wtf2-sort-header-button {
+    border: none;
+    background: 0 0;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    cursor: inherit;
+    outline: 0;
+    font: inherit;
+    color: currentColor;
+    // The `outline: 0` from above works on all browsers, however Firefox also
+    // adds a special `focus-inner` which we have to disable explicitly. See:
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Firefox
+    &::-moz-focus-inner {
+        border: 0;
+    }
+}
+
+.wtf2-sort-header-arrow {
+    height: $wtf2-sort-header-arrow-container-size;
+    width: $wtf2-sort-header-arrow-container-size;
+    min-width: $wtf2-sort-header-arrow-container-size;
+    position: relative;
+    display: flex;
+    // Start off at 0 since the arrow may become visible while parent are aniwtf2ing.
+    // This will be overwritten when the arrow animations kick in. See #11819.
+    opacity: 0;
+    &,
+    [dir='rtl'] .wtf2-sort-header-position-before & {
+        margin: 0 0 0 $wtf2-sort-header-arrow-margin;
+    }
+    .wtf2-sort-header-position-before &,
+    [dir='rtl'] & {
+        margin: 0 $wtf2-sort-header-arrow-margin 0 0;
+    }
+}
+
+.wtf2-sort-header-stem {
+    background: currentColor;
+    height: $wtf2-sort-header-arrow-stem-size;
+    width: $wtf2-sort-header-arrow-thickness;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    @include cdk-high-contrast {
+        width: 0;
+        border-left: solid $wtf2-sort-header-arrow-thickness;
+    }
+}
+
+.wtf2-sort-header-indicator {
+    width: 100%;
+    height: $wtf2-sort-header-arrow-thickness;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.wtf2-sort-header-pointer-middle {
+    margin: auto;
+    height: $wtf2-sort-header-arrow-thickness;
+    width: $wtf2-sort-header-arrow-thickness;
+    background: currentColor;
+    transform: rotate(45deg);
+    @include cdk-high-contrast {
+        width: 0;
+        height: 0;
+        border-top: solid $wtf2-sort-header-arrow-thickness;
+        border-left: solid $wtf2-sort-header-arrow-thickness;
+    }
+}
+
+.wtf2-sort-header-pointer-left,
+.wtf2-sort-header-pointer-right {
+    background: currentColor;
+    width: $wtf2-sort-header-arrow-pointer-length;
+    height: $wtf2-sort-header-arrow-thickness;
+    position: absolute;
+    top: 0;
+    @include cdk-high-contrast {
+        width: 0;
+        height: 0;
+        border-left: solid $wtf2-sort-header-arrow-pointer-length;
+        border-top: solid $wtf2-sort-header-arrow-thickness;
+    }
+}
+
+.wtf2-sort-header-pointer-left {
+    transform-origin: right;
+    left: 0;
+}
+
+.wtf2-sort-header-pointer-right {
+    transform-origin: left;
+    right: 0;
+}

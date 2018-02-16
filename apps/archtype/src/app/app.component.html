@@ -1,0 +1,43 @@
+<!-- PROGRESS BAR -->
+<div [class]="'theme-'+wtf2Config.wtf2theme">
+
+    <custom-progress-bar></custom-progress-bar>
+    <!-- / PROGRESS BAR -->
+
+    <!-- Globle Search Bar -->
+    <wtf2-global-search *ngIf="wtf2Config.globleSearch === true" (onSearch)="filterOptions()"></wtf2-global-search>
+    <!-- /Globle Search Bar -->
+
+    <!-- VERTICAL LAYOUT 1 -->
+    <vertical-layout-1></vertical-layout-1>
+    <!-- / VERTICAL LAYOUT 1 -->
+
+    <!-- VERTICAL LAYOUT 2 -->
+    <!-- <ng-container *ngIf="wtf2Config.layout.style === 'vertical-layout-2'">
+        <vertical-layout-2></vertical-layout-2>
+    </ng-container> -->
+    <!-- / VERTICAL LAYOUT 2 -->
+
+    <!-- VERTICAL LAYOUT 3 -->
+    <!-- <ng-container *ngIf="wtf2Config.layout.style === 'vertical-layout-3'">
+        <vertical-layout-3></vertical-layout-3>
+    </ng-container> -->
+    <!-- / VERTICAL LAYOUT 3 -->
+
+    <!-- HORIZONTAL LAYOUT 1 -->
+    <!-- <ng-container *ngIf="wtf2Config.layout.style === 'horizontal-layout-1'">
+        <horizontal-layout-1></horizontal-layout-1>
+    </ng-container> -->
+    <!-- / HORIZONTAL LAYOUT 1 -->
+
+    <!-- THEME OPTIONS PANEL -->
+    <button wtf2-icon-button class="wtf2-primary-bg wtf2-elevation-z2 theme-options-button " [ngClass]="{'right-side-panel': wtf2Config.layout.sidepanel.position === 'right',
+    'side-panel-hidden': wtf2Config.layout.sidepanel.hidden === true}" (click)="toggleSidebarOpen('themeOptionsPanel')">
+        <wtf2-icon>settings</wtf2-icon>
+    </button>
+
+    <wtf2-sidebar name="themeOptionsPanel" class="theme-options-sidebar" position="right" [invisibleOverlay]="false">
+        <!-- <wtf2-theme-options></wtf2-theme-options> -->
+    </wtf2-sidebar>
+    <!-- / THEME OPTIONS PANEL -->
+</div>

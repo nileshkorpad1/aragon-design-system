@@ -1,0 +1,363 @@
+// Page Layouts
+$carded-header-height: 200px !default;
+$carded-header-height-sm: 160px !default;
+$simple-header-min-height: 96px !default;
+$simple-header-max-height: 160px !default;
+$simple-header-height-sm: 40px !default;
+$carded-toolbar-height: 64px !default;
+$header-height: 120px !default;
+$header-height-sm: 120px !default;
+$page-spacer: 32px !default;
+$page-spacer-sm: 32px !default;
+// Calculate toolbarless header height
+$carded-header-height-without-toolbar: $carded-header-height - $carded-toolbar-height;
+$carded-header-height-without-toolbar-sm: $carded-header-height-sm - $carded-toolbar-height;
+
+.search-box-layout .has-search .wtf2-form-field-flex label {
+    top: 1.38em;
+    padding-left: 67px;
+    color: #141414;
+    font-size: 28px;
+}
+
+@mixin icon-gradiant-color() {
+    @include gradient-diagonal-four-colors();
+
+    &.material-icons {
+        -webkit-background-clip: text !important;
+        background-clip: text;
+
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.wtf2-toolbar {
+    .wtf2-icon {
+        @include icon-gradiant-color();
+    }
+
+    button {
+        padding: 2px !important;
+        .avatar {
+            padding: 2px !important;
+        }
+    }
+}
+
+.page-layout {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        display: block;
+    }
+
+    //Gradient Icon Color
+    .action-bar {
+        .wtf2-icon {
+            @include icon-gradiant-color();
+        }
+    }
+
+    &.carded {
+        .page-skeleton-wrapper {
+            .carded-page-content {
+                margin-top: -$page-spacer !important;
+
+                .page-content {
+                    // min-height: 100vh;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    &.left_sidebar {
+        .page-skeleton-wrapper {
+            .wtf2-carded-leftsidebar-layout {
+                margin-right: $page-spacer;
+
+                .wtf2-cardedleftsidebar-sidebar-content {
+                    background: none;
+                    direction: rtl;
+
+                    wtf2-sidebar.sidebar.left-positioned.open.locked-open {
+                        min-width: 100%;
+                        max-width: 100%;
+                        width: 100%;
+                        height: 100%;
+                        box-shadow: none !important;
+
+                        .wtf2-header-panel {
+                            padding-top: $page-spacer;
+                        }
+                    }
+                }
+
+                .wtf2-cardedleftsidebar-page-content {
+                    margin-top: -$page-spacer;
+                    //
+                    // @include wtf2-elevation(2);
+                }
+            }
+
+            .wtf2-simple-leftsidebar-layout {
+                margin-right: $page-spacer;
+
+                .wtf2-simpleleftsidebar-sidebar-content {
+                    background: none;
+                    direction: rtl;
+
+                    wtf2-sidebar.sidebar.left-positioned.open.locked-open {
+                        min-width: 100%;
+                        max-width: 100%;
+                        width: 100%;
+                        height: 100%;
+                        box-shadow: none !important;
+
+                        .wtf2-header-panel {
+                            padding-top: $page-spacer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.right_sidebar {
+        .page-skeleton-wrapper {
+            .wtf2-carded-rightsidebar-layout {
+                margin-left: $page-spacer;
+
+                .wtf2-cardedrightsidebar-sidebar-content {
+                    background: none;
+
+                    wtf2-sidebar.sidebar {
+                        min-width: 100%;
+                        max-width: 100%;
+                        width: 100%;
+                        height: 100%;
+                        box-shadow: none !important;
+
+                        .wtf2-header-panel {
+                            padding-top: $page-spacer;
+                        }
+                    }
+                }
+
+                .wtf2-cardedrightsidebar-page-content {
+                    margin-top: -$page-spacer;
+                }
+            }
+
+            .wtf2-simple-rightsidebar-layout {
+                margin-left: $page-spacer;
+
+                .wtf2-simplerightsidebar-sidebar-content {
+                    background: none;
+
+                    wtf2-sidebar.sidebar {
+                        min-width: 100%;
+                        max-width: 100%;
+                        width: 100%;
+                        height: 100%;
+                        box-shadow: none !important;
+
+                        .wtf2-header-panel {
+                            padding-top: $page-spacer;
+                        }
+                    }
+                }
+
+                .wtf2-simplerightsidebar-page-content {
+                    @include wtf2-elevation(2);
+                }
+            }
+        }
+    }
+
+    &.fullwidth {
+        width: 100%;
+        height: 100%;
+    }
+
+    &.blank {
+        min-height: 100%;
+        width: 100%;
+    }
+
+    .pagespacer-1 {
+        padding: $page-spacer;
+    }
+
+    .pagespacer-pt-1 {
+        padding-top: $page-spacer;
+    }
+
+    .pagespacer-2 {
+        padding: $page-spacer * 2;
+    }
+
+    .pagespacer-px-1 {
+        padding-right: $page-spacer !important;
+        padding-left: $page-spacer !important;
+    }
+
+    .pagespacer-px-2 {
+        padding-right: $page-spacer * 2;
+        padding-left: $page-spacer * 2;
+    }
+
+    .pagespacer-py-1 {
+        padding-top: $page-spacer;
+        padding-bottom: $page-spacer;
+    }
+
+    .pagespacer-py-2 {
+        padding-top: $page-spacer * 2;
+        padding-bottom: $page-spacer * 2;
+    }
+
+    .pagespacer-pr-1 {
+        padding-right: $page-spacer;
+    }
+
+    .pagespacer-pr-2 {
+        padding-right: $page-spacer * 2;
+    }
+
+    .pagespacer-pl-1 {
+        padding-left: $page-spacer;
+    }
+
+    .pagespacer-pl-2 {
+        padding-left: $page-spacer * 2;
+    }
+
+    .pagespacer-mx-1 {
+        margin-right: $page-spacer !important;
+        margin-left: $page-spacer !important;
+    }
+
+    .pagespacer-mx-2 {
+        margin-right: $page-spacer * 2;
+        margin-left: $page-spacer * 2;
+    }
+
+    .pagespacer-mr-1 {
+        margin-right: $page-spacer;
+    }
+
+    .pagespacer-mr-2 {
+        margin-right: $page-spacer * 2;
+    }
+
+    .pagespacer-ml-1 {
+        margin-left: $page-spacer;
+    }
+
+    .pagespacer-ml-2 {
+        margin-left: $page-spacer * 2;
+    }
+
+    .pagespacer-invert-mx-1 {
+        margin-right: -$page-spacer;
+        margin-left: -$page-spacer;
+    }
+
+    .pagespacer-invert-mx-2 {
+        margin-right: -$page-spacer * 2;
+        margin-left: -$page-spacer * 2;
+    }
+
+    .invert-rightleft-margin-1 {
+        margin-right: $page-spacer;
+        margin-left: $page-spacer;
+    }
+
+    .invert-right-margin-1 {
+        margin-right: -$page-spacer;
+        margin-left: -$page-spacer;
+    }
+
+    .invert-left-margin-1 {
+        margin-left: -$page-spacer;
+    }
+
+    .invert-rightleft-margin-2 {
+        margin-right: -$page-spacer * 2;
+        margin-left: -$page-spacer * 2;
+    }
+
+    .invert-right-margin-2 {
+        margin-right: -$page-spacer * 2;
+        margin-left: -$page-spacer * 2;
+    }
+
+    .invert-left-margin-2 {
+        margin-left: -$page-spacer * 2;
+    }
+}
+
+.inner-scroll {
+    // .center {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1 1 auto;
+    flex: 1 1 auto;
+
+    .sidebar {
+        .content {
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
+    // }
+}
+
+// form-field icon alignment
+wtf2-form-field {
+    .wtf2-form-field-prefix,
+    .wtf2-form-field-suffix {
+        align-self: flex-end;
+    }
+}
+
+wtf2-inform-expander-multicol {
+    .arrow-up {
+        position: relative;
+        bottom: -25px;
+        z-index: 1;
+        box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, .8);
+    }
+
+    .arrow-up::after,
+    .arrow-up::before {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: solid transparent;
+        content: ' ';
+        pointer-events: none;
+    }
+
+    .arrow-up::after {
+        margin-left: -15px;
+        border-width: 15px;
+    }
+
+    .arrow-up::before {
+        margin-left: -18px;
+        border-width: 18px;
+    }
+}
+
+.wtf2-split-button-menu {
+    .wtf2-menu-item {
+        color: inherit !important;
+    }
+}

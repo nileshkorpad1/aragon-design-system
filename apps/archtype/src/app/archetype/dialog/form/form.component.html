@@ -1,0 +1,140 @@
+<wtf2-icon class="dialog-back-arrow" (click)="closeDialog()">arrow_back</wtf2-icon>
+<button wtf2-dialog-close class="dialog-close-button">
+    <wtf2-icon>close</wtf2-icon>
+</button>
+<h2 wtf2-dialog-title class="dialog-header-title">ADD VENDER</h2>
+<wtf2-divider class="divider"></wtf2-divider>
+
+<wtf2-dialog-content class="wtf2-typography wtf2-dialog-content-fullwidth">
+    <wtf2-hide-panel vertical>
+        <!-- Hide button content -->
+        <div verticalconstant>
+            <!-- this section is always show -->
+            <wtf2-horizontal-stepper #stepper>
+                <wtf2-step>
+                    <form class="example-form" [formGroup]="vendarFormGroup" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="address1" [formControl]="vendarGroup.address1"
+                                        required>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="address2" [formControl]="vendarGroup.address2"
+                                        required>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="state" [formControl]="vendarGroup.state" required>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="city" [formControl]="vendarGroup.city" required>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="country" [formControl]="vendarGroup.country" required>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="postal code" [formControl]="vendarGroup.postalcode"
+                                        required>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="email" [formControl]="vendarGroup.email" required>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="Phone" [formControl]="vendarGroup.phone" required>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row py-24">
+                            <div class="col-md-3">
+                                <button wtf2-flat-button color="warn">SAVE</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button wtf2-flat-button color="primary">NEXT</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button wtf2-flat-button color="primary">BACK</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button wtf2-dialog-close wtf2-flat-button color="disable">CANCEL</button>
+                            </div>
+                        </div>
+                    </form>
+                </wtf2-step>
+                <wtf2-step>
+                    <form class="example-form" [formGroup]="vendarSecondFormGroup" (ngSubmit)="onsecondFormSubmit()">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="address1" [formControl]="secondVendorGroup.address1" required>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="address2" [formControl]="secondVendorGroup.address2" required>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="state" [formControl]="secondVendorGroup.state" required>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <wtf2-form-field class="full-width">
+                                    <input wtf2Input placeholder="city" [formControl]="secondVendorGroup.city" required>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row py-24">
+                            <div class="col-md-3">
+                                <button wtf2-flat-button color="warn">SAVE</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button wtf2-dialog-close wtf2-flat-button color="disable">CANCEL</button>
+                            </div>
+                        </div>
+                    </form>
+                </wtf2-step>
+            </wtf2-horizontal-stepper>
+        </div>
+        <div verticalhidden>
+            <!-- this section is hide/show -->
+            <div class="container-flud m-5">
+                <div class="wtf2-orange-700-text center-text">
+                    <h1 class="wtf2-orange-700-text">ADD PRODUCT AND SERVICES</h1>
+                </div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled </p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled </p>
+
+                <div class="center-text">
+                    <img src="assets/images/question-mark.png" width="165" />
+                </div>
+            </div>
+        </div>
+    </wtf2-hide-panel>
+</wtf2-dialog-content>

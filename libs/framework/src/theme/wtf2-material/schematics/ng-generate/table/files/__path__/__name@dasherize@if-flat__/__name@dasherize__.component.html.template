@@ -1,0 +1,25 @@
+<div class="wtf2-elevation-z8">
+  <table wtf2-table class="full-width-table" wtf2Sort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container wtf2ColumnDef="id">
+      <th wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header>Id</th>
+      <td wtf2-cell *wtf2CellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container wtf2ColumnDef="name">
+      <th wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header>Name</th>
+      <td wtf2-cell *wtf2CellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <tr wtf2-header-row *wtf2HeaderRowDef="displayedColumns"></tr>
+    <tr wtf2-row *wtf2RowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <wtf2-paginator #paginator
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="50"
+      [pageSizeOptions]="[25, 50, 100, 250]">
+  </wtf2-paginator>
+</div>

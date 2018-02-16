@@ -1,0 +1,37 @@
+<div class="navbar-top ">
+
+    <div class="logo">
+        <span class="logo-text secondary-text">Deskera</span>
+    </div>
+
+    <div class="buttons">
+
+        <button wtf2-icon-button class="toggle-sidebar-folded" (click)="toggleSidebarFolded()" fxHide.lt-lg>
+<wtf2-icon class=" logo-text secondary-text">menu</wtf2-icon>
+        </button>
+
+        <button wtf2-icon-button class="toggle-sidebar-opened" (click)="toggleSidebarOpened()" fxHide.gt-md>
+            <wtf2-icon class="secondary-text">arrow_back</wtf2-icon>
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="navbar-scroll-container" wtf2PerfectScrollbar [wtf2PerfectScrollbarOptions]="{suppressScrollX: true}">
+
+    <div class="user " fxLayout="column">
+
+        <div class="h1 username">Deskera</div>
+        <div class="avatar-container" [ngClass]="wtf2Config.layout.navbar.background">
+            <img class="avatar" src="assets/images/logos/deskera-logo.svg">
+        </div>
+
+    </div>
+
+    <div class="navbar-content">
+        <wtf2-navigation layout="vertical"></wtf2-navigation>
+    </div>
+
+</div>

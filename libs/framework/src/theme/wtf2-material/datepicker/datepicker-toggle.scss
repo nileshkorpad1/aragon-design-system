@@ -1,0 +1,22 @@
+.wtf2-form-field-appearance-legacy {
+    .wtf2-form-field-prefix,
+    .wtf2-form-field-suffix {
+        .wtf2-datepicker-toggle-default-icon {
+            width: 1em;
+        }
+    }
+}
+
+.wtf2-form-field:not(.wtf2-form-field-appearance-legacy) {
+    .wtf2-form-field-prefix,
+    .wtf2-form-field-suffix {
+        .wtf2-datepicker-toggle-default-icon {
+            display: block;
+            width: 1.5em;
+            height: 1.5em;
+        }
+        .wtf2-icon-button .wtf2-datepicker-toggle-default-icon {
+            margin: auto;
+        }
+    }
+}

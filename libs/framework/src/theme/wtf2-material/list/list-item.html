@@ -1,0 +1,13 @@
+<div class="wtf2-list-item-content">
+    <div class="wtf2-list-item-ripple" wtf2-ripple [wtf2RippleTrigger]="_getHostElement()" [wtf2RippleDisabled]="_isRippleDisabled()">
+    </div>
+
+    <ng-content select="[wtf2-list-avatar], [wtf2-list-icon], [wtf2ListAvatar], [wtf2ListIcon]">
+    </ng-content>
+
+    <div class="wtf2-list-text">
+        <ng-content select="[wtf2-line], [wtf2Line]"></ng-content>
+    </div>
+
+    <ng-content></ng-content>
+</div>

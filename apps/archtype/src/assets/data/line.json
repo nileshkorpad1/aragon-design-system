@@ -1,0 +1,94 @@
+{
+    "keys": [
+        "sales",
+        "pending",
+        "opening"
+    ],
+    "type": "line",
+    "data": [
+        {
+            "labelname": "Jan",
+            "sales": 10,
+            "pending": 3,
+            "opening": 2,
+            "subdata": {
+                "keys": [
+                    "sales",
+                    "pending",
+                    "opening"
+                ],
+                "data": [
+                    {
+                        "labelname":"jan1",
+                        "sales":1,
+                        "pending":2,
+                        "opening":3
+                    },
+                    {
+                        "labelname": "Jan2",
+                        "sales": 8,
+                        "pending": 2,
+                        "opening": 5
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "Feb",
+            "sales": 8,
+            "pending": 5,
+            "opening": 3,
+            "subdata": {
+                "keys": [
+                    "sales",
+                    "pending",
+                    "opening"
+                ],
+                "data": [
+                    {
+                        "labelname": "Feb1",
+                        "sales": 5,
+                        "pending": 0,
+                        "opening": 2
+                    },
+                    {
+                        "labelname": "Feb2",
+                        "sales": 7,
+                        "pending": 1,
+                        "opening": 3
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "Mar",
+            "sales": 9,
+            "pending": 6,
+            "opening": 4
+        },
+        {
+            "labelname": "Apr",
+            "sales": 4,
+            "pending": 1,
+            "opening": 7
+        },
+        {
+            "labelname": "May",
+            "sales": 6,
+            "pending": 2,
+            "opening": 4
+        },
+        {
+            "labelname": "Jun",
+            "sales": 2,
+            "pending": 4,
+            "opening": 3
+        },
+        {
+            "labelname": "Jul",
+            "sales": 13,
+            "pending": 7,
+            "opening": 7
+        }
+    ]
+}

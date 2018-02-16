@@ -1,0 +1,53 @@
+<div class="container">
+    <h3 wtf2-dialog-title>Add new Issue</h3>
+
+    <form class="wtf2-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+        <div class="form">
+            <wtf2-form-field color="accent">
+                <input wtf2Input #input class="form-control" placeholder="Id" [(ngModel)]="data.id" name="id" required>
+                <wtf2-error *ngIf="formControl.invalid">{{getErrorMessage()}}</wtf2-error>
+            </wtf2-form-field>
+        </div>
+
+        <!--Textarea for demo purposes-->
+        <div class="form">
+            <wtf2-form-field color="accent">
+                <textarea wtf2Input #input class="form-control" placeholder="Title" [(ngModel)]="data.title" name="title" required></textarea>
+                <wtf2-error *ngIf="formControl.invalid">{{getErrorMessage()}}</wtf2-error>
+            </wtf2-form-field>
+        </div>
+
+        <!--Contains wtf2-hint for characters count and has maxLengt set-->
+        <div class="form">
+            <wtf2-form-field color="accent">
+                <input wtf2Input #inputstate class="form-control" placeholder="State" [(ngModel)]="data.state" name="state" maxlength="10" required>
+                <wtf2-error *ngIf="formControl.invalid">{{getErrorMessage()}}</wtf2-error>
+                <wtf2-hint align="end">{{inputstate.value?.length || 0}}/10</wtf2-hint>
+            </wtf2-form-field>
+        </div>
+
+        <div class="form">
+            <wtf2-form-field color="accent">
+                <input wtf2Input placeholder="Url" [(ngModel)]="data.url" name="url">
+            </wtf2-form-field>
+        </div>
+
+        <div class="form">
+            <wtf2-form-field color="accent">
+                <input wtf2Input placeholder="Created at" [(ngModel)]="data.created_at" name="created_at">
+            </wtf2-form-field>
+        </div>
+
+        <div class="form">
+            <wtf2-form-field color="accent">
+                <input wtf2Input placeholder="Updated at" [(ngModel)]="data.updated_at" name="updated_at">
+            </wtf2-form-field>
+        </div>
+
+        <div wtf2-dialog-actions>
+            <button wtf2-button [type]="submit" [disabled]="!formControl.valid" [wtf2-dialog-close]="1" (click)="confirmAdd();submitData()">Save</button>
+            <button wtf2-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+        </div>
+    </form>
+</div>

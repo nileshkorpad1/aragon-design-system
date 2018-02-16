@@ -1,0 +1,95 @@
+{
+    "keys": [
+        "total"
+    ],
+    "type": "bar",
+    "data": [
+        {
+            "labelname": "Jan",
+            "total": 15,
+            "subdata": {
+                "keys": [
+                    "total"
+                ],
+                "data": [
+                    {
+                        "labelname": "Jan1",
+                        "total": 10
+                    },
+                    {
+                        "labelname": "Jan2",
+                        "total": 1
+                    },
+                    {
+                        "labelname": "Jan3",
+                        "total": 9
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "Feb",
+            "total": 10,
+            "subdata": {
+                "keys": [
+                    "total"
+                ],
+                "data": [
+                    {
+                        "labelname": "Feb1",
+                        "total": 10
+                    },
+                    {
+                        "labelname": "feb2",
+                        "total": -1
+                    },
+                    {
+                        "labelname": "Feb3",
+                        "total": 9
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "Mar",
+            "total": -3
+        },
+        {
+            "labelname": "Apr",
+            "total": 4
+        },
+        {
+            "labelname": "May",
+            "total": 6
+        },
+        {
+            "labelname": "Jun",
+            "total": -2
+        },
+        {
+            "labelname": "Jul",
+            "total": 13
+        },
+        {
+            "labelname": "Aug",
+            "total": 6
+        },
+        {
+            "labelname": "Sep",
+            "total": 4
+        },
+        {
+            "labelname": "Oct",
+            "total": 9
+        },
+        {
+            "labelname": "Nov",
+            "total": -2
+        },
+        {
+            "labelname": "Dec",
+            "total": 6
+        }
+    ],
+    "isPossitiveNegativeColor": true
+}

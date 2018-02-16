@@ -1,0 +1,61 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/style/elevation';
+@import '../core/style/form-common';
+@import '../core/typography/typography-utils';
+@mixin wtf2-select-theme($theme) {
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    .wtf2-select-value {
+        color: wtf2-color($foreground, text);
+    }
+    .wtf2-select-placeholder {
+        color: _wtf2-control-placeholder-color($theme);
+    }
+    .wtf2-select-disabled .wtf2-select-value {
+        color: wtf2-color($foreground, disabled-text);
+    }
+    .wtf2-select-arrow {
+        color: wtf2-color($foreground, secondary-text);
+    }
+    .wtf2-select-panel {
+        background: wtf2-color($background, card);
+        @include _wtf2-theme-overridable-elevation(4, $theme);
+        .wtf2-option.wtf2-selected:not(.wtf2-option-multiple) {
+            background: wtf2-color($background, hover, 0.12);
+        }
+    }
+    .wtf2-form-field {
+        &.wtf2-focused {
+            &.wtf2-primary .wtf2-select-arrow {
+                color: wtf2-color($primary);
+            }
+            &.wtf2-accent .wtf2-select-arrow {
+                color: wtf2-color($accent);
+            }
+            &.wtf2-warn .wtf2-select-arrow {
+                color: wtf2-color($warn);
+            }
+        }
+        .wtf2-select.wtf2-select-invalid .wtf2-select-arrow {
+            color: wtf2-color($warn);
+        }
+        .wtf2-select.wtf2-select-disabled .wtf2-select-arrow {
+            color: wtf2-color($foreground, disabled-text);
+        }
+    }
+}
+
+@mixin wtf2-select-typography($config) {
+    // The unit-less line-height from the font config.
+    $line-height: wtf2-line-height($config, input);
+    .wtf2-select {
+        font-family: wtf2-font-family($config);
+    }
+    .wtf2-select-trigger {
+        height: $line-height * 1em;
+    }
+}

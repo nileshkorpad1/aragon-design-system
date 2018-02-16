@@ -1,0 +1,24 @@
+<div class="grid-container">
+  <h1 class="wtf2-h1">Dashboard</h1>
+  <wtf2-grid-list cols="2" rowHeight="350px">
+    <wtf2-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <wtf2-card class="dashboard-card">
+        <wtf2-card-header>
+          <wtf2-card-title>
+            {{card.title}}
+            <button wtf2-icon-button class="more-button" [wtf2MenuTriggerFor]="menu" aria-label="Toggle menu">
+              <wtf2-icon>more_vert</wtf2-icon>
+            </button>
+            <wtf2-menu #menu="wtf2Menu" xPosition="before">
+              <button wtf2-menu-item>Expand</button>
+              <button wtf2-menu-item>Remove</button>
+            </wtf2-menu>
+          </wtf2-card-title>
+        </wtf2-card-header>
+        <wtf2-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+        </wtf2-card-content>
+      </wtf2-card>
+    </wtf2-grid-tile>
+  </wtf2-grid-list>
+</div>

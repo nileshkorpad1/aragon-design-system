@@ -1,0 +1,126 @@
+<!-- <div class="center page-skeleton-wrapper" fullwidth> -->
+<div class=" container ">
+    <form class="salesInvoice" [formGroup]="salesInvoiceFormGroup" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input placeholder="CUSTOMER" required [formControl]="salesInvoiceGroup.customerFormControl"
+                        value={{jsonData.customer}}>
+                    <wtf2-error *ngIf="salesInvoiceGroup.customerFormControl.hasError('required')">
+                        Please enter <strong>customer</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                <wtf2-form-field style="width: 98%;">
+                    <wtf2-select placeholder="CURRENCY" required [formControl]="salesInvoiceGroup.currencyFormControl">
+                        <wtf2-option value="option" *ngFor="let currency of currencies">{{currency}}</wtf2-option>
+                    </wtf2-select>
+                    <wtf2-error *ngIf="salesInvoiceGroup.currencyFormControl.hasError('required')">
+                        Please enter <strong>currency</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input placeholder="BASE SALES INVOICE" required [formControl]="salesInvoiceGroup.basesalesinvoiceFormControl">
+                    <wtf2-error *ngIf="salesInvoiceGroup.basesalesinvoiceFormControl.hasError('required')">
+                        Please enter <strong>base sales invoice</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input placeholder="EXCHANGE RATE" required [formControl]="salesInvoiceGroup.exchangerateFormControl">
+                    <wtf2-error *ngIf="salesInvoiceGroup.exchangerateFormControl.hasError('required')">
+                        Please enter <strong>exchange rate</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input placeholder="MEMO" value={{jsonData.memo}} required [formControl]="salesInvoiceGroup.memoControl">
+                    <wtf2-error *ngIf="salesInvoiceGroup.memoControl.hasError('required')">
+                        Please enter <strong>meno</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input placeholder="DOCUMENT NUMBER" value={{jsonData.memo}} required [formControl]="salesInvoiceGroup.doccumentNumberFormControl">
+                    <wtf2-error *ngIf="salesInvoiceGroup.doccumentNumberFormControl.hasError('required')">
+                        Please enter <strong>doccument number</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input placeholder="CUSTOMER PO REFERENCE NO" required [formControl]="salesInvoiceGroup.customerporefnoFormControl">
+                    <wtf2-error *ngIf="salesInvoiceGroup.customerporefnoFormControl.hasError('required')">
+                        Please enter <strong>customer PO refrence number</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input [wtf2Datepicker]="picker" placeholder="NEXT INVOICE DATE" required [formControl]="salesInvoiceGroup.invoicedatecustomerFormControl">
+                    <wtf2-error *ngIf="salesInvoiceGroup.invoicedatecustomerFormControl.hasError('required')">
+                        Please enter <strong>next invoice date</strong>
+                    </wtf2-error>
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="picker"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #picker></wtf2-datepicker>
+                </wtf2-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 ">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input placeholder="REPEAT THIS INVOICE EVERY">
+                </wtf2-form-field>
+            </div>
+            <div class="col col-3 ">
+                <wtf2-form-field style="width: 98%;">
+                    <wtf2-select>
+                        <wtf2-option value="option">DAYS</wtf2-option>
+                    </wtf2-select>
+                </wtf2-form-field>
+            </div>
+            <div class="col col-3 ">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input placeholder="RECURRING INVOICE COUNT">
+                </wtf2-form-field>
+            </div>
+            <div class="col col-3 ">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input [wtf2Datepicker]="invoicedate" placeholder="RECURRING INVOICE COUNT DATE" required
+                        [formControl]="salesInvoiceGroup.reccFormControl">
+                    <wtf2-error *ngIf="salesInvoiceGroup.reccFormControl.hasError('required')">
+                        Please enter <strong>recurring invoice count date</strong>
+                    </wtf2-error>
+                    <wtf2-datepicker-toggle wtf2Suffix [for]="invoicedate"></wtf2-datepicker-toggle>
+                    <wtf2-datepicker #invoicedate></wtf2-datepicker>
+                </wtf2-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                <wtf2-form-field style="width: 98%;">
+                    <input wtf2Input placeholder="GENERATE INVOICE DATE">
+                </wtf2-form-field>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                <button class="submit-Button" type="submit" wtf2-raised-button color="warn">Save</button>
+                <button wtf2-button wtf2-flat-button color="primary" type="button" class="ml-5">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+</div>

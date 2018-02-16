@@ -1,0 +1,17 @@
+$wtf2-node-height: 48px;
+.wtf2-tree {
+    display: block;
+}
+
+.wtf2-tree-node {
+    display: flex;
+    align-items: center;
+    min-height: $wtf2-node-height;
+    flex: 1;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.wtf2-nested-tree-ndoe {
+    border-bottom-width: 0;
+}

@@ -1,0 +1,25 @@
+<!-- <ul class="nav nav-tabs">
+    <li *ngFor="let tab of expanders" (click)="selectTab(tab)" [class.active]="tab.active">
+        <a href="#">{{tab.title}}</a>
+    </li>
+</ul> -->
+
+<!-- <ng-template #informExpander> -->
+    <ng-content></ng-content>
+<!-- </ng-template>
+<ng-container *ngTemplateOutlet="informExpander"></ng-container>
+
+ <ng-template #tempOutletActiontoolbar>
+    <ng-content select="wtf2-expander"></ng-content>
+</ng-template>
+<div class="test">
+    <ng-container *ngTemplateOutlet="tempOutletActiontoolbar"></ng-container>
+</div> -->
+
+<!-- <div *ngFor="let step of expanders; let i = index" class="col-12" [ngStyle]="{'margin-top.px': i !=0 ? -i/3 : -0.4 }">
+    <ng-container [ngTemplateOutlet]="step.template"></ng-container>
+</div> -->
+
+<!-- <div *ngFor="let step of _steps; let i = index" class="wtf2-horizontal-stepper-content" role="tabpanel"
+        [@stepTransition]="_getAnimationDirection(i)" (@stepTransition.done)="_animationDone.next($event)" [id]="_getStepContentId(i)"
+        [attr.aria-labelledby]="_getStepLabelId(i)" [attr.aria-expanded]="selectedIndex === i"> -->

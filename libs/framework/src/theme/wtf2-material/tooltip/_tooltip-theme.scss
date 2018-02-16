@@ -1,0 +1,28 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+$wtf2-tooltip-target-height: 22px;
+$wtf2-tooltip-font-size: 10px;
+$wtf2-tooltip-vertical-padding: ($wtf2-tooltip-target-height - $wtf2-tooltip-font-size) / 2;
+$wtf2-tooltip-handset-target-height: 30px;
+$wtf2-tooltip-handset-font-size: 14px;
+$wtf2-tooltip-handset-vertical-padding: ($wtf2-tooltip-handset-target-height - $wtf2-tooltip-handset-font-size) / 2;
+@mixin wtf2-tooltip-theme($theme) {
+    .wtf2-tooltip {
+        background: wtf2-color($wtf2-grey, 700, 0.9);
+    }
+}
+
+@mixin wtf2-tooltip-typography($config) {
+    .wtf2-tooltip {
+        font-family: wtf2-font-family($config);
+        font-size: $wtf2-tooltip-font-size;
+        padding-top: $wtf2-tooltip-vertical-padding;
+        padding-bottom: $wtf2-tooltip-vertical-padding;
+    }
+    .wtf2-tooltip-handset {
+        font-size: $wtf2-tooltip-handset-font-size;
+        padding-top: $wtf2-tooltip-handset-vertical-padding;
+        padding-bottom: $wtf2-tooltip-handset-vertical-padding;
+    }
+}

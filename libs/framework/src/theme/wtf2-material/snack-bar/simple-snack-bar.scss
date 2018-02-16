@@ -1,0 +1,30 @@
+@import '../core/style/variables';
+@import '../core/style/button-common';
+@import '../core/style/list-common';
+$wtf2-snack-bar-button-horizontal-margin: 8px !default;
+$wtf2-snack-bar-button-height: 36px !default;
+$wtf2-snack-bar-line-height: 20px !default;
+// Button vertical margin is used to ensure that a button height of 36px, when the containing
+// space falls below 36px.
+$wtf2-snack-bar-button-vertical-margin: -(($wtf2-snack-bar-button-height - $wtf2-snack-bar-line-height) / 2);
+.wtf2-simple-snackbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    line-height: $wtf2-snack-bar-line-height;
+    opacity: 1;
+}
+
+.wtf2-simple-snackbar-action {
+    flex-shrink: 0;
+    margin: $wtf2-snack-bar-button-vertical-margin $wtf2-snack-bar-button-horizontal-margin * -1 $wtf2-snack-bar-button-vertical-margin $wtf2-snack-bar-button-horizontal-margin;
+    button {
+        max-height: $wtf2-snack-bar-button-height;
+        min-width: 0;
+    }
+    [dir='rtl'] & {
+        margin-left: -$wtf2-snack-bar-button-horizontal-margin;
+        margin-right: $wtf2-snack-bar-button-horizontal-margin;
+    }
+}

@@ -1,0 +1,29 @@
+<div class="container-fluid wtf2-elevation-z8">
+  <wtf2-table #Table [dataSource]="MyDataSource" multiTemplateDataRows wtf2Sort>
+    <ng-container [wtf2ColumnDef]="column" *ngFor="let column of displayedColumns">
+      <wtf2-header-cell *wtf2HeaderCellDef> {{column}} </wtf2-header-cell>
+      <wtf2-cell *wtf2CellDef="let element">
+        {{element[column]}}
+      </wtf2-cell>
+    </ng-container>
+    <wtf2-header-row *wtf2HeaderRowDef="displayedColumns"></wtf2-header-row>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column -->
+    <wtf2-row-detail *wtf2RowDef="let row; columns: displayedColumns;" class="wtf2-elevation-z3" [isOpen]="expandedElement == row"
+      [disabled]="!isExpanded" [hideToggle]="false">
+      <!-- **************************Expanded************** -->
+      <wtf2-table #childtable [dataSource]="dataSourceHistory">
+        <ng-container [wtf2ColumnDef]="column" *ngFor="let column of displaychildcols">
+          <wtf2-header-cell *wtf2HeaderCellDef> {{column}} </wtf2-header-cell>
+          <wtf2-cell *wtf2CellDef="let element">
+            {{element[column]}}
+          </wtf2-cell>
+        </ng-container>
+        <wtf2-header-row *wtf2HeaderRowDef="displaychildcols">
+        </wtf2-header-row>
+        <wtf2-row *wtf2RowDef="let row; columns: displaychildcols;"></wtf2-row>
+      </wtf2-table>
+      <!-- ********************************End Expanded***************************************** -->
+    </wtf2-row-detail>
+  </wtf2-table>
+</div>

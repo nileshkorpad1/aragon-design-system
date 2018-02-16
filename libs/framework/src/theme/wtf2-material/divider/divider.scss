@@ -1,0 +1,20 @@
+$wtf2-divider-width: 1px;
+$wtf2-divider-inset-margin: 80px;
+.wtf2-divider {
+    display: block;
+    margin: 0;
+    border-top-width: $wtf2-divider-width;
+    border-top-style: solid;
+    &.wtf2-divider-vertical {
+        border-top: 0;
+        border-right-width: $wtf2-divider-width;
+        border-right-style: solid;
+    }
+    &.wtf2-divider-inset {
+        margin-left: $wtf2-divider-inset-margin;
+        [dir='rtl'] & {
+            margin-left: auto;
+            margin-right: $wtf2-divider-inset-margin;
+        }
+    }
+}

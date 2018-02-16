@@ -1,0 +1,47 @@
+<label [attr.for]="inputId" class="wtf2-slide-toggle-label" #label>
+  <div #toggleBar class="wtf2-slide-toggle-bar"
+       [class.wtf2-slide-toggle-bar-no-side-margin]="!labelContent.textContent || !labelContent.textContent.trim()">
+
+    <input #input class="wtf2-slide-toggle-input cdk-visually-hidden" type="checkbox"
+           role="switch"
+           [id]="inputId"
+           [required]="required"
+           [tabIndex]="tabIndex"
+           [checked]="checked"
+           [disabled]="disabled"
+           [attr.name]="name"
+           [attr.aria-checked]="checked.toString()"
+           [attr.aria-label]="ariaLabel"
+           [attr.aria-labelledby]="ariaLabelledby"
+           (change)="_onChangeEvent($event)"
+           (click)="_onInputClick($event)">
+
+    <div class="wtf2-slide-toggle-thumb-container"
+         #thumbContainer
+         (slidestart)="_onDragStart()"
+         (slide)="_onDrag($event)"
+         (slideend)="_onDragEnd()">
+
+      <div class="wtf2-slide-toggle-thumb"></div>
+
+      <div class="wtf2-slide-toggle-ripple" wtf2-ripple
+           [wtf2RippleTrigger]="label"
+           [wtf2RippleDisabled]="disableRipple || disabled"
+           [wtf2RippleCentered]="true"
+           [wtf2RippleRadius]="20"
+           [wtf2RippleAnimation]="{enterDuration: 150}">
+
+        <div class="wtf2-ripple-element wtf2-slide-toggle-persistent-ripple"></div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <span class="wtf2-slide-toggle-content" #labelContent (cdkObserveContent)="_onLabelTextChange()">
+    <!-- Add an invisible span so JAWS can read the label -->
+    <span style="display:none">&nbsp;</span>
+    <ng-content></ng-content>
+  </span>
+</label>

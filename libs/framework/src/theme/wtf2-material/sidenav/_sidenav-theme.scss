@@ -1,0 +1,63 @@
+@import '../core/style/elevation';
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@mixin wtf2-sidenav-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $drawer-background-color: wtf2-color($background, dialog);
+    $drawer-container-background-color: wtf2-color($background, background);
+    $drawer-push-background-color: wtf2-color($background, dialog);
+    $drawer-side-border: solid 1px wtf2-color($foreground, divider);
+    .wtf2-drawer-container {
+        background-color: $drawer-container-background-color;
+        color: wtf2-color($foreground, text);
+    }
+    .wtf2-drawer {
+        background-color: $drawer-background-color;
+        color: wtf2-color($foreground, text);
+        &.wtf2-drawer-push {
+            background-color: $drawer-push-background-color;
+        }
+        &:not(.wtf2-drawer-side) {
+            // The elevation of z-16 is noted in the design specifications.
+            // See https://material.io/design/components/navigation-drawer.html
+            @include _wtf2-theme-elevation(16, $theme);
+        }
+    }
+    .wtf2-drawer-side {
+        border-right: $drawer-side-border;
+        &.wtf2-drawer-end {
+            border-left: $drawer-side-border;
+            border-right: none;
+        }
+    }
+    [dir='rtl'] .wtf2-drawer-side {
+        border-left: $drawer-side-border;
+        border-right: none;
+        &.wtf2-drawer-end {
+            border-left: none;
+            border-right: $drawer-side-border;
+        }
+    }
+    .wtf2-drawer-backdrop.wtf2-drawer-shown {
+        $opacity: 0.6;
+        $backdrop-color: wtf2-color($background, card, $opacity);
+        @if (type-of($backdrop-color)==color) {
+            // We use invert() here to have the darken the background color expected to be used. If the
+            // background is light, we use a dark backdrop. If the background is dark,
+            // we use a light backdrop.
+            background-color: invert($backdrop-color);
+        }
+        @else {
+            // If we couldn't resolve the backdrop color to a color value, fall back to using
+            // `opacity` to make it opaque since its end value could be a solid color.
+            background-color: $backdrop-color;
+            opacity: $opacity;
+        }
+    }
+}
+
+@mixin wtf2-sidenav-typography($config) {}

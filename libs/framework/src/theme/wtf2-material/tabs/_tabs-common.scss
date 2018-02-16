@@ -1,0 +1,66 @@
+@import '../core/style/variables';
+@import '~@angular/cdk/a11y';
+$wtf2-tab-bar-height: 48px !default;
+$wtf2-tab-animation-duration: 500ms !default;
+// Mixin styles for labels that are contained within the tab header.
+@mixin tab-label {
+    height: $wtf2-tab-bar-height;
+    padding: 0 24px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: 0.6;
+    min-width: 160px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    &:focus {
+        outline: none;
+        &:not(.wtf2-tab-disabled) {
+            opacity: 1;
+        }
+        @include cdk-high-contrast {
+            outline: dotted 2px;
+        }
+    }
+    &.wtf2-tab-disabled {
+        cursor: default;
+        @include cdk-high-contrast {
+            opacity: 0.5;
+        }
+    }
+    .wtf2-tab-label-content {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        white-space: nowrap;
+    }
+    @include cdk-high-contrast {
+        opacity: 1;
+    }
+}
+
+// Mixin styles for the top section of the view; contains the tab labels.
+@mixin tab-header {
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+// Mixin styles for the ink bar that displays near the active tab in the header.
+@mixin ink-bar {
+    $height: 2px;
+    position: absolute;
+    bottom: 0;
+    height: $height;
+    transition: $wtf2-tab-animation-duration $ease-in-out-curve-function;
+    .wtf2-tab-group-inverted-header & {
+        bottom: auto;
+        top: 0;
+    }
+    @include cdk-high-contrast {
+        outline: solid $height;
+        height: 0;
+    }
+}

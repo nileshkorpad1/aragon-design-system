@@ -1,0 +1,52 @@
+a {
+    margin-right: 5px;
+    margin-left: 5px;
+    border-bottom: dashed 1px #428bca;
+    color: #428bca;
+    text-decoration: none;
+    line-height: 2;
+    cursor: pointer;
+}
+
+
+/* editable-empty */
+
+.editable-empty,
+.editable-empty:hover,
+.editable-empty:focus,
+a.editable-empty,
+a.editable-empty:hover,
+a.editable-empty:focus {
+    color: #dd1144;
+    text-decoration: none;
+    font-style: italic;
+}
+
+.inlineEditForm {
+    display: inline-block;
+    margin: 0;
+    white-space: nowrap;
+}
+
+#inlineEditWrapper {
+    display: inline-block;
+}
+
+.inlineEditForm input,
+select {
+    display: inline;
+    width: auto;
+}
+
+.editInvalid {
+    margin-bottom: 0;
+    color: #a94442;
+}
+
+.error {
+    border-color: #a94442;
+}
+
+[hidden] {
+    display: none;
+}

@@ -1,0 +1,18 @@
+<div class="wtf2-tab-header-pagination wtf2-tab-header-pagination-before wtf2-elevation-z4" #previousPaginator aria-hidden="true" wtf2-ripple [wtf2RippleDisabled]="_disableScrollBefore || disableRipple" [class.wtf2-tab-header-pagination-disabled]="_disableScrollBefore"
+    (click)="_handlePaginatorClick('before')" (mousedown)="_handlePaginatorPress('before')" (touchend)="_stopInterval()">
+    <div class="wtf2-tab-header-pagination-chevron"></div>
+</div>
+
+<div class="wtf2-tab-label-container" #tabListContainer (keydown)="_handleKeydown($event)">
+    <div class="wtf2-tab-list" #tabList role="tablist" (cdkObserveContent)="_onContentChanges()">
+        <div class="wtf2-tab-labels">
+            <ng-content></ng-content>
+        </div>
+        <wtf2-ink-bar></wtf2-ink-bar>
+    </div>
+</div>
+
+<div class="wtf2-tab-header-pagination wtf2-tab-header-pagination-after wtf2-elevation-z4" #nextPaginator aria-hidden="true" wtf2-ripple [wtf2RippleDisabled]="_disableScrollAfter || disableRipple" [class.wtf2-tab-header-pagination-disabled]="_disableScrollAfter"
+    (mousedown)="_handlePaginatorPress('after')" (click)="_handlePaginatorClick('after')" (touchend)="_stopInterval()">
+    <div class="wtf2-tab-header-pagination-chevron"></div>
+</div>

@@ -1,0 +1,31 @@
+<wtf2-page-skeleton simple fullwidth>
+    <div class="center page-skeleton-wrapper">
+
+      <wtf2-page-header>
+        <wtf2-header-title> Gauge Chart </wtf2-header-title>
+        <wtf2-header-subtitle> gauge chart demo</wtf2-header-subtitle>
+      </wtf2-page-header>
+
+      <div class="content-card">
+        <wtf2-page-content class="content">
+          <div class="row ">
+            <div *ngFor="let data of gaugedata;" class="col-md-6 py-24"><!--ng Loop-->
+                <wtf2-card>
+                    <wtf2-card-header>
+                     Gauge chart
+                    </wtf2-card-header>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-card-content>
+                      <!-- <wtf2-gauge-chart [gaugedata]="gaugedata[0]" [IsRender]="true"></wtf2-gauge-chart> --> <!-- For Loop with Static data-->
+                      <!-- <wtf2-gauge-chart [gaugedata]="gaugedata[0]"></wtf2-gauge-chart> --><!--  without For Loop, Static data-->
+
+                      <wtf2-gauge-chart [gaugedata]="data" gaugeid="gaugechartid"></wtf2-gauge-chart><!--ForLoop Dynamic data-->
+                      <!-- <wtf2-gauge-chart [gaugedata]="gaugedata[0]"></wtf2-gauge-chart> --> <!-- without For Loop Dynamic data -->
+                    </wtf2-card-content>
+                  </wtf2-card>
+            </div>
+        </div>
+        </wtf2-page-content>
+      </div>
+    </div>
+  </wtf2-page-skeleton>

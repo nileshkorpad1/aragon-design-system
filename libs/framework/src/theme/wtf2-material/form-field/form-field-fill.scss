@@ -1,0 +1,61 @@
+@import '../core/style/variables';
+@import '../core/style/vendor-prefixes';
+@import '~@angular/cdk/a11y';
+// Styles that only apply to the fill appearance of the form-field.
+// The border radius for the form field fill box.
+$wtf2-form-field-fill-border-radius: 4px !default;
+// The height of the underline at the bottom of the form field fill box.
+$wtf2-form-field-fill-underline-height: 1px !default;
+// The height of the underline ripple at the bottom of the form field fill box.
+$wtf2-form-field-fill-underline-ripple-height: 2px !default;
+// The horizontal padding between the edge of the form field fill box and the start of the text.
+$wtf2-form-field-fill-side-padding: 0.75em !default;
+// The vertical padding between the edge of the form field fill box and the start of the text as
+// well as between the floating label and the value.
+$wtf2-form-field-fill-line-spacing: 0.75em !default;
+// The scale of the subscript and floating label text w.r.t the value text.
+$wtf2-form-field-fill-subscript-font-scale: 0.75 !default;
+// The horizontal padding between the edge of the subscript box and the start of the subscript text.
+$wtf2-form-field-fill-subscript-padding: $wtf2-form-field-fill-side-padding / $wtf2-form-field-fill-subscript-font-scale;
+.wtf2-form-field-appearance-fill {
+    .wtf2-form-field-flex {
+        border-radius: $wtf2-form-field-fill-border-radius $wtf2-form-field-fill-border-radius 0 0;
+        padding: $wtf2-form-field-fill-line-spacing $wtf2-form-field-fill-side-padding 0 $wtf2-form-field-fill-side-padding;
+        @include cdk-high-contrast {
+            outline: solid 1px;
+        }
+    }
+    .wtf2-form-field-underline::before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        height: $wtf2-form-field-fill-underline-height;
+        width: 100%;
+    }
+    .wtf2-form-field-ripple {
+        bottom: 0;
+        height: $wtf2-form-field-fill-underline-ripple-height;
+        @include cdk-high-contrast {
+            height: 0;
+            border-top: solid $wtf2-form-field-fill-underline-ripple-height;
+        }
+    }
+    // Note that we need this specific of a selector because we don't want
+    // the hover effect to show when the user hovers over the hints.
+    &:not(.wtf2-form-field-disabled) .wtf2-form-field-flex:hover~.wtf2-form-field-underline {
+        .wtf2-form-field-ripple {
+            opacity: 1;
+            transform: none;
+            transition: opacity 600ms $swift-ease-out-timing-function;
+        }
+    }
+    &._wtf2-animation-noopable:not(.wtf2-form-field-disabled) .wtf2-form-field-flex:hover {
+        &~.wtf2-form-field-underline .wtf2-form-field-ripple {
+            transition: none;
+        }
+    }
+    .wtf2-form-field-subscript-wrapper {
+        padding: 0 $wtf2-form-field-fill-subscript-padding;
+    }
+}

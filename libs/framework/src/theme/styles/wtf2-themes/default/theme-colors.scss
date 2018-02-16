@@ -1,0 +1,110 @@
+@import "../../../wtf2-material/core/theming/_palette";
+@import '../../mixins/breakpoints';
+@import '../../mixins/custom-mixins';
+@import '../../mixins/gradients';
+$wtf2-white: ( 500: white, contrast: ( 500: $black-87-opacity));
+$wtf2-black: ( 500: black, contrast: ( 500: white));
+$wtf2-dark: ( 50: #e6e6e9, 100: #c1c2c8, 200: #9799a4, 300: #6d707f, 400: #4e5163, 500: #2f3248, 600: #2a2d41, 700: #232638, 800: #1d1f30, 900: #121321, A100: #6471ff, A200: #3142ff, A400: #0015fd, A700: #0013e4, contrast: ( 50: #000000, 100: #000000, 200: #000000, 300: #ffffff, 400: #ffffff, 500: #ffffff, 600: #ffffff, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #ffffff, A200: #ffffff, A400: #ffffff, A700: #ffffff));
+// $wtf2-dark: (
+//     50: #ececee,
+//     100: #c5c6cb,
+//     200: #9ea1a9,
+//     300: #7d818c,
+//     400: #5c616f,
+//     500: #3c4252,
+//     600: #353a48,
+//     700: #2d323e,
+//     800: #262933,
+//     900: #1e2129,
+//     a100: #c5c6cb,
+//     a200: #9ea1a9,
+//     a400: #5c616f,
+//     a700: #2d323e,
+//     contrast: (
+//         50: $black-87-opacity,
+//         100: $black-87-opacity,
+//         200: $black-87-opacity,
+//         300: white,
+//         400: white,
+//         500: $white-87-opacity,
+//         600: $white-87-opacity,
+//         700: $white-87-opacity,
+//         800: $white-87-opacity,
+//         900: $white-87-opacity,
+//         A100: $black-87-opacity,
+//         A200: $white-87-opacity,
+//         A400: $white-87-opacity,
+//         A700: $white-87-opacity
+//   )
+// );
+$wtf2-accent: ( 50: #f7e3e3, 100: #ebbaba, 200: #dd8c8c, 300: #cf5e5e, 400: #c53c3c, 500: #bb1919, 600: #b51616, 700: #ac1212, 800: #a40e0e, 900: #960808, A100: #ffc3c3, A200: #ff9090, A400: #ff5d5d, A700: #ff4343, contrast: ( 50: #000000, 100: #000000, 200: #000000, 300: #ffffff, 400: #ffffff, 500: #ffffff, 600: #ffffff, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #000000, A700: #ffffff));
+$wtf2-warn: ( 50: #f7e1e1, 100: #eab3b4, 200: #dc8182, 300: #ce4f50, 400: #c4292b, 500: #b90305, 600: #b20304, 700: #aa0204, 800: #a20203, 900: #930101, A100: #ffbebe, A200: #ff8b8b, A400: #ff5858, A700: #ff3f3f, contrast: ( 50: #000000, 100: #000000, 200: #000000, 300: #ffffff, 400: #ffffff, 500: #ffffff, 600: #ffffff, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #000000, A700: #ffffff));
+// Define the Material palettes
+$primary: wtf2-palette($wtf2-dark);
+$accent: wtf2-palette($wtf2-accent, 600, 400, 700);
+$warn: wtf2-palette($wtf2-warn, 900);
+// Create the Material theme object
+$theme: wtf2-light-theme($primary, $accent, $warn);
+// Include all theme styles for the components.
+@include wtf2-theme($theme);
+// Store the background and foreground colors for easier access
+$background: map-get($theme, background);
+$foreground: map-get($theme, foreground);
+.wtf2-fab,
+.wtf2-flat-button,
+.wtf2-raised-button,
+.wtf2-mini-fab,
+.wtf2-stroked-button,
+wtf2-split-button {
+    &:hover,
+    &:not([class*='wtf2-elevation-z']):hover {
+        box-shadow: 0 7px 8px -4px rgba(0, 0, 0, .2), 0 13px 19px 2px rgba(0, 0, 0, .14), 0 5px 24px 4px rgba(0, 0, 0, .12);
+    }
+    &.wtf2-primary:hover {
+        background-color: wtf2-color(wtf2-palette($wtf2-dark, 900));
+        color: white;
+    }
+    &.wtf2-accent:hover {
+        background-color: wtf2-color(wtf2-palette($wtf2-accent, 900));
+        color: white;
+    }
+    &.wtf2-warn:hover {
+        background-color: wtf2-color(wtf2-palette($wtf2-warn, 900));
+        color: white;
+    }
+}
+
+wtf2-split-button[ng-reflect-disabled]:hover {
+    box-shadow: none;
+}
+
+.wtf2-raised-button[disabled]:not([class*='wtf2-elevation-z']):hover,
+.wtf2-mini-fab[disabled]:not([class*='wtf2-elevation-z']):hover,
+.wtf2-fab[disabled]:not([class*='wtf2-elevation-z']):hover {
+    box-shadow: none !important;
+}
+
+.wtf2-raised-button[disabled][disabled],
+.wtf2-fab[disabled][disabled],
+.wtf2-mini-fab[disabled][disabled] {
+    background-color: rgba(0, 0, 0, .12) !important;
+    color: rgba(0, 0, 0, .26) !important;
+}
+
+@mixin icon-gradiant-color() {
+    @include gradient-diagonal-four-colors();
+    &.material-icons {
+        -webkit-background-clip: text !important;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+@mixin text-gradiant-color() {
+    @include gradient-diagonal-four-colors();
+    &.wtf2-page-header-title {
+        -webkit-background-clip: text !important;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}

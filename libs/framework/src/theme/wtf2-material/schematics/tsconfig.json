@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "lib": ["es2017"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "../../../dist/packages/material/schewtf2ics",
+    "noEmitOnError": false,
+    "strictNullChecks": true,
+    "skipDefaultLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "declaration": true,
+    "target": "es6",
+    "types": [
+      "jasmine",
+      "node"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@angular/cdk/schewtf2ics": ["node_modules/@angular/cdk/schewtf2ics"]
+    }
+  },
+  "references": [
+    {"path": "node_modules/@angular/cdk/schewtf2ics"}
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    // Exclude the test-setup utility files. Those should not be part of the output.
+    "test-setup/**/*.ts",
+    // Exclude template files that will be copied by the schewtf2ics. Those are not valid TS.
+    "ng-generate/*/files/**/*.ts",
+    // Exclude all test-case files because those should not be included in the schewtf2ics output.
+    "ng-update/test-cases/**/*.ts"
+  ],
+  "bazelOptions": {
+    "suppressTsconfigOverrideWarnings": true
+  }
+}

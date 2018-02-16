@@ -1,0 +1,435 @@
+<wtf2-page-skeleton carded left_sidebar>
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title> {{'profile.UserProfile' | translate}}</wtf2-header-title>
+        <wtf2-header-subtitle> {{'COMMON.yourdeskacc' | translate}}</wtf2-header-subtitle>
+    </wtf2-page-header>
+    <!-- / CONTENT HEADER -->
+    <!-- TOP BACKGROUND -->
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+    <wtf2-sidebar class="sidebar" name="sidebar-wrapper" position="left" lockedOpen="gt-sm">
+        <!-- SIDEBAR HEADER -->
+        <wtf2-page-header>
+            <wtf2-header-title class="wtf2-dark-800-text"></wtf2-header-title>
+            <wtf2-header-subtitle></wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content">
+            <div class="demo-sidebar">
+                <wtf2-list>
+                    <wtf2-list-item scrollTo="personaldetail">{{'profile.personalDetails' | translate}}
+                        <ng-container *ngIf="currentSection==='personaldetail'">
+                            <span class="scroll-spy-active"></span>
+                            <div class="select-list"></div>
+                            <div class="select-item select-color"></div>
+                        </ng-container>
+                        <!-- <ng-container *ngIf="currentSection!='personaldetails'">
+                            <div class="select-list"></div>
+                            <div class="select-item"></div>
+                        </ng-container> -->
+                    </wtf2-list-item>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-list-item scrollTo="changedpassword">{{'profile.changedPassword' | translate}}
+                        <ng-container *ngIf="currentSection==='changedpassword'">
+                            <span class="scroll-spy-active"></span>
+                            <div class="select-list"></div>
+                            <div class="select-item select-color"></div>
+                        </ng-container>
+                        <!-- <ng-container *ngIf="currentSection!='changed-Password'">
+                            <div class="select-list"></div>
+                            <div class="select-item"></div>
+                        </ng-container> -->
+                    </wtf2-list-item>
+                    <wtf2-divider></wtf2-divider>
+                    <wtf2-list-item scrollTo="loremipsum">Lorem Ipsum
+                        <ng-container *ngIf="currentSection==='loremipsum'">
+                            <span class="scroll-spy-active"></span>
+                            <div class="select-list"></div>
+                            <div class="select-item select-color"></div>
+                        </ng-container>
+
+                    </wtf2-list-item>
+                    <wtf2-divider></wtf2-divider>
+                </wtf2-list>
+            </div>
+        </div>
+    </wtf2-sidebar>
+    <!-- / SIDEBAR CONTENT -->
+    <wtf2-page-content class="content" wtf2-carded-leftsidebar-layout>
+        <div class="demo-content" page-content-left-side>
+            <div class="content-card wtf2-white-bg">
+                <!-- CONTENT TOOLBAR -->
+                <!-- / CONTENT TOOLBAR -->
+                <!-- CONTENT -->
+                <div id ="parentdiv" scrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)" [perfectScrollbar]="" class="scroll-container">
+
+                <div id="personaldetail" class=" container-fluid">
+                    <form class="personeldetails" id="personeldetails" [formGroup]="userProfileFormGroup" (ngSubmit)="onSubmit()">
+                        <div class="row ">
+                            <wtf2-page-heading large>{{'profile.UserProfile' | translate}}</wtf2-page-heading>
+                            <div class="col col-12 col-lg-12 col-md-12 col-sm-12">
+                                <div class="d-flex justify-content-sm-center justify-content-md-start">
+                                    <img src="assets/images/avatars/Nancy.jpg" class="profile-icon mt-4" alt="profile image"
+                                        (click)="fileInput.click()" />
+                                    <input hidden type="file" #fileInput>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'profile.firstName' | translate}}" required [formControl]="profileGroup.firstnameFormControl"
+                                        [errorStateMatcher]="matcher">
+                                    <wtf2-error *ngIf="profileGroup.firstnameFormControl.hasError('pattern') && !profileGroup.firstnameFormControl.hasError('required')">
+                                        Please enter a valid {{'profile.firstName' | translate}}
+                                    </wtf2-error>
+                                    <wtf2-error *ngIf="profileGroup.firstnameFormControl.hasError('required')">
+                                        {{'profile.firstName' | translate}}is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'profile.lastName' | translate}}" required [formControl]="profileGroup.lastnameFormControl"
+                                        [errorStateMatcher]="matcher">
+                                    <wtf2-error *ngIf="profileGroup.lastnameFormControl.hasError('pattern') && !profileGroup.lastnameFormControl.hasError('required')">
+                                        Please enter a valid {{'profile.lastName' | translate}}
+                                    </wtf2-error>
+                                    <wtf2-error *ngIf="profileGroup.lastnameFormControl.hasError('required')">
+                                        {{'profile.lastName' | translate}} is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'COMMON.email' | translate }}" required [formControl]="profileGroup.emailFormControl"
+                                        [errorStateMatcher]="matcher">
+                                    <!-- <wtf2-hint>Errors appear instantly!</wtf2-hint> -->
+                                    <wtf2-error *ngIf="profileGroup.emailFormControl.hasError('email') && !profileGroup.emailFormControl.hasError('required')">
+                                        Please enter a valid {{'COMMON.email' | translate }} address
+                                    </wtf2-error>
+                                    <wtf2-error *ngIf="profileGroup.emailFormControl.hasError('required')">
+                                        {{'COMMON.email' | translate }} is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <wtf2-select placeholder="{{'COMMON.gender' | translate }}" required [formControl]="profileGroup.genderFormControl"
+                                        [errorStateMatcher]="matcher">
+                                        <wtf2-option value="primary">{{'profile.userProfile' | translate}}Male</wtf2-option>
+                                        <wtf2-option value="accent">{{'profile.userProfile' | translate}}Female</wtf2-option>
+                                    </wtf2-select>
+                                    <wtf2-error *ngIf="profileGroup.genderFormControl.hasError('required')">
+                                        {{'COMMON.gender' | translate }} is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'profile.block' | translate }}">
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'profile.street' | translate }}">
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'profile.addressLine1' | translate }}">
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'profile.addressLine2' | translate }}">
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'profile.addressLine3' | translate }}">
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <wtf2-select placeholder="{{'COMMON.city' | translate }}" required [formControl]="profileGroup.cityFormControl"
+                                        [errorStateMatcher]="matcher">
+                                        <wtf2-option value="Pune">Pune</wtf2-option>
+                                        <wtf2-option value="Nashik">Nashik</wtf2-option>
+                                        <wtf2-option value="Mumbai">Mumbai</wtf2-option>
+                                        <wtf2-option value="Dhule">Dhule</wtf2-option>
+                                        <wtf2-option value="Jalgaon">Jalgaon</wtf2-option>
+                                        <wtf2-option value="Pachora">Pachora</wtf2-option>
+                                        <wtf2-option value="Nandurbar">Nandurbar</wtf2-option>
+                                    </wtf2-select>
+                                    <wtf2-error *ngIf="profileGroup.cityFormControl.hasError('required')">
+                                        {{'COMMON.city' | translate }} is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'COMMON.pincode' | translate }}">
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <wtf2-select placeholder="{{'COMMON.state' |translate}}" required [formControl]="profileGroup.stateFormControl"
+                                        [errorStateMatcher]="matcher">
+                                        <wtf2-option value="Maharastra">Maharastra</wtf2-option>
+                                        <wtf2-option value="Gujrat">Gujrat</wtf2-option>
+                                        <wtf2-option value="Dheli">Dheli</wtf2-option>
+                                        <wtf2-option value="Karnatak">Karnatak</wtf2-option>
+                                    </wtf2-select>
+                                    <wtf2-error *ngIf="profileGroup.stateFormControl.hasError('required')">
+                                        {{'COMMON.state' |translate}} is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <wtf2-select placeholder="{{'COMMON.country' | translate}}" required [formControl]="profileGroup.countryFormControl"
+                                        [errorStateMatcher]="matcher">
+                                        <wtf2-option value="India">India</wtf2-option>
+                                        <wtf2-option value="Singapure">Singapure</wtf2-option>
+                                    </wtf2-select>
+                                    <wtf2-error *ngIf="profileGroup.countryFormControl.hasError('required')">
+                                        {{'COMMON.country' | translate}} is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'COMMON.phoneNumber' | translate}}" [formControl]="profileGroup.phnnoFormControl"
+                                        [errorStateMatcher]="matcher">
+                                </wtf2-form-field>
+                                <wtf2-error *ngIf="profileGroup.phnnoFormControl.hasError('pattern') ">
+                                    Please enter a valid {{'COMMON.phoneNumber' | translate}}
+                                </wtf2-error>
+                            </div>
+                            <div class="col col-12 col-lg-6 col-md-6 col-sm-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'COMMON.website' | translate}}">
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col col-12">
+                                <button class="submit-Button" wtf2-raised-button color="warn">{{'COMMON.savebtn' | translate}}</button>
+                                <button wtf2-button wtf2-flat-button color="primary" class="ml-3">{{'COMMON.cancelbtn'| translate}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- / CONTENT -->
+                <!-- CONTENT -->
+                <div id="changedpassword" class="container-fluid mt-5" >
+                    <form class="changed-password" [formGroup]="passwordGroup.currentpassFormControl" id="changed-password">
+                        <div class="row ">
+                            <wtf2-page-heading large>{{'profile.changedPassword' | translate}}</wtf2-page-heading>
+                            <div class="col col-12">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'profile.currentPassword' | translate}} " [type]="hideCurrent ? 'password' : 'text'"
+                                        required [formControl]="passwordGroup.currentpassFormControl"
+                                        [errorStateMatcher]="matcher">
+                                    <wtf2-icon wtf2Suffix (click)="hideCurrent = !hideCurrent">{{hideCurrent
+                                        ?
+                                        'visibility_off' : 'visibility'}}</wtf2-icon>
+                                    <wtf2-error *ngIf="passwordGroup.currentpassFormControl.hasError('required')">
+                                    {{'profile.currentPassword' | translate}} <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                            <div class="col col-12 ">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'profile.newpass' | translate}}" [type]="hideNew ? 'password' : 'text'"
+                                        required [formControl]="passwordGroup.newpassFormControl" #password id="password"
+                                        name="password" [(ngModel)]="user.password" minlength="5" maxlength="50">
+                                </wtf2-form-field>
+                                <wtf2-password-strength-bar [passwordToCheck]="user.password" [barLabel]="barLabel"></wtf2-password-strength-bar>
+                            </div>
+                            <div class="col col-12 ">
+                                <wtf2-form-field>
+                                    <input wtf2Input placeholder="{{'profile.confirmedpassword' | translate}}" [type]="hideConf ? 'password' : 'text'"
+                                        required [formControl]="passwordGroup.confrimpassFormControl"
+                                        [errorStateMatcher]="matcher">
+                                    <wtf2-icon wtf2Suffix (click)="hideConf = !hideConf">{{hideConf
+                                        ?
+                                        'visibility_off' : 'visibility'}}
+                                    </wtf2-icon>
+                                    <wtf2-error *ngIf="passwordGroup.confrimpassFormControl.hasError('required')">
+                                        {{'profile.confirmedpassword' | translate}} is <strong>required</strong>
+                                    </wtf2-error>
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                        <div class="row mt-5 mb-5">
+                            <div class="col col-12">
+                                <button class="submit-Button" wtf2-raised-button color="warn" (click)="submitData()">{{'COMMON.savebtn' | translate}}</button>
+                                <button wtf2-button wtf2-flat-button color="primary" class="ml-3">{{'COMMON.cancelbtn' | translate}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="loremipsum"  class=" container-fluid">
+                        <wtf2-page-heading large>Lorem Ipsum</wtf2-page-heading>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam facilis dolorem quae, sint
+                        quia minima nemo qui sed? Dolorum officiis doloremque quod, excepturi consequatur molestias rem
+                        facilis optio quae rerum odit omnis minima accusamus ipsam unde illo! Consectetur repellat
+                        aliquam
+                        quisquam illo ab excepturi voluptatem voluptatibus similique est eaque vero tenetur obcaecati
+                        voluptate rem libero laborum, saepe assumenda quasi ipsum animi ad. Ut deleniti ipsum modi
+                        perferendis eius quia ipsam unde deserunt, dolorem odit accusantium quam accusamus illum et
+                        harum
+                        sequi quae minus quos blanditiis suscipit. Autem, minus saepe dicta magni doloribus corporis
+                        temporibus quaerat id adipisci sint ipsum rem sequi cupiditate? Modi ipsa fugiat voluptate
+                        recusandae tempore distinctio incidunt reprehenderit earum in aperiam soluta officia cum
+                        voluptatibus voluptas eius sapiente blanditiis labore adipisci sit eveniet consectetur
+                        praesentium,
+                        explicabo quos similique! Saepe placeat incidunt animi labore dolorum assumenda totam quos
+                        error,
+                        iusto iure vero, eaque vel iste sapiente nesciunt optio dolore aperiam explicabo. Omnis ratione
+                        consectetur voluptates voluptatum, perferendis dignissimos doloremque architecto labore,
+                        officia
+                        atque repellendus culpa optio porro voluptas doloribus ducimus maiores? Tempora eaque mollitia
+                        velit aperiam? Nisi illo quia laboriosam eius, voluptatem quasi hic, error soluta sunt officiis
+                        nobis accusamus doloremque id qui impedit minima itaque odio ipsa. Eaque minima dolorum
+                        obcaecati
+                        mollitia, enim aliquam atque, nam repellendus alias, ipsam sapiente? Culpa, maiores! Autem
+                        adipisci, deserunt reprehenderit quo eius beatae et, delectus, dolorem quod consectetur omnis
+                        quam
+                        incidunt. Quis eveniet aliquid facilis aliquam veritatis nulla voluptate provident. Cupiditate
+                        at
+                        consequatur nostrum mollitia vel, commodi atque impedit esse provident maiores eum vero tempora
+                        repudiandae ducimus saepe numquam vitae amet hic rerum accusamus dignissimos labore quia? Nam
+                        non,
+                        aspernatur explicabo accusamus dolor enim, modi deserunt maxime possimus consequatur aliquid,
+                        ratione et at! Omnis neque necessitatibus nobis ad quo commodi dolores temporibus ipsum hic
+                        vitae.
+                        Tenetur adipisci, deserunt provident inventore esse quos voluptate recusandae aperiam, ipsum
+                        placeat expedita, quae quibusdam quis porro ut voluptatibus iusto illum consequuntur.
+                        Consequuntur
+                        deserunt pariatur veniam illum eligendi, tenetur corrupti dolore ut obcaecati libero ex natus
+                        eum
+                        nemo voluptas earum quasi laboriosam quae, inventore minima odit accusantium? Ducimus eius eos
+                        amet
+                        quam. Eos ratione cum odit blanditiis pariatur vitae et quidem incidunt, rem eius at officia,
+                        molestias omnis ad, delectus excepturi alias quas corrupti rerum voluptatem magnam
+                        necessitatibus
+                        illo velit! Eligendi, maxime. Harum quidem pariatur beatae cumque accusamus quos excepturi
+                        culpa
+                        nesciunt temporibus ducimus! Magnam tempore deserunt laudantium. Vel, earum. Eligendi
+                        repellendus
+                        suscipit nam beatae rem?velit aperiam? Nisi illo quia laboriosam eius, voluptatem quasi hic, error soluta sunt officiis
+                        nobis accusamus doloremque id qui impedit minima itaque odio ipsa. Eaque minima dolorum
+                        obcaecati
+                        mollitia, enim aliquam atque, nam repellendus alias, ipsam sapiente? Culpa, maiores! Autem
+                        adipisci, deserunt reprehenderit quo eius beatae et, delectus, dolorem quod consectetur omnis
+                        quam
+                        incidunt. Quis eveniet aliquid facilis aliquam veritatis nulla voluptate provident. Cupiditate
+                        at
+                        consequatur nostrum mollitia vel, commodi atque impedit esse provident maiores eum vero tempora
+                        repudiandae ducimus saepe numquam vitae amet hic rerum accusamus dignissimos labore quia? Nam
+                        non,
+                        aspernatur explicabo accusamus dolor enim, modi deserunt maxime possimus consequatur aliquid,
+                        ratione et at! Omnis neque necessitatibus nobis ad quo commodi dolores temporibus ipsum hic
+                        vitae.
+                        Tenetur adipisci, deserunt provident inventore esse quos voluptate recusandae aperiam, ipsum
+                        placeat expedita, quae quibusdam quis porro ut voluptatibus iusto illum consequuntur.
+                        Consequuntur
+                        deserunt pariatur veniam illum eligendi, tenetur corrupti dolore ut obcaecati libero ex natus
+                        eum
+                        nemo voluptas earum quasi laboriosam quae, inventore minima odit accusantium? Ducimus eius eos
+                        amet
+                        quam. Eos ratione cum odit blanditiis pariatur vitae et quidem incidunt, rem eius at officia,
+                        molestias omnis ad, delectus excepturi alias quas corrupti rerum voluptatem magnam
+                        necessitatibus
+                        illo velit! Eligendi, maxime. Harum quidem pariatur beatae cumque accusamus quos excepturi
+                        culpa
+                        nesciunt temporibus ducimus! Magnam tempore deserunt laudantium. Vel, earum. Eligendi
+                        repellendus
+                        suscipit nam beatae rem?velit aperiam? Nisi illo quia laboriosam eius, voluptatem quasi hic, error soluta sunt officiis
+                        nobis accusamus doloremque id qui impedit minima itaque odio ipsa. Eaque minima dolorum
+                        obcaecati
+                        mollitia, enim aliquam atque, nam repellendus alias, ipsam sapiente? Culpa, maiores! Autem
+                        adipisci, deserunt reprehenderit quo eius beatae et, delectus, dolorem quod consectetur omnis
+                        quam
+                        incidunt. Quis eveniet aliquid facilis aliquam veritatis nulla voluptate provident. Cupiditate
+                        at
+                        consequatur nostrum mollitia vel, commodi atque impedit esse provident maiores eum vero tempora
+                        repudiandae ducimus saepe numquam vitae amet hic rerum accusamus dignissimos labore quia? Nam
+                        non,
+                        aspernatur explicabo accusamus dolor enim, modi deserunt maxime possimus consequatur aliquid,
+                        ratione et at! Omnis neque necessitatibus nobis ad quo commodi dolores temporibus ipsum hic
+                        vitae.
+                        Tenetur adipisci, deserunt provident inventore esse quos voluptate recusandae aperiam, ipsum
+                        placeat expedita, quae quibusdam quis porro ut voluptatibus iusto illum consequuntur.
+                        Consequuntur
+                        deserunt pariatur veniam illum eligendi, tenetur corrupti dolore ut obcaecati libero ex natus
+                        eum
+                        nemo voluptas earum quasi laboriosam quae, inventore minima odit accusantium? Ducimus eius eos
+                        amet
+                        quam. Eos ratione cum odit blanditiis pariatur vitae et quidem incidunt, rem eius at officia,
+                        molestias omnis ad, delectus excepturi alias quas corrupti rerum voluptatem magnam
+                        necessitatibus
+                        illo velit! Eligendi, maxime. Harum quidem pariatur beatae cumque accusamus quos excepturi
+                        culpa
+                        nesciunt temporibus ducimus! Magnam tempore deserunt laudantium. Vel, earum. Eligendi
+                        repellendus
+                        suscipit nam beatae rem?velit aperiam? Nisi illo quia laboriosam eius, voluptatem quasi hic, error soluta sunt officiis
+                        nobis accusamus doloremque id qui impedit minima itaque odio ipsa. Eaque minima dolorum
+                        obcaecati
+                        mollitia, enim aliquam atque, nam repellendus alias, ipsam sapiente? Culpa, maiores! Autem
+                        adipisci, deserunt reprehenderit quo eius beatae et, delectus, dolorem quod consectetur omnis
+                        quam
+                        incidunt. Quis eveniet aliquid facilis aliquam veritatis nulla voluptate provident. Cupiditate
+                        at
+                        consequatur nostrum mollitia vel, commodi atque impedit esse provident maiores eum vero tempora
+                        repudiandae ducimus saepe numquam vitae amet hic rerum accusamus dignissimos labore quia? Nam
+                        non,
+                        aspernatur explicabo accusamus dolor enim, modi deserunt maxime possimus consequatur aliquid,
+                        ratione et at! Omnis neque necessitatibus nobis ad quo commodi dolores temporibus ipsum hic
+                        vitae.
+                        Tenetur adipisci, deserunt provident inventore esse quos voluptate recusandae aperiam, ipsum
+                        placeat expedita, quae quibusdam quis porro ut voluptatibus iusto illum consequuntur.
+                        Consequuntur
+                        deserunt pariatur veniam illum eligendi, tenetur corrupti dolore ut obcaecati libero ex natus
+                        eum
+                        nemo voluptas earum quasi laboriosam quae, inventore minima odit accusantium? Ducimus eius eos
+                        amet
+                        quam. Eos ratione cum odit blanditiis pariatur vitae et quidem incidunt, rem eius at officia,
+                        molestias omnis ad, delectus excepturi alias quas corrupti rerum voluptatem magnam
+                        necessitatibus
+                        illo velit! Eligendi, maxime. Harum quidem pariatur beatae cumque accusamus quos excepturi
+                        culpa
+                        nesciunt temporibus ducimus! Magnam tempore deserunt laudantium. Vel, earum. Eligendi
+                        repellendus
+                        suscipit nam beatae rem?
+                </div>
+                </div>
+                <!-- / CONTENT -->
+                <!-- CONTENT -->
+                <!-- / CONTENT -->
+            </div>
+            <!-- / CONTENT CARD -->
+        </div>
+    </wtf2-page-content>
+
+</wtf2-page-skeleton>

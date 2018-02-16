@@ -1,0 +1,21 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@mixin wtf2-progress-spinner-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    .wtf2-progress-spinner,
+    .wtf2-spinner {
+        circle {
+            stroke: wtf2-color($primary);
+        }
+        &.wtf2-accent circle {
+            stroke: wtf2-color($accent);
+        }
+        &.wtf2-warn circle {
+            stroke: wtf2-color($warn);
+        }
+    }
+}
+
+@mixin wtf2-progress-spinner-typography($config) {}

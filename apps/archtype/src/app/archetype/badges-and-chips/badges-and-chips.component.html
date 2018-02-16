@@ -1,0 +1,111 @@
+<wtf2-page-skeleton carded fullwidth>
+
+    <!-- TOP BACKGROUND -->
+
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+
+    <!-- CONTENT HEADER -->
+    <wtf2-page-header>
+        <wtf2-header-title class=" "> Badges and Chips</wtf2-header-title>
+        <wtf2-header-subtitle> Badges and Chips Example</wtf2-header-subtitle>
+    </wtf2-page-header>
+
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+
+    <!-- CONTENT TOOLBAR -->
+    <!-- <div class="toolbar px-24 py-8">
+                <span>Badges And Chips</span>
+            </div> -->
+    <!-- / CONTENT TOOLBAR -->
+
+    <!-- CONTENT -->
+    <wtf2-page-content class="content">
+        <div class="row m-2" page-content-carded>
+            <div class="col col-12">
+                <h3>Badges</h3>
+                <div class="ml-4">
+                    <p>
+                        <span wtf2Badge="4" wtf2BadgeOverlap="false">Text with a badge</span>
+                    </p>
+                    <p>
+                        Button with a badge on the left
+                        <button wtf2-raised-button color="primary" wtf2Badge="8" wtf2BadgePosition="before"
+                            wtf2BadgeColor="accent">
+                            Action
+                        </button>
+                    </p>
+                    <p>
+                        Icon with a badge
+                        <wtf2-icon wtf2Badge="15" wtf2BadgeColor="warn">home</wtf2-icon>
+                    </p>
+                </div>
+                <h3>Basic Chips</h3>
+
+                <div class="ml-4">
+                    <wtf2-chip-list>
+                        <wtf2-chip>One Chip</wtf2-chip>
+                        <wtf2-chip>Two Chip</wtf2-chip>
+                        <wtf2-chip color="primary" selected>Primary Chip</wtf2-chip>
+                        <wtf2-chip color="accent" selected>Accent Chip</wtf2-chip>
+                    </wtf2-chip-list>
+                </div>
+                <h3>Chips Autocomplete</h3>
+                <div class="ml-4">
+                    <wtf2-form-field class="example-chip-list">
+                        <wtf2-chip-list #chipList>
+                            <wtf2-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable"
+                                (removed)="remove(fruit)">
+                                {{fruit}}
+                                <wtf2-icon wtf2ChipRemove *ngIf="removable">cancel</wtf2-icon>
+                            </wtf2-chip>
+                            <input placeholder="New fruit..." #fruitInput [formControl]="fruitCtrl" [wtf2Autocomplete]="auto"
+                                [wtf2ChipInputFor]="chipList" [wtf2ChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [wtf2ChipInputAddOnBlur]="addOnBlur" (wtf2ChipInputTokenEnd)="add($event)">
+                        </wtf2-chip-list>
+                        <wtf2-autocomplete #auto="wtf2Autocomplete" (optionSelected)="selected($event)">
+                            <wtf2-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                                {{fruit}}
+                            </wtf2-option>
+                        </wtf2-autocomplete>
+                    </wtf2-form-field>
+                </div>
+                <h3>Chips with input</h3>
+                <div class="ml-4">
+                    <wtf2-form-field class="example-chip-list">
+                        <wtf2-chip-list #chipListNew>
+                            <wtf2-chip *ngFor="let fruit of fruits1" [selectable]="selectable1" [removable]="removable1"
+                                (removed)="remove1(fruit)">
+                                {{fruit.name}}
+                                <wtf2-icon wtf2ChipRemove *ngIf="removable1">cancel</wtf2-icon>
+                            </wtf2-chip>
+                            <input placeholder="New fruit..." [wtf2ChipInputFor]="chipListNew"
+                                [wtf2ChipInputSeparatorKeyCodes]="separatorKeysCodes1" [wtf2ChipInputAddOnBlur]="addOnBlur1"
+                                (wtf2ChipInputTokenEnd)="add1($event)">
+                        </wtf2-chip-list>
+                    </wtf2-form-field>
+                </div>
+                <h3>Stacked chips</h3>
+                <div class="col-4 ml-4">
+                    <wtf2-chip-list class="wtf2-chip-list-stacked">
+                        <wtf2-chip *ngFor="let chip of availableColors" selected [color]="chip.color">
+                            {{chip.name}}
+                        </wtf2-chip>
+                    </wtf2-chip-list>
+                </div>
+            </div>
+        </div>
+    </wtf2-page-content>
+    <!-- / CONTENT -->
+
+    <!-- / CONTENT CARD -->
+
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

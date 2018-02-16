@@ -1,0 +1,111 @@
+<wtf2-page-skeleton simple fullwidth>
+    <!-- CENTER -->
+    <!-- CONTENT HEADER -->
+        <!-- <wtf2-page-header></wtf2-page-header> -->
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> Grid CRUD Operation Demo</wtf2-header-title>
+            <wtf2-header-subtitle>Grid Demo Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+
+            <!-- CONTENT -->
+
+            <wtf2-page-content wtf2class="content">
+
+                <!-- DEMO CONTENT -->
+                    <div class="row">
+                        <div class="col-md-3 offset-md-9">
+                            <div class="form">
+                                <wtf2-form-field floatPlaceholder="never" color="accent">
+                                    <input wtf2Input #filter placeholder="Filter issues">
+                                </wtf2-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <wtf2-table #table [dataSource]="dataSource" wtf2Sort class="wtf2-cell">
+
+                        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+                        <!-- ID Column -->
+                        <ng-container wtf2ColumnDef="id">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header>Id</wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let row">{{row.id}}</wtf2-cell>
+                        </ng-container>
+
+                        <ng-container wtf2ColumnDef="title">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header>Title</wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let row">
+                                <div class="ellipsis">{{row.title}}</div>
+                            </wtf2-cell>
+                        </ng-container>
+
+                        <ng-container wtf2ColumnDef="state">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header>State</wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let row"> {{row.state}}</wtf2-cell>
+                        </ng-container>
+
+                        <ng-container wtf2ColumnDef="url">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header>Url</wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let row">
+                                <div class="ellipsis">{{row.url}}</div>
+                            </wtf2-cell>
+                        </ng-container>
+
+                        <ng-container wtf2ColumnDef="created_at">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header>Created at</wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let row"> {{row.created_at}}</wtf2-cell>
+                        </ng-container>
+
+                        <ng-container wtf2ColumnDef="updated_at">
+                            <wtf2-header-cell *wtf2HeaderCellDef wtf2-sort-header>Updated at</wtf2-header-cell>
+                            <wtf2-cell *wtf2CellDef="let row"> {{row.updated_at}}</wtf2-cell>
+                        </ng-container>
+
+                        <!-- actions -->
+                        <ng-container wtf2ColumnDef="actions">
+                            <wtf2-header-cell *wtf2HeaderCellDef class="nth-r">
+                                <button wtf2-icon-button color="primary" (click)="addNew()">
+                                    <wtf2-icon aria-label="Example icon-button with a heart icon">add</wtf2-icon>
+                                </button>
+                                <!-- Refresh Grid -->
+                                <button wtf2-icon-button (click)="refresh()">
+                                    <wtf2-icon>refresh</wtf2-icon>
+                                </button>
+                            </wtf2-header-cell>
+
+                            <wtf2-cell *wtf2CellDef="let row; let i=index;" class="nth-r">
+                                <button wtf2-icon-button color="accent" (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+                                    <wtf2-icon aria-label="Edit">edit</wtf2-icon>
+                                </button>
+
+                                <button wtf2-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+                                    <wtf2-icon aria-label="Delete">delete</wtf2-icon>
+                                </button>
+                            </wtf2-cell>
+                        </ng-container>
+
+                        <wtf2-header-row *wtf2HeaderRowDef="displayedColumns"></wtf2-header-row>
+                        <wtf2-row-detail *wtf2RowDef="let row; columns: displayedColumns;" [disabled]="true">
+                        </wtf2-row-detail>
+                    </wtf2-table>
+
+
+                    <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
+                        No results
+                    </div>
+
+                    <wtf2-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" [showFirstLastButtons]="true">
+                    </wtf2-paginator>
+                <!-- / DEMO CONTENT -->
+
+            </wtf2-page-content>
+            <!-- / CONTENT -->
+
+        <!-- / CONTENT CARD -->
+    <!-- / CENTER -->
+
+</wtf2-page-skeleton>

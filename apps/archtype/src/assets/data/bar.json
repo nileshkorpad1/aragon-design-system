@@ -1,0 +1,51 @@
+{
+    "keys": [
+        "total"
+    ],
+    "type": "bar",
+    "data": [
+        {
+            "labelname": "Older",
+            "total": 9,
+            "subdata": {
+                "keys": [
+                    "total"
+                ],
+                "data": [
+                    {
+                        "labelname": "Older1",
+                        "total": 10
+                    },
+                    {
+                        "labelname": "Older2",
+                        "total": 1
+                    },
+                    {
+                        "labelname": "Older3",
+                        "total": 9
+                    }
+                ]
+            }
+        },
+        {
+            "labelname": "11-17 Nov",
+            "total": 0
+        },
+        {
+            "labelname": "This week",
+            "total": 5
+        },
+        {
+            "labelname": "25-01 Nov",
+            "total": 0
+        },
+        {
+            "labelname": "02-08 Dec",
+            "total": 0
+        },
+        {
+            "labelname": "Future",
+            "total": 10
+        }
+    ]
+}

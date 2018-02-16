@@ -1,0 +1,65 @@
+/*----------------------------------------------------------------*/
+/*  Print
+/*----------------------------------------------------------------*/
+
+@media all {
+
+    /* Never show page breaks in normal view */
+    .page-break-after,
+    .page-break-before {
+        display: none;
+    }
+
+}
+
+@media print {
+
+    /* html and body tweaks */
+    body,
+    html {
+        height  : auto !important;
+        overflow: initial !important;
+    }
+
+    /* Page breaks */
+    .page-break-after {
+        display         : block;
+        page-break-after: always;
+        position        : relative;
+    }
+
+    .page-break-before {
+        display          : block;
+        page-break-before: always;
+        position         : relative;
+    }
+
+    /* General styles */
+    app {
+        .ps > .ps__rail-x,
+        .ps > .ps__rail-y,
+        .theme-options-button,
+        wtf2-sidebar,
+        wtf2-theme-options,
+        footer,
+        navbar,
+        toolbar {
+            display: none !important;
+        }
+
+        .ps {
+            overflow: visible !important;
+        }
+
+        .wtf2-drawer-container,
+        .wtf2-sidenav-container {
+            background-color: white !important;
+
+            .wtf2-drawer-content,
+            .wtf2-sidenav-content {
+                overflow: initial !important;
+                height  : auto !important;
+            }
+        }
+    }
+}

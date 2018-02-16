@@ -1,0 +1,320 @@
+<div *ngIf="!multipleValue">
+    <input name="file" (change)="onFileSelectEvent($event)" hidden type="file" #fileInput />
+    <div *ngIf="!toggleButtonValue">
+        <div class="row" *ngIf="hideNameFieldValue">
+            <div [ngClass]="{'col-lg-10 col-md-9 col-sm-8': (hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue),
+            'col-lg-12 col-md-12 col-sm-12': (!hideButtonLabelValue && !hideButtonIconValue),
+            'col-lg-11 col-md-11 col-sm-10': !hideButtonLabelValue && hideButtonIconValue}"
+                *ngIf="!buttonLeftValue">
+                <wtf2-form-field>
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="fileInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+            <div [ngClass]="{'col-lg-2 col-md-3 col-sm-4': (hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue),
+            'col-lg-1 col-md-1 col-sm-2': !hideButtonLabelValue && hideButtonIconValue}">
+                <div *ngIf="(hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue)">
+                    <button [ngClass]="{'fullWidthWithEnd': !buttonLeftValue,'fullWidthWithStart': buttonLeftValue}"
+                        type="button" wtf2-button color="{{ color }}" (click)="fileInput.click()" *ngIf="!wtf2RaisedButtonValue">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                    <button class="fullWidth" type="button" wtf2-raised-button color="{{ color }}" (click)="fileInput.click()"
+                        *ngIf="wtf2RaisedButtonValue">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                </div>
+                <button [ngClass]="{'fullWidthWithEnd': !buttonLeftValue,'fullWidthWithStart': buttonLeftValue}"
+                    wtf2-icon-button color="{{ color }}" (click)="fileInput.click()" *ngIf="!hideButtonLabelValue && hideButtonIconValue">
+                    <wtf2-icon>attach_file</wtf2-icon>
+                </button>
+            </div>
+            <div [ngClass]="{'col-lg-10 col-md-9 col-sm-8': (hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue),
+            'col-lg-12 col-md-12 col-sm-12': (!hideButtonLabelValue && !hideButtonIconValue),
+            'col-lg-11 col-md-11 col-sm-10': !hideButtonLabelValue && hideButtonIconValue}"
+                *ngIf="buttonLeftValue">
+                <wtf2-form-field>
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="fileInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+        </div>
+        <div *ngIf="!hideNameFieldValue">
+            <div *ngIf="((hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue))">
+                <button type="button" wtf2-button color="{{ color }}" (click)="fileInput.click()" *ngIf="!wtf2RaisedButtonValue">
+                    <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                </button>
+                <button type="button" wtf2-raised-button color="{{ color }}" (click)="fileInput.click()" *ngIf="wtf2RaisedButtonValue">
+                    <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                </button>
+            </div>
+            <button wtf2-icon-button color="{{ color }}" (click)="fileInput.click()" *ngIf="!hideButtonLabelValue && hideButtonIconValue">
+                <wtf2-icon>attach_file</wtf2-icon>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="toggleButtonValue">
+        <div *ngIf="!buttonLeftValue">
+            <div *ngIf="(hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue)">
+                <wtf2-form-field *ngIf="!wtf2RaisedButtonValue">
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="fileInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                    <button class="fullWidthWithEndToggle" type="button" wtf2Suffix wtf2-button color="{{ color }}"
+                        (click)="fileInput.click()">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                </wtf2-form-field>
+                <wtf2-form-field *ngIf="wtf2RaisedButtonValue">
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="fileInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                    <button type="button" wtf2Suffix wtf2-raised-button color="{{ color }}" (click)="fileInput.click()">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                </wtf2-form-field>
+            </div>
+            <wtf2-form-field *ngIf="!hideButtonLabelValue && hideButtonIconValue">
+                <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename" (click)="fileInput.click()"
+                    required="{{ RequiredValue }}" readonly [formControl]="fileUpload" [errorStateMatcher]="matcher" />
+                <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                    <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                </wtf2-error>
+                <wtf2-error *ngIf="fileUpload.hasError('required')">
+                    File is <strong>required</strong>
+                </wtf2-error>
+                <wtf2-icon wtf2Suffix color="{{ color }}" (click)="fileInput.click()">attach_file</wtf2-icon>
+            </wtf2-form-field>
+        </div>
+        <div *ngIf="buttonLeftValue">
+            <div *ngIf="(hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue)">
+                <wtf2-form-field *ngIf="!wtf2RaisedButtonValue">
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="fileInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                    <button class="fullWidthWithStartToggle" type="button" wtf2Prefix wtf2-button color="{{ color }}"
+                        (click)="fileInput.click()">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                </wtf2-form-field>
+                <wtf2-form-field *ngIf="wtf2RaisedButtonValue">
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="fileInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                    <button type="button" wtf2Prefix wtf2-raised-button color="{{ color }}" (click)="fileInput.click()">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                </wtf2-form-field>
+            </div>
+            <wtf2-form-field *ngIf="!hideButtonLabelValue && hideButtonIconValue">
+                <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename" (click)="fileInput.click()"
+                    required="{{ RequiredValue }}" readonly [formControl]="fileUpload" [errorStateMatcher]="matcher" />
+                <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                    <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                </wtf2-error>
+                <wtf2-error *ngIf="fileUpload.hasError('required')">
+                    File is <strong>required</strong>
+                </wtf2-error>
+                <wtf2-icon wtf2Prefix color="{{ color }}" (click)="fileInput.click()">attach_file</wtf2-icon>
+            </wtf2-form-field>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="multipleValue">
+    <input name="file" (change)="onFileSelectEvent($event)" hidden type="file" #filesInput multiple />
+    <div *ngIf="!toggleButtonValue">
+        <div class="row" *ngIf="hideNameFieldValue">
+            <div [ngClass]="{'col-lg-10 col-md-9 col-sm-8': (hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue),
+            'col-lg-12 col-md-12 col-sm-12': (!hideButtonLabelValue && !hideButtonIconValue),
+            'col-lg-11 col-md-11 col-sm-10': !hideButtonLabelValue && hideButtonIconValue}"
+                *ngIf="!buttonLeftValue">
+                <wtf2-form-field>
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="filesInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+            <div [ngClass]="{'col-lg-2 col-md-3 col-sm-4': (hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue),
+            'col-lg-1 col-md-1 col-sm-2': !hideButtonLabelValue && hideButtonIconValue}">
+                <div *ngIf="(hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue)">
+                    <button [ngClass]="{'fullWidthWithEnd': !buttonLeftValue,'fullWidthWithStart': buttonLeftValue}"
+                        type="button" wtf2-button color="{{ color }}" (click)="filesInput.click()" *ngIf="!wtf2RaisedButtonValue">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                    <button class="fullWidth" type="button" wtf2-raised-button color="{{ color }}" (click)="filesInput.click()"
+                        *ngIf="wtf2RaisedButtonValue">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                </div>
+                <button [ngClass]="{'fullWidthWithEnd': !buttonLeftValue,'fullWidthWithStart': buttonLeftValue}"
+                    wtf2-icon-button color="{{ color }}" (click)="filesInput.click()" *ngIf="!hideButtonLabelValue && hideButtonIconValue">
+                    <wtf2-icon>attach_file</wtf2-icon>
+                </button>
+            </div>
+            <div [ngClass]="{'col-lg-10 col-md-9 col-sm-8': (hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue),
+            'col-lg-12 col-md-12 col-sm-12': (!hideButtonLabelValue && !hideButtonIconValue),
+            'col-lg-11 col-md-11 col-sm-10': !hideButtonLabelValue && hideButtonIconValue}"
+                *ngIf="buttonLeftValue">
+                <wtf2-form-field>
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="filesInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                </wtf2-form-field>
+            </div>
+        </div>
+        <div *ngIf="!hideNameFieldValue">
+            <div *ngIf="((hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue))">
+                <button type="button" wtf2-button color="{{ color }}" (click)="filesInput.click()" *ngIf="!wtf2RaisedButtonValue">
+                    <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                </button>
+                <button type="button" wtf2-raised-button color="{{ color }}" (click)="filesInput.click()" *ngIf="wtf2RaisedButtonValue">
+                    <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                </button>
+            </div>
+            <button wtf2-icon-button color="{{ color }}" (click)="filesInput.click()" *ngIf="!hideButtonLabelValue && hideButtonIconValue">
+                <wtf2-icon>attach_file</wtf2-icon>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="toggleButtonValue">
+        <div *ngIf="!buttonLeftValue">
+            <div *ngIf="(hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue)">
+                <wtf2-form-field *ngIf="!wtf2RaisedButtonValue">
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="filesInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                    <button class="fullWidthWithEndToggle" type="button" wtf2Suffix wtf2-button color="{{ color }}"
+                        (click)="filesInput.click()">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                </wtf2-form-field>
+                <wtf2-form-field *ngIf="wtf2RaisedButtonValue">
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="filesInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                    <button type="button" wtf2Suffix wtf2-raised-button color="{{ color }}" (click)="filesInput.click()">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                </wtf2-form-field>
+            </div>
+            <wtf2-form-field *ngIf="!hideButtonLabelValue && hideButtonIconValue">
+                <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename" (click)="filesInput.click()"
+                    required="{{ RequiredValue }}" readonly [formControl]="fileUpload" [errorStateMatcher]="matcher" />
+                <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                    <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                </wtf2-error>
+                <wtf2-error *ngIf="fileUpload.hasError('required')">
+                    File is <strong>required</strong>
+                </wtf2-error>
+                <wtf2-icon wtf2Suffix color="{{ color }}" (click)="filesInput.click()">attach_file</wtf2-icon>
+            </wtf2-form-field>
+        </div>
+        <div *ngIf="buttonLeftValue">
+            <div *ngIf="(hideButtonLabelValue && hideButtonIconValue) || (hideButtonLabelValue && !hideButtonIconValue)">
+                <wtf2-form-field *ngIf="!wtf2RaisedButtonValue">
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="filesInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                    <button class="fullWidthWithStartToggle" type="button" wtf2Prefix wtf2-button color="{{ color }}"
+                        (click)="filesInput.click()">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                </wtf2-form-field>
+                <wtf2-form-field *ngIf="wtf2RaisedButtonValue">
+                    <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename"
+                        (click)="filesInput.click()" required="{{ RequiredValue }}" readonly [formControl]="fileUpload"
+                        [errorStateMatcher]="matcher" />
+                    <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                        <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                    </wtf2-error>
+                    <wtf2-error *ngIf="fileUpload.hasError('required')">
+                        File is <strong>required</strong>
+                    </wtf2-error>
+                    <button type="button" wtf2Prefix wtf2-raised-button color="{{ color }}" (click)="filesInput.click()">
+                        <wtf2-icon *ngIf="hideButtonIconValue">attach_file</wtf2-icon>{{ buttonPlaceholder }}
+                    </button>
+                </wtf2-form-field>
+            </div>
+            <wtf2-form-field *ngIf="!hideButtonLabelValue && hideButtonIconValue">
+                <input wtf2Input placeholder="{{ fieldPlaceholder }}" name="Filename" [(ngModel)]="Filename" (click)="filesInput.click()"
+                    required="{{ RequiredValue }}" readonly [formControl]="fileUpload" [errorStateMatcher]="matcher" />
+                <wtf2-error *ngIf="fileUpload.hasError('fileTypeEE') && !fileUpload.hasError('required')">
+                    <strong>{{ InvalidFilename }}</strong> is not a valid file, Please provide a valid file
+                </wtf2-error>
+                <wtf2-error *ngIf="fileUpload.hasError('required')">
+                    File is <strong>required</strong>
+                </wtf2-error>
+                <wtf2-icon wtf2Prefix color="{{ color }}" (click)="filesInput.click()">attach_file</wtf2-icon>
+            </wtf2-form-field>
+        </div>
+    </div>
+</div>

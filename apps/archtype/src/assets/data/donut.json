@@ -1,0 +1,27 @@
+{
+    "keys": [
+        "Salar",
+        "Rent",
+        "MarketExpense",
+        "Office"
+    ],
+    "type": "donut",
+    "data": [
+        {
+            "labelname": "jan",
+            "Salar": 170
+        },
+        {
+            "labelname": "feb",
+            "Rent": 100
+        },
+        {
+            "labelname": "mar",
+            "MarketExpense": 30
+        },
+        {
+            "labelname": "apr",
+            "Office": 30
+        }
+    ]
+}

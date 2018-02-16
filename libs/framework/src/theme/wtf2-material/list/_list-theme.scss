@@ -1,0 +1,72 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@import '../core/style/list-common';
+@mixin wtf2-list-theme($theme) {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-list-base {
+        .wtf2-list-item {
+            color: wtf2-color($foreground, text);
+        }
+        .wtf2-list-option {
+            color: wtf2-color($foreground, text);
+        }
+        .wtf2-subheader {
+            color: wtf2-color($foreground, secondary-text);
+        }
+    }
+    .wtf2-list-item-disabled {
+        background-color: wtf2-color($background, disabled-list-option);
+    }
+    .wtf2-list-option,
+    .wtf2-nav-list .wtf2-list-item,
+    .wtf2-action-list .wtf2-list-item {
+        &:hover,
+        &:focus {
+            background: wtf2-color($background, 'hover');
+        }
+    }
+}
+
+@mixin wtf2-list-typography($config) {
+    $font-family: wtf2-font-family($config);
+    .wtf2-list-item {
+        font-family: $font-family;
+    }
+    .wtf2-list-option {
+        font-family: $font-family;
+    }
+    // Default list
+    .wtf2-list-base {
+        .wtf2-list-item {
+            font-size: wtf2-font-size($config, subheading-2);
+            @include wtf2-line-base(wtf2-font-size($config, body-1));
+        }
+        .wtf2-list-option {
+            font-size: wtf2-font-size($config, subheading-2);
+            @include wtf2-line-base(wtf2-font-size($config, body-1));
+        }
+        .wtf2-subheader {
+            font-family: wtf2-font-family($config, body-2);
+            font-size: wtf2-font-size($config, body-2);
+            font-weight: wtf2-font-weight($config, body-2);
+        }
+    }
+    // Dense list
+    .wtf2-list-base[dense] {
+        .wtf2-list-item {
+            font-size: wtf2-font-size($config, caption);
+            @include wtf2-line-base(wtf2-font-size($config, caption));
+        }
+        .wtf2-list-option {
+            font-size: wtf2-font-size($config, caption);
+            @include wtf2-line-base(wtf2-font-size($config, caption));
+        }
+        .wtf2-subheader {
+            font-family: $font-family;
+            font-size: wtf2-font-size($config, caption);
+            font-weight: wtf2-font-weight($config, body-2);
+        }
+    }
+}

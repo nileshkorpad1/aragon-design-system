@@ -1,0 +1,41 @@
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin wtf2-paginator-theme($theme) {
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    .wtf2-paginator {
+        background: wtf2-color($background, 'card');
+    }
+    .wtf2-paginator,
+    .wtf2-paginator-page-size .wtf2-select-trigger {
+        color: wtf2-color($foreground, secondary-text);
+    }
+    .wtf2-paginator-decrement,
+    .wtf2-paginator-increment {
+        border-top: 2px solid wtf2-color($foreground, 'icon');
+        border-right: 2px solid wtf2-color($foreground, 'icon');
+    }
+    .wtf2-paginator-first,
+    .wtf2-paginator-last {
+        border-top: 2px solid wtf2-color($foreground, 'icon');
+    }
+    .wtf2-icon-button[disabled] {
+        .wtf2-paginator-decrement,
+        .wtf2-paginator-increment,
+        .wtf2-paginator-first,
+        .wtf2-paginator-last {
+            border-color: wtf2-color($foreground, 'disabled');
+        }
+    }
+}
+
+@mixin wtf2-paginator-typography($config) {
+    .wtf2-paginator,
+    .wtf2-paginator-page-size .wtf2-select-trigger {
+        font: {
+            family: wtf2-font-family($config, caption);
+            size: wtf2-font-size($config, caption);
+        }
+    }
+}

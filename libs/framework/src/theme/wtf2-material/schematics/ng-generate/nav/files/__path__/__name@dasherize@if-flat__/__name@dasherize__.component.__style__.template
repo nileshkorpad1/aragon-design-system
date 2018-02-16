@@ -1,0 +1,17 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .wtf2-toolbar {
+  background: inherit;
+}
+
+.wtf2-toolbar.wtf2-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

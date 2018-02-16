@@ -1,0 +1,9 @@
+<div *ngIf="IsDrillDownReset" class="row">
+    <div class="col col-12">
+        <button wtf2-icon-button (click)="reset()">
+            <wtf2-icon [style.color]='"gray"'>settings_backup_restore</wtf2-icon>
+            <span class="icon-text">Reset</span>
+        </button>
+    </div>
+</div>
+<div id="{{chartid}}"></div>

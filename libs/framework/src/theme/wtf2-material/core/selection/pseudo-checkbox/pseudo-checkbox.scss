@@ -1,0 +1,59 @@
+@import '../../style/checkbox-common';
+@import '../../style/noop-animation';
+// Padding inside of a pseudo checkbox.
+$_wtf2-pseudo-checkbox-padding: $wtf2-checkbox-border-width * 2;
+// Size of the checkmark in a pseudo checkbox.
+$_wtf2-pseudo-checkmark-size: $wtf2-checkbox-size - (2 * $_wtf2-pseudo-checkbox-padding);
+.wtf2-pseudo-checkbox {
+    width: $wtf2-checkbox-size;
+    height: $wtf2-checkbox-size;
+    border: $wtf2-checkbox-border-width solid;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    position: relative;
+    flex-shrink: 0;
+    transition: border-color $wtf2-checkbox-transition-duration $wtf2-linear-out-slow-in-timing-function, background-color $wtf2-checkbox-transition-duration $wtf2-linear-out-slow-in-timing-function;
+    // Used to render the checkmark/mixedmark inside of the box.
+    &::after {
+        position: absolute;
+        opacity: 0;
+        content: '';
+        border-bottom: $wtf2-checkbox-border-width solid currentColor;
+        transition: opacity $wtf2-checkbox-transition-duration $wtf2-linear-out-slow-in-timing-function;
+    }
+    &.wtf2-pseudo-checkbox-checked,
+    &.wtf2-pseudo-checkbox-indeterminate {
+        border-color: transparent;
+    }
+    @include _noop-animation {
+        &::after {
+            transition: none;
+        }
+    }
+}
+
+.wtf2-pseudo-checkbox-disabled {
+    cursor: default;
+}
+
+.wtf2-pseudo-checkbox-indeterminate::after {
+    top: ($wtf2-checkbox-size - $wtf2-checkbox-border-width) / 2 - $wtf2-checkbox-border-width;
+    left: $wtf2-checkbox-border-width / 2;
+    width: $wtf2-checkbox-size - 6px;
+    opacity: 1;
+    border-radius: 2px;
+}
+
+.wtf2-pseudo-checkbox-checked::after {
+    top: ($wtf2-checkbox-size / 2) - ($_wtf2-pseudo-checkmark-size / 4) - ($wtf2-checkbox-size / 10) - $wtf2-checkbox-border-width;
+    left: $_wtf2-pseudo-checkbox-padding - $wtf2-checkbox-border-width * 1.5;
+    width: $_wtf2-pseudo-checkmark-size;
+    height: ($_wtf2-pseudo-checkmark-size - $wtf2-checkbox-border-width) / 2;
+    border-left: $wtf2-checkbox-border-width solid currentColor;
+    transform: rotate(-45deg);
+    opacity: 1;
+    box-sizing: content-box;
+}

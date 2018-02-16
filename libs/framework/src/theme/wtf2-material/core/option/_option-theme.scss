@@ -1,0 +1,46 @@
+@import '../theming/palette';
+@import '../theming/theming';
+@import '../typography/typography-utils';
+@mixin wtf2-option-theme($theme) {
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    .wtf2-option {
+        color: wtf2-color($foreground, text);
+        &:hover:not(.wtf2-option-disabled),
+        &:focus:not(.wtf2-option-disabled) {
+            background: wtf2-color($background, hover);
+        }
+        // In multiple mode there is a checkbox to show that the option is selected.
+        &.wtf2-selected:not(.wtf2-option-multiple):not(.wtf2-option-disabled) {
+            background: wtf2-color($background, hover);
+        }
+        &.wtf2-active {
+            background: wtf2-color($background, hover);
+            color: wtf2-color($foreground, text);
+        }
+        &.wtf2-option-disabled {
+            color: wtf2-color($foreground, hint-text);
+        }
+    }
+    .wtf2-primary .wtf2-option.wtf2-selected:not(.wtf2-option-disabled) {
+        color: wtf2-color($primary);
+    }
+    .wtf2-accent .wtf2-option.wtf2-selected:not(.wtf2-option-disabled) {
+        color: wtf2-color($accent);
+    }
+    .wtf2-warn .wtf2-option.wtf2-selected:not(.wtf2-option-disabled) {
+        color: wtf2-color($warn);
+    }
+}
+
+@mixin wtf2-option-typography($config) {
+    .wtf2-option {
+        font: {
+            family: wtf2-font-family($config);
+            size: wtf2-font-size($config, subheading-2);
+        }
+    }
+}

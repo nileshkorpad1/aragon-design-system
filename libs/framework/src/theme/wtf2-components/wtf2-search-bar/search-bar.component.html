@@ -1,0 +1,31 @@
+<div class="wtf2-search-bar" [ngClass]="{'expanded':!collapsed}">
+
+    <div class="wtf2-search-bar-content" [ngClass]="wtf2Config.layout.toolbar.background">
+
+        <label for="wtf2-search-bar-input">
+            <button wtf2-icon-button class="wtf2-search-bar-expander" aria-label="Expand Search Bar" (click)="expand()"
+                *ngIf="collapsed">
+                <wtf2-icon class="s-24 secondary-text">search</wtf2-icon>
+            </button>
+            <!--<span class="wtf2-search-bar-loader" fxLayout="row" fxLayoutAlign="center center" *ngIf="!collapsed">
+            <wtf2-progress-spinner color="wtf2-accent" mode="indeterminate"></wtf2-progress-spinner>
+        </span>-->
+        </label>
+
+        <wtf2-form-field floatLabel="never">
+            <input wtf2Input wtf2Input id="wtf2-search-bar-input" class="ml-24" type="text" placeholder="Search"
+                (input)="search($event)" #searchInput>
+        </wtf2-form-field>
+
+
+        <!-- <input id="wtf2-search-bar-input" class="ml-24" type="text" placeholder="Search" (input)="search($event)"
+            fxFlex> -->
+
+        <button wtf2-icon-button class="wtf2-search-bar-collapser" (click)="collapse(searchInput)"
+            aria-label="Collapse Search Bar">
+            <wtf2-icon class="s-24 secondary-text">close</wtf2-icon>
+        </button>
+
+    </div>
+
+</div>

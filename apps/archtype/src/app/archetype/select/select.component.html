@@ -1,0 +1,252 @@
+<wtf2-page-skeleton carded fullwidth>
+    <!-- TOP BACKGROUND -->
+
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+    <!-- / SIDEBAR -->
+    <!-- CENTER -->
+        <!-- CONTENT HEADER -->
+        <wtf2-page-header>
+            <wtf2-header-title class=" "> Select</wtf2-header-title>
+            <wtf2-header-subtitle> Select Example</wtf2-header-subtitle>
+        </wtf2-page-header>
+        <!-- / CONTENT HEADER -->
+        <!-- CONTENT CARD -->
+        <!-- CONTENT TOOLBAR -->
+        <!-- <div class="toolbar px-24 py-8">
+                <span>Select</span>
+            </div> -->
+        <!-- / CONTENT TOOLBAR -->
+        <!-- CONTENT -->
+        <wtf2-page-content class="content">
+            <div class="row m-2" page-content-carded>
+                <h3>Basic select</h3>
+                <div class="col col-12 m-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="Favorite food">
+                            <wtf2-option *ngFor="let food of foods" [value]="food.value">
+                                {{food.viewValue}}
+                            </wtf2-option>
+                        </wtf2-select>
+                    </wtf2-form-field>
+
+                    <h4>Basic native select</h4>
+                    <wtf2-form-field>
+                        <select wtf2NativeControl required>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </wtf2-form-field>
+                </div>
+                <h3>Select with 2-way value binding</h3>
+                <div class="col col-12 m-2">
+                    <wtf2-form-field>
+                        <wtf2-select [(value)]="selected">
+                            <wtf2-option>None</wtf2-option>
+                            <wtf2-option value="option1">Option 1</wtf2-option>
+                            <wtf2-option value="option2">Option 2</wtf2-option>
+                            <wtf2-option value="option3">Option 3</wtf2-option>
+                        </wtf2-select>
+                    </wtf2-form-field>
+
+                    <p>You selected: {{selected}}</p>
+                </div>
+                <h3>Select in a form</h3>
+                <div class="col col-12 m-2">
+                    <form>
+                        <wtf2-form-field>
+                            <wtf2-select placeholder="Favorite food" [(ngModel)]="selectedValue" name="food">
+                                <wtf2-option *ngFor="let food of foods" [value]="food.value">
+                                    {{food.viewValue}}
+                                </wtf2-option>
+                            </wtf2-select>
+                        </wtf2-form-field>
+                        <p> Selected food: {{selectedValue}} </p>
+                        <h4>native html select</h4>
+                        <wtf2-form-field>
+                            <select wtf2NativeControl placeholder="Favorite car" [(ngModel)]="selectedCar" name="car">
+                                <option value="" selected></option>
+                                <option *ngFor="let car of cars" [value]="car.value">
+                                    {{car.viewValue}}
+                                </option>
+                            </select>
+                        </wtf2-form-field>
+                        <p> Selected car: {{selectedCar}} </p>
+                    </form>
+                </div>
+                <h3>Select with form field features</h3>
+                <div class="col col-12 m-2">
+                    <h4>mat select</h4>
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="Favorite animal" [formControl]="animalControl" required>
+                            <wtf2-option>--</wtf2-option>
+                            <wtf2-option *ngFor="let animal of animals" [value]="animal">
+                                {{animal.name}}
+                            </wtf2-option>
+                        </wtf2-select>
+                        <wtf2-error *ngIf="animalControl.hasError('required')">Please choose an animal</wtf2-error>
+                        <wtf2-hint>{{animalControl.value?.sound}}</wtf2-hint>
+                    </wtf2-form-field>
+
+                    <h4>native html select</h4>
+                    <wtf2-form-field>
+                        <wtf2-label>Select your car (required)</wtf2-label>
+                        <select wtf2NativeControl required [formControl]="selectFormControl">
+                            <option label="--select something --"></option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                        <wtf2-error *ngIf="selectFormControl.hasError('required')">
+                            This field is required
+                        </wtf2-error>
+                        <wtf2-hint>You can pick up your favorite car here</wtf2-hint>
+                    </wtf2-form-field>
+                </div>
+                <h3>Disabled select</h3>
+                <div class="col col-12 m-2">
+                    <p>
+                        <wtf2-checkbox [formControl]="disableSelect">Disable select</wtf2-checkbox>
+                    </p>
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="Choose an option" [disabled]="disableSelect.value">
+                            <wtf2-option value="option1">Option 1</wtf2-option>
+                            <wtf2-option value="option2" disabled>Option 2 (disabled)</wtf2-option>
+                            <wtf2-option value="option3">Option 3</wtf2-option>
+                        </wtf2-select>
+                    </wtf2-form-field>
+
+                </div>
+                <h3>Select with reset option</h3>
+                <div class="col col-12 m-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="State">
+                            <wtf2-option>None</wtf2-option>
+                            <wtf2-option *ngFor="let state of states" [value]="state">{{state}}</wtf2-option>
+                        </wtf2-select>
+                    </wtf2-form-field>
+
+                    <h4>native html select</h4>
+                    <wtf2-form-field>
+                        <wtf2-label>Select your car</wtf2-label>
+                        <select wtf2NativeControl id="mySelectId">
+                            <option value="" disabled selected></option>
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </wtf2-form-field>
+                </div>
+                <h3>Select with option groups</h3>
+                <div class="col col-12 m-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="Pokemon" [formControl]="pokemonControl">
+                            <wtf2-option>-- None --</wtf2-option>
+                            <wtf2-optgroup *ngFor="let group of pokemonGroups" [label]="group.name" [disabled]="group.disabled">
+                                <wtf2-option *ngFor="let pokemon of group.pokemon" [value]="pokemon.value">
+                                    {{pokemon.viewValue}}
+                                </wtf2-option>
+                            </wtf2-optgroup>
+                        </wtf2-select>
+                    </wtf2-form-field>
+
+                    <h4>native html select</h4>
+                    <wtf2-form-field>
+                        <select wtf2NativeControl>
+                            <optgroup label="Swedish Cars">
+                                <option value="volvo">volvo</option>
+                                <option value="saab">Saab</option>
+                            </optgroup>
+                            <optgroup label="German Cars">
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                            </optgroup>
+                        </select>
+                    </wtf2-form-field>
+                </div>
+                <h3>Select with multiple selection</h3>
+                <div class="col col-12 m-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="Toppings" [formControl]="toppings" multiple>
+                            <wtf2-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</wtf2-option>
+                        </wtf2-select>
+                    </wtf2-form-field>
+                </div>
+                <h3>Select with custom trigger text</h3>
+                <div class="col col-12 m-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="Toppings" [formControl]="toppings" multiple>
+                            <wtf2-select-trigger>
+                                {{toppings.value ? toppings.value[0] : ''}}
+                                <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+                                    (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' :
+                                    'others'}})
+                                </span>
+                            </wtf2-select-trigger>
+                            <wtf2-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</wtf2-option>
+                        </wtf2-select>
+                    </wtf2-form-field>
+                </div>
+                <h3>Select with no option ripple</h3>
+                <div class="col col-12 m-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="Select an option" disableRipple>
+                            <wtf2-option value="1">Option 1</wtf2-option>
+                            <wtf2-option value="2">Option 2</wtf2-option>
+                            <wtf2-option value="3">Option 3</wtf2-option>
+                        </wtf2-select>
+                    </wtf2-form-field>
+                </div>
+                <h3>Select with a custom ErrorStateMatcher</h3>
+                <div class="col col-12 m-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="Choose one" [formControl]="iselect" [errorStateMatcher]="matcher">
+                            <wtf2-option>Clear</wtf2-option>
+                            <wtf2-option value="valid">Valid option</wtf2-option>
+                            <wtf2-option value="invalid">Invalid option</wtf2-option>
+                        </wtf2-select>
+                        <wtf2-hint>Errors appear instantly!</wtf2-hint>
+                        <wtf2-error *ngIf="iselect.hasError('required')">You must make a selection</wtf2-error>
+                        <wtf2-error *ngIf="iselect.hasError('pattern') && !iselect.hasError('required')">
+                            Your selection is invalid
+                        </wtf2-error>
+                    </wtf2-form-field>
+
+                    <h4>native html select</h4>
+                    <wtf2-form-field class="demo-full-width">
+                        <select wtf2NativeControl placeholder="Choose one" [formControl]="nativeSelectFormControl"
+                            [errorStateMatcher]="matcher">
+                            <option value=""></option>
+                            <option value="valid" selected>Valid option</option>
+                            <option value="invalid">Invalid option</option>
+                        </select>
+                        <wtf2-error *ngIf="nativeSelectFormControl.hasError('required')">You must make a
+                            selection</wtf2-error>
+                        <wtf2-error *ngIf="nativeSelectFormControl.hasError('pattern') && !nativeSelectFormControl.hasError('required')">
+                            Your selection is invalid
+                        </wtf2-error>
+                    </wtf2-form-field>
+                </div>
+                <h3>Select DropDown With Action</h3>
+                <div class="col col-12 m-2">
+                    <wtf2-form-field>
+                        <wtf2-select placeholder="Toppings" [formControl]="toppings">
+                            <wtf2-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</wtf2-option>
+                            <wtf2-option class='ml-0 p-0' footerAction>
+                                <button class="ml-0" (click)="openDialog()">
+                                    <wtf2-icon>add</wtf2-icon>CREATE NEW
+                                </button>
+                            </wtf2-option>
+                        </wtf2-select>
+                    </wtf2-form-field>
+                </div>
+
+            </div>
+        </wtf2-page-content>
+        <!-- / CONTENT -->
+        <!-- / CONTENT CARD -->
+    <!-- / CENTER -->
+</wtf2-page-skeleton>

@@ -1,0 +1,19 @@
+@import '../core/style/elevation';
+@import '../core/theming/palette';
+@import '../core/theming/theming';
+@import '../core/typography/typography-utils';
+@mixin wtf2-dialog-theme($theme) {
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .wtf2-dialog-container {
+        @include _wtf2-theme-elevation(24, $theme);
+        background: wtf2-color($background, dialog);
+        color: wtf2-color($foreground, text);
+    }
+}
+
+@mixin wtf2-dialog-typography($config) {
+    .wtf2-dialog-title {
+        @include wtf2-typography-level-to-styles($config, title);
+    }
+}
